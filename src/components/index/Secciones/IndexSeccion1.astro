@@ -8,9 +8,12 @@ import Seccion1Canvas from "../../Scene3D/orbita/seccion1_main";
 
 <section id="home" >
 
-        <Seccion1Canvas client:only="react" transition:persist/>
+        <div class="elcanvas">
+            <Seccion1Canvas client:only="react" transition:persist/>
+        </div>
+
    
-        <div class="esfera"/>
+     <!--    <div class="esfera"/> -->
 </section>
 
 
@@ -27,6 +30,14 @@ section {
     width: 100vw;
     height: 100vh;
 
+  }
+  .elcanvas {
+
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    
+    z-index: 2;
   }
 
   .esfera {
@@ -51,9 +62,11 @@ section {
   }
   
   @media (max-width: 768px) {
-    .section {
+    section {
       cursor: default;
+
     }
+    
     .web {
       display: none;
     }

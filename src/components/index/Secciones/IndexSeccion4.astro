@@ -1,15 +1,42 @@
 ---
 import RiveComponent from "../../global/animations/riveComponent";
-import styles from "../css/indexSeccion4.module.css";
+
 
 ---
 
 
     <section id="experience" >
+      <div class="esfera"/>
       <div class="rivecomp web">
         <RiveComponent
           src="/rive/cbluna.riv"
           artboard="seccion3"
+          stateMachines="State Machine 1"
+          autoplay={true}
+          fit="fill"
+          client:only="react" 
+          transition:persist
+        />
+      </div>
+
+      <div class="rivecomp movil">
+        <RiveComponent 
+        src="/rive/cbluna.riv"
+        artboard="seccion3_mobile"
+        stateMachines="State Machine 1"
+        autoplay={true}
+        fit="contain"
+        client:only="react"
+        transition:persist
+
+        />
+
+        </div>
+        <!-- tablet -->
+        <div class="rivecomp tablet">
+        <RiveComponent
+          src="/rive/cbluna.riv"
+          artboard="seccion3_tablet"
           stateMachines="State Machine 1"
           autoplay={true}
           fit="contain"
@@ -17,6 +44,8 @@ import styles from "../css/indexSeccion4.module.css";
           transition:persist
         />
       </div>
+
+     
 
     </section>
 
@@ -31,7 +60,7 @@ import styles from "../css/indexSeccion4.module.css";
       justify-content: center;
       align-items: center;
       width: 100vw;
-      height: 80vh;
+      height: 90vh;
 
 
       
@@ -50,34 +79,21 @@ import styles from "../css/indexSeccion4.module.css";
       }
       
       
+      .esfera {
+    position: absolute;
+    top: 20%;
+      left: 50%; /* Mueve la esfera a la derecha */
+    transform: translate(-50%, -50%);
+    
+    width: 1750px;
+    height: 1750px;
+    /* gradiente de color 375BEB a transparente radial centrado */
+    background: radial-gradient(circle at center, #375beb4a 0%, #1a0a4e1c 30%, transparent 100%);
+    z-index: -1;
+  }
+
       
-      .riveContainerMainCircle {
-      position: absolute;
-      display: flex;
-      top: -30%;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 100vw;
-      height: 750px;
-      z-index: 30;
-      
-      
-      }
-      
-      
-      .riveCircle {
-      
-      display: flex;
-      
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 750px;
-      height: 100%;
-      z-index: 10;
-      
-      }
+    
       
       .web {
       display: block;
@@ -86,16 +102,42 @@ import styles from "../css/indexSeccion4.module.css";
       .movil {
       display: none;
       }
+
+      .tablet {
+      display: none;
+      }
+
+      @media (max-width: 1368px) {
+      section {
+        cursor: default;
+        height: 80vh;
+      }
+
+      .web {
+        display: none;
+      }
+      .movil {
+        display: none;
+      }
+      .tablet {
+        display: block;
+      }
+      }
       
       @media (max-width: 768px) {
-      .section {
+      section {
         cursor: default;
+        height: 250vh;
       }
+
       .web {
         display: none;
       }
       .movil {
         display: block;
+      }
+      .tablet {
+        display: none;
       }
       }
       

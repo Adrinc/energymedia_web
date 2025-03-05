@@ -4,7 +4,8 @@ import BotonStyle1 from "../../global/BotonSt1.astro";
 ---
 
 
-    <section id="our_services">
+<section id="our_services">
+      <div class="esfera"/> 
       <div class="rivecomp web">
         <RiveComponent
           src="/rive/cbluna-nosotros.riv"
@@ -16,8 +17,21 @@ import BotonStyle1 from "../../global/BotonSt1.astro";
           transition:persist
         />
       </div>
-      <div class="esfera"/>
-      <div class="boton">
+      <div class="rivecomp movil">
+        <RiveComponent
+          src="/rive/cbluna-nosotros.riv"
+          artboard="socio_seccion_mobile"
+          stateMachines="State Machine 1"
+          autoplay={true}
+          fit="contain"
+          client:only="react" 
+          transition:persist
+        />
+
+
+<!-- 
+      <div class="esfera"/> -->
+      <!-- <div class="boton">
         <BotonStyle1
           link="/proyectos"
           texto={"Contacto"}
@@ -25,7 +39,7 @@ import BotonStyle1 from "../../global/BotonSt1.astro";
           fontweight="bold"
           showIcon={false}
         />
-      </div>
+      </div> -->
     </section>
 
 
@@ -70,21 +84,24 @@ section {
   width: 1750px;
   height: 1750px;
   /* gradiente de color 375BEB a transparente radial centrado */
-  background: radial-gradient(circle at center, #375beb4a 0%, #1a0a4e1c 30%, transparent 100%);
+  background: radial-gradient(circle at center, #375beb4a 0%, #141414 30%, transparent 100%);
   z-index: -1;
 }
 
 .web {
   display: block;
+ 
 }
 
 .movil {
   display: none;
+
 }
 
-@media (max-width: 768px) {
-  .section {
+@media (max-width: 900px) {
+  section {
     cursor: default;
+    height: 1080px;
   }
   .web {
     display: none;

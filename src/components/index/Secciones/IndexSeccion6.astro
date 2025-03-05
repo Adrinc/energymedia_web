@@ -14,6 +14,20 @@ import SeccionTechCanvas from "../../Scene3D/technology/seccion_tech_main";
         <SeccionTechCanvas client:only="react" transition:persist/>
       </div>
 
+      <div class="rivecomp movil">
+        <RiveComponent 
+        src="/rive/cbluna.riv"
+        artboard="technologies_mobile"
+        stateMachines="State Machine 1"
+        autoplay={true}
+        fit="fill"
+        client:only="react"
+        transition:persist
+
+        />
+
+        </div>
+
     </section>
 
     <style>
@@ -31,6 +45,7 @@ section {
   }
   .centered-text {
   text-align: center;
+  margin: 8px;
 }
 
 .large-text {
@@ -75,9 +90,18 @@ section {
   }
   
   @media (max-width: 768px) {
-    .section {
+    section {
       cursor: default;
+      height: 150px;
     }
+    .large-text {
+    font-size: 2em; /* Reduce el tamaño de las letras del h1 en dispositivos pequeños */
+  }
+
+  .gradient-text {
+    font-size: 1.5em; /* Reduce el tamaño de las letras del h2 en dispositivos pequeños */
+  }
+
     .web {
       display: none;
     }

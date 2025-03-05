@@ -17,8 +17,19 @@ import BotonStyle1 from "../../global/BotonSt1.astro";
           transition:persist
         />
       </div>
+      <div class="rivecomp movil">
+        <RiveComponent
+          src="/rive/cbluna-nosotros.riv"
+          artboard="mision_section_mobile"
+          stateMachines="State Machine 1"
+          autoplay={true}
+          fit="fill"
+          client:only="react" 
+          transition:persist
+        />
+      </div>
 
-      <div class="boton">
+ <!--      <div class="boton">
         <BotonStyle1
           link="/proyectos"
           texto={"Nuestros servicios"}
@@ -26,7 +37,7 @@ import BotonStyle1 from "../../global/BotonSt1.astro";
           fontweight="bold"
           showIcon={false}
         />
-      </div>
+      </div> -->
 
     </section>
 
@@ -71,18 +82,23 @@ import BotonStyle1 from "../../global/BotonSt1.astro";
       
       .web {
       display: block;
+      width: 100%;
+      height: 100%;
       }
       
       .movil {
       display: none;
       }
       
-      @media (max-width: 768px) {
-      .section {
+      @media (max-width: 900px) {
+      section {
         cursor: default;
+        height: 215vh;
       }
       .web {
         display: none;
+        height: 100%;
+        width: 100%;
       }
       .movil {
         display: block;

@@ -3,11 +3,11 @@
 import RiveComponent from "../../global/animations/riveComponent";
 
 ---
-
+<!-- 
 <div class="centered-text">
   <h1 class="large-text white-text">Explora nuestras soluciones</h1>
   <h2 class="large-text bold-text gradient-text">innovadoras y personalizadas</h2>
-</div>
+</div> -->
 <section id="about" >
   <div class="rivecomp web">
 
@@ -21,6 +21,21 @@ import RiveComponent from "../../global/animations/riveComponent";
       transition:persist
     />
   </div>
+
+  <div class="rivecomp movil">
+
+    <RiveComponent 
+    src="/rive/cbluna.riv"
+    artboard="seccion2_mobile"
+    stateMachines="State Machine 1"
+    autoplay={true}
+    fit="fill"
+    client:only="react"
+    transition:persist
+
+    />
+
+    </div>
 
 
 
@@ -116,7 +131,7 @@ display: block;
 display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 .section {
   cursor: default;
 }

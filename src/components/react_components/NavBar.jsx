@@ -40,19 +40,23 @@ const NavBar = () => {
       </ul>
 
       {/* Iconos de redes sociales */}
-      <div
-  className={styles.socialIconsGroup}
-  onClick={() => (window.location.href = '/redesSociales')}
->
-    <img src="/icons/facebook.svg" alt="Facebook" className={styles.icon} />
-    <img src="/icons/twitter.svg" alt="Twitter" className={styles.icon} />
-    <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.icon} />
+      <div className={styles.socialIconsGroup}>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          <img src="/icons/facebook.svg" alt="Facebook" className={styles.icon} />
+        </a>
+        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+          <img src="/icons/twitter.svg" alt="Twitter" className={styles.icon} />
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+          <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.icon} />
+        </a>
+      </div>
 
-</div>
-
-      <div className="hidden md:block ">
-                    <div className="flex items-center justify-end"><a className={styles.buyButton} href="/contacto">Contacto</a></div>
-                </div>
+      <div className="hidden md:block">
+        <div className="flex items-center justify-end">
+          <a className={styles.buyButton} href="/contacto">Contacto</a>
+        </div>
+      </div>
     </nav>
   );
 };

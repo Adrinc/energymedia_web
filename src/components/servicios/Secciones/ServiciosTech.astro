@@ -3,22 +3,33 @@
 import RiveComponent from "../../global/animations/riveComponent";
 
 ---
-<div class="centered-text mt-7">
+<!-- <div class="centered-text mt-7">
   <h1 class="large-text white-text">Paso a paso hacia el éxito</h1>
   <h2 class="large-text bold-text gradient-text">No solo creamos páginas web...</h2>
-</div>
+</div> -->
 <section id="servicios1" >
+  <div class="esfera"/>
   <div class="rivecomp web">
     <RiveComponent
       src="/rive/cbluna-nosotros.riv"
       artboard="Servicios_tech"
       stateMachines="State Machine 1"
       autoplay={true}
-      fit="fill"
+      fit="contain"
       client:only="react"
       transition:persist
     />
   </div>
+  <div class="rivecomp movil">
+    <RiveComponent
+      src="/rive/cbluna-nosotros.riv"
+      artboard="Servicios_tech_mobile"
+      stateMachines="State Machine 1"
+      autoplay={true}
+      fit="fill"
+      client:only="react"
+      transition:persist
+    />
 
 
 </section>
@@ -33,7 +44,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 width: 100vw;
-height: 100vh;
+height: 150vh;
 margin-top: 25px;
 
 
@@ -74,6 +85,18 @@ height: 100%;
 z-index: 2;
 }
 
+.esfera {
+    position: absolute;
+    top: 50%;
+      left: 0%; /* Mueve la esfera a la derecha */
+    transform: translate(-50%, -50%);
+    
+    width: 1750px;
+    height: 1750px;
+    /* gradiente de color 375BEB a transparente radial centrado */
+    background: radial-gradient(circle at center, #375beb4a 0%, #1a0a4e1c 30%, transparent 100%);
+    z-index: -1;
+  }
 
 
 .riveContainerMainCircle {
@@ -110,11 +133,13 @@ display: block;
 
 .movil {
 display: none;
+
 }
 
-@media (max-width: 768px) {
-.section {
+@media (max-width: 900px) {
+section {
   cursor: default;
+  height: 130vh;
 }
 .web {
   display: none;

@@ -15,7 +15,21 @@ import RiveComponent from "../../global/animations/riveComponent";
           transition:persist
         />
       </div>
-      <div class="esfera"/>
+    <!--   <div class="esfera"/> -->
+
+      <div class="rivecomp movil">
+        <RiveComponent 
+        src="/rive/cbluna.riv"
+        artboard="seccion4_mobile"
+        stateMachines="State Machine 1"
+        autoplay={true}
+        fit="fill"
+        client:only="react"
+        transition:persist
+
+        />
+
+        </div>
     </section>
 
 
@@ -66,9 +80,10 @@ section {
   display: none;
 }
 
-@media (max-width: 768px) {
-  .section {
+@media (max-width: 900px) {
+  section {
     cursor: default;
+    height: 120vh;
   }
   .web {
     display: none;

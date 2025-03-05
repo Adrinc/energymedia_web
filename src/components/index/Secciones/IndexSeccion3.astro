@@ -7,6 +7,7 @@ import styles from "../css/indexSeccion3.module.css";
 
 
     <section id="our_adventages" >
+      <div class="esfera"/>
       <div class="rivecomp web">
         <RiveComponent
           src="/rive/cbluna-proyectos.riv"
@@ -18,7 +19,19 @@ import styles from "../css/indexSeccion3.module.css";
           transition:persist
         />
       </div>
-      <div class="esfera"/>
+
+      <div class="rivecomp movil">
+        <RiveComponent
+          src="/rive/cbluna-proyectos.riv"
+          artboard="index_carrusel_mobile"
+          stateMachines="State Machine 1"
+          autoplay={true}
+          fit="fill"
+          client:only="react"
+          transition:persist
+        />
+
+      
     </section>
   
 
@@ -37,8 +50,8 @@ section {
 
   .esfera {
     position: absolute;
-    top: 50%;
-      left: 100%; /* Mueve la esfera a la derecha */
+    top: 20%;
+      left: 50%; /* Mueve la esfera a la derecha */
     transform: translate(-50%, -50%);
     
     width: 1750px;
@@ -98,9 +111,11 @@ section {
     display: none;
   }
   
-  @media (max-width: 768px) {
-    .section {
+  @media (max-width: 900px) {
+    section {
       cursor: default;
+      height: 50vh;
+
     }
     .web {
       display: none;

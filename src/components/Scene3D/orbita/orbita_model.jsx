@@ -103,7 +103,7 @@ export default function OrbitaModel(props) {
           position={[-13.637, -3.327, 0]}
           rotation={[-Math.PI / 2, 0.004, 0]}
           scale={[1.557, 0.116, 1.557]}
-          onPointerEnter={() => handlePointerEnter('pantalla_iphone')}
+    /*       onPointerEnter={() => handlePointerEnter('pantalla_iphone')} */
           onPointerLeave={handlePointerLeave}
           onClick={() => handleClick('/desarrollo_movil')}
           >
@@ -114,7 +114,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.iphone_x_Material004_0.geometry}
             material={materials['Material.004']}
             >
-            {hoveredGroup === 'pantalla_iphone' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+            {/* {hoveredGroup === 'pantalla_iphone' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
           <mesh
             name="iphone_x_Material004_0_1"
@@ -123,7 +123,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.iphone_x_Material004_0_1.geometry}
             material={materials['Material.001']}
             >
-            {hoveredGroup === 'pantalla_iphone' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+        {/*     {hoveredGroup === 'pantalla_iphone' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
           <mesh
             name="iphone_x_Material004_0_2"
@@ -132,7 +132,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.iphone_x_Material004_0_2.geometry}
             material={materials['Material.003']}
             >
-            {hoveredGroup === 'pantalla_iphone' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+        {/*     {hoveredGroup === 'pantalla_iphone' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
           <mesh
             name="iphone_x_Material004_0_3"
@@ -141,7 +141,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.iphone_x_Material004_0_3.geometry}
             material={materials['Material.002']}
             >
-            {hoveredGroup === 'pantalla_iphone' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+   {/*          {hoveredGroup === 'pantalla_iphone' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
         </group>
         <group
@@ -149,7 +149,7 @@ export default function OrbitaModel(props) {
             position={[12.947, -3.327, -4.206]}
             rotation={[-Math.PI / 2, 0, 0]}
             scale={1.269}
-            onPointerEnter={() => handlePointerEnter('pantalla_mac')}
+/*             onPointerEnter={() => handlePointerEnter('pantalla_mac')} */
             onPointerLeave={handlePointerLeave}
             onClick={() => handleClick('/desarrollo_web')}
           >
@@ -160,7 +160,7 @@ export default function OrbitaModel(props) {
               geometry={nodes.Object_2.geometry}
               material={materials['Glass_-_Heavy_Color']}
               >
-              {hoveredGroup === 'pantalla_mac' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+{/*               {hoveredGroup === 'pantalla_mac' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
             </mesh>
             <mesh
               name="Object_2_1"
@@ -169,7 +169,7 @@ export default function OrbitaModel(props) {
               geometry={nodes.Object_2_1.geometry}
               material={materials['Aluminum_-_Anodized_Glossy_Grey_keyboard.jpg']}
               >
-              {hoveredGroup === 'pantalla_mac' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+     {/*          {hoveredGroup === 'pantalla_mac' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
             </mesh>
             <mesh
               name="Object_2_2"
@@ -178,7 +178,7 @@ export default function OrbitaModel(props) {
               geometry={nodes.Object_2_2.geometry}
               material={materials['Aluminum_-_Anodized_Glossy_Grey']}
               >
-             {/*  {hoveredGroup === 'pantalla_mac' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
+       
             </mesh>
             <mesh
               name="Object_2_3"
@@ -187,11 +187,11 @@ export default function OrbitaModel(props) {
               geometry={nodes.Object_2_3.geometry}
               material={materials['Plastic_-_Translucent_Matte_Gray']}
               >
-              {hoveredGroup === 'pantalla_mac' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+{/*               {hoveredGroup === 'pantalla_mac' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
             </mesh>
           </group>
         <group name="cuerpo_ipad" position={[0, -3.327, 13.637]} rotation={[0, 0, -Math.PI / 2]}
-          onPointerEnter={() => handlePointerEnter('cuerpo_ipad')}
+       /*    onPointerEnter={() => handlePointerEnter('cuerpo_ipad')} */
           onPointerLeave={handlePointerLeave}
           onClick={() => handleClick('/desarrollo_tablet')}>
           <mesh
@@ -201,7 +201,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.Cube003_Body_0.geometry}
             material={materials.Body}
             >
-            {hoveredGroup === 'cuerpo_ipad' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+{/*             {hoveredGroup === 'cuerpo_ipad' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
           <mesh
             name="Cube003_Body_0_1"
@@ -210,7 +210,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.Cube003_Body_0_1.geometry}
             material={materials.Dark_ipad}
             >
-            {hoveredGroup === 'cuerpo_ipad' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+{/*             {hoveredGroup === 'cuerpo_ipad' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
           <mesh
             name="Cube003_Body_0_2"
@@ -219,7 +219,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.Cube003_Body_0_2.geometry}
             material={materials.pantallaipad}
             >
-            {hoveredGroup === 'cuerpo_ipad' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+{/*             {hoveredGroup === 'cuerpo_ipad' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
         </group>
         <group name="Círculo_Bezier" position={[0, -3.327, 0]} scale={13.637} />
@@ -235,7 +235,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.Curve.geometry}
             material={materials.azul_claro}
             >
-            {hoveredGroup === 'luna_text' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+{/*             {hoveredGroup === 'luna_text' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
           <mesh
             name="Curve_1"
@@ -244,7 +244,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.Curve_1.geometry}
             material={materials.azul_oscuro}
             >
-            {hoveredGroup === 'luna_text' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+           {/*  {hoveredGroup === 'luna_text' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
           <mesh
             name="Curve_2"
@@ -253,7 +253,7 @@ export default function OrbitaModel(props) {
             geometry={nodes.Curve_2.geometry}
             material={materials.luna}
             >
-            {hoveredGroup === 'luna_text' && !clickedGroup && <HolographicMaterial {...holo_config} />}
+     {/*        {hoveredGroup === 'luna_text' && !clickedGroup && <HolographicMaterial {...holo_config} />} */}
           </mesh>
         </group>
       </group>

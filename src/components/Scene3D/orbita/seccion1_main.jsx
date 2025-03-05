@@ -14,7 +14,8 @@ const Seccion1Canvas = () => {
       dpr={[0.5, 1]}
       style={{
         height: '100%', 
-        width: '100vw',
+        width: '100%',
+        objectFit: 'contain',
        /*  backgroundColor: '#0D0E26', */
         
       }}

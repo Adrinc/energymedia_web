@@ -3,13 +3,13 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #0d0e2669;
+  background-color: rgba(17, 13, 38, 0.5);
   color: #fff;
   position: relative;
-  border-bottom: 1px solid #7c06eb;
+  border-bottom: 1px solid #7506eb;
   backdrop-filter: blur(10px);
+  max-height: 80px; /* Limita la altura del navbar */
 }
-
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
@@ -21,9 +21,13 @@
 }
 
 .logopic {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+
+ 
+  z-index: 2;
+
 }
 
 .logopic img {
@@ -50,7 +54,7 @@
   position: relative;
   font-weight: bold;
   letter-spacing: 0.05em;
-  border-radius: 8px;
+/*   border-radius: 8px; */
   background: linear-gradient(145deg, #0b1222, #1b2b4a);
   /* box-shadow: 3px 3px 6px #070c18, -3px -3px 6px #1f3355; */
   transition: all 0.3s;
@@ -97,17 +101,19 @@
 }
 
 .icon {
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   fill: #ffffff;
   transition: fill 0.3s, background-color 0.3s;
+  
 }
 
 .socialIcons a:hover {
   background-color: #1a1a1a;
 }
 
-.socialIcons a:hover .icon {
+
+.socialIconsGroup a:hover .icon {
   filter: brightness(0) saturate(100%) invert(49%) sepia(93%) saturate(7483%) hue-rotate(159deg) brightness(107%) contrast(104%);
 }
 
@@ -122,9 +128,7 @@
   transform: scale(1.05);
 }
 
-.socialIconsGroup:hover .icon {
-  filter: brightness(0) saturate(100%) invert(49%) sepia(93%) saturate(7483%) hue-rotate(159deg) brightness(107%) contrast(104%);
-}
+
 
 .buyButton {
   background: linear-gradient(145deg, #0b1222, #1b2b4a);
@@ -159,23 +163,69 @@
   margin: 3px 0;
   transition: 0.3s;
 }
-
-@media (max-width: 768px) {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 900px) {
   .navMenu {
+    
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #000;
+    background: rgba(10, 3, 18, 0.9); /* Fondo semitransparente */
     flex-direction: column;
     width: 100%;
     display: none;
+    padding: 1rem 0;
+    border-top: 1px solid #7c06eb;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    /* blur effect */
+
   }
 
   .navMenu.active {
     display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .navItem {
+    text-align: center;
+    padding: 0.8rem 0;
+  }
+
+  .navLink {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    width: 100%;
+    display: block;
+    background: none;
+    border-radius: 0;
+  }
+  .logopic {
+    order: 1; /* Logo primero */
+  }
+
+  .socialIconsGroup {
+    order: 2; /* Redes sociales en el medio */
+  }
+
+  .hamburger {
+    order: 3; /* Menú hamburguesa al final */
+  }
+  .navLink:hover {
+    background: linear-gradient(145deg, #1b2b4a, #0b1222);
   }
 
   .hamburger {
     display: flex;
+    flex-direction: column;
+    cursor: pointer;
   }
 }

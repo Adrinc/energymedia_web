@@ -17,6 +17,17 @@ import RiveComponent from "../../global/animations/riveComponent";
     />
   </div>
 
+  <div class="rivecomp movil">
+    <RiveComponent
+      src="/rive/cbluna-nosotros.riv"
+      artboard="Seccion_expanded_mobile"
+      stateMachines="State Machine 1"
+      autoplay={true}
+      fit="fill"
+      client:only="react"
+      transition:persist
+    />
+
 
 </section>
 
@@ -31,8 +42,8 @@ justify-content: center;
 align-items: center;
 width: 100vw;
 height: 100vh;
-margin-top: 70px;
-background-color: black;
+
+
 
 }
 
@@ -88,8 +99,9 @@ display: none;
 }
 
 @media (max-width: 768px) {
-.section {
+section {
   cursor: default;
+  height: 120vh;
 }
 .web {
   display: none;
