@@ -10,6 +10,8 @@ import SeccionTechCanvas from "../../Scene3D/technology/seccion_tech_main";
   <h2 class="large-text bold-text gradient-text">detrás de nuestros proyectos</h2>
 </div>
     <section id="tech_stack">
+      <div class="gradient-background-top"></div>
+      <div class="gradient-background-bottom"></div>
       <div class="rivecomp web">
         <SeccionTechCanvas client:only="react" transition:persist/>
       </div>
@@ -40,9 +42,27 @@ section {
     align-items: center;
     width: 100vw;
     height: 100vh;
-
+    overflow: hidden;
 
   }
+
+  .gradient-background-top {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 7vh;
+  background: linear-gradient(to bottom, #375beb4a -100%, transparent 100%);
+  z-index: 1;
+}
+
+.gradient-background-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 7vh;
+  background: linear-gradient(to top, #375beb4a -100%, transparent 100%);
+  z-index: 1;
+}
   .centered-text {
   text-align: center;
   margin: 8px;

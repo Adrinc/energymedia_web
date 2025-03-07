@@ -9,6 +9,8 @@ import BotonStyle1 from "../../global/BotonSt1.astro";
 
 <section id="our_adventages" >
       <div class="esfera"/>
+      <div class="gradient-background-top"></div>
+      <div class="gradient-background-bottom"></div>
       <div class="rivecomp web">
         <RiveComponent
           src="/rive/cbluna-nosotros.riv"
@@ -55,17 +57,34 @@ section {
     align-items: center;
     width: 100vw;
     height: 100vh;
-
+    overflow: hidden;
   }
+  .gradient-background-top {
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      height: 7vh;
+      background: linear-gradient(to bottom, #375beb4a -100%, transparent 100%);
+      z-index: 1;
+      }
+
+    .gradient-background-bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100vw;
+      height: 7vh;
+      background: linear-gradient(to top, #375beb4a -100%, transparent 100%);
+      z-index: 1;
+      }
 
   .esfera {
     position: absolute;
     top: 50%;
-    left: 20%; 
+    left: 25%; 
     transform: translate(-50%, -50%);
     
-    width: 1750px;
-    height: 1750px;
+    width: 1250px;
+    height: 1250px;
     /* gradiente de color 375BEB a transparente radial centrado */
     background: radial-gradient(circle at center, #375beb84 0%, #141414 50%, transparent 100%);
     z-index: -1;
@@ -133,6 +152,18 @@ section {
       cursor: default;
       height: 120vh;
     }
+    .esfera {
+    position: absolute;
+    top: 25%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    
+    width: 600px;
+    height: 600px;
+    /* gradiente de color 375BEB a transparente radial centrado */
+    background: radial-gradient(circle at center, #375beb84 10%, #141414 50%, transparent 100%);
+    z-index: -1;
+  }
     .web {
       display: none;
     }

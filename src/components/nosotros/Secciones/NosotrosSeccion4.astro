@@ -6,6 +6,8 @@ import BotonStyle1 from "../../global/BotonSt1.astro";
 
 
     <section id="experience" >
+      <div class="gradient-background-top"></div>
+      <div class="gradient-background-bottom"></div>
       <div class="rivecomp web">
         <RiveComponent
           src="/rive/cbluna-nosotros.riv"
@@ -57,7 +59,23 @@ import BotonStyle1 from "../../global/BotonSt1.astro";
 
       
       }
-   
+      .gradient-background-top {
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      height: 7vh;
+      background: linear-gradient(to bottom, #375beb4a -100%, transparent 100%);
+      z-index: 1;
+      }
+
+    .gradient-background-bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100vw;
+      height: 7vh;
+      background: linear-gradient(to top, #375beb4a -100%, transparent 100%);
+      z-index: 1;
+      }
       .rivecomp {
       position: absolute;
       display: flex;

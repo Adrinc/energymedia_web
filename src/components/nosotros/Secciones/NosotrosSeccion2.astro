@@ -3,8 +3,13 @@
 import RiveComponent from "../../global/animations/riveComponent";
 
 ---
+<div class="centered-text relative">
+  <h1 class="large-text white-text">NOSOTROS</h1>
 
-<section id="about" >
+</div>
+
+<section id="nosotros_seccion2" >
+  <div class="gradient-background-bottom"></div>
   <div class="rivecomp web">
     <RiveComponent
       src="/rive/cbluna-nosotros.riv"
@@ -42,11 +47,27 @@ justify-content: center;
 align-items: center;
 width: 100vw;
 height: 50vh;
-margin-top: 15vh;
+
 /* background-color: #0D0E26; */
 
 }
+.gradient-background-top {
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      height: 7vh;
+      background: linear-gradient(to bottom, #375beb4a -100%, transparent 100%);
+      z-index: 1;
+      }
 
+    .gradient-background-bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100vw;
+      height: 7vh;
+      background: linear-gradient(to top, #375beb4a -100%, transparent 100%);
+      z-index: 1;
+      }
 
 .rivecomp {
 position: absolute;
@@ -62,40 +83,35 @@ z-index: 2;
 
 
 
-.riveContainerMainCircle {
-position: absolute;
-display: flex;
-top: -30%;
-flex-direction: row;
-justify-content: space-evenly;
-align-items: center;
-width: 100vw;
-height: 750px;
-z-index: 30;
-
-
-}
-
-
-.riveCircle {
-
-display: flex;
-
-flex-direction: column;
-justify-content: center;
-align-items: center;
-width: 750px;
-height: 100%;
-z-index: 10;
-
-}
-
 .web {
 display: block;
 }
 
 .movil {
 display: none;
+}
+.centered-text {
+  text-align: center;
+  margin-top: 10vh;
+}
+
+.large-text {
+  font-size: 5em; /* Aumenta el tamaño de las letras del h1 */
+}
+
+.white-text {
+  color: white;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.gradient-text {
+  font-size: 4em; /* Tamaño más grande para el h2 pero no tanto como el h1 */
+  background: linear-gradient(to right, #B43BFF, #55D9FF);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 @media (max-width: 900px) {
@@ -110,7 +126,20 @@ section {
   display: block;
   height: 100%;
 }
+.large-text {
+    font-size: 3em; /* Tamaño más pequeño para pantallas medianas */
+  }
+  .gradient-text {
+    font-size: 2.5em; /* Tamaño más pequeño para pantallas medianas */
+  }
 }
-
+@media (max-width: 600px) {
+  .large-text {
+    font-size: 2em; /* Tamaño más pequeño para pantallas pequeñas */
+  }
+  .gradient-text {
+    font-size: 1.5em; /* Tamaño más pequeño para pantallas pequeñas */
+  }
+}
 </style>
 

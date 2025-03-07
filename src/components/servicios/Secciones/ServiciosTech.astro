@@ -3,12 +3,14 @@
 import RiveComponent from "../../global/animations/riveComponent";
 
 ---
-<!-- <div class="centered-text mt-7">
+<div class="centered-text">
   <h1 class="large-text white-text">Paso a paso hacia el éxito</h1>
   <h2 class="large-text bold-text gradient-text">No solo creamos páginas web...</h2>
-</div> -->
+</div>
 <section id="servicios1" >
-  <div class="esfera"/>
+  <div class="gradient-background-top"></div>
+
+  <div class="gradient-background-bottom"></div>
   <div class="rivecomp web">
     <RiveComponent
       src="/rive/cbluna-nosotros.riv"
@@ -45,13 +47,32 @@ justify-content: center;
 align-items: center;
 width: 100vw;
 height: 150vh;
-margin-top: 25px;
 
+overflow: hidden;
 
 }
+.gradient-background-top {
+      position: absolute;
+      top: 0;
+      width: 100vw;
+      height: 7vh;
+      background: linear-gradient(to bottom, #375beb4a -100%, transparent 100%);
+      z-index: 1;
+      }
 
-.centered-text {
+    .gradient-background-bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100vw;
+      height: 7vh;
+      background: linear-gradient(to top, #375beb4a -100%, transparent 100%);
+      z-index: 1;
+      }
+      .centered-text {
+        position: relative;
   text-align: center;
+  margin: 70px;
+  z-index: 2; /* Asegura que el texto esté por encima del fondo degradado */
 }
 
 .large-text {
@@ -72,7 +93,6 @@ margin-top: 25px;
   -webkit-background-clip: text;
   color: transparent;
 }
-
 .rivecomp {
 position: absolute;
 display: flex;
@@ -141,6 +161,12 @@ section {
   cursor: default;
   height: 130vh;
 }
+.large-text {
+    font-size: 3em; /* Tamaño más pequeño para pantallas medianas */
+  }
+  .gradient-text {
+    font-size: 2.5em; /* Tamaño más pequeño para pantallas medianas */
+  }
 .web {
   display: none;
 }
@@ -148,6 +174,13 @@ section {
   display: block;
 }
 }
-
+@media (max-width: 600px) {
+  .large-text {
+    font-size: 2em; /* Tamaño más pequeño para pantallas pequeñas */
+  }
+  .gradient-text {
+    font-size: 1.5em; /* Tamaño más pequeño para pantallas pequeñas */
+  }
+}
 </style>
 

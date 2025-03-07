@@ -4,6 +4,8 @@ import RiveComponent from "../../global/animations/riveComponent";
 
 
     <section id="our_services">
+      <div class="gradient-background-top"></div>
+      <div class="gradient-background-bottom"></div>
       <div class="rivecomp web">
         <RiveComponent
           src="/rive/cbluna.riv"
@@ -43,7 +45,7 @@ section {
       align-items: center;
       width: 100vw;
       height: 100vh;
-
+      overflow: hidden;
       }
    
       .rivecomp {
@@ -57,7 +59,24 @@ section {
       
       z-index: 2;
       }
-      
+      .gradient-background-top {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 7vh;
+  background: linear-gradient(to bottom, #375beb4a -100%, transparent 100%);
+  z-index: 1;
+}
+
+.gradient-background-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 7vh;
+  background: linear-gradient(to top, #375beb4a -100%, transparent 100%);
+  z-index: 1;
+}
+
 
 .esfera {
   position: absolute;
@@ -70,6 +89,7 @@ section {
   /* gradiente de color 375BEB a transparente radial centrado */
   background: radial-gradient(circle at center, #375beb4a 0%, #1a0a4e1c 30%, transparent 100%);
   z-index: -1;
+  
 }
 
 .web {
