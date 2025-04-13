@@ -1,0 +1,67 @@
+---
+import CardCarrusel from './CardCarrusel.astro';
+
+const proyectos = [
+  { titulo: 'Código de Barras', subtitulo: 'Digitaliza la identificación y rastreo de productos.', imagen: '/image/carrusel_proyectos/codigo_barras.webp' },
+  { titulo: 'Compras', subtitulo: 'Optimiza y centraliza tus procesos de adquisición.', imagen: '/image/carrusel_proyectos/compras.webp' },
+  { titulo: 'Control de Eventos', subtitulo: 'Organiza y gestiona tus eventos de principio a fin.', imagen: '/image/carrusel_proyectos/control_evento.webp' },
+  { titulo: 'Gestión de Visitas', subtitulo: 'Controla y organiza el acceso a tus instalaciones.', imagen: '/image/carrusel_proyectos/control_visitas.jpeg' },
+  { titulo: 'CRM', subtitulo: 'Centraliza la gestión de clientes y ventas.', imagen: '/image/carrusel_proyectos/crm.webp' },
+  { titulo: 'Dashboards', subtitulo: 'Visualiza y analiza datos clave para decisiones estratégicas.', imagen: '/image/carrusel_proyectos/dashboards.png' },
+  { titulo: 'Diseños Web', subtitulo: 'Sitios web modernos, funcionales y atractivos.', imagen: '/image/carrusel_proyectos/diseñosweb.webp' },
+  { titulo: 'Facturación', subtitulo: 'Simplifica la emisión y control de facturas.', imagen: '/image/carrusel_proyectos/facturacion.png' },
+  { titulo: 'Gestión de Flotas', subtitulo: 'Monitorea y optimiza el uso de tus vehículos.', imagen: '/image/carrusel_proyectos/gestion_flotas.webp' },
+  { titulo: 'Inventario', subtitulo: 'Controla tus existencias en tiempo real.', imagen: '/image/carrusel_proyectos/inventario.jpeg' },
+  { titulo: 'Recursos Humanos', subtitulo: 'Automatiza y centraliza la gestión del personal.', imagen: '/image/carrusel_proyectos/recursos_humanos.png' }
+];
+---
+
+<div class="carrusel-container">
+  <!-- Carrusel duplicado para el efecto de bucle infinito -->
+  <div class="carrusel" aria-hidden="true">
+    {proyectos.concat(proyectos).map((proyecto, index) => (
+      <CardCarrusel
+        titulo={proyecto.titulo}
+        subtitulo={proyecto.subtitulo}
+        imagen={proyecto.imagen}
+
+      />
+    ))}
+  </div>
+</div>
+
+<style>
+  /* Contenedor principal del carrusel */
+  .carrusel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Carrusel que se desplaza horizontalmente */
+  .carrusel {
+    display: flex;
+    gap: 5rem; /* Espacio entre los elementos */
+    animation: scroll 90s linear infinite; /* Movimiento continuo */
+    width: max-content; /* Se ajusta al contenido */
+    padding: 70px;
+  }
+
+  /* Animación infinita con reinicio invisible */
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%); /* Solo desplazamos la mitad */
+    }
+  }
+
+  /* Ajuste de velocidad en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .carrusel {
+      animation-duration: 135s; /* Más lento en dispositivos móviles */
+      gap: 2rem; /* Espacio más pequeño */
+    }
+  }
+</style>
