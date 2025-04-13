@@ -2,11 +2,11 @@
 
 
 // Variable para almacenar el estado del test de velocidad
- var Status;
+ window.Status;
  // Variable para almacenar el progreso del test de velocidad
- var ProG;
+ window.ProG;
  // Función para ejecutar un callback, si se proporciona y es una función válida
- var Callback = function(callback) {
+ window.Callback = function(callback) {
  if (callback && typeof callback === "function") {
  callback();
  }
@@ -22,17 +22,17 @@
  // Método de la clase para animar la opacidad de un elemento
  _.prototype.fade = function fade(type, ms, callback00) {
    // Definir si el tipo de animación es "in" o "out"
-   var isIn = type === "in",
+   window.isIn = type === "in",
    // Establecer la opacidad inicial según el tipo de animación
-   opacity = isIn ? 0 : 1,
+   window.opacity = isIn ? 0 : 1,
    // Establecer el intervalo en milisegundos
-   interval = 14,
+   window.interval = 14,
    // Establecer la duración total de la animación en milisegundos
-   duration = ms,
+   window.duration = ms,
    // Calcular la cantidad de opacidad que cambia por intervalo de tiempo
-   gap = interval / duration,
+   window.gap = interval / duration,
    // Guardar una referencia al objeto actual
-   self = this;
+   window.self = this;
    // Comprobar que el elemento existe
    if (self.el) {
      // Si la animación es de entrada, mostrar el elemento y establecer la opacidad inicial
@@ -56,7 +56,7 @@
        }
      }
      // Establecer el intervalo de tiempo que ejecutará la función "func"
-     var fading = window.setInterval(func, interval);
+     window.fading = window.setInterval(func, interval);
    } else {
      // Si el elemento no existe, mostrar un error en la consola
    /*   console.error("Elemento no encontrado en el documento."); */
@@ -64,7 +64,7 @@
  };
  // La función "easeOutQuint" implementa una curva de animación con un cambio gradual y suave en la velocidad.
  
-    var easeOutQuint = function(t, b, c, d) {
+    window.easeOutQuint = function(t, b, c, d) {
     t /= d;
     t--;
     return c * (t * t * t * t * t + 1) + b;
@@ -72,7 +72,7 @@
     
 
     // La curva comienza lentamente, se acelera y luego se desacelera gradualmente.
-    var easeOutCubic = function(t, b, c, d) {
+    window.easeOutCubic = function(t, b, c, d) {
     t /= d;
     t--;
     return c * (t * t * t + 1) + b;
@@ -80,7 +80,7 @@
 
 
 
-var openSpeedtestShow = function() {
+window.openSpeedtestShow = function() {
     // Elementos SVG
     this.YourIP = _("YourIP");
  
@@ -171,12 +171,12 @@ openSpeedtestShow.prototype.Symbol = function(dir) {
   // Función para animar la barra de progreso
 openSpeedtestShow.prototype.progress = function(Switch, duration) {
   // Se definen variables y se inicializan
-  var Stop = duration;
-  var currTime = Date.now();
+  window.Stop = duration;
+  window.currTime = Date.now();
   // Se define un intervalo para actualizar la barra de progreso
-  var interval = setInterval(function() {
+  window.interval = setInterval(function() {
     // Se calcula el tiempo actual
-  var timeNow = (Date.now() - currTime) / 1000;
+  window.timeNow = (Date.now() - currTime) / 1000;
     
 
     // Cuando se alcanza la duración se detiene el intervalo
@@ -205,20 +205,20 @@ Función que muestra el resultado del jitter obtenido durante el test de velocid
 */
 openSpeedtestShow.prototype.jitterResult = function(data, Display) {
 
-  var ShowData = data;
+  window.ShowData = data;
   if (Display === "Jitter") {
   if (ShowData >= 1 && ShowData < 10000) {
 
-var datjit = Math.floor(ShowData);
+window.datjit = Math.floor(ShowData);
 setJitter(datjit);
   if (ShowData >= 1 && ShowData < 100) {
 
-var datjit = Math.floor(ShowData);
+window.datjit = Math.floor(ShowData);
 setJitter(datjit);
   }
   if (ShowData >= 100) {
   // Si el valor del jitter es mayor o igual a 100, se muestra en formato k (kilos).
-  var kData = (ShowData / 1000).toFixed(1);
+  window.kData = (ShowData / 1000).toFixed(1);
 setJitter(kData + "k");
   }
   } else if (ShowData >= 0 && ShowData < 1) {
@@ -237,10 +237,10 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
     setVelocidad(data);
   }
   setVelocidad(data); */
-  var ShowData = data;
+  window.ShowData = data;
   // Si el parámetro "Display" es "countDown", se muestra la velocidad en tiempo real
   if (Display === "countDown") {
-    var speed = ShowData.toFixed(0);
+    window.speed = ShowData.toFixed(0);
     this.oDoLiveSpeed.el.textContent = speed;
     setVelocidad(speed);
     return;
@@ -269,15 +269,15 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
   } else {
     // En cualquier otro caso, se muestra la velocidad con una precisión específica
     if (ShowData == 0) {
-      var speed = ShowData.toFixed(0);
+      window.speed = ShowData.toFixed(0);
       /* this.oDoLiveSpeed.el.textContent = speed;  */ setVelocidad(speed);
     }
     if (ShowData <= 1 && ShowData > 0) {
-      var speed = ShowData.toFixed(4);
+      window.speed = ShowData.toFixed(4);
      /*  this.oDoLiveSpeed.el.textContent = speed;  */ setVelocidad(speed);
     }
     if (ShowData > 1) {
-      var speed = ShowData.toFixed(1);
+      window.speed = ShowData.toFixed(1);
   /*     this.oDoLiveSpeed.el.textContent = speed;  */ setVelocidad(speed);
     }
     // Si la velocidad es menor o igual a 1000, se muestra "10Gb+" como la velocidad máxima
@@ -295,15 +295,15 @@ openSpeedtestShow.prototype.LiveSpeed = function(data, Display) {
 
 // Animar el indicador principal de la prueba de velocidad hasta cero
 openSpeedtestShow.prototype.GaugeProgresstoZero = function(currentSpeed, status) {
-  var speed = currentSpeed; // Velocidad actual
-  var Self = this; // Referencia a la instancia actual
-  var duration = 3; // Duración de la animación en segundos
+  window.speed = currentSpeed; // Velocidad actual
+  window.Self = this; // Referencia a la instancia actual
+  window.duration = 3; // Duración de la animación en segundos
   if (speed >= 0) { // Solo si la velocidad es positiva o cero
-    var time = Date.now(); // Tiempo actual
-    var SpeedtoZero = 0 - speed; // Velocidad necesaria para llegar a cero
-    var interval = setInterval(function() { // Intervalo de tiempo para la animación
-      var timeNow = (Date.now() - time) / 1000; // Tiempo transcurrido desde el inicio de la animación
-      var speedToZero = easeOutQuint(timeNow, speed, SpeedtoZero, duration); // Velocidad actualizada con una animación suave
+    window.time = Date.now(); // Tiempo actual
+    window.SpeedtoZero = 0 - speed; // Velocidad necesaria para llegar a cero
+    window.interval = setInterval(function() { // Intervalo de tiempo para la animación
+      window.timeNow = (Date.now() - time) / 1000; // Tiempo transcurrido desde el inicio de la animación
+      window.speedToZero = easeOutQuint(timeNow, speed, SpeedtoZero, duration); // Velocidad actualizada con una animación suave
       Self.LiveSpeed(speedToZero, "speedToZero"); // Actualizar el elemento de velocidad en vivo con la velocidad actualizada
 
       if (timeNow >= duration || speedToZero <= 0) { // Si se ha completado la animación o la velocidad ha llegado a cero
@@ -318,7 +318,7 @@ openSpeedtestShow.prototype.GaugeProgresstoZero = function(currentSpeed, status)
 
 // Calcular el offset del indicador principal en función de la velocidad actual
 openSpeedtestShow.prototype.getNonlinearDegree = function(mega_bps) {
-  var i = 0; // Índice de la escala de velocidad
+  window.i = 0; // Índice de la escala de velocidad
   if (0 == mega_bps || mega_bps <= 0 || isNaN(mega_bps)) { // Si la velocidad es menor o igual a cero o no es un número
     return 0; // Devolver cero como offset
   }

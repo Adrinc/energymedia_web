@@ -1,186 +1,148 @@
 ---
+import ServicioComponentOne from '../../servicios/components/ServicioComponentOne.astro';
 
-import RiveComponent from "../../global/animations/riveComponent";
-
+const servicios = [
+  {
+    imagen: "/image/global/macbookrta.webp",
+    titulo: "Desarrollo Web",
+    descripcion: "Creamos sitios web atractivos y funcionales que proporcionan experiencias excepcionales para el usuario. Desde sitios corporativos hasta tiendas en línea.",
+    reverse: true,
+  },
+  {
+    imagen: "/image/global/screenmobile.webp",
+    titulo: "Desarrollo Móvil",
+    descripcion: "Desarrollamos aplicaciones para smartphones, tablets y dispositivos wearables, proporcionando valor a través de herramientas útiles y entretenidas.",
+    reverse: false,
+  },
+  {
+    imagen: "/image/global/screenmobile2.webp",
+    titulo: "Gestor de Videos",
+    descripcion: "Ofrecemos una experiencia continua de reproducción de contenido en video adaptada a tus intereses, con categorías como comedia, música y deportes.",
+    reverse: true,
+  },
+  {
+    imagen: "/image/global/marketingdigital.webp",
+    titulo: "Marketing Digital",
+    descripcion: "Impulsa tu presencia online con estrategias de marketing digital como SEO y campañas en redes sociales para conectar con tu audiencia y aumentar la visibilidad.",
+    reverse: false,
+  },
+  {
+    imagen: "/image/global/ideas.webp",
+    titulo: "Ideas a la Medida",
+    descripcion: "Diseñamos estrategias personalizadas que te ayudarán a destacar online y conectar con tu público objetivo mediante técnicas innovadoras.",
+    reverse: true,
+  },
+];
 ---
-<div class="centered-text">
-  <h1 class="large-text white-text">Paso a paso hacia el éxito</h1>
-  <h2 class="large-text bold-text gradient-text">No solo creamos páginas web...</h2>
-</div>
-<section id="servicios1" >
+
+<section id="servicios1">
+<!--   <div class="centered-text large-text bold-text">
+    <h1>Nuestros <span class="gradient-text font-black ">Servicios</span></h1>
+    <h2>¿Tienes una idea? ¡Podemos hacerla realidad!</h2>
+  </div> -->
+
   <div class="gradient-background-top"></div>
-
   <div class="gradient-background-bottom"></div>
-  <div class="rivecomp web">
-    <RiveComponent
-      src="/rive/cbluna-nosotros.riv"
-      artboard="Servicios_tech"
-      stateMachines="State Machine 1"
-      autoplay={true}
-      fit="contain"
-      client:only="react"
-      transition:persist
-    />
+
+  <div class="services-list">
+    {servicios.map((servicio) => (
+      <ServicioComponentOne
+        imagen={servicio.imagen}
+        titulo={servicio.titulo}
+        descripcion={servicio.descripcion}
+        reverse={servicio.reverse}
+      />
+    ))}
   </div>
-  <div class="rivecomp movil">
-    <RiveComponent
-      src="/rive/cbluna-nosotros.riv"
-      artboard="Servicios_tech_mobile"
-      stateMachines="State Machine 1"
-      autoplay={true}
-      fit="fill"
-      client:only="react"
-      transition:persist
-    />
-
-
 </section>
 
-
 <style>
-
 section {
-position: relative;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-width: 100vw;
-height: 150vh;
-
-overflow: hidden;
-
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  padding-right: 15vw;
+  padding-left: 15vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  
 }
-.gradient-background-top {
-      position: absolute;
-      top: 0;
-      width: 100vw;
-      height: 7vh;
-      background: linear-gradient(to bottom, #375beb4a -100%, transparent 100%);
-      z-index: 1;
-      }
 
-    .gradient-background-bottom {
-      position: absolute;
-      bottom: 0;
-      width: 100vw;
-      height: 7vh;
-      background: linear-gradient(to top, #375beb4a -100%, transparent 100%);
-      z-index: 1;
-      }
-      .centered-text {
-        position: relative;
+.gradient-background-top, .gradient-background-bottom {
+  position: absolute;
+  width: 100%;
+  height: 7vh;
+  z-index: 1;
+}
+
+.gradient-background-top {
+  top: 0;
+  background: linear-gradient(to bottom, #375beb4a -100%, transparent 100%);
+}
+
+.gradient-background-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #375beb4a -100%, transparent 100%);
+}
+
+.centered-text {
+  position: relative;
   text-align: center;
-  margin: 70px;
-  z-index: 2; /* Asegura que el texto esté por encima del fondo degradado */
+  margin-bottom: 50px;
+  z-index: 2;
 }
 
 .large-text {
-  font-size: 5em; /* Aumenta el tamaño de las letras del h1 */
+  color: white;
+  font-size: clamp(2em, 5vw, 4em);
 }
 
-.white-text {
-  color: white;
-}
 
 .bold-text {
   font-weight: bold;
 }
 
 .gradient-text {
-  font-size: 4em; /* Tamaño más grande para el h2 pero no tanto como el h1 */
   background: linear-gradient(to right, #B43BFF, #55D9FF);
   -webkit-background-clip: text;
   color: transparent;
 }
-.rivecomp {
-position: absolute;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-width: 100%;
-height: 100%;
 
-z-index: 2;
-}
-
-.esfera {
-    position: absolute;
-    top: 50%;
-      left: 0%; /* Mueve la esfera a la derecha */
-    transform: translate(-50%, -50%);
-    
-    width: 1750px;
-    height: 1750px;
-    /* gradiente de color 375BEB a transparente radial centrado */
-    background: radial-gradient(circle at center, #375beb4a 0%, #1a0a4e1c 30%, transparent 100%);
-    z-index: -1;
-  }
-
-
-.riveContainerMainCircle {
-position: absolute;
-display: flex;
-top: -30%;
-flex-direction: row;
-justify-content: space-evenly;
-align-items: center;
-width: 100vw;
-height: 750px;
-z-index: 30;
-
-
-}
-
-
-.riveCircle {
-
-display: flex;
-
-flex-direction: column;
-justify-content: center;
-align-items: center;
-width: 750px;
-height: 100%;
-z-index: 10;
-
-}
-
-.web {
-display: block;
-}
-
-.movil {
-display: none;
-
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
 }
 
 @media (max-width: 900px) {
-section {
-  cursor: default;
-  height: 130vh;
-}
-.large-text {
-    font-size: 3em; /* Tamaño más pequeño para pantallas medianas */
+  section {
+    height: auto;
+    padding-right: 5vw;
+    padding-left: 5vw;
   }
+
+  .large-text {
+    font-size: clamp(2em, 10vw, 3.5em);
+  }
+
   .gradient-text {
-    font-size: 2.5em; /* Tamaño más pequeño para pantallas medianas */
+    font-size: clamp(1.8em, 2.5vw, 2.5em);
   }
-.web {
-  display: none;
 }
-.movil {
-  display: block;
-}
-}
+
 @media (max-width: 600px) {
   .large-text {
-    font-size: 2em; /* Tamaño más pequeño para pantallas pequeñas */
+    font-size: clamp(1.5em, 2vw, 2em);
   }
+
   .gradient-text {
-    font-size: 1.5em; /* Tamaño más pequeño para pantallas pequeñas */
+    font-size: clamp(1.5em, 1.5vw, 1.5em);
   }
 }
 </style>
-

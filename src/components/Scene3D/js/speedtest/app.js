@@ -1021,13 +1021,13 @@ function openSpeedtestEngine(){
     document.getElementById("secondButtonDesk").classList.add("disabled");
   }
   function start() {
-    if (carAnimationCompleted) {
+    console.log("INicio la prueba");
       stopTest = false;
       shouldStopAnimation = false;
       resetValues();
       resetVisuals();
       initTest();
-    }
+   
   }
 function resetAnimation(){
   shouldStopAnimation = true; 

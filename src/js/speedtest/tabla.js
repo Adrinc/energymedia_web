@@ -9,7 +9,7 @@ window.speedTestStatus="stop";
 
 
 
-function setVelocidad(speed) {
+window.setVelocidad = function(speed) {
   speed = speed*1000;
  /*  document.getElementById("velocidad").innerHTML = speed; */
 
@@ -55,7 +55,7 @@ function setVelocidad(speed) {
 
 }
   
-function setDescarga(download) {
+window.setDescarga = function(download) {
   
      
   console.log(download.toFixed(3) + " G");
@@ -73,7 +73,7 @@ function setDescarga(download) {
 
 }
 
-  function setSubida(upload) {
+  window.setSubida = function(upload) {
    
 /*     document.getElementById("circle-upload-value").innerHTML = upload.toFixed(3) + " G";
     document.getElementById("circle-upload-mbps").innerHTML = (upload * 1000).toFixed(1) + " MB";
@@ -95,7 +95,7 @@ function setDescarga(download) {
  
 
 
-  function setArrowRotation(arrow, speed) {
+  window.setArrowRotation = function(arrow, speed) {
     const minAngle = -44.5; // Ángulo mínimo en grados para una velocidad de 0
     const maxAngle = 226 - (226 * 0.205); // Ángulo máximo en grados para una velocidad de 10
   
@@ -123,7 +123,7 @@ function setDescarga(download) {
   }
 
 
-  function hideArrows() {
+  function hideArrows(){
 
   }
 
@@ -141,7 +141,7 @@ function setDescarga(download) {
 
 
 
-  function initTest() {
+ function initTest() {
     window.testingDownloadFinish=false;
     window.testingUploadFinish=false;
     window.resultdownload=0;
@@ -157,7 +157,7 @@ function setDescarga(download) {
 
 
   
-  function resetCarAnimation() {
+  function resetCarAnimation(){
     if(shouldStopAnimation) {
 
     }

@@ -37,6 +37,9 @@ const NavBar = () => {
         <li className={styles.navItem}>
           <a href="/servicios" className={styles.navLink}>Servicios</a>
         </li>
+        <li className={styles.navItem}>
+          <a href="/speedtest" className={styles.navLink}>SpeedTest</a>
+        </li>
       </ul>
 
       {/* Iconos de redes sociales */}

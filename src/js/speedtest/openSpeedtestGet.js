@@ -1,5 +1,5 @@
 // Definición de una clase openSpeedtestGet que se utiliza para manejar datos y cálculos de velocidad
-var openSpeedtestGet = function() {
+window.openSpeedtestGet = function() {
     // Variable que almacena el tiempo total promedio para el cálculo de velocidad
     this.OverAllTimeAvg = window.performance.now();
     // Arreglo que almacena las muestras de velocidad obtenidas
