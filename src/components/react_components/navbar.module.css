@@ -59,7 +59,19 @@
   /* box-shadow: 3px 3px 6px #070c18, -3px -3px 6px #1f3355; */
   transition: all 0.3s;
 }
+.rivecomp {
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(80px, 10vw, 200px); /* Ajusta el tamaño según sea necesario */
+  height: 100px; /* Ajusta el tamaño según sea necesario */;
+  margin-left: 25px;
+  margin-right: 25px;
+
+
+  }
+  
 .navLink::before,
 .navLink::after {
   content: "";
@@ -173,6 +185,49 @@
     transform: translateY(0);
   }
 }
+
+
+.countrySwitch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Espacio entre los círculos */
+
+  border: 1px solid #7c06eb;
+  border-radius: 24px; /* Ajusta el radio según el diseño deseado */
+  padding: 5px; /* Espaciado interno para una mejor presentación */
+}
+
+.switchIconContainer {
+  width: 50px; /* Tamaño del círculo */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden; /* Asegura que la imagen se recorte en el contenedor circular */
+  border: 2px solid #ffffff;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.switchIconContainer:hover {
+  transform: scale(1.1); /* Efecto de hover para dar más interactividad */
+}
+
+.switchIcon {
+  width: 100%; /* Asegura que la imagen ocupe el contenedor */
+  height: 150%; /* Asegura que la imagen ocupe el contenedor */
+  object-fit: fill; /* Ajusta la imagen al contenedor sin distorsionarla */
+}
+
+.active {
+  filter: brightness(1);
+}
+
+.inactive {
+  filter: brightness(0.5);
+}
 @media (max-width: 900px) {
   .navMenu {
     
@@ -216,8 +271,12 @@
     order: 2; /* Redes sociales en el medio */
   }
 
+  .rivecomp {
+    order: 3; 
+    width: 120px; /* Ajusta el tamaño según sea necesario */
+  }
   .hamburger {
-    order: 3; /* Menú hamburguesa al final */
+    order: 4; /* Menú hamburguesa al final */
   }
   .navLink:hover {
     background: linear-gradient(145deg, #1b2b4a, #0b1222);

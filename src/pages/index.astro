@@ -1,14 +1,13 @@
 ---
 import LayoutBasic from '../layouts/LayoutBasic.astro';
 import IndexSeccion1 from '../components/index/Secciones/IndexSeccion1.astro';
-import IndexSeccion2 from '../components/index/Secciones/IndexSeccion2.astro';
-import IndexSeccion3 from '../components/index/Secciones/IndexSeccion3.astro';
-import IndexSeccion4 from '../components/index/Secciones/IndexSeccion4.astro';
-import IndexSeccion5 from '../components/index/Secciones/IndexSeccion5.astro';
-import IndexSeccion6 from '../components/index/Secciones/IndexSeccion6.astro';
+import IndexSeccion2 from '../components/index/Secciones/IndexSeccion2.jsx';
+import IndexSeccion3 from '../components/index/Secciones/IndexSeccion3.jsx';
+import IndexSeccion4 from '../components/index/Secciones/IndexSeccion4.jsx';
+import IndexSeccion5 from '../components/index/Secciones/IndexSeccion5.jsx';
+import IndexSeccion6 from '../components/index/Secciones/IndexSeccion6.jsx';
 
-import NosotrosSeccion1 from '../components/nosotros/Secciones/NosotrosSeccion1.astro';
-import BanerContainerOne from '../components/global/BanerContainerOne.astro';
+import NosotrosSeccion1 from '../components/nosotros/Secciones/NosotrosSeccion1.jsx';
 ---
 
 <LayoutBasic title="Home" showFooter={true}>
@@ -16,13 +15,12 @@ import BanerContainerOne from '../components/global/BanerContainerOne.astro';
 
 
 
-	<NosotrosSeccion1 />
-	<IndexSeccion2/>
-	<IndexSeccion3/>
-	<IndexSeccion4/>
-	<IndexSeccion5/>
-	<!-- <BanerContainerOne/> -->
-	<IndexSeccion6/>
+	<NosotrosSeccion1 transition:persist client:only/>
+	<IndexSeccion2 transition:persist client:only />
+	<IndexSeccion3 transition:persist client:only/>
+	<IndexSeccion4 transition:persist client:only/>
+	<IndexSeccion5 transition:persist client:only/>
+	<IndexSeccion6 transition:persist client:only/>
 
 
 

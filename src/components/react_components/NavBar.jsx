@@ -1,12 +1,30 @@
 import React, { useState } from "react";
 import styles from "./navbar.module.css";
+import RiveComponent from "../global/animations/riveComponent.jsx";
+import { useStore } from "@nanostores/react";
+import { isEnglish } from "../../data/variables"; 
+import { useLang } from "../../data/signals"; // Importar el hook de idioma
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [selectedCountry, setSelectedCountry] = useState("mex"); // Estado para el switch
+  const { t, changeLang, lang } = useLang(); // Obtener la función para cambiar idioma
+  const ingles = useStore(isEnglish);
   // Función para alternar el menú en móviles
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  // Función para manejar el cambio de país en el switch
+  const handleSwitch = (country) => {
+    setSelectedCountry(country);
+    if (country === "mex") {
+      isEnglish.set(false);
+      changeLang("es"); // Cambiar idioma a español
+    } else if (country === "usa") {
+      isEnglish.set(false);
+      changeLang("en"); // Cambiar idioma a inglés
+    }
   };
 
   return (
@@ -26,23 +44,28 @@ const NavBar = () => {
       {/* Menú de navegación */}
       <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`}>
         <li className={styles.navItem}>
-          <a href="/" className={styles.navLink}>Inicio</a>
+          <a href="/" className={styles.navLink}>
+            {lang === "en" ? "Home" : "Inicio"}
+          </a>
         </li>
         <li className={styles.navItem}>
-          <a href="/nosotros" className={styles.navLink}>Nosotros</a>
+          <a href="/nosotros" className={styles.navLink}>
+            {lang === "en" ? "About Us" : "Nosotros"}
+          </a>
         </li>
         <li className={styles.navItem}>
-          <a href="/proyectos" className={styles.navLink}>Proyectos</a>
+          <a href="/proyectos" className={styles.navLink}>
+            {lang === "en" ? "Projects" : "Proyectos"}
+          </a>
         </li>
         <li className={styles.navItem}>
-          <a href="/servicios" className={styles.navLink}>Servicios</a>
-        </li>
-        <li className={styles.navItem}>
-          <a href="/speedtest" className={styles.navLink}>SpeedTest</a>
+          <a href="/servicios" className={styles.navLink}>
+            {lang === "en" ? "Services" : "Servicios"}
+          </a>
         </li>
       </ul>
 
-      {/* Iconos de redes sociales */}
+      {/* Grupo de íconos sociales */}
       <div className={styles.socialIconsGroup}>
         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
           <img src="/icons/facebook.svg" alt="Facebook" className={styles.icon} />
@@ -55,9 +78,28 @@ const NavBar = () => {
         </a>
       </div>
 
+      {/* Switch de países */}
+      <div className={styles.countrySwitch}>
+        <div
+          className={`${styles.switchIconContainer} ${selectedCountry === "mex" ? styles.active : styles.inactive}`}
+          onClick={() => handleSwitch("mex")}
+        >
+          <img src="/icons/icon_mex.webp" alt="Mexico" className={styles.switchIcon} />
+        </div>
+        <div
+          className={`${styles.switchIconContainer} ${selectedCountry === "usa" ? styles.active : styles.inactive}`}
+          onClick={() => handleSwitch("usa")}
+        >
+          <img src="/icons/icon_usa.webp" alt="USA" className={styles.switchIcon} />
+        </div>
+      </div>
+
+      {/* Botón de contacto */}
       <div className="hidden md:block">
         <div className="flex items-center justify-end">
-          <a className={styles.buyButton} href="/contacto">Contacto</a>
+          <a className={styles.buyButton} href="/contacto">
+            {ingles ? "Contact" : "Contacto"}
+          </a>
         </div>
       </div>
     </nav>

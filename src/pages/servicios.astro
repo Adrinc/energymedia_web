@@ -1,12 +1,8 @@
 ---
 import LayoutBasic from '../layouts/LayoutBasic.astro';
-
-/* import MyCanvas from '../components/Scene3D/oficina/Main.jsx'; */
-
-import ServiciosTop from '../components/servicios/Secciones/ServiciosTop.astro';
-import ServiciosTech from '../components/servicios/Secciones/ServiciosTech.astro';
-import ServiciosExpanded from '../components/servicios/Secciones/ServiciosExpanded.astro';
-import ServicioComponentOne from '../components/servicios/components/ServicioComponentOne.astro';
+import ServiciosTop from '../components/servicios/Secciones/ServiciosTop.jsx';
+import ServiciosTech from '../components/servicios/Secciones/ServiciosTech.jsx';
+import ServiciosExpanded from '../components/servicios/Secciones/ServiciosExpanded.jsx';
 
 
 
@@ -16,9 +12,9 @@ import ServicioComponentOne from '../components/servicios/components/ServicioCom
 
 
 	
-		<ServiciosTop/>
-		<ServiciosTech/>
-		<ServiciosExpanded/>
+		<ServiciosTop transition:persist client:only/>
+		<ServiciosTech transition:persist client:only/>
+		<ServiciosExpanded transition:persist client:only/>
 
 
 </LayoutBasic>

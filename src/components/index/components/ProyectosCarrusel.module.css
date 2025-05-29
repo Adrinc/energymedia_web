@@ -1,0 +1,29 @@
+.carruselContainer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.carrusel {
+  display: flex;
+  gap: 5rem;
+  animation: scroll 90s linear infinite;
+  width: max-content;
+  padding: 70px;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .carrusel {
+    animation-duration: 135s;
+    gap: 2rem;
+  }
+}

@@ -146,7 +146,7 @@ export const RiveElement = (props) => {
         }
       }
     }
-  }, [rive, hastext, textValues]);
+  }, [rive, hastext, textValues,inglesx]);
 
    return (
     <div ref={riveContainerRef} style={{ width: "100%", height: "100%" }}>

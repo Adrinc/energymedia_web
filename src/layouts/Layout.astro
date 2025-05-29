@@ -1,5 +1,5 @@
 ---
-
+import LangWrapper from '../data/langwrapper.jsx';
 /* import TopMenu from '../components/TopMenu.astro'; */
 import TopMenu from '../components/react_components/TopMenu.jsx';
 import RouterLinks from '../components/react_components/RouterLinks.jsx';
@@ -48,7 +48,9 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
 
 	<main>	
 		<!-- <RedesSocialesNav /> -->
-		<slot />
+		<LangWrapper transition:persist client:only >
+			<slot />
+		</LangWrapper>
 
 	</main>
 
