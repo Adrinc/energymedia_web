@@ -1,4 +1,4 @@
-section {
+.sections {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@ section {
 }
 
 @media (max-width: 900px) {
-  section {
+  .sections {
     cursor: default;
   }
   .largeText {

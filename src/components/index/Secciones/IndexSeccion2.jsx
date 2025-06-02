@@ -10,7 +10,8 @@ const IndexSeccion2 = () => {
     // Usar la ruta correcta para los textos traducidos
     const solutionsTitle = t.home?.soluciones?.solutionsTitle || t.solutionsTitle;
     const solutionsSubtitle = t.home?.soluciones?.solutionsSubtitle || t.solutionsSubtitle;
-
+    const artboardWeb = ingles ? "seccion2_us" : "seccion2_es";
+    const artboardMovil = ingles ? "seccion2_mobile_us" : "seccion2_mobile_es";
     return (
       <>
         <div className={styles.centeredText}>
@@ -22,25 +23,27 @@ const IndexSeccion2 = () => {
           </h2>
         </div>
   
-        <section id="soluciones" className={styles.section}>
+        <section id="soluciones" className={styles.sections}>
           <div className={styles.gradientBackgroundTop}></div>
           <div className={styles.gradientBackgroundBottom}></div>
   
           <div className={`${styles.rivecomp} ${styles.web}`}>
             <RiveComponent
+              key={artboardWeb}
               src="/rive/cbluna.riv"
-              artboard="seccion2"
+              artboard={artboardWeb}
               stateMachines="State Machine 1"
               autoplay={true}
-              fit="fill"
+              fit="contain"
               
             />
           </div>
   
           <div className={`${styles.rivecomp} ${styles.movil}`}>
             <RiveComponent
+              key={artboardMovil}
               src="/rive/cbluna.riv"
-              artboard="seccion2_mobile"
+              artboard={artboardMovil}
               stateMachines="State Machine 1"
               autoplay={true}
               fit="fill"

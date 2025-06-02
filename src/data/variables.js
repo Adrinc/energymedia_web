@@ -1,4 +1,3 @@
-
 import { atom } from 'nanostores';
 
 export const isEnglish = atom(false);
@@ -16,3 +15,15 @@ export async function getLangBoolean() {
 
     return pivote;
   }
+
+export const selectedCountry = atom(
+  typeof window !== 'undefined' && localStorage.getItem('selectedCountry')
+    ? localStorage.getItem('selectedCountry')
+    : 'mex'
+);
+
+selectedCountry.subscribe((value) => {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('selectedCountry', value);
+  }
+});

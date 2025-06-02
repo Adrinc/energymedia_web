@@ -1,14 +1,15 @@
 ---
 
 import RiveComponent from "../../global/animations/riveComponent";
-
+import { isEnglish } from '../../../data/variables';
+import { useStore } from '@nanostores/react';
 ---
 
 <section id="about" >
   <div class="rivecomp web">
     <RiveComponent
       src="/rive/cbluna-proyectos.riv"
-      artboard="proyectos_seccion1"
+      artboard="proyectos_seccion1_es"
       stateMachines="State Machine 1"
       autoplay={true}
       fit="fill"
@@ -20,7 +21,7 @@ import RiveComponent from "../../global/animations/riveComponent";
   <div class="rivecomp movil">
     <RiveComponent
       src="/rive/cbluna-proyectos.riv"
-      artboard="proyectos_seccion1_mobile"
+      artboard="proyectos_seccion1_mobile_es"
       stateMachines="State Machine 1"
       autoplay={true}
       fit="fill"

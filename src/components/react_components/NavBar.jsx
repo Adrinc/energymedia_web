@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import styles from "./navbar.module.css";
 import RiveComponent from "../global/animations/riveComponent.jsx";
 import { useStore } from "@nanostores/react";
-import { isEnglish } from "../../data/variables"; 
+import { isEnglish, selectedCountry } from "../../data/variables"; 
 import { useLang } from "../../data/signals"; // Importar el hook de idioma
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState("mex"); // Estado para el switch
-  const { t, changeLang, lang } = useLang(); // Obtener la función para cambiar idioma
+  const country = useStore(selectedCountry); // Usar nanostore
+  const { t, changeLang, lang } = useLang();
   const ingles = useStore(isEnglish);
   // Función para alternar el menú en móviles
   const toggleMenu = () => {
@@ -17,7 +17,7 @@ const NavBar = () => {
 
   // Función para manejar el cambio de país en el switch
   const handleSwitch = (country) => {
-    setSelectedCountry(country);
+    selectedCountry.set(country);
     if (country === "mex") {
       isEnglish.set(false);
       changeLang("es"); // Cambiar idioma a español
@@ -81,13 +81,13 @@ const NavBar = () => {
       {/* Switch de países */}
       <div className={styles.countrySwitch}>
         <div
-          className={`${styles.switchIconContainer} ${selectedCountry === "mex" ? styles.active : styles.inactive}`}
+          className={`${styles.switchIconContainer} ${country === "mex" ? styles.active : styles.inactive}`}
           onClick={() => handleSwitch("mex")}
         >
           <img src="/icons/icon_mex.webp" alt="Mexico" className={styles.switchIcon} />
         </div>
         <div
-          className={`${styles.switchIconContainer} ${selectedCountry === "usa" ? styles.active : styles.inactive}`}
+          className={`${styles.switchIconContainer} ${country === "usa" ? styles.active : styles.inactive}`}
           onClick={() => handleSwitch("usa")}
         >
           <img src="/icons/icon_usa.webp" alt="USA" className={styles.switchIcon} />

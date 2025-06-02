@@ -36,7 +36,7 @@ const NosotrosSeccion2 = () => {
             artboard="nosotros_seccion2_mobile"
             stateMachines="State Machine 1"
             autoplay={true}
-            hastext = {false}
+            hastext = {true}
             fit="fitWidth"
             textValues={{
                 titulo_part1: t.nosotrosSection2.titulo_part1,

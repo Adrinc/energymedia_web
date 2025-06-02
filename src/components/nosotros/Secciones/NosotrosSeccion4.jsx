@@ -41,7 +41,7 @@ const NosotrosSeccion4 = () => {
           artboard="mision_section_mobile"
           stateMachines="State Machine 1"
           autoplay={true}
-          hastext = {false}
+          hastext = {true}
           fit="fill"
           textValues={{
             label: t.nosotrosSection4.label,
