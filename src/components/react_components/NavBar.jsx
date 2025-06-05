@@ -67,14 +67,14 @@ const NavBar = () => {
 
       {/* Grupo de íconos sociales */}
       <div className={styles.socialIconsGroup}>
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/cblunaoficial" target="_blank" rel="noopener noreferrer">
           <img src="/icons/facebook.svg" alt="Facebook" className={styles.icon} />
         </a>
-        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://x.com/cblunaoficial" target="_blank" rel="noopener noreferrer">
           <img src="/icons/twitter.svg" alt="Twitter" className={styles.icon} />
         </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
-          <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.icon} />
+        <a href="https://www.instagram.com/cblunaoficial/" target="_blank" rel="noopener noreferrer">
+          <img src="/icons/ins.svg" alt="LinkedIn" className={styles.icon} />
         </a>
       </div>
 

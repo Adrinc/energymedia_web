@@ -171,6 +171,26 @@ export const translations = {
         subtitle: "PROSPERE"
       }
     ],
+    formContacto: {
+      title: "Ingresa tus datos y manda un mensaje para ponernos en contacto contigo lo antes posible.",
+      nombre: "Nombre completo",
+      email: "Correo Electrónico",
+      telefono: "Número de Teléfono",
+      ayuda: "¿Cómo puedo ayudarte?",
+      enviar: "Enviar",
+      placeholder_nombre: "Ej. Juan Pérez",
+      placeholder_email: "Ej. correo@ejemplo.com",
+      placeholder_telefono: "Ej. 5512345678",
+      placeholder_ayuda: "Escribe tu mensaje aquí...",
+      error_nombre: "Nombre no válido. Solo letras y máximo 50 caracteres.",
+      error_email: "Correo electrónico no válido.",
+      error_telefono: "Número de teléfono no válido. Solo números (10-15 dígitos).",
+      error_ayuda: "Por favor, dinos cómo podemos ayudarte.",
+      success: "Formulario enviado con éxito.",
+      fail: "Error al enviar el formulario. Intenta más tarde.",
+      fail_connection: "Error de conexión. Intenta más tarde.",
+      error_email_short: "El correo debe tener al menos 4 caracteres antes del @."
+    }
   },
   en: {
     solutionsTitle: "Explore our solutions",
@@ -343,5 +363,25 @@ export const translations = {
         subtitle: "THRIVE"
       }
     ],
+    formContacto: {
+      title: "Enter your details and send a message so we can contact you as soon as possible.",
+      nombre: "Full Name",
+      email: "Email",
+      telefono: "Phone Number",
+      ayuda: "How can I help you?",
+      enviar: "Send",
+      placeholder_nombre: "E.g. John Smith",
+      placeholder_email: "E.g. email@example.com",
+      placeholder_telefono: "E.g. 5551234567",
+      placeholder_ayuda: "Write your message here...",
+      error_nombre: "Invalid name. Only letters and up to 50 characters.",
+      error_email: "Invalid email address.",
+      error_telefono: "Invalid phone number. Only numbers (10-15 digits).",
+      error_ayuda: "Please tell us how we can help you.",
+      success: "Form sent successfully.",
+      fail: "Error sending the form. Try again later.",
+      fail_connection: "Connection error. Try again later.",
+      error_email_short: "Email must have at least 4 characters before the @."
+    }
   },
 };

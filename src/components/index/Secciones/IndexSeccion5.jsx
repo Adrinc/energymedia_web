@@ -28,7 +28,7 @@ const IndexSeccion5 = () => {
   const t = ingles ? translations.en : translations.es;
 
   return (
-    <section id="stats_section" className={styles.parallax}>
+    <section id="stats_section" className={`${styles.parallax} ${styles.sectionss}`}>
       <div className={styles.gradientBackgroundTop}></div>
       <div className={styles.gradientBackgroundBottom}></div>
       <div className={styles.statsContainer}>
