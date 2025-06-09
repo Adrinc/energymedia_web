@@ -1,6 +1,6 @@
 ---
 import LayoutBasic from '../layouts/LayoutBasic.astro';
-import ContactoSeccion from '../components/contacto/ContactoSeccion.astro';
+import ContactoSeccion from '../components/contacto/ContactoSeccion.jsx';
 
 
 
@@ -12,7 +12,7 @@ import ContactoSeccion from '../components/contacto/ContactoSeccion.astro';
 
 
 
-	<ContactoSeccion/>
+	<ContactoSeccion transition:persist client:only/>
 	
 
 

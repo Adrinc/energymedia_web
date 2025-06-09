@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import styles from "./navbar.module.css";
-import RiveComponent from "../global/animations/riveComponent.jsx";
+
 import { useStore } from "@nanostores/react";
 import { isEnglish, selectedCountry } from "../../data/variables"; 
 import { useLang } from "../../data/signals"; // Importar el hook de idioma
+import { translations } from "../../data/translations";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const country = useStore(selectedCountry); // Usar nanostore
   const { t, changeLang, lang } = useLang();
   const ingles = useStore(isEnglish);
+  const textosNavbar = ingles ? translations.en.navbar : translations.es.navbar;
+
   // Función para alternar el menú en móviles
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -45,22 +48,28 @@ const NavBar = () => {
       <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`}>
         <li className={styles.navItem}>
           <a href="/" className={styles.navLink}>
-            {lang === "en" ? "Home" : "Inicio"}
+            {textosNavbar.home}
           </a>
         </li>
         <li className={styles.navItem}>
           <a href="/nosotros" className={styles.navLink}>
-            {lang === "en" ? "About Us" : "Nosotros"}
+            {textosNavbar.about}
           </a>
         </li>
         <li className={styles.navItem}>
           <a href="/proyectos" className={styles.navLink}>
-            {lang === "en" ? "Projects" : "Proyectos"}
+            {textosNavbar.projects}
           </a>
         </li>
         <li className={styles.navItem}>
           <a href="/servicios" className={styles.navLink}>
-            {lang === "en" ? "Services" : "Servicios"}
+            {textosNavbar.services}
+          </a>
+        </li>
+        {/* Botón de contacto solo visible en móvil */}
+        <li className={`${styles.navItem} ${styles.contactMobile}`}>
+          <a className={styles.buyButton} href="/contacto">
+            {textosNavbar.contact}
           </a>
         </li>
       </ul>
@@ -94,11 +103,11 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* Botón de contacto */}
+      {/* Botón de contacto solo visible en escritorio */}
       <div className="hidden md:block">
         <div className="flex items-center justify-end">
           <a className={styles.buyButton} href="/contacto">
-            {ingles ? "Contact" : "Contacto"}
+            {textosNavbar.contact}
           </a>
         </div>
       </div>

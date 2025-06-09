@@ -190,6 +190,10 @@ export const translations = {
       fail: "Error al enviar el formulario. Intenta más tarde.",
       fail_connection: "Error de conexión. Intenta más tarde.",
       error_email_short: "El correo debe tener al menos 4 caracteres antes del @."
+    },
+    contactoSeccion: {
+      title: "¡Hablemos!",
+      description: "Nos encantaría conocerte y descubrir cómo podemos impulsar tu negocio juntos."
     }
   },
   en: {
@@ -382,6 +386,10 @@ export const translations = {
       fail: "Error sending the form. Try again later.",
       fail_connection: "Connection error. Try again later.",
       error_email_short: "Email must have at least 4 characters before the @."
+    },
+    contactoSeccion: {
+      title: "Let’s talk!",
+      description: "We'd love to meet you and discover how we can boost your business together."
     }
   },
 };
