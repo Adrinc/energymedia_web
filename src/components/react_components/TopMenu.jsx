@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 const TopMenu = () => {
     const links = [
         { name: 'HOME', url: '/', alterurl:"/#home" },
-        { name: 'CONÓCENOS', url: '/#acp', alterurl:"/acp" },
+        { name: 'SPONSORS', url: '/sponsors', alterurl:"/sponsors" },
         { name: 'CURSOS', url: '/#plan', alterurl:"/#plan" },
         { name: 'CONTÁCTANOS', url: '/howitworks', alterurl:"/howitworks" },
        /*  { name: 'SERVICES', url: '/selfservices', alterurl:"/selfservices" }, */
@@ -92,7 +92,7 @@ const TopMenu = () => {
     return (
         <>
                     {showMenu && (
-                <div className="md:hidden flex flex-col gap-1 absolute justify-evenly top-0 left-0 w-[50vw] h-[100vh] shadow-lg z-50 bg-[#00000070] backdrop-filter backdrop-blur-lg border-x-2 border-tertiaryColor animate-fade-right animate-duration-500">
+                <div className="md:hidden flex flex-col gap-1 absolute justify-evenly top-0 left-0 w-[50vw] h-[100vh] shadow-lg z-50 bg-[#0000004b] backdrop-filter backdrop-blur-lg border-x-2 border-tertiaryColor animate-fade-right animate-duration-500">
                     <div className='flex flex-row justify-end p-4 '>
               
                         <button aria-label="burger buttun close" onClick={toggleMenu} className=" border-2 rounded-lg text-primaryTextColor p-2  font-bold text-lg">
@@ -103,7 +103,7 @@ const TopMenu = () => {
                     </div>
                     <div className='flex flex-row justify-center p-2'>
                         <img
-                        src="/image/logos/logo1.png"
+                        src="/image/logos/logo2.png"
                         className={TopMenuStyle.imagemobile}
                         alt='uwifi logo'
                         width="80" height="50"
@@ -136,7 +136,7 @@ const TopMenu = () => {
 
 <img
  
- src="/image/logos/logo1.png"
+ src="/image/logos/logo2.png"
     alt='uwifi logo'
     width="80" height="50"
     className={TopMenuStyle.image}

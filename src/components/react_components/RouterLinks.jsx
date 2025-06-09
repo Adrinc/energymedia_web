@@ -1,12 +1,21 @@
 import { BrowserRouter } from 'react-router-dom'
+import { LangProvider } from '../../data/signals';
 
+import RiveComponent from "../global/animations/riveComponent";
 import TopMenu from './TopMenu';
+import NavBar from './NavBar';
 
 function RoterLinks() {
   return (
-    <BrowserRouter>
-      <TopMenu />
-    </BrowserRouter>
+    <LangProvider>
+      <BrowserRouter>
+
+        <NavBar />
+
+
+        
+      </BrowserRouter>
+    </LangProvider>
   );
 }
 

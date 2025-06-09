@@ -1,0 +1,144 @@
+---
+interface Props {
+  imagen?: string;
+  titulo?: string;
+  descripcion?: string;
+  reverse?: boolean;
+}
+
+const {
+  imagen = "https://via.placeholder.com/280", // Imagen predeterminada
+  titulo = "Título por Defecto",
+  descripcion = "Descripción por Defecto",
+  reverse = false, // Por defecto, la imagen está a la izquierda
+} = Astro.props;
+---
+
+<div
+  class="content-container"
+  style={`
+    background: linear-gradient(
+      to ${reverse ? "left" : "right"},
+      #917EFF,
+      rgba(158, 0, 255, 0.1),
+      rgba(0, 0, 0, 0)
+    );
+  `}
+>
+<div class="image-wrapper responsive-image">
+  <img src={imagen} alt={titulo} class="content-image" />
+</div>
+
+<div class="image-wrapper left-image">
+        {reverse ? (
+      <img src={imagen} alt={titulo} class="content-image" />
+    ) : null}
+    </div>
+
+  <div class="content-text">
+    <h1>{titulo}</h1>
+    <p>{descripcion}</p>
+  </div>
+
+  <div class="image-wrapper right-image">
+    {!reverse ? (
+      <img src={imagen} alt={titulo} class="content-image" />
+    ) : null}
+  </div>
+
+
+
+<style>
+/* Contenedor principal */
+.content-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto; /* Altura ajustable */
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: background 0.5s ease;
+  gap: 50px;
+  margin-top: 25px;
+  flex-direction: row;
+}
+.responsive-image {
+  display: none;
+}
+/* Imagen */
+.image-wrapper {
+  flex: 0 0 280px;
+  max-width: 280px;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.content-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+}
+
+/* Ocultar la segunda imagen en responsive */
+.second-image {
+  display: block;
+}
+
+/* Contenido del texto */
+.content-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  text-align: left;
+}
+
+.content-text h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 3px 10px rgba(45, 45, 45, 0.7);
+}
+
+.content-text p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  line-height: 1.8;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsividad */
+@media (max-width: 1300px) {
+  .content-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    height: 200px;
+    max-width: none;
+  }
+  .left-image,
+  .right-image  {
+    display: none; /* Oculta la primera imagen en dispositivos pequeños */
+  }
+
+    .responsive-image {
+        display: block;
+    }
+
+
+  .content-text {
+    text-align: center;
+  }
+}
+</style>

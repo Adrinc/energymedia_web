@@ -1,0 +1,148 @@
+---
+import FormContact from '../react_components/FormContacto/FormContacto.jsx';
+---
+
+<section id="Contacto">
+  <div class="container">
+    <div class="form-column">
+      <FormContact client:only="react" transition:persist/>
+    </div>
+  </div>
+    <div class="info-column">
+      <div class="container_info">
+
+        <img src="./favicon.png" alt="Logo" class="logo"/>
+        <h1 class="title">¡Hablemos!</h1>
+        <p class="description">Nos encantaría conocerte y descubrir cómo podemos impulsar tu negocio juntos.</p>
+      </div>
+    </div>
+  <div class="esfera"/>
+</section>
+
+<style>
+section {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 20px;
+
+  
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+
+}
+.container_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.form-column, .info-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.form-column {
+  width: 500px;
+  height: 500px;
+}
+
+.info-column {
+  text-align: center;
+}
+
+.logo {
+  width: 250px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: bold;
+  color: #47f6ff; /* Cambia el color del título */
+}
+
+.description {
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-weight: 300;
+  letter-spacing: 0.05em; /* Añade separación entre letras */
+  margin-top: 20px; /* Añade un margen superior para separar del título */
+}
+
+.esfera {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw; /* Asegúrate de que no exceda el ancho de la ventana */
+  height: 100vh; /* Asegúrate de que no exceda la altura de la ventana */
+  max-width: 2500px; /* Tamaño máximo razonable para la esfera */
+  max-height: 2500px; /* Tamaño máximo razonable para la esfera */
+  background: radial-gradient(circle at center, #375beb4a 0%, #1a0a4e1c 30%, transparent 100%);
+  z-index: -1;
+  pointer-events: none; /* Asegúrate de que no interfiera con clics u otras interacciones */
+}
+
+.web {
+  display: block;
+}
+
+.movil {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  section {
+    flex-direction: column;
+    height: auto; /* Ajusta la altura para que sea dinámica en móviles */
+    padding: 20px; /* Agrega un poco de espacio alrededor */
+  }
+
+  .container {
+    width: 100%;
+    height: auto; /* Permite que las columnas se ajusten automáticamente */
+  }
+
+  .form-column, .info-column {
+    width: 100%; /* Ocupan el ancho completo en móvil */
+    height: auto; /* Ajusta la altura automáticamente */
+    margin: 20px 0; /* Agrega margen para separar visualmente las secciones */
+  }
+
+  .info-column {
+    order: -1; /* Mueve la columna de información hacia arriba */
+  }
+
+  .form-column {
+    order: 1; /* Mantén la columna del formulario en la parte inferior */
+  }
+
+  .esfera {
+    width: 1200px; /* Reduce el tamaño de la esfera en móvil */
+    height: 1200px;
+  }
+}
+
+</style>

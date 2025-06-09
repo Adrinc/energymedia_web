@@ -1,32 +1,28 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import HeroSeccion1 from '../components/index/Secciones/HeroSeccion1.astro';
-import HeroSeccion2 from '../components/index/Secciones/HeroSeccion2.astro';
+import LayoutBasic from '../layouts/LayoutBasic.astro';
+import IndexSeccion2 from '../components/index/Secciones/IndexSeccion2.jsx';
+import IndexSeccion3 from '../components/index/Secciones/IndexSeccion3.jsx';
+import IndexSeccion4 from '../components/index/Secciones/IndexSeccion4.jsx';
+import IndexSeccion5 from '../components/index/Secciones/IndexSeccion5.jsx';
+import IndexSeccion6 from '../components/index/Secciones/IndexSeccion6.jsx';
 
-
-import HeroSeccion3 from '../components/index/Secciones/HeroSeccion3.astro';
-import HomeSeccion4 from '../components/index/Secciones/HomeSeccion4.astro';
-import BoletosSeccion from '../components/index/Secciones/BoletosSeccion.astro';
-import CarruselBanda from '../components/global/CarruselBandaRive.astro';
-import CarruselCalaverasRive from '../components/global/CarruselCalaverasRive.astro';
-
+import IndexSeccion1 from '../components/index/Secciones/IndexSeccion1.jsx';
 ---
 
-<Layout title="Home" showFooter={true}>
-	
-	<HeroSeccion1/>
-	<HeroSeccion2 />
-	<HeroSeccion3 />
-	<CarruselCalaverasRive />
-	<HomeSeccion4 />
-	<CarruselCalaverasRive />
-	<CarruselBanda />
-	<CarruselCalaverasRive />
-
-	<BoletosSeccion />
+<LayoutBasic title="Home" showFooter={true}>
 
 
-</Layout>
 
 
+	<IndexSeccion1 transition:persist client:only/>
+	<IndexSeccion2 transition:persist client:only />
+	<IndexSeccion3 transition:persist client:only/>
+	<IndexSeccion4 transition:persist client:only/>
+	<IndexSeccion5 transition:persist client:only/>
+	<IndexSeccion6 transition:persist client:only/>
+
+
+
+
+</LayoutBasic>
 

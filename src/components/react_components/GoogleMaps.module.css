@@ -1,0 +1,80 @@
+.container {
+  font-family: 'Arial', sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 100%;
+  text-align: center;
+  color: #333;
+  margin-top: 40px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #350112;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #5D5F70;
+}
+
+.mapDescription {
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #fafafa;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.column {
+  flex: 1 1 calc(50% - 40px);
+  min-width: 300px;
+  max-width: 600px;
+  background-color: #5F331D;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mapTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+  }
+
+  .column {
+    flex: 1 1 100%;
+    margin: 0 auto;
+  }
+}

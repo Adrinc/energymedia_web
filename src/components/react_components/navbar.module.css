@@ -1,0 +1,304 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: rgba(17, 13, 38, 0.5);
+  color: #fff;
+  position: relative;
+  border-bottom: 1px solid #7506eb;
+  backdrop-filter: blur(10px);
+  max-height: 80px; /* Limita la altura del navbar */
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #00c8ff, #8b00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.2;
+}
+
+.logopic {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+
+ 
+  z-index: 2;
+
+}
+
+.logopic img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.navMenu {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.navItem {
+  display: inline-block;
+}
+
+.navLink {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  position: relative;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+/*   border-radius: 8px; */
+  background: linear-gradient(145deg, #0b1222, #1b2b4a);
+  /* box-shadow: 3px 3px 6px #070c18, -3px -3px 6px #1f3355; */
+  transition: all 0.3s;
+}
+.rivecomp {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(80px, 10vw, 200px); /* Ajusta el tamaño según sea necesario */
+  height: 100px; /* Ajusta el tamaño según sea necesario */;
+  margin-left: 25px;
+  margin-right: 25px;
+
+
+  }
+  
+.navLink::before,
+.navLink::after {
+  content: "";
+  position: absolute;
+  top: 0; /* Remueve esta línea */
+  bottom: 0; /* Remueve esta línea */
+  width: 2px; /* Cambia el grosor a un valor adecuado */
+  background: #7c06eb; /* Color morado */
+}
+
+.navLink::before {
+  left: 0; /* Línea en el borde izquierdo */
+}
+
+.navLink::after {
+  right: 0; /* Línea en el borde derecho */
+}
+
+.navLink:hover {
+  color: #00c8ff;
+  background: linear-gradient(145deg, #1b2b4a, #0b1222);
+  box-shadow: inset 3px 3px 6px #070c18, inset -3px -3px 6px #1f3355;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.socialIcons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10px;
+  background-color: #252525;
+  transition: background-color 0.3s;
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+  fill: #ffffff;
+  transition: fill 0.3s, background-color 0.3s;
+  
+}
+
+.socialIcons a:hover {
+  background-color: #1a1a1a;
+}
+
+
+.socialIconsGroup a:hover .icon {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(93%) saturate(7483%) hue-rotate(159deg) brightness(107%) contrast(104%);
+}
+
+.socialIconsGroup {
+  display: flex;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.socialIconsGroup:hover {
+  transform: scale(1.05);
+}
+
+
+
+.buyButton {
+  background: linear-gradient(145deg, #0b1222, #1b2b4a);
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s;
+  border: 1px solid #7c06eb;
+}
+
+.buyButton:hover {
+/*   background: linear-gradient(to right, #a000ff, #00d4ff); */
+  color: #00c8ff;
+  background: linear-gradient(145deg, #1b2b4a, #0b1222);
+  box-shadow: inset 3px 3px 6px #a000ff, inset -3px -3px 6px #00d4ff;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.countrySwitch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Espacio entre los círculos */
+
+  border: 1px solid #7c06eb;
+  border-radius: 24px; /* Ajusta el radio según el diseño deseado */
+  padding: 5px; /* Espaciado interno para una mejor presentación */
+}
+
+.switchIconContainer {
+  width: 50px; /* Tamaño del círculo */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden; /* Asegura que la imagen se recorte en el contenedor circular */
+  border: 2px solid #ffffff;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.switchIconContainer:hover {
+  transform: scale(1.1); /* Efecto de hover para dar más interactividad */
+}
+
+.switchIcon {
+  width: 100%; /* Asegura que la imagen ocupe el contenedor */
+  height: 150%; /* Asegura que la imagen ocupe el contenedor */
+  object-fit: fill; /* Ajusta la imagen al contenedor sin distorsionarla */
+}
+
+.active {
+  filter: brightness(1);
+}
+
+.inactive {
+  filter: brightness(0.5);
+}
+.contactMobile {
+  display: none;
+
+}
+@media (max-width: 900px) {
+  .navMenu {
+    
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(10, 3, 18, 0.9); /* Fondo semitransparente */
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    padding: 1rem 0;
+    border-top: 1px solid #7c06eb;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    /* blur effect */
+
+  }
+
+  .navMenu.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .navItem {
+    text-align: center;
+    padding: 0.8rem 0;
+  }
+
+  .navLink {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    width: 100%;
+    display: block;
+    background: none;
+    border-radius: 0;
+  }
+  .logopic {
+    order: 1; /* Logo primero */
+  }
+
+  .socialIconsGroup {
+    order: 2; /* Redes sociales en el medio */
+  }
+
+  .rivecomp {
+    order: 3; 
+    width: 120px; /* Ajusta el tamaño según sea necesario */
+  }
+  .hamburger {
+    order: 4; /* Menú hamburguesa al final */
+  }
+  .navLink:hover {
+    background: linear-gradient(145deg, #1b2b4a, #0b1222);
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .contactMobile {
+    display: block;
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .buyButton {
+    width: 90%;
+    margin: 0 auto 1.5rem auto;
+    display: block;
+  }
+}

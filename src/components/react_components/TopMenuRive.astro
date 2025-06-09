@@ -1,0 +1,108 @@
+---
+import RiveComponent from "../global/animations/riveComponent.jsx";
+/* import styles from "../css/indexSeccion4.module.css"; */
+
+---
+
+
+<div class="blur-bg"/>
+
+    <section id="experience" >
+    
+
+
+      <div class="rivecomp web">
+        <RiveComponent
+        src="/rive/funeraria.riv"
+        artboard="NavBar"
+        stateMachines="State Machine 1"
+        autoplay={true}
+        fit="contain"
+        client:only="react"
+        transition:persist
+      />
+      </div>
+
+      <div class="rivecomp movil">
+
+        <RiveComponent 
+        src="/rive/funeraria.riv" 
+        artboard="NavBar_movil"
+        stateMachines="State Machine 1"
+        autoplay={true} 
+        transition:persist 
+        fit="contain"
+        client:only
+        />
+      </div>
+    </section>
+
+
+
+    <style>
+      .blur-bg {
+      position: absolute;
+  
+      width: 100vw;
+      height: 75px;
+      background-color: #0000004d;
+      border-bottom: 2px solid #CD915D;
+      backdrop-filter: blur(50px);
+     
+      z-index: -10;
+      }
+
+      section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 75px;
+      
+      
+      /* backdrop-filter: blur(50px); */
+      /* background-color: #e2d5c48f; */
+      border-bottom: 2px solid #CD915D;
+      
+      }
+   
+      .rivecomp {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      
+      z-index: 2;
+      }
+      
+      
+     
+      .web {
+      display: block;
+      }
+      
+      .movil {
+      display: none;
+      }
+      
+      @media (max-width: 900px) {
+      section {
+        cursor: default;
+        height: 100vh;
+      }
+      .web {
+        display: none;
+      }
+      .movil {
+        display: block;
+      }
+      }
+      
+      </style>
+      
+      

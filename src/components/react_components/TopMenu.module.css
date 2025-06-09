@@ -23,12 +23,12 @@
     display: flex;
     flex-direction: row;
     padding: clamp(20px, 25vw, 10px);
-    border-bottom: var(--primary-nav-border-color) 4px solid;
+    border-bottom: #008cff 4px solid;
     backdrop-filter: blur(10px); 
     justify-content: space-evenly;
     align-items: center;
     gap: clamp(10px, 10vw, 60px);
-    background: var(--primary-nav-color);
+    background: #0000006d;
 
 
   }
