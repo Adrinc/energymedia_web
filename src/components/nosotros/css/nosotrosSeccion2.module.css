@@ -67,6 +67,7 @@
     font-size: 4em; /* Tamaño más grande para el h2 pero no tanto como el h1 */
     background: linear-gradient(to right, #B43BFF, #55D9FF);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
   }
   
