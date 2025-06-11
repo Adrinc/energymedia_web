@@ -93,7 +93,7 @@ export const RiveElement = (props) => {
           window.removeEventListener("resize", resize);
         };
       }
-      console.log("Rive resized");
+      /* console.log("Rive resized"); */
     }, [rive]);
 
   useEffect(() => {
@@ -140,7 +140,7 @@ export const RiveElement = (props) => {
       for (const [key, value] of Object.entries(textValues)) {
         try {
           rive.setTextRunValue(key, value);
-          console.log(`Texto actualizado: ${key} = ${value}`);
+         /*  console.log(`Texto actualizado: ${key} = ${value}`); */
         } catch (error) {
           console.error(`Error al establecer el valor del texto para '${key}':`, error);
         }

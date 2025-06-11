@@ -1,4 +1,3 @@
-
 .sections {
   position: relative;
   display: flex;
@@ -121,3 +120,21 @@
     display: block;
   }
 }
+
+/* Animación de entrada fade-in y de abajo hacia arriba */
+/* @keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  opacity: 1 !important;
+  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+ */

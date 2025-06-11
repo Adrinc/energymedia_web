@@ -106,7 +106,7 @@ export const translations = {
       descripcion: "Únete a Cbluna, donde transformamos ideas en soluciones tecnológicas innovadoras. Nuestro compromiso es ayudarte a alcanzar tus objetivos con herramientas digitales personalizadas, estrategias efectivas y un enfoque en resultados medibles.\n\nComo cliente de Cbluna, contarás con el respaldo de un equipo apasionado por la tecnología, acceso a servicios de vanguardia y la oportunidad de destacar en un mercado en constante evolución. Nos especializamos en hacer que tu negocio sea más eficiente, competitivo y preparado para el futuro.\n\nContáctanos hoy y descubre cómo Cbluna puede ser el socio ideal para llevar tu negocio al éxito. ¡Juntos podemos construir un futuro más innovador!",
     },
     nosotrosSection2: {
-      title: "NOSORTROS",
+      title: "NOSOTROS",
       titulo_part1: "Creamos ",
       titulo_part2: "aplicaciones ",
       titulo_part3: "increibles ",

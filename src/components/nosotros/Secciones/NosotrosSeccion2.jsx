@@ -1,4 +1,3 @@
-import React from "react";
 import { isEnglish } from '../../../data/variables';
 import { translations } from '../../../data/translations';
 import { useStore } from '@nanostores/react';

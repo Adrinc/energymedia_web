@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { isEnglish } from '../../../data/variables';
 import { translations } from '../../../data/translations';
 import { useStore } from '@nanostores/react';
@@ -40,11 +40,29 @@ const ServiciosTech = () => {
       reverse: true,
     },
   ];
+  const listRef = useRef(null);
+  useEffect(() => {
+    const list = listRef.current;
+    let hasAnimated = false;
+    if (!list) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          list.classList.add(styles.fadeInUp);
+          hasAnimated = true;
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, []);
   return (
     <section id="servicios1" className={styles.sections}>
       <div className={styles.gradientBackgroundTop}></div>
       <div className={styles.gradientBackgroundBottom}></div>
-      <div className={styles.servicesList}>
+      <div className={styles.servicesList} ref={listRef}>
         {serviciosTraducidos.map((servicio, idx) => (
           <ServicioComponentOne
             key={idx}

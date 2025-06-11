@@ -13,8 +13,8 @@ function TechModal({ tech, onClose }) {
     if (tech && !isVisible) {
       gsap.fromTo(
         modalRef.current,
-        { x: '-100%' },
-        { x: '0%', duration: 0.5, ease: 'power3.out' }
+        { x: '-100%', opacity: 0 },
+        { x: '0%', opacity: 1, duration: 0.5, ease: 'power3.out' }
       );
       setIsVisible(true);
     }
@@ -23,6 +23,7 @@ function TechModal({ tech, onClose }) {
   const handleExit = () => {
     gsap.to(modalRef.current, {
       x: '-100%',
+      opacity: 0,
       duration: 0.5,
       ease: 'power3.in',
       onComplete: () => {
@@ -37,12 +38,12 @@ function TechModal({ tech, onClose }) {
   const description = ingles ? tech.descriptionEN : tech.descriptionES;
 
   return (
-      <div className={styles.modal} ref={modalRef}>
-        <button className={styles.closeButton} onClick={handleExit}>X</button>
+      <div className={styles.modal + ' ' + styles.darkBg} ref={modalRef}>
+        <button className={styles.closeButton} onClick={handleExit}>×</button>
         <img src={tech.logo} alt={tech.name} className={styles.logo} />
-        <h2 className={styles.title}>{tech.name}</h2>
-        <h3 className={styles.subtitle}>{tech.type}</h3>
-        <p>{description}</p>
+        <h2 className={styles.title + ' ' + styles.bigText}>{tech.name}</h2>
+        <h3 className={styles.subtitle + ' ' + styles.bigSub}>{tech.type}</h3>
+        <p className={styles.description + ' ' + styles.bigDesc}>{description}</p>
       </div>
   );
 }

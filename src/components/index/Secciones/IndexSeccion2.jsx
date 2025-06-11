@@ -1,17 +1,36 @@
 import { translations } from '../../../data/translations';
 import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
+import { useRef, useEffect } from 'react';
 import styles from "../css/indexSeccion2.module.css"; 
 import RiveComponent from "../../global/animations/riveComponent";
 
 const IndexSeccion2 = () => {
     const ingles = useStore(isEnglish);
     const t = ingles ? translations.en : translations.es;
-    // Usar la ruta correcta para los textos traducidos
+ 
     const solutionsTitle = t.home?.soluciones?.solutionsTitle || t.solutionsTitle;
     const solutionsSubtitle = t.home?.soluciones?.solutionsSubtitle || t.solutionsSubtitle;
     const artboardWeb = ingles ? "seccion2_us" : "seccion2_es";
     const artboardMovil = ingles ? "seccion2_mobile_us" : "seccion2_mobile_es";
+    const sectionRef = useRef(null);
+    useEffect(() => {
+      const section = sectionRef.current;
+      let hasAnimated = false;
+      if (!section) return;
+      const observer = new window.IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            section.classList.add(styles.fadeInUp);
+            hasAnimated = true;
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.2 }
+      );
+      observer.observe(section);
+      return () => observer.disconnect();
+    }, []);
     return (
       <>
         <div className={styles.centeredText}>
@@ -23,7 +42,7 @@ const IndexSeccion2 = () => {
           </h2>
         </div>
   
-        <section id="soluciones" className={styles.sections}>
+        <section id="soluciones" className={styles.sections} ref={sectionRef}>
           <div className={styles.gradientBackgroundTop}></div>
           <div className={styles.gradientBackgroundBottom}></div>
   
