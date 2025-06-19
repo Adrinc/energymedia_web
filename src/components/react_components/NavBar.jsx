@@ -3,12 +3,12 @@ import styles from "./navbar.module.css";
 
 import { useStore } from "@nanostores/react";
 import { isEnglish, selectedCountry } from "../../data/variables"; 
-import { useLang } from "../../data/signals"; // Importar el hook de idioma
+import { useLang } from "../../data/signals";
 import { translations } from "../../data/translations";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const country = useStore(selectedCountry); // Usar nanostore
+  const country = useStore(selectedCountry);
   const { t, changeLang, lang } = useLang();
   const ingles = useStore(isEnglish);
   const textosNavbar = ingles ? translations.en.navbar : translations.es.navbar;
@@ -25,7 +25,7 @@ const NavBar = () => {
       isEnglish.set(false);
       changeLang("es"); // Cambiar idioma a español
     } else if (country === "usa") {
-      isEnglish.set(false);
+      isEnglish.set(true);
       changeLang("en"); // Cambiar idioma a inglés
     }
   };
@@ -34,7 +34,7 @@ const NavBar = () => {
     <nav className={styles.navbar}>
       {/* Logo con gradiente */}
       <div className={styles.logopic}>
-        <img src="/favicon.png" alt="Logo" />
+        <img src="/logo_nh_b.png" alt="NetHive Logo" />
       </div>
 
       {/* Ícono de menú hamburguesa para móviles */}
@@ -47,43 +47,43 @@ const NavBar = () => {
       {/* Menú de navegación */}
       <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`}>
         <li className={styles.navItem}>
-          <a href="/" className={styles.navLink}>
-            {textosNavbar.home}
+          <a href="/home" className={styles.navLink}>
+            {textosNavbar.inicio}
           </a>
         </li>
         <li className={styles.navItem}>
-          <a href="/nosotros" className={styles.navLink}>
-            {textosNavbar.about}
+          <a href="#funcionalidades" className={styles.navLink}>
+            {textosNavbar.funcionalidades}
           </a>
         </li>
         <li className={styles.navItem}>
-          <a href="/proyectos" className={styles.navLink}>
-            {textosNavbar.projects}
+          <a href="#precios" className={styles.navLink}>
+            {textosNavbar.precios}
           </a>
         </li>
         <li className={styles.navItem}>
-          <a href="/servicios" className={styles.navLink}>
-            {textosNavbar.services}
+          <a href="#contacto" className={styles.navLink}>
+            {textosNavbar.contacto}
           </a>
         </li>
-        {/* Botón de contacto solo visible en móvil */}
-        <li className={`${styles.navItem} ${styles.contactMobile}`}>
-          <a className={styles.buyButton} href="/contacto">
-            {textosNavbar.contact}
+        <li className={styles.navItem}>
+          <a href="#soporte" className={styles.navLink}>
+            {textosNavbar.soporte}
           </a>
         </li>
+   
       </ul>
 
       {/* Grupo de íconos sociales */}
       <div className={styles.socialIconsGroup}>
-        <a href="https://www.facebook.com/cblunaoficial" target="_blank" rel="noopener noreferrer">
-          <img src="/icons/facebook.svg" alt="Facebook" className={styles.icon} />
+        <a href="https://www.linkedin.com/company/nethive" target="_blank" rel="noopener noreferrer">
+          <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.icon} />
         </a>
-        <a href="https://x.com/cblunaoficial" target="_blank" rel="noopener noreferrer">
+        <a href="https://twitter.com/nethive" target="_blank" rel="noopener noreferrer">
           <img src="/icons/twitter.svg" alt="Twitter" className={styles.icon} />
         </a>
-        <a href="https://www.instagram.com/cblunaoficial/" target="_blank" rel="noopener noreferrer">
-          <img src="/icons/ins.svg" alt="LinkedIn" className={styles.icon} />
+        <a href="mailto:info@nethive.com" target="_blank" rel="noopener noreferrer">
+          <img src="/icons/email.svg" alt="Email" className={styles.icon} />
         </a>
       </div>
 
@@ -104,12 +104,10 @@ const NavBar = () => {
       </div>
 
       {/* Botón de contacto solo visible en escritorio */}
-      <div className="hidden md:block">
-        <div className="flex items-center justify-end">
-          <a className={styles.buyButton} href="/contacto">
-            {textosNavbar.contact}
-          </a>
-        </div>
+      <div className={styles.desktopOnly}>
+        <a className={styles.buyButton} href="#registrarse">
+          {textosNavbar.iniciarSesion}
+        </a>
       </div>
     </nav>
   );

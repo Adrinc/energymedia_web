@@ -7,11 +7,13 @@ export const translations = {
     projectsTitle: "Nuestros proyectos",
     projectsSubtitle: "Un poco de nuestro trabajo",
     navbar: {
-      home: "Inicio",
-      about: "Nosotros",
-      projects: "Proyectos",
-      services: "Servicios",
-      contact: "Contacto",
+      inicio: "Inicio",
+      funcionalidades: "Funcionalidades",
+      precios: "Precios",
+      contacto: "Contacto",
+      soporte: "Soporte",
+      iniciarSesion: "Iniciar Sesión",
+      registrarse: "Registrarse"
     },
     home: {
       soluciones: {
@@ -203,11 +205,13 @@ export const translations = {
     projectsTitle: "Our Projects",
     projectsSubtitle: "A glimpse of our work",
     navbar: {
-      home: "Home",
-      about: "About Us",
-      projects: "Projects",
-      services: "Services",
-      contact: "Contact",
+      inicio: "Home",
+      funcionalidades: "Features",
+      precios: "Pricing",
+      contacto: "Contact",
+      soporte: "Support",
+      iniciarSesion: "Login",
+      registrarse: "Sign Up"
     },
     home: {
       soluciones: {

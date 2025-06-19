@@ -1,0 +1,22 @@
+---
+import LayoutBasic from '../layouts/LayoutBasic.astro';
+import HomeSeccion1 from '../components/home/Secciones/HomeSeccion1.jsx';
+import HomeSeccion2 from '../components/home/Secciones/HomeSeccion2.jsx';
+import HomeSeccion3 from '../components/home/Secciones/HomeSeccion3.jsx';
+import HomeSeccion4 from '../components/home/Secciones/HomeSeccion4.jsx';
+import HomeSeccion5 from '../components/home/Secciones/HomeSeccion5.jsx';
+import HomeSeccion6 from '../components/home/Secciones/HomeSeccion6.jsx';
+import HomeSeccion7 from '../components/home/Secciones/HomeSeccion7.jsx';
+import HomeSeccion8 from '../components/home/Secciones/HomeSeccion8.jsx';
+---
+
+<LayoutBasic title="NetHive - Control de Infraestructura MDF/IDF" showFooter={true}>
+    <HomeSeccion1 transition:persist client:only/>
+    <HomeSeccion2 transition:persist client:only/>
+    <HomeSeccion3 transition:persist client:only/>
+    <HomeSeccion4 transition:persist client:only/>
+    <HomeSeccion5 transition:persist client:only/>
+    <HomeSeccion6 transition:persist client:only/>
+    <HomeSeccion7 transition:persist client:only/>
+    <HomeSeccion8 transition:persist client:only/>
+</LayoutBasic>
