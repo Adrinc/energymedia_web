@@ -5,7 +5,7 @@ import react from "@astrojs/react";
 import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://cbl.virtalus.cbluna-dev.com',
+  site: 'https://astronaut.github.io',
   integrations: [tailwind(), react()],
   output: 'server',
   adapter: node({
