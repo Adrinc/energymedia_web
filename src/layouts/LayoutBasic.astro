@@ -1,11 +1,10 @@
 ---
 
-/* import TopMenu from '../components/TopMenu.astro'; */
-import TopMenu from '../components/react_components/TopMenu.jsx';
+
 import RouterLinks from '../components/react_components/RouterLinks.jsx';
-import TopMenuSuffle from '../components/header/TopMenuSuffle.astro';
+
 import FootNetHive from '../components/global/FootNetHive';
-import { ViewTransitions } from 'astro:transitions';
+
 
 
 interface Props {
@@ -29,12 +28,12 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<ViewTransitions />
+	
 	</head>
 	<header>
 
 		<RouterLinks  transition:persist client:only />
-	<!-- 	<TopMenuSuffle client:only/> -->
+
 	
 		
 	</header>
@@ -43,37 +42,17 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
 
 
 	<main>	
-		<!-- <RedesSocialesNav /> -->
+
 		<slot />
 
 	</main>
 
 	{showFooter && <FootNetHive client:only />}
 	</body>
-	
-<!-- 	{showFooter && <FootUWIFI  transition:persist client:only />} -->
-<!-- 	{showFooter && <FootNetHive client:only />} -->
+
 </html>
 
-<!-- <script>
-	window.addEventListener('scroll', function() {
-	  const video = document.getElementById('background-video');
-	  const scrollPosition = window.scrollY;
-	  let blurValue = Math.min(scrollPosition / 100, 10); 
-	  //limit blur value between 0 and 10
 
-	  if (blurValue > 10) {
-      blurValue = 10;
-    } else if (blurValue < 0) {
-      blurValue = 0;
-    }
-
-    if (video) {
-      video.style.filter = `blur(${blurValue}px)`;
-    }
-	
-	});
-  </script> -->
 <style is:global>
 	@font-face {
   font-family: 'Inter';
