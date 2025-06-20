@@ -6,9 +6,5 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://Adrinc.github.io',
-  integrations: [tailwind(), react()],
-  output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
+  integrations: [tailwind(), react()]
 });
