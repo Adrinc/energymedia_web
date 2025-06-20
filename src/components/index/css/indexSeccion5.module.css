@@ -1,202 +1,148 @@
-/* Animación de entrada fade-in y de abajo hacia arriba */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.section {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  padding: 6rem 2rem;
+  width: 100vw;
+  color: #f5f7fa;
 }
 
-.fadeInUp {
-  opacity: 1;
-  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.sectionss {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: auto;
-    opacity: 0;
-    transition: opacity 0.3s;
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
 
- 
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #7ae582 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #e2e8f0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.pricingCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.pricingCard:hover {
+  transform: translateY(-10px);
+  border-color: #2563eb;
+}
+
+.popular {
+  position: relative;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
+  border: 1px solid #2563eb;
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffb454;
+  color: #22292f;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.planName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #f5f7fa;
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #7ae582;
+  margin-bottom: 2rem;
+}
+
+.period {
+  font-size: 1rem;
+  color: #a0aec0;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: #e2e8f0;
+}
+
+.featureIcon {
+  margin-right: 0.75rem;
+  color: #7ae582;
+}
+
+.ctaButton {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.primary {
+  background-color: #ffb454;
+  color: #22292f;
+}
+
+.secondary {
+  background: transparent;
+  border: 2px solid #2563eb;
+  color: #f5f7fa;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .pricingGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
   }
-
   
-  
-
-
-  .parallax {
-    background-attachment: fixed;
-    background-size: cover;
-  }
-
-  .gradientBackgroundTop,
-  .gradientBackgroundBottom {
-    position: absolute;
-    width: 100vw;
-    height: 7vh;
-    z-index: 1;
-  }
-  .gradientBackgroundTop {
-    top: 0;
-    background: linear-gradient(to bottom, #375beb4a -100%, transparent 100%);
-  }
-  .gradientBackgroundBottom {
-    bottom: 0;
-    background: linear-gradient(to top, #375beb4a -100%, transparent 100%);
-  }
-
-  .statsContainer {
-    position: relative;
-    min-height: 40vw;
-    z-index: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    padding: 40px;
-    z-index: 2;
-    box-shadow: 0 8px 20px #67c7ffcc, 0 -8px 20px #ab39ff66,0 8px 20px #5c00ff4d;
-    backdrop-filter: blur(50px);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  .gradientText {
-    background: linear-gradient(90deg, #67c7ff, #ad39ff, #5d00ff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .statsLeft {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .imageContainer {
-    position: relative;
-    border-radius: 20px 40% 20px 20px;
-    background: linear-gradient(135deg, #8c09ff, #008bff);
-    padding: 8px;
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    transition: transform 0.3s ease;
-  }
-  .statsImage {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border-radius: 12px 40% 12px 12px;
-    background-color: aqua;
-  }
-  .imageContainer:hover {
-    transform: scale(1.05);
-  }
-  .experienceTag {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    bottom: -10px;
-    left: -20px;
-    background: linear-gradient(90deg, #8c09ff, #375beb);
-    color: #fff;
-    padding: 15px 30px;
-    font-weight: bold;
-    font-size: 1.2rem;
-    border-radius: 12px;
+  .pricingCard {
     text-align: center;
-    height: 100px;
-    width: 200px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border: 5px solid linear-gradient(90deg, #8c09ff, #375beb);
   }
-  .statsRight {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  .statsTitle {
-    text-decoration: underline;
-    text-underline-offset: 8px;
-  }
-  .statsRight h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    color: #fff;
-    margin: 0;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  .statsRight p {
-    font-size: clamp(1rem, 2vw, 1.8rem);
-    color: #bbb;
-    line-height: 1.8;
-    margin: 20px 0;
-  }
-  .progressBars {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .progressItem {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .progressLabel {
-    display: flex;
-    justify-content: space-between;
-    font-size: clamp(1rem, 2vw, 1.6rem);
-    color: #fff;
-  }
-  .progressLabel span:first-child {
-    display: flex;
-    align-items: center;
-  }
-  .progressLabel span:first-child:before {
-    content: "✔";
-    margin-right: 8px;
-    color: #0015ff;
-  }
-  .progressBar {
-    width: 100%;
-    background-color: #202020;
-    border-radius: 8px;
-    overflow: hidden;
-    height: 12px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  .progressFilled {
-    height: 100%;
-    background: linear-gradient(90deg, #008bff, #8c09ff);
-    transition: width 1s ease-in-out;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  @media (max-width: 900px) {
-    .statsContainer {
-      flex-direction: column;
-    }
-  }
-  @media (max-width: 768px) {
-    .sectionss {
-      cursor: default;
-    }
-
-  }
+}

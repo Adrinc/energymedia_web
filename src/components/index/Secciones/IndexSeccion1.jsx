@@ -1,12 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { isEnglish } from '../../../data/variables';
-import { translations } from '../../../data/translations';
 import { useStore } from '@nanostores/react';
 import styles from "../css/indexSeccion1.module.css";
 
-const NosotrosSeccion1 = () => {
+const HomeSeccion1 = () => {
   const ingles = useStore(isEnglish);
-  const textos = ingles ? translations.en.nosotrosCarrusel : translations.es.nosotrosCarrusel;
+  const textos = ingles ? [
+    {
+      title: "Transform your infrastructure",
+      subtitle: "Complete MDF/IDF Management"
+    },
+    {
+      title: "Real-time monitoring",
+      subtitle: "Network Asset Visibility"
+    },
+    {
+      title: "Smart Documentation",
+      subtitle: "Automated Cable Management"
+    }
+  ] : [
+    {
+      title: "Transforma tu infraestructura",
+      subtitle: "Gestión completa MDF/IDF"
+    },
+    {
+      title: "Monitoreo en tiempo real",
+      subtitle: "Visibilidad de activos de red"
+    },
+    {
+      title: "Documentación inteligente",
+      subtitle: "Gestión automatizada de cableado"
+    }
+  ];
+
   const [index, setIndex] = useState(0);
   const [anim, setAnim] = useState("fadeInUp");
 
@@ -25,7 +51,7 @@ const NosotrosSeccion1 = () => {
   return (
     <section className={styles.sections}>
       <video id="background-video" loop autoPlay muted playsInline className={styles.videox}>
-        <source src="/videos/cblunaintro.mp4" type="video/mp4" />
+        <source src="/videos/mdf1.mp4" type="video/mp4" />
       </video>
       <div className={`${styles.textosAnimados} ${styles[anim]}`}> 
         <span className={styles.titulo}>{textos[index].title}</span>
@@ -36,4 +62,4 @@ const NosotrosSeccion1 = () => {
   );
 };
 
-export default NosotrosSeccion1;
+export default HomeSeccion1;

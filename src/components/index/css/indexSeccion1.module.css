@@ -7,47 +7,21 @@
   width: 100vw;
   height: 92vh;
   margin-top: 70px;
-  
-  
-  }
-  .videox {
+}
+
+.videox {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
   z-index: 1;
-  opacity: 0.8;
-  }
-  
-  
-  
-  
-  .riveContainerMainCircle {
-  position: absolute;
-  display: flex;
-  top: -30%;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100vw;
-  height: 750px;
-  z-index: 30;
-  
-  
-  }
-  
+  opacity: 0.7;
+  filter: brightness(0.8) contrast(1.1);
+}
 
-  
-  @media (max-width: 900px) {
-    .sections {
-    cursor: default;
-    height: 50vh;
-  }
-  }
-  
-  .textosAnimados {
+.textosAnimados {
   position: absolute;
   z-index: 10;
   top: 50%;
@@ -57,33 +31,33 @@
   flex-direction: column;
   align-items: center;
   pointer-events: none;
+  width: 90%;
+  max-width: 1200px;
 }
 
 .titulo {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #fff;
-  margin-bottom: 1.2rem;
-  text-shadow: 0 4px 32px #000c, 0 1px 0 #375beb;
-  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.8), 0 1px 0 #2563eb;
+  font-weight: 700;
   letter-spacing: 0.02em;
   text-align: center;
-/*   text-stroke: 1px #375beb;
-  -webkit-text-stroke: 1px #375beb; */
+  line-height: 1.2;
 }
 
 .subtitulo {
-  font-size: 3.2rem;
+  font-size: 4rem;
   font-weight: 900;
   color: #fff;
-  text-shadow: 0 6px 48px #141414, 0 2px 0 #4a90e2;
+  text-shadow: 0 6px 48px #141414, 0 2px 0 #7ae582;
   letter-spacing: 0.04em;
   text-align: center;
-  line-height: 1.08;
+  line-height: 1.1;
   padding: 0.2em 0.5em;
   border-radius: 0.2em;
-/*   background: rgba(20,20,20,0.18);
-  box-shadow: 0 2px 32px #0008; */
-/*   border: 2px solid #375beb44; */
+  background: rgba(37, 99, 235, 0.1);
+  backdrop-filter: blur(8px);
 }
 
 .fadeInUp {
@@ -122,9 +96,24 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 100vw;
-  height: 10vh;
+  width: 100%;
+  height: 5vh;
   z-index: 20;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent 0%, #141414 100%);
+/*   background: linear-gradient(to bottom, transparent 0%, #ffffff 100%); */
+}
+
+@media (max-width: 900px) {
+  .sections {
+    height: 70vh;
+  }
+
+  .titulo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .subtitulo {
+    font-size: 2.5rem;
+  }
 }

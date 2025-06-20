@@ -1,62 +1,104 @@
-import { useStore } from '@nanostores/react';
+import React from "react";
 import { isEnglish } from '../../../data/variables';
-import { translations } from '../../../data/translations';
-import RiveComponent from "../../global/animations/riveComponent";
-import SeccionTechCanvas from "../../Scene3D/technology/seccion_tech_main";
-import { useRef, useEffect } from 'react';
-import styles from '../css/indexSeccion6.module.css';
+import { useStore } from '@nanostores/react';
+import styles from "../css/indexSeccion6.module.css";
 
-const IndexSeccion6 = () => {
+const HomeSeccion6 = () => {
   const ingles = useStore(isEnglish);
-  const t = ingles ? translations.en : translations.es;
-  const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    let hasAnimated = false;
-    if (!section) return;
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          section.classList.add(styles.fadeInUp);
-          hasAnimated = true;
-          observer.disconnect();
+  const content = {
+    es: {
+      title: "Testimonios y Casos de Éxito",
+      subtitle: "Descubre cómo NetHive está transformando la gestión de infraestructura de red en empresas líderes",
+      testimonials: [
+        {
+          text: "La visibilidad que nos da NetHive ha transformado por completo nuestro control de infraestructura. Hemos reducido el tiempo de respuesta ante incidencias en un 70%.",
+          name: "Carlos Mendoza",
+          role: "Director de TI",
+          company: "TechCorp Solutions",
+          rating: 5
+        },
+        {
+          text: "La implementación de NetHive fue rápida y sin complicaciones. El mapeo visual de conexiones nos ayuda a prevenir problemas antes de que ocurran.",
+          name: "Ana Martínez",
+          role: "Network Manager",
+          company: "Global Networks SA",
+          rating: 5
+        },
+        {
+          text: "Elegimos NetHive por su facilidad de uso y nos quedamos por sus potentes características. El soporte técnico es excepcional.",
+          name: "Roberto Sánchez",
+          role: "CTO",
+          company: "DataCenter Pro",
+          rating: 5
         }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+      ]
+    },
+    en: {
+      title: "Testimonials and Success Stories",
+      subtitle: "Discover how NetHive is transforming network infrastructure management in leading companies",
+      testimonials: [
+        {
+          text: "The visibility that NetHive gives us has completely transformed our infrastructure control. We've reduced incident response time by 70%.",
+          name: "Charles Miller",
+          role: "IT Director",
+          company: "TechCorp Solutions",
+          rating: 5
+        },
+        {
+          text: "NetHive implementation was quick and hassle-free. The visual connection mapping helps us prevent issues before they occur.",
+          name: "Anna Martinez",
+          role: "Network Manager",
+          company: "Global Networks Inc",
+          rating: 5
+        },
+        {
+          text: "We chose NetHive for its ease of use and stayed for its powerful features. The technical support is exceptional.",
+          name: "Robert Sanders",
+          role: "CTO",
+          company: "DataCenter Pro",
+          rating: 5
+        }
+      ]
+    }
+  };
+
+  const textos = ingles ? content.en : content.es;
+
+  const renderStars = (rating) => {
+    return Array(rating).fill('★').map((star, index) => (
+      <span key={index} className={styles.star}>{star}</span>
+    ));
+  };
 
   return (
-    <>
-      <div className={styles.centeredText}>
-        <h1 className={`${styles.largeText} ${styles.whiteText}`}>
-          {t.techSection.title}
-        </h1>
-        <h2 className={`${styles.largeText} ${styles.boldText} ${styles.gradientText}`}>
-          {t.techSection.subtitle}
-        </h2>
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>{textos.title}</h2>
+          <p className={styles.subtitle}>{textos.subtitle}</p>
+        </div>
+        <div className={styles.testimonialGrid}>
+          {textos.testimonials.map((testimonial, index) => (
+            <div key={index} className={styles.testimonialCard}>
+              <div className={styles.rating}>
+                {renderStars(testimonial.rating)}
+              </div>
+              <p className={styles.testimonialText}>"{testimonial.text}"</p>
+              <div className={styles.clientInfo}>
+                <div className={styles.clientDetails}>
+                  <h3 className={styles.clientName}>{testimonial.name}</h3>
+                  <p className={styles.clientRole}>
+                    {testimonial.role} - {testimonial.company}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <section id="tech_stack" className={styles.section} ref={sectionRef}>
-        <div className={styles.gradientBackgroundTop}></div>
-        <div className={styles.gradientBackgroundBottom}></div>
-        <div className={`${styles.rivecomp} ${styles.web}`}>
-          <SeccionTechCanvas />
-        </div>
-        <div className={`${styles.rivecomp} ${styles.movil}`}>
-          <RiveComponent
-            src="/rive/cbluna.riv"
-            artboard="technologies_mobile"
-            stateMachines="State Machine 1"
-            autoplay={true}
-            fit="fill"
-          />
-        </div>
-      </section>
-    </>
+    </section>
   );
 };
 
-export default IndexSeccion6;
+export default HomeSeccion6;

@@ -1,50 +1,69 @@
-import { translations } from '../../../data/translations';
+import React from "react";
 import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
-import ProyectosCarrusel from '../components/ProyectosCarrusel.jsx';
-import { useRef, useEffect } from 'react';
+import styles from "../css/indexSeccion3.module.css";
 
-import styles from '../css/indexSeccion3.module.css';
-
-const IndexSeccion3 = () => {
+const HomeSeccion3 = () => {
   const ingles = useStore(isEnglish);
-  const t = ingles ? translations.en : translations.es;
-  const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    let hasAnimated = false;
-    if (!section) return;
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          section.classList.add(styles.fadeInUp);
-          hasAnimated = true;
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.4 }
-    );
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+  const content = {
+    es: {
+      title: "Una nueva forma de visualizar tu infraestructura",
+      description: "Descubre cómo NetHive transforma la gestión de tu infraestructura MDF/IDF con un panel de control intuitivo y potente.",
+      stats: [
+        { value: "100%", label: "Visibilidad de red" },
+        { value: "24/7", label: "Monitoreo en tiempo real" },
+        { value: "-60%", label: "Reducción de incidentes" },
+        { value: "+95%", label: "Precisión de inventario" }
+      ],
+      demoButton: "Ver Demo Interactiva",
+      imageAlt: "Dashboard de NetHive"
+    },
+    en: {
+      title: "A new way to visualize your infrastructure",
+      description: "Discover how NetHive transforms your MDF/IDF infrastructure management with an intuitive and powerful dashboard.",
+      stats: [
+        { value: "100%", label: "Network visibility" },
+        { value: "24/7", label: "Real-time monitoring" },
+        { value: "-60%", label: "Incident reduction" },
+        { value: "+95%", label: "Inventory accuracy" }
+      ],
+      demoButton: "View Interactive Demo",
+      imageAlt: "NetHive Dashboard"
+    }
+  };
+
+  const textos = ingles ? content.en : content.es;
 
   return (
-    <section id="our_adventages" className={styles.sections} ref={sectionRef}>
-      <div className={styles.esfera} />
-      <div className={styles.gradientBackgroundTop}></div>
-      <div className={styles.gradientBackgroundBottom}></div>
-
-      <div className={styles.content}>
-        <h1 className={styles.title}>{t.projectsTitle}</h1>
-        <h2 className={styles.subtitle}>{t.projectsSubtitle}</h2>
-      </div>
-
-      <div className={styles.rivecomp}>
-        <ProyectosCarrusel />
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <h2 className={styles.title}>{textos.title}</h2>
+          <p className={styles.description}>{textos.description}</p>
+          <div className={styles.statsGrid}>
+            {textos.stats.map((stat, index) => (
+              <div key={index} className={styles.statCard}>
+                <div className={styles.statValue}>{stat.value}</div>
+                <div className={styles.statLabel}>{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          <button className={styles.demoButton}>
+            <span className={styles.demoIcon}>▶️</span>
+            {textos.demoButton}
+          </button>
+        </div>
+        <div className={styles.dashboardPreview}>
+          <img 
+            src="/image/global/dashboard1.png" 
+            alt={textos.imageAlt} 
+            className={styles.dashboardImage}
+          />
+        </div>
       </div>
     </section>
   );
 };
 
-export default IndexSeccion3;
+export default HomeSeccion3;

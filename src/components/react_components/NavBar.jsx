@@ -47,7 +47,7 @@ const NavBar = () => {
       {/* Menú de navegación */}
       <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`}>
         <li className={styles.navItem}>
-          <a href="/home" className={styles.navLink}>
+          <a href="/" className={styles.navLink}>
             {textosNavbar.inicio}
           </a>
         </li>

@@ -1,190 +1,124 @@
-import React, { useRef, useEffect } from "react";
-import { useStore } from '@nanostores/react';
+import React from "react";
 import { isEnglish } from '../../../data/variables';
-import { translations } from '../../../data/translations';
-import styles from '../css/indexSeccion4.module.css';
-import TarjetaServicio from './../components/TarjetaServicio.jsx';
+import { useStore } from '@nanostores/react';
+import styles from "../css/indexSeccion4.module.css";
 
-// Asumiendo que tienes tus imágenes en public/imgs/
-const CARD_IMAGES = [
-    "./image/experience/telco.webp",
-  "./image/experience/financiero.jpg",
-  "./image/experience/marketing.webp",
-  "./image/experience/industria.jpg"
-];
-
-const IndexSeccion4 = () => {
+const HomeSeccion4 = () => {
   const ingles = useStore(isEnglish);
-  const t = ingles ? translations.en : translations.es;
-  // Arreglo para las tarjetas, tomando la info del objeto de traducciones
-  const cards = [
-    {
-      imagen: CARD_IMAGES[0],
-      titulo: t.experienceSection.cards.carta_1_titulo,
-      descripcion: t.experienceSection.cards.carta_1_des,
-    },
-    {
-      imagen: CARD_IMAGES[1],
-      titulo: t.experienceSection.cards.carta_2_titulo,
-      descripcion: t.experienceSection.cards.carta_2_des,
-    },
-    {
-      imagen: CARD_IMAGES[2],
-      titulo: t.experienceSection.cards.carta_3_titulo,
-      descripcion: t.experienceSection.cards.carta_3_des,
-    },
-    {
-      imagen: CARD_IMAGES[3],
-      titulo: t.experienceSection.cards.carta_4_titulo,
-      descripcion: t.experienceSection.cards.carta_4_des,
-    },
-  ];
 
-  const sectionRef = useRef(null);
-  useEffect(() => {
-    const section = sectionRef.current;
-    let hasAnimated = false;
-    if (!section) return;
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          section.classList.add(styles.fadeInUp);
-          hasAnimated = true;
-          observer.disconnect();
+  const content = {
+    es: {
+      title: "Características Principales",
+      subtitle: "Todo lo que necesitas para gestionar tu infraestructura de red de manera eficiente",
+      features: [
+        {
+          icon: "📋",
+          title: "Inventario Detallado",
+          description: "Control completo de componentes con seguimiento en tiempo real de cada elemento de tu infraestructura.",
+          status: { type: "active", text: "Actualizado" }
+        },
+        {
+          icon: "🗺️",
+          title: "Topología Visual",
+          description: "Visualiza la distribución completa de MDF e IDF con mapeo interactivo de conexiones.",
+          status: { type: "active", text: "En vivo" }
+        },
+        {
+          icon: "🔌",
+          title: "Gestión de Conexiones",
+          description: "Administra y monitorea todas las conexiones entre equipos con histórico de cambios.",
+          status: { type: "active", text: "Conectado" }
+        },
+        {
+          icon: "🚨",
+          title: "Alertas Inteligentes",
+          description: "Sistema de alertas automáticas para cambios no autorizados y problemas de conexión.",
+          status: { type: "alert", text: "Monitoreando" }
+        },
+        {
+          icon: "👥",
+          title: "Control de Acceso",
+          description: "Gestión de permisos por rol: administradores, técnicos y auditores con diferentes niveles de acceso.",
+          status: { type: "active", text: "Seguro" }
+        },
+        {
+          icon: "📊",
+          title: "Reportes Avanzados",
+          description: "Generación de informes detallados exportables en PDF y Excel para análisis y auditoría.",
+          status: { type: "active", text: "Disponible" }
         }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+      ]
+    },
+    en: {
+      title: "Core Features",
+      subtitle: "Everything you need to efficiently manage your network infrastructure",
+      features: [
+        {
+          icon: "📋",
+          title: "Detailed Inventory",
+          description: "Complete component control with real-time tracking of every element in your infrastructure.",
+          status: { type: "active", text: "Updated" }
+        },
+        {
+          icon: "🗺️",
+          title: "Visual Topology",
+          description: "Visualize complete MDF and IDF distribution with interactive connection mapping.",
+          status: { type: "active", text: "Live" }
+        },
+        {
+          icon: "🔌",
+          title: "Connection Management",
+          description: "Manage and monitor all equipment connections with change history.",
+          status: { type: "active", text: "Connected" }
+        },
+        {
+          icon: "🚨",
+          title: "Smart Alerts",
+          description: "Automatic alert system for unauthorized changes and connection issues.",
+          status: { type: "alert", text: "Monitoring" }
+        },
+        {
+          icon: "👥",
+          title: "Access Control",
+          description: "Role-based permission management: administrators, technicians, and auditors with different access levels.",
+          status: { type: "active", text: "Secure" }
+        },
+        {
+          icon: "📊",
+          title: "Advanced Reports",
+          description: "Generate detailed reports exportable in PDF and Excel for analysis and auditing.",
+          status: { type: "active", text: "Available" }
+        }
+      ]
+    }
+  };
+
+  const textos = ingles ? content.en : content.es;
 
   return (
-    <section id="experience" className={styles.sectionss} ref={sectionRef}>
-      <div className={styles.esfera} />
-      <div className={styles.gradientBackgroundTop}></div>
-      <div className={styles.gradientBackgroundBottom}></div>
-      <div className={styles.sectionHeader}>
-        <h2 className={styles.mainTitle}>{t.experienceSection.mainTitle}</h2>
-        <p className={styles.mainSubtitle}>{t.experienceSection.mainSubtitle}</p>
-      </div>
-      <div className={styles.cardsContainer}>
-        {cards.map((card, idx) => (
-          <TarjetaServicio
-          fondoWave="/image/global/0.png"
-            key={idx}
-            imagen={card.imagen}
-            titulo={card.titulo}
-            descripcion={card.descripcion}
-          />
-
-          
-        ))}
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>{textos.title}</h2>
+          <p className={styles.subtitle}>{textos.subtitle}</p>
+        </div>
+        <div className={styles.featuresGrid}>
+          {textos.features.map((feature, index) => (
+            <div key={index} className={styles.featureCard}>
+              <div className={styles.featureIcon}>
+                <span>{feature.icon}</span>
+              </div>
+              <h3 className={styles.featureTitle}>{feature.title}</h3>
+              <p className={styles.featureDescription}>{feature.description}</p>
+              <span className={`${styles.statusIndicator} ${styles['status' + feature.status.type.charAt(0).toUpperCase() + feature.status.type.slice(1)]}`}>
+                {feature.status.text}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default IndexSeccion4;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* import React from "react";
-import { useStore } from '@nanostores/react';
-import { isEnglish } from '../../../data/variables';
-import { translations } from '../../../data/translations';
-import RiveComponent from '../../global/animations/riveComponent';
-import styles from '../css/indexSeccion4.module.css';
-
-const IndexSeccion4 = () => {
-  const ingles = useStore(isEnglish);
-  const t = ingles ? translations.en : translations.es;
-  return (
-    <section id="experience" className={styles.sectionss}>
-      <div className={styles.esfera}/>
-      <div className={styles.gradientBackgroundTop}></div>
-      <div className={styles.gradientBackgroundBottom}></div>
-      <div className={`${styles.rivecomp} ${styles.web}`}>
-        <RiveComponent
-          src="/rive/cbluna.riv"
-          artboard="seccion3"
-          stateMachines="State Machine 1"
-          autoplay={true}
-          fit="fill"
-          hastext={true}
-          textValues={{
-            MainTitle: t.experienceSection.mainTitle,
-            MainSubtitle: t.experienceSection.mainSubtitle,
-            carta_1_titulo: t.experienceSection.cards.carta_1_titulo,
-            carta_1_des: t.experienceSection.cards.carta_1_des,
-            carta_2_titulo: t.experienceSection.cards.carta_2_titulo,
-            carta_2_des: t.experienceSection.cards.carta_2_des,
-            carta_3_titulo: t.experienceSection.cards.carta_3_titulo,
-            carta_3_des: t.experienceSection.cards.carta_3_des,
-            carta_4_titulo: t.experienceSection.cards.carta_4_titulo,
-            carta_4_des: t.experienceSection.cards.carta_4_des,
-          }}
-        />
-      </div>
-      <div className={`${styles.rivecomp} ${styles.movil}`}>
-        <RiveComponent
-          src="/rive/cbluna.riv"
-          artboard="seccion3_mobile"
-          stateMachines="State Machine 1"
-          autoplay={true}
-          fit="contain"
-          hastext={true}
-          textValues={{
-            MainTitle: t.experienceSection.mainTitle,
-            MainSubtitle: t.experienceSection.mainSubtitle,
-          }}
-        />
-      </div>
-      <div className={`${styles.rivecomp} ${styles.tablet}`}>
-        <RiveComponent
-          src="/rive/cbluna.riv"
-          artboard="seccion3_tablet"
-          stateMachines="State Machine 1"
-          autoplay={true}
-          fit="contain"
-          hastext={true}
-          textValues={{
-            MainTitle: t.experienceSection.mainTitle,
-            MainSubtitle: t.experienceSection.mainSubtitle,
-          }}
-        />
-      </div>
-    </section>
-  );
-};
-
-export default IndexSeccion4;
- */
-
+export default HomeSeccion4;

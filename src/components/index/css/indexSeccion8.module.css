@@ -1,0 +1,136 @@
+.section {
+  background-color: #f5f7fa;
+  padding: 6rem 2rem;
+  width: 100vw;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #22292f;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #4a5568;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.faqsGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.faqItem {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.faqItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.faqHeader {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: white;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.question {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-right: 2rem;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.iconRotated {
+  transform: rotate(180deg);
+}
+
+.answer {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: #f8fafc;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.answerOpen {
+  padding: 1.5rem;
+  max-height: 500px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-right: 0.75rem;
+}
+
+.tagSecurity {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+.tagSupport {
+  background-color: rgba(122, 229, 130, 0.1);
+  color: #27ae60;
+}
+
+.tagIntegration {
+  background-color: rgba(255, 180, 84, 0.1);
+  color: #ffb454;
+}
+
+.tagMigration {
+  background-color: rgba(236, 72, 153, 0.1);
+  color: #ec4899;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .question {
+    font-size: 1rem;
+  }
+}

@@ -1,77 +1,94 @@
-import { translations } from '../../../data/translations';
+import React from "react";
 import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
-import { useRef, useEffect } from 'react';
-import styles from "../css/indexSeccion2.module.css"; 
-import RiveComponent from "../../global/animations/riveComponent";
+import styles from "../css/indexSeccion2.module.css";
 
-const IndexSeccion2 = () => {
-    const ingles = useStore(isEnglish);
-    const t = ingles ? translations.en : translations.es;
- 
-    const solutionsTitle = t.home?.soluciones?.solutionsTitle || t.solutionsTitle;
-    const solutionsSubtitle = t.home?.soluciones?.solutionsSubtitle || t.solutionsSubtitle;
-    const artboardWeb = ingles ? "seccion2_us" : "seccion2_es";
-    const artboardMovil = ingles ? "seccion2_mobile_us" : "seccion2_mobile_es";
-    const sectionRef = useRef(null);
-    useEffect(() => {
-      const section = sectionRef.current;
-      let hasAnimated = false;
-      if (!section) return;
-      const observer = new window.IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            section.classList.add(styles.fadeInUp);
-            hasAnimated = true;
-            observer.disconnect();
-          }
+const HomeSeccion2 = () => {
+  const ingles = useStore(isEnglish);
+
+  const content = {
+    es: {
+      title: "¿Por qué NetHive?",
+      benefits: [
+        {
+          icon: "📊",
+          title: "Inventario en Tiempo Real",
+          text: "Mantén tu inventario centralizado y actualizado automáticamente en tiempo real"
         },
-        { threshold: 0.2 }
-      );
-      observer.observe(section);
-      return () => observer.disconnect();
-    }, []);
-    return (
-      <>
-        <div className={styles.centeredText}>
-          <h1 className={`${styles.largeText} ${styles.whiteText}`}>
-            {solutionsTitle}
-          </h1>
-          <h2 className={`${styles.largeText} ${styles.boldText} ${styles.gradientText}`}>
-            {solutionsSubtitle}
-          </h2>
-        </div>
-  
-        <section id="soluciones" className={styles.sections} ref={sectionRef}>
-          <div className={styles.gradientBackgroundTop}></div>
-          <div className={styles.gradientBackgroundBottom}></div>
-  
-          <div className={`${styles.rivecomp} ${styles.web}`}>
-            <RiveComponent
-              key={artboardWeb}
-              src="/rive/cbluna.riv"
-              artboard={artboardWeb}
-              stateMachines="State Machine 1"
-              autoplay={true}
-              fit="contain"
-              
-            />
-          </div>
-  
-          <div className={`${styles.rivecomp} ${styles.movil}`}>
-            <RiveComponent
-              key={artboardMovil}
-              src="/rive/cbluna.riv"
-              artboard={artboardMovil}
-              stateMachines="State Machine 1"
-              autoplay={true}
-              fit="fill"
-            />
-          </div>
-        </section>
-      </>
-    );
+        {
+          icon: "🗺️",
+          title: "Mapeo Visual",
+          text: "Visualiza todas las conexiones desde MDF hasta cada IDF y punto final"
+        },
+        {
+          icon: "📝",
+          title: "Control de Historial",
+          text: "Registro completo de cambios y auditoría para saber quién hizo qué y cuándo"
+        },
+        {
+          icon: "🚨",
+          title: "Alertas Automáticas",
+          text: "Recibe notificaciones instantáneas ante cambios o desconexiones"
+        },
+        {
+          icon: "🔄",
+          title: "Integración Simple",
+          text: "Fácil integración con tus sistemas existentes y APIs"
+        }
+      ]
+    },
+    en: {
+      title: "Why NetHive?",
+      benefits: [
+        {
+          icon: "📊",
+          title: "Real-Time Inventory",
+          text: "Keep your inventory centralized and automatically updated in real-time"
+        },
+        {
+          icon: "🗺️",
+          title: "Visual Mapping",
+          text: "Visualize all connections from MDF to each IDF and endpoint"
+        },
+        {
+          icon: "📝",
+          title: "History Control",
+          text: "Complete change log and audit trail to know who did what and when"
+        },
+        {
+          icon: "🚨",
+          title: "Automatic Alerts",
+          text: "Receive instant notifications for changes or disconnections"
+        },
+        {
+          icon: "🔄",
+          title: "Simple Integration",
+          text: "Easy integration with your existing systems and APIs"
+        }
+      ]
+    }
   };
-  
-  
-  export default IndexSeccion2;
+
+  const textos = ingles ? content.en : content.es;
+
+  return (
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>{textos.title}</h2>
+        <div className={styles.benefitsGrid}>
+          {textos.benefits.map((benefit, index) => (
+            <div key={index} className={styles.benefitCard}>
+              <div className={styles.iconContainer}>
+                <span className={styles.icon}>{benefit.icon}</span>
+              </div>
+              <h3 className={styles.benefitTitle}>{benefit.title}</h3>
+              <p className={styles.benefitText}>{benefit.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HomeSeccion2;
