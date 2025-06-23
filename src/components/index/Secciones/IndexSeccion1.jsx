@@ -57,6 +57,10 @@ const HomeSeccion1 = () => {
         <span className={styles.titulo}>{textos[index].title}</span>
         <span className={styles.subtitulo}>{textos[index].subtitle}</span>
       </div>
+      <div className={styles.scrollIndicator}>
+        <span className={styles.scrollText}>{ingles ? "Scroll down" : "Desliza hacia abajo"}</span>
+        <div className={styles.scrollIcon}></div>
+      </div>
       <div className={styles.bottomFade}></div>
     </section>
   );

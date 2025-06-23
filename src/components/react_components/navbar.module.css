@@ -103,6 +103,9 @@
   transition: all 0.3s;
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: nowrap; /* Previene que el texto se divida en múltiples líneas */
+  display: inline-block; /* Asegura que el botón mantenga su forma */
+  min-width: max-content; /* Asegura que el botón sea tan ancho como su contenido */
 }
 
 .buyButton:hover {
@@ -211,12 +214,20 @@
   }
 
   .buyButton {
-    width: 100%;
+    width: auto; /* Cambiado de 100% a auto para evitar estiramiento */
     text-align: center;
+    margin: 0 auto; /* Centra el botón */
+    display: block; /* Mantiene el botón como bloque en móvil */
   }
 
   .contactMobile {
     display: block;
     margin-top: 1rem;
+  }
+  .logopic {
+    position: relative;
+    width: 100px;
+    height: 3.5rem;
+    z-index: 2;
   }
 }
