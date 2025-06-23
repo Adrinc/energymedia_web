@@ -117,13 +117,28 @@ const HomeSeccion5 = () => {
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>{textos.title}</h2>
+          <div className={styles.decorativeCircle}></div>
+          <h2 className={styles.title}>
+            {textos.title}
+            <span className={styles.glowDot}></span>
+          </h2>
           <p className={styles.subtitle}>{textos.subtitle}</p>
+          <div className={styles.headerUnderline}></div>
         </div>
         <div className={styles.pricingGrid}>
           {textos.plans.map((plan, index) => (
-            <div key={index} className={`${styles.pricingCard} ${plan.popular ? styles.popular : ''}`}>
-              {plan.popular && <span className={styles.popularBadge}>Más popular</span>}
+            <div 
+              key={index} 
+              className={`${styles.pricingCard} ${plan.popular ? styles.popular : ''}`}
+            >
+              {plan.popular && (
+                <>
+                  <span className={styles.popularBadge}>
+                    {ingles ? "Most popular" : "Más popular"}
+                  </span>
+                  <div className={styles.shine}></div>
+                </>
+              )}
               <h3 className={styles.planName}>{plan.name}</h3>
               <div className={styles.price}>
                 {plan.price}
@@ -137,9 +152,12 @@ const HomeSeccion5 = () => {
                   </li>
                 ))}
               </ul>
-              <button className={`${styles.ctaButton} ${plan.popular ? styles.primary : styles.secondary}`}>
+              <button 
+                className={`${styles.ctaButton} ${plan.popular ? styles.primary : styles.secondary}`}
+              >
                 {plan.buttonText}
               </button>
+              {plan.popular && <div className={styles.glow}></div>}
             </div>
           ))}
         </div>
