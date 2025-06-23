@@ -3,6 +3,37 @@ import { isEnglish } from '../../../data/variables';
 import { useStore } from '@nanostores/react';
 import styles from "../css/indexSeccion8.module.css";
 
+const TagIcon = ({ tag }) => {
+  switch (tag) {
+    case 'security':
+      return (
+        <svg className={styles.tagIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      );
+    case 'support':
+      return (
+        <svg className={styles.tagIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+      );
+    case 'integration':
+      return (
+        <svg className={styles.tagIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      );
+    case 'migration':
+      return (
+        <svg className={styles.tagIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
 const HomeSeccion8 = () => {
   const ingles = useStore(isEnglish);
   const [openIndex, setOpenIndex] = useState(null);
@@ -10,7 +41,8 @@ const HomeSeccion8 = () => {
   const content = {
     es: {
       title: "Preguntas Frecuentes",
-      subtitle: "Encuentra respuestas a las preguntas más comunes sobre NetHive",
+      subtitle: "Resolvemos tus dudas sobre NetHive",
+      highlight: "Encuentra respuestas detalladas y claras a las preguntas más comunes sobre nuestra plataforma",
       faqs: [
         {
           question: "¿Qué medidas de seguridad implementa NetHive?",
@@ -41,7 +73,8 @@ const HomeSeccion8 = () => {
     },
     en: {
       title: "Frequently Asked Questions",
-      subtitle: "Find answers to the most common questions about NetHive",
+      subtitle: "We solve your NetHive questions",
+      highlight: "Find detailed and clear answers to the most common questions about our platform",
       faqs: [
         {
           question: "What security measures does NetHive implement?",
@@ -98,17 +131,23 @@ const HomeSeccion8 = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>{textos.title}</h2>
-          <p className={styles.subtitle}>{textos.subtitle}</p>
+          <p className={styles.subtitle}>
+            <strong>{textos.subtitle}</strong>
+            <br />
+            {textos.highlight}
+          </p>
         </div>
         <div className={styles.faqsGrid}>
           {textos.faqs.map((faq, index) => (
-            <div key={index} className={styles.faqItem}>
+            <div key={index} className={`${styles.faqItem} ${openIndex === index ? styles.faqItemOpen : ''}`}>
               <button 
                 className={styles.faqHeader}
                 onClick={() => toggleFaq(index)}
+                aria-expanded={openIndex === index}
               >
                 <span className={styles.question}>
                   <span className={`${styles.tag} ${getTagClass(faq.tag)}`}>
+                    <TagIcon tag={faq.tag} />
                     {faq.tag.charAt(0).toUpperCase() + faq.tag.slice(1)}
                   </span>
                   {faq.question}
@@ -123,7 +162,11 @@ const HomeSeccion8 = () => {
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div className={`${styles.answer} ${openIndex === index ? styles.answerOpen : ''}`}>
+              <div 
+                className={`${styles.answer} ${openIndex === index ? styles.answerOpen : ''}`}
+                role="region"
+                aria-hidden={openIndex !== index}
+              >
                 {faq.answer}
               </div>
             </div>

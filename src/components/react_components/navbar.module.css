@@ -9,6 +9,8 @@
   border-bottom: 1px solid #2563eb;
   backdrop-filter: blur(10px);
   max-height: 80px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .logo {
@@ -42,6 +44,9 @@
 
 .navItem {
   display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .navLink {
@@ -53,6 +58,10 @@
   letter-spacing: 0.02em;
   transition: all 0.3s;
   border-radius: 6px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  outline: none;
 }
 
 .navLink::after {
@@ -155,6 +164,9 @@
   display: none;
   flex-direction: column;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .bar {
@@ -166,9 +178,13 @@
   border-radius: 2px;
 }
 
+.desktopOnly {
+  display: block;
+}
+
 @media (max-width: 900px) {
   .navMenu {
-    position: absolute;
+    position: fixed; /* Cambiado de absolute a fixed */
     top: 100%;
     right: 0;
     background: rgba(20, 20, 20, 0.98);
@@ -178,11 +194,18 @@
     padding: 1rem;
     border-bottom: 1px solid #2563eb;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    height: auto;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    overscroll-behavior: contain; /* Previene el scroll del body mientras se hace scroll en el menú */
   }
 
   .navMenu.active {
     display: flex;
     animation: fadeIn 0.3s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    pointer-events: auto;
   }
 
   .navItem {
@@ -230,5 +253,9 @@
     width: 100px;
     height: 3.5rem;
     z-index: 2;
+  }
+
+  .desktopOnly {
+    display: none;
   }
 }

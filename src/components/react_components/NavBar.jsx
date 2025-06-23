@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./navbar.module.css";
 
 import { useStore } from "@nanostores/react";
@@ -8,14 +8,48 @@ import { translations } from "../../data/translations";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
   const country = useStore(selectedCountry);
   const { t, changeLang, lang } = useLang();
   const ingles = useStore(isEnglish);
   const textosNavbar = ingles ? translations.en.navbar : translations.es.navbar;
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        menuRef.current && 
+        !menuRef.current.contains(event.target) &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleScroll = () => {
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isOpen]);
+
   // Función para alternar el menú en móviles
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    // Prevenir el scroll del body cuando el menú está abierto
+    document.body.style.overflow = !isOpen ? 'hidden' : '';
   };
 
   // Función para manejar el cambio de país en el switch
@@ -38,14 +72,14 @@ const NavBar = () => {
       </div>
 
       {/* Ícono de menú hamburguesa para móviles */}
-      <div className={styles.hamburger} onClick={toggleMenu}>
+      <div className={styles.hamburger} onClick={toggleMenu} ref={buttonRef}>
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>
       </div>
 
       {/* Menú de navegación */}
-      <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`}>
+      <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`} ref={menuRef}>
         <li className={styles.navItem}>
           <a href="/" className={styles.navLink}>
             {textosNavbar.inicio}
