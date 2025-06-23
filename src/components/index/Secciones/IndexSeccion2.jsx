@@ -16,7 +16,7 @@ const HomeSeccion2 = () => {
           text: "Mantén tu inventario centralizado y actualizado automáticamente en tiempo real"
         },
         {
-          icon: "🗺️",
+          icon: "🌐",
           title: "Mapeo Visual",
           text: "Visualiza todas las conexiones desde MDF hasta cada IDF y punto final"
         },
@@ -46,7 +46,7 @@ const HomeSeccion2 = () => {
           text: "Keep your inventory centralized and automatically updated in real-time"
         },
         {
-          icon: "🗺️",
+          icon: "🌐",
           title: "Visual Mapping",
           text: "Visualize all connections from MDF to each IDF and endpoint"
         },

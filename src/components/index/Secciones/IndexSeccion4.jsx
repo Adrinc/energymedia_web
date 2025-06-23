@@ -18,7 +18,7 @@ const HomeSeccion4 = () => {
           status: { type: "active", text: "Actualizado" }
         },
         {
-          icon: "🗺️",
+          icon: "🌐",
           title: "Topología Visual",
           description: "Visualiza la distribución completa de MDF e IDF con mapeo interactivo de conexiones.",
           status: { type: "active", text: "En vivo" }
@@ -60,7 +60,7 @@ const HomeSeccion4 = () => {
           status: { type: "active", text: "Updated" }
         },
         {
-          icon: "🗺️",
+          icon: "🌐",
           title: "Visual Topology",
           description: "Visualize complete MDF and IDF distribution with interactive connection mapping.",
           status: { type: "active", text: "Live" }
