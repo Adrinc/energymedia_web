@@ -16,21 +16,24 @@ const HomeSeccion6 = () => {
           name: "Carlos Mendoza",
           role: "Director de TI",
           company: "TechCorp Solutions",
-          rating: 5
+          rating: 5,
+          avatar: "/image/testimonials/avatar1.png"
         },
         {
           text: "La implementación de NetHive fue rápida y sin complicaciones. El mapeo visual de conexiones nos ayuda a prevenir problemas antes de que ocurran.",
           name: "Ana Martínez",
           role: "Network Manager",
           company: "Global Networks SA",
-          rating: 5
+          rating: 5,
+          avatar: "/image/testimonials/avatar2.png"
         },
         {
           text: "Elegimos NetHive por su facilidad de uso y nos quedamos por sus potentes características. El soporte técnico es excepcional.",
           name: "Roberto Sánchez",
           role: "CTO",
           company: "DataCenter Pro",
-          rating: 5
+          rating: 5,
+          avatar: "/image/testimonials/avatar3.png"
         }
       ]
     },
@@ -43,21 +46,24 @@ const HomeSeccion6 = () => {
           name: "Charles Miller",
           role: "IT Director",
           company: "TechCorp Solutions",
-          rating: 5
+          rating: 5,
+          avatar: "/image/testimonials/avatar1.png"
         },
         {
           text: "NetHive implementation was quick and hassle-free. The visual connection mapping helps us prevent issues before they occur.",
           name: "Anna Martinez",
           role: "Network Manager",
           company: "Global Networks Inc",
-          rating: 5
+          rating: 5,
+          avatar: "/image/testimonials/avatar2.png"
         },
         {
           text: "We chose NetHive for its ease of use and stayed for its powerful features. The technical support is exceptional.",
           name: "Robert Sanders",
           role: "CTO",
           company: "DataCenter Pro",
-          rating: 5
+          rating: 5,
+          avatar: "/image/testimonials/avatar3.png"
         }
       ]
     }
@@ -86,6 +92,14 @@ const HomeSeccion6 = () => {
               </div>
               <p className={styles.testimonialText}>"{testimonial.text}"</p>
               <div className={styles.clientInfo}>
+                <div className={styles.avatarContainer}>
+                  <img 
+                    src={testimonial.avatar} 
+                    alt={testimonial.name}
+                    className={styles.clientImage}
+                    loading="lazy"
+                  />
+                </div>
                 <div className={styles.clientDetails}>
                   <h3 className={styles.clientName}>{testimonial.name}</h3>
                   <p className={styles.clientRole}>
