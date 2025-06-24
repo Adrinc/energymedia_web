@@ -36,7 +36,18 @@ const NavBar = () => {
       }
     };
 
-    // Detectar la página actual
+    // Detectar cambios en la URL (navegación)
+    const handleLocationChange = () => {
+      const newPath = window.location.pathname;
+
+      setCurrentPath(newPath);
+      // Cerrar el menú móvil al navegar
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    // Detectar la página actual inicialmente
     setCurrentPath(window.location.pathname);
 
     // Event listeners
@@ -50,6 +61,57 @@ const NavBar = () => {
       }
     };
 
+    // Listener para detectar cambios en la URL (popstate para botón atrás/adelante)
+    const handlePopState = () => {
+      handleLocationChange();
+    };
+
+    // Listener personalizado para detectar navegación programática
+    const originalPushState = history.pushState;
+    const originalReplaceState = history.replaceState;
+
+    history.pushState = function() {
+      originalPushState.apply(history, arguments);
+      setTimeout(handleLocationChange, 0); // Defer to next tick
+    };
+
+    history.replaceState = function() {
+      originalReplaceState.apply(history, arguments);
+      setTimeout(handleLocationChange, 0); // Defer to next tick
+    };
+
+    // Listener específico para Astro view transitions
+    const handleAstroBeforeSwap = () => {
+      setTimeout(handleLocationChange, 0);
+    };
+
+    const handleAstroAfterSwap = () => {
+      setTimeout(handleLocationChange, 100); // Dar más tiempo para que Astro complete
+    };
+
+    // Listener para cualquier cambio en el DOM que indique navegación
+    const observer = new MutationObserver(() => {
+      const newPath = window.location.pathname;
+      if (newPath !== currentPath) {
+        handleLocationChange();
+      }
+    });
+
+    // Observar cambios en el title del documento (Astro lo cambia en navegación)
+    observer.observe(document.querySelector('title') || document.head, {
+      childList: true,
+      characterData: true
+    });
+
+    // Polling como fallback para casos edge
+    const pathCheckInterval = setInterval(() => {
+      const newPath = window.location.pathname;
+      if (newPath !== currentPath) {
+
+        handleLocationChange();
+      }
+    }, 100);
+
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('touchstart', handleClickOutside);
@@ -60,15 +122,31 @@ const NavBar = () => {
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
+    window.addEventListener('popstate', handlePopState);
+    
+    // Listeners específicos para Astro
+    document.addEventListener('astro:before-swap', handleAstroBeforeSwap);
+    document.addEventListener('astro:after-swap', handleAstroAfterSwap);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('popstate', handlePopState);
+      document.removeEventListener('astro:before-swap', handleAstroBeforeSwap);
+      document.removeEventListener('astro:after-swap', handleAstroAfterSwap);
       document.body.style.overflow = '';
+      
+      // Limpiar observer y polling
+      observer.disconnect();
+      clearInterval(pathCheckInterval);
+      
+      // Restaurar métodos originales
+      history.pushState = originalPushState;
+      history.replaceState = originalReplaceState;
     };
-  }, [isOpen]);
+  }, [isOpen, currentPath]); // Agregar currentPath como dependencia
 
   // Función para alternar el menú en móviles
   const toggleMenu = () => {

@@ -469,6 +469,10 @@ export const translations = {
         subtitle: "Busca en nuestra base de conocimientos o explora las categorías más populares",
         popularSearches: ["Configuración inicial", "Gestión de usuarios", "API", "Integraciones", "Resolución de problemas"]
       },
+      contact: {
+        title: "Contacta con soporte",
+        subtitle: "Estamos aquí para ayudarte con cualquier problema o pregunta que tengas"
+      },
       categories: {
         title: "Categorías de ayuda",
         subtitle: "Explora nuestras guías organizadas por temas",
@@ -1076,6 +1080,10 @@ export const translations = {
         title: "How can we help you?",
         subtitle: "Search our knowledge base or explore popular categories",
         popularSearches: ["Initial setup", "User management", "API", "Integrations", "Troubleshooting"]
+      },
+      contact: {
+        title: "Contact support",
+        subtitle: "We are here to help you with any issues or questions you may have"
       },
       categories: {
         title: "Help categories",
