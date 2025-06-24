@@ -105,6 +105,23 @@ const NavBar = () => {
         <div className={styles.logoGlow}></div>
       </div>
 
+      {/* Switch de países mejorado */}
+      <div className={styles.countrySwitch}>
+        <div
+          className={`${styles.switchIconContainer} ${country === "mex" ? styles.active : styles.inactive}`}
+          onClick={() => handleSwitch("mex")}
+        >
+          <img src="/icons/icon_mex.webp" alt="Mexico" className={styles.switchIcon} />
+        </div>
+        <div
+          className={`${styles.switchIconContainer} ${country === "usa" ? styles.active : styles.inactive}`}
+          onClick={() => handleSwitch("usa")}
+        >
+          <img src="/icons/icon_usa.webp" alt="USA" className={styles.switchIcon} />
+        </div>
+        <div className={styles.switchIndicator}></div>
+      </div>
+
       {/* Ícono de menú hamburguesa animado */}
       <div 
         className={`${styles.hamburger} ${isOpen ? styles.active : ""}`} 
@@ -183,23 +200,6 @@ const NavBar = () => {
           <img src="/icons/email.svg" alt="Email" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
-      </div>
-
-      {/* Switch de países mejorado */}
-      <div className={styles.countrySwitch}>
-        <div
-          className={`${styles.switchIconContainer} ${country === "mex" ? styles.active : styles.inactive}`}
-          onClick={() => handleSwitch("mex")}
-        >
-          <img src="/icons/icon_mex.webp" alt="Mexico" className={styles.switchIcon} />
-        </div>
-        <div
-          className={`${styles.switchIconContainer} ${country === "usa" ? styles.active : styles.inactive}`}
-          onClick={() => handleSwitch("usa")}
-        >
-          <img src="/icons/icon_usa.webp" alt="USA" className={styles.switchIcon} />
-        </div>
-        <div className={styles.switchIndicator}></div>
       </div>
 
       {/* Botón de contacto con efectos premium */}
