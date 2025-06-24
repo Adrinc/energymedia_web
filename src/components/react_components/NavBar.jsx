@@ -8,6 +8,8 @@ import { translations } from "../../data/translations";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [currentPath, setCurrentPath] = useState("");
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const country = useStore(selectedCountry);
@@ -16,6 +18,28 @@ const NavBar = () => {
   const textosNavbar = ingles ? translations.en.navbar : translations.es.navbar;
 
   useEffect(() => {
+    // Detectar scroll para efectos de navbar
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 20);
+      
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    // Detectar cambios de tamaño de ventana
+    const handleResize = () => {
+      // Si la ventana es mayor a 900px y el menú está abierto, cerrarlo
+      if (window.innerWidth > 900 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    // Detectar la página actual
+    setCurrentPath(window.location.pathname);
+
+    // Event listeners
     const handleClickOutside = (event) => {
       if (
         menuRef.current && 
@@ -26,30 +50,29 @@ const NavBar = () => {
       }
     };
 
-    const handleScroll = () => {
-      if (isOpen) {
-        setIsOpen(false);
-      }
-    };
-
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('touchstart', handleClickOutside);
-      window.addEventListener('scroll', handleScroll);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
     }
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+      document.body.style.overflow = '';
     };
   }, [isOpen]);
 
   // Función para alternar el menú en móviles
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    // Prevenir el scroll del body cuando el menú está abierto
-    document.body.style.overflow = !isOpen ? 'hidden' : '';
   };
 
   // Función para manejar el cambio de país en el switch
@@ -57,71 +80,112 @@ const NavBar = () => {
     selectedCountry.set(country);
     if (country === "mex") {
       isEnglish.set(false);
-      changeLang("es"); // Cambiar idioma a español
+      changeLang("es");
     } else if (country === "usa") {
       isEnglish.set(true);
-      changeLang("en"); // Cambiar idioma a inglés
+      changeLang("en");
     }
   };
 
+  // Función para verificar si el enlace está activo
+  const isActiveLink = (href) => {
+    if (href === "/" && currentPath === "/") return true;
+    if (href !== "/" && currentPath.startsWith(href)) return true;
+    return false;
+  };
+
   return (
-    <nav className={styles.navbar}>
-      {/* Logo con gradiente */}
+    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
+      {/* Overlay para móvil */}
+      {isOpen && <div className={styles.overlay} onClick={toggleMenu} />}
+      
+      {/* Logo con efecto de hover mejorado */}
       <div className={styles.logopic}>
         <img src="/logo_nh_b.png" alt="NetHive Logo" />
+        <div className={styles.logoGlow}></div>
       </div>
 
-      {/* Ícono de menú hamburguesa para móviles */}
-      <div className={styles.hamburger} onClick={toggleMenu} ref={buttonRef}>
+      {/* Ícono de menú hamburguesa animado */}
+      <div 
+        className={`${styles.hamburger} ${isOpen ? styles.active : ""}`} 
+        onClick={toggleMenu} 
+        ref={buttonRef}
+        aria-label="Toggle menu"
+      >
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>
         <span className={styles.bar}></span>
       </div>
 
-      {/* Menú de navegación */}
+      {/* Menú de navegación con indicadores activos */}
       <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`} ref={menuRef}>
         <li className={styles.navItem}>
-          <a href="/" className={styles.navLink}>
+          <a 
+            href="/" 
+            className={`${styles.navLink} ${isActiveLink("/") ? styles.activeLink : ""}`}
+          >
             {textosNavbar.inicio}
           </a>
         </li>
         <li className={styles.navItem}>
-          <a href="#funcionalidades" className={styles.navLink}>
+          <a 
+            href="/funcionalidades" 
+            className={`${styles.navLink} ${isActiveLink("/funcionalidades") ? styles.activeLink : ""}`}
+          >
             {textosNavbar.funcionalidades}
           </a>
         </li>
         <li className={styles.navItem}>
-          <a href="#precios" className={styles.navLink}>
+          <a 
+            href="/precios" 
+            className={`${styles.navLink} ${isActiveLink("/precios") ? styles.activeLink : ""}`}
+          >
             {textosNavbar.precios}
           </a>
         </li>
         <li className={styles.navItem}>
-          <a href="#contacto" className={styles.navLink}>
-            {textosNavbar.contacto}
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a href="#soporte" className={styles.navLink}>
+          <a 
+            href="/soporte" 
+            className={`${styles.navLink} ${isActiveLink("/soporte") ? styles.activeLink : ""}`}
+          >
             {textosNavbar.soporte}
           </a>
         </li>
-   
+        <li className={styles.navItem}>
+          <a 
+            href="/contacto" 
+            className={`${styles.navLink} ${isActiveLink("/contacto") ? styles.activeLink : ""}`}
+          >
+            {textosNavbar.contacto}
+          </a>
+        </li>
+        
+        {/* Botón de login separado para móvil */}
+        <li className={`${styles.navItem} ${styles.mobileLoginItem} ${styles.mobileOnly}`}>
+          <a className={`${styles.buyButton} ${styles.mobileLoginButton}`} href="#registrarse">
+            <span className={styles.buttonText}>{textosNavbar.iniciarSesion}</span>
+            <div className={styles.buttonShine}></div>
+          </a>
+        </li>
       </ul>
 
-      {/* Grupo de íconos sociales */}
+      {/* Grupo de íconos sociales con efectos mejorados */}
       <div className={styles.socialIconsGroup}>
-        <a href="https://www.linkedin.com/company/nethive" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/company/nethive" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
           <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.icon} />
+          <div className={styles.iconRipple}></div>
         </a>
-        <a href="https://twitter.com/nethive" target="_blank" rel="noopener noreferrer">
+        <a href="https://twitter.com/nethive" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
           <img src="/icons/twitter.svg" alt="Twitter" className={styles.icon} />
+          <div className={styles.iconRipple}></div>
         </a>
-        <a href="mailto:info@nethive.com" target="_blank" rel="noopener noreferrer">
+        <a href="mailto:info@nethive.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
           <img src="/icons/email.svg" alt="Email" className={styles.icon} />
+          <div className={styles.iconRipple}></div>
         </a>
       </div>
 
-      {/* Switch de países */}
+      {/* Switch de países mejorado */}
       <div className={styles.countrySwitch}>
         <div
           className={`${styles.switchIconContainer} ${country === "mex" ? styles.active : styles.inactive}`}
@@ -135,12 +199,14 @@ const NavBar = () => {
         >
           <img src="/icons/icon_usa.webp" alt="USA" className={styles.switchIcon} />
         </div>
+        <div className={styles.switchIndicator}></div>
       </div>
 
-      {/* Botón de contacto solo visible en escritorio */}
+      {/* Botón de contacto con efectos premium */}
       <div className={styles.desktopOnly}>
         <a className={styles.buyButton} href="#registrarse">
-          {textosNavbar.iniciarSesion}
+          <span className={styles.buttonText}>{textosNavbar.iniciarSesion}</span>
+          <div className={styles.buttonShine}></div>
         </a>
       </div>
     </nav>

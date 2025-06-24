@@ -196,6 +196,416 @@ export const translations = {
     contactoSeccion: {
       title: "¡Hablemos!",
       description: "Nos encantaría conocerte y descubrir cómo podemos impulsar tu negocio juntos."
+    },
+    funcionalidades: {
+      hero: {
+        title: "Todo el poder de tu infraestructura de red",
+        subtitle: "en una sola plataforma",
+        description: "NetHive centraliza y simplifica la gestión de tu infraestructura MDF/IDF con herramientas avanzadas de monitoreo, documentación y control."
+      },
+      features: {
+        title: "Funcionalidades principales",
+        subtitle: "Descubre todo lo que NetHive puede hacer por tu infraestructura",
+        cards: [
+          {
+            icon: "🔍",
+            title: "Inventario automático de componentes",
+            description: "Detección y catalogación automática de todos los elementos de tu infraestructura de red."
+          },
+          {
+            icon: "🗺️",
+            title: "Mapeo visual de MDF/IDF",
+            description: "Visualización interactiva de la topología de red con conexiones en tiempo real."
+          },
+          {
+            icon: "📝",
+            title: "Historial de cambios",
+            description: "Registro completo de todas las modificaciones realizadas en la infraestructura."
+          },
+          {
+            icon: "🔔",
+            title: "Alertas y notificaciones",
+            description: "Sistema inteligente de alertas para problemas críticos y mantenimiento preventivo."
+          },
+          {
+            icon: "👥",
+            title: "Control de permisos por rol",
+            description: "Gestión granular de accesos según el perfil y responsabilidades del usuario."
+          },
+          {
+            icon: "📊",
+            title: "Exportación de reportes",
+            description: "Generación automática de reportes detallados en múltiples formatos."
+          },
+          {
+            icon: "🏢",
+            title: "Multi-sitio y multi-piso",
+            description: "Gestión centralizada de múltiples ubicaciones y plantas del edificio."
+          },
+          {
+            icon: "🔧",
+            title: "Gestión de cables",
+            description: "Control completo del cableado estructurado con trazabilidad end-to-end."
+          }
+        ]
+      },
+      screenshots: {
+        title: "Visualiza tu infraestructura",
+        subtitle: "Interfaces intuitivas diseñadas para maximizar tu productividad",
+        dashboard: "Dashboard principal",
+        topology: "Vista de topología",
+        equipment: "Fichas de equipos"
+      },
+      useCases: {
+        title: "Casos de uso por rol",
+        subtitle: "NetHive se adapta a las necesidades específicas de cada usuario",
+        roles: [
+          {
+            icon: "👷",
+            title: "Técnico de campo",
+            description: "Acceso móvil para consultar documentación, reportar incidencias y actualizar estado de equipos en tiempo real.",
+            features: ["Consulta rápida de cables", "Reporte de incidencias", "Actualizaciones en tiempo real"]
+          },
+          {
+            icon: "👨‍💼",
+            title: "Administrador de red",
+            description: "Panel de control completo para supervisar la infraestructura, gestionar cambios y planificar expansiones.",
+            features: ["Panel de control completo", "Gestión de cambios", "Planificación de expansiones"]
+          },
+          {
+            icon: "📋",
+            title: "Auditor/Responsable",
+            description: "Herramientas de auditoría y compliance para generar reportes detallados y verificar el cumplimiento de estándares.",
+            features: ["Reportes de auditoría", "Verificación de compliance", "Análisis de tendencias"]
+          }
+        ]
+      }
+    },
+    precios: {
+      hero: {
+        title: "Planes simples",
+        subtitle: "para empresas de todos los tamaños",
+        description: "Elige el plan perfecto para tu organización. Todos incluyen soporte técnico y actualizaciones gratuitas."
+      },
+      plans: {
+        title: "Encuentra tu plan ideal",
+        subtitle: "Desde startups hasta grandes corporaciones, tenemos la solución perfecta",
+        starter: {
+          name: "Starter",
+          price: "$99",
+          period: "/mes",
+          description: "Perfecto para equipos pequeños que están comenzando",
+          features: [
+            "Hasta 100 dispositivos",
+            "1 MDF + 2 IDFs",
+            "Alertas básicas",
+            "Reportes mensuales",
+            "Soporte por email",
+            "1 usuario administrador"
+          ],
+          cta: "Comenzar prueba",
+          popular: false
+        },
+        pro: {
+          name: "Pro",
+          price: "$299",
+          period: "/mes",
+          description: "Ideal para empresas en crecimiento con múltiples ubicaciones",
+          features: [
+            "Hasta 500 dispositivos",
+            "3 MDFs + 10 IDFs",
+            "Alertas avanzadas",
+            "Reportes personalizados",
+            "Soporte prioritario 24/7",
+            "5 usuarios con roles"
+          ],
+          cta: "Prueba gratuita de 14 días",
+          popular: true
+        },
+        enterprise: {
+          name: "Enterprise",
+          price: "Personalizado",
+          period: "",
+          description: "Solución completa para grandes organizaciones",
+          features: [
+            "Dispositivos ilimitados",
+            "MDFs + IDFs ilimitados",
+            "Alertas personalizadas",
+            "API completa",
+            "Soporte dedicado",
+            "Usuarios ilimitados"
+          ],
+          cta: "Contactar ventas",
+          popular: false
+        }
+      },
+      comparison: {
+        title: "Comparación detallada",
+        subtitle: "Todas las características que necesitas, organizadas por plan",
+        categories: [
+          {
+            name: "Componentes y ubicaciones",
+            features: [
+              {
+                name: "Número de componentes",
+                starter: "50",
+                pro: "1,000",
+                enterprise: "Ilimitado"
+              },
+              {
+                name: "Ubicaciones",
+                starter: "1",
+                pro: "Ilimitadas",
+                enterprise: "Ilimitadas"
+              },
+              {
+                name: "Usuarios simultáneos",
+                starter: "2",
+                pro: "25",
+                enterprise: "Ilimitados"
+              }
+            ]
+          },
+          {
+            name: "Funcionalidades",
+            features: [
+              {
+                name: "Mapeo visual",
+                starter: "Básico",
+                pro: "Avanzado",
+                enterprise: "Personalizado"
+              },
+              {
+                name: "API REST",
+                starter: "❌",
+                pro: "✅",
+                enterprise: "✅"
+              },
+              {
+                name: "Integración LDAP",
+                starter: "❌",
+                pro: "❌",
+                enterprise: "✅"
+              }
+            ]
+          },
+          {
+            name: "Soporte",
+            features: [
+              {
+                name: "Soporte técnico",
+                starter: "Email",
+                pro: "24/7 Chat",
+                enterprise: "Dedicado"
+              },
+              {
+                name: "SLA",
+                starter: "❌",
+                pro: "99.5%",
+                enterprise: "99.9%"
+              },
+              {
+                name: "Capacitación",
+                starter: "Documentación",
+                pro: "Videos",
+                enterprise: "Presencial"
+              }
+            ]
+          }
+        ]
+      },
+      faq: {
+        title: "Preguntas frecuentes",
+        subtitle: "Todo lo que necesitas saber sobre nuestros precios y licencias",
+        questions: [
+          {
+            question: "¿Puedo cambiar de plan en cualquier momento?",
+            answer: "Sí, puedes actualizar o degradar tu plan en cualquier momento. Los cambios se reflejan inmediatamente y se facturan de manera proporcional."
+          },
+          {
+            question: "¿Qué incluye la prueba gratuita?",
+            answer: "La prueba de 14 días incluye acceso completo al plan Professional sin restricciones. No se requiere tarjeta de crédito."
+          },
+          {
+            question: "¿Hay descuentos por pago anual?",
+            answer: "Sí, ofrecemos 20% de descuento en todos los planes con facturación anual. Además, incluimos 2 meses adicionales gratis."
+          },
+          {
+            question: "¿Cómo funciona el soporte técnico?",
+            answer: "El plan Starter incluye soporte por email con respuesta en 24-48h. Professional tiene chat 24/7 y Enterprise cuenta con soporte dedicado."
+          },
+          {
+            question: "¿Puedo integrar NetHive con mis sistemas actuales?",
+            answer: "Sí, ofrecemos API REST completa en planes Professional y Enterprise, además de integraciones específicas para sistemas populares."
+          },
+          {
+            question: "¿Qué pasa si excedo mi límite de componentes?",
+            answer: "Te notificaremos cuando te acerques al límite. Puedes actualizar tu plan o contactarnos para opciones de expansión."
+          }
+        ]
+      },
+      cta: {
+        title: "¿Listo para transformar tu infraestructura?",
+        subtitle: "Únete a más de 500 empresas que ya confían en NetHive",
+        features: [
+          "⚡ Implementación en menos de 24 horas",
+          "🔒 Seguridad empresarial garantizada",
+          "📞 Soporte en español las 24 horas",
+          "💰 Sin costos de instalación"
+        ],
+        primaryCta: "Comenzar prueba gratuita",
+        secondaryCta: "Agendar demo personalizada"
+      }
+    },
+    soporte: {
+      hero: {
+        title: "Centro de Ayuda",
+        subtitle: "¿Necesitas ayuda? Estamos aquí para ti",
+        description: "Encuentra respuestas rápidas, accede a documentación completa y contacta con nuestro equipo de soporte técnico.",
+        searchPlaceholder: "Buscar en la documentación..."
+      },
+      search: {
+        title: "¿En qué podemos ayudarte?",
+        subtitle: "Busca en nuestra base de conocimientos o explora las categorías más populares",
+        popularSearches: ["Configuración inicial", "Gestión de usuarios", "API", "Integraciones", "Resolución de problemas"]
+      },
+      categories: {
+        title: "Categorías de ayuda",
+        subtitle: "Explora nuestras guías organizadas por temas",
+        items: [
+          {
+            icon: "📦",
+            title: "Inventario",
+            description: "Gestión de componentes y equipos de red",
+            articles: 12,
+            topics: ["Agregar equipos", "Gestionar componentes", "Códigos QR", "Importar datos"]
+          },
+          {
+            icon: "🔗",
+            title: "Conexiones",
+            description: "Mapeo y documentación de conexiones",
+            articles: 8,
+            topics: ["Crear conexiones", "Mapeo visual", "Trazado de cables", "Documentar rutas"]
+          },
+          {
+            icon: "👥",
+            title: "Usuarios y Permisos",
+            description: "Administración de accesos y roles",
+            articles: 6,
+            topics: ["Crear usuarios", "Asignar roles", "Permisos", "SSO/LDAP"]
+          },
+          {
+            icon: "🔌",
+            title: "Integraciones",
+            description: "Conecta NetHive con tus sistemas",
+            articles: 10,
+            topics: ["API REST", "Webhooks", "SNMP", "Sistemas externos"]
+          },
+          {
+            icon: "📊",
+            title: "Reportes",
+            description: "Genera reportes personalizados",
+            articles: 5,
+            topics: ["Reportes estándar", "Exportar datos", "Programar reportes", "Dashboards"]
+          },
+          {
+            icon: "⚙️",
+            title: "Configuración",
+            description: "Configuración del sistema y personalización",
+            articles: 9,
+            topics: ["Configuración inicial", "Personalización", "Backup", "Mantenimiento"]
+          }
+        ]
+      },
+      guides: {
+        title: "Guías paso a paso",
+        subtitle: "Tutoriales detallados para aprovechar al máximo NetHive",
+        featured: [
+          {
+            type: "video",
+            title: "Configuración inicial de NetHive",
+            description: "Aprende a configurar tu instancia de NetHive desde cero en menos de 30 minutos",
+            duration: "28 min",
+            difficulty: "Principiante",
+            thumbnail: "/image/global/dashboard1.png"
+          },
+          {
+            type: "article",
+            title: "Gestión avanzada de inventario",
+            description: "Domina las funciones avanzadas para gestionar miles de componentes eficientemente",
+            readTime: "15 min",
+            difficulty: "Intermedio",
+            thumbnail: "/image/global/dashboard1.png"
+          },
+          {
+            type: "video",
+            title: "Integración con sistemas SNMP",
+            description: "Conecta NetHive con tu infraestructura de monitoreo existente",
+            duration: "45 min",
+            difficulty: "Avanzado",
+            thumbnail: "/image/global/dashboard1.png"
+          }
+        ]
+      },
+      support: {
+        title: "¿Necesitas más ayuda?",
+        subtitle: "Nuestro equipo está listo para ayudarte",
+        options: [
+          {
+            type: "chat",
+            title: "Chat en vivo",
+            description: "Habla con nuestro equipo de soporte",
+            available: "24/7",
+            icon: "💬",
+            action: "Iniciar chat"
+          },
+          {
+            type: "ticket",
+            title: "Crear ticket",
+            description: "Envía una consulta detallada",
+            available: "Respuesta en 2-4h",
+            icon: "🎫",
+            action: "Crear ticket"
+          },
+          {
+            type: "email",
+            title: "Enviar email",
+            description: "Contacta por correo electrónico",
+            available: "soporte@nethive.com",
+            icon: "📧",
+            action: "Enviar email"
+          }
+        ]
+      },
+      status: {
+        title: "Estado del sistema",
+        subtitle: "Monitorea el estado de nuestros servicios en tiempo real",
+        currentStatus: "Todos los sistemas operativos",
+        statusColor: "green",
+        services: [
+          {
+            name: "API Principal",
+            status: "Operativo",
+            uptime: "99.9%"
+          },
+          {
+            name: "Panel Web",
+            status: "Operativo", 
+            uptime: "99.8%"
+          },
+          {
+            name: "Base de Datos",
+            status: "Operativo",
+            uptime: "99.9%"
+          },
+          {
+            name: "Notificaciones",
+            status: "Operativo",
+            uptime: "99.7%"
+          }
+        ],
+        linkText: "Ver página de estado completa"
+      }
     }
   },
   en: {
@@ -392,8 +802,418 @@ export const translations = {
       error_email_short: "Email must have at least 4 characters before the @."
     },
     contactoSeccion: {
-      title: "Let’s talk!",
+      title: "Let's talk!",
       description: "We'd love to meet you and discover how we can boost your business together."
+    },
+    funcionalidades: {
+      hero: {
+        title: "All the power of your network infrastructure",
+        subtitle: "in one platform",
+        description: "NetHive centralizes and simplifies MDF/IDF infrastructure management with advanced monitoring, documentation, and control tools."
+      },
+      features: {
+        title: "Key Features",
+        subtitle: "Discover everything NetHive can do for your infrastructure",
+        cards: [
+          {
+            icon: "🔍",
+            title: "Automatic component inventory",
+            description: "Automatic detection and cataloging of all elements in your network infrastructure."
+          },
+          {
+            icon: "🗺️",
+            title: "Visual MDF/IDF mapping",
+            description: "Interactive visualization of network topology with real-time connections."
+          },
+          {
+            icon: "📝",
+            title: "Change history",
+            description: "Complete record of all modifications made to the infrastructure."
+          },
+          {
+            icon: "🔔",
+            title: "Alerts and notifications",
+            description: "Intelligent alert system for critical issues and preventive maintenance."
+          },
+          {
+            icon: "👥",
+            title: "Role-based permission control",
+            description: "Granular access management based on user profile and responsibilities."
+          },
+          {
+            icon: "📊",
+            title: "Report export",
+            description: "Automatic generation of detailed reports in multiple formats."
+          },
+          {
+            icon: "🏢",
+            title: "Multi-site and multi-floor",
+            description: "Centralized management of multiple locations and building floors."
+          },
+          {
+            icon: "🔧",
+            title: "Cable management",
+            description: "Complete structured cabling control with end-to-end traceability."
+          }
+        ]
+      },
+      screenshots: {
+        title: "Visualize your infrastructure",
+        subtitle: "Intuitive interfaces designed to maximize your productivity",
+        dashboard: "Main dashboard",
+        topology: "Topology view",
+        equipment: "Equipment cards"
+      },
+      useCases: {
+        title: "Use cases by role",
+        subtitle: "NetHive adapts to the specific needs of each user",
+        roles: [
+          {
+            icon: "👷",
+            title: "Field technician",
+            description: "Mobile access to consult documentation, report incidents, and update equipment status in real time.",
+            features: ["Quick cable lookup", "Incident reporting", "Real-time updates"]
+          },
+          {
+            icon: "👨‍💼",
+            title: "Network administrator",
+            description: "Complete control panel to supervise infrastructure, manage changes, and plan expansions.",
+            features: ["Complete control panel", "Change management", "Expansion planning"]
+          },
+          {
+            icon: "📋",
+            title: "Auditor/Manager",
+            description: "Audit and compliance tools to generate detailed reports and verify standards compliance.",
+            features: ["Audit reports", "Compliance verification", "Trend analysis"]
+          }
+        ]
+      }
+    },
+    precios: {
+      hero: {
+        title: "Simple plans",
+        subtitle: "for companies of all sizes",
+        description: "Choose the perfect plan for your organization. All include technical support and free updates."
+      },
+      plans: {
+        title: "Find your ideal plan",
+        subtitle: "From startups to large corporations, we have the perfect solution",
+        starter: {
+          name: "Starter",
+          price: "$99",
+          period: "/month",
+          description: "Perfect for small teams just getting started",
+          features: [
+            "Up to 100 devices",
+            "1 MDF + 2 IDFs",
+            "Basic alerts",
+            "Monthly reports",
+            "Email support",
+            "1 admin user"
+          ],
+          cta: "Start trial",
+          popular: false
+        },
+        pro: {
+          name: "Pro",
+          price: "$299",
+          period: "/month",
+          description: "Ideal for growing companies with multiple locations",
+          features: [
+            "Up to 500 devices",
+            "3 MDFs + 10 IDFs",
+            "Advanced alerts",
+            "Custom reports",
+            "24/7 priority support",
+            "5 users with roles"
+          ],
+          cta: "14-day free trial",
+          popular: true
+        },
+        enterprise: {
+          name: "Enterprise",
+          price: "Custom",
+          period: "",
+          description: "Complete solution for large organizations",
+          features: [
+            "Unlimited devices",
+            "Unlimited MDFs + IDFs",
+            "Custom alerts",
+            "Full API",
+            "Dedicated support",
+            "Unlimited users"
+          ],
+          cta: "Contact sales",
+          popular: false
+        }
+      },
+      comparison: {
+        title: "Detailed comparison",
+        subtitle: "All the features you need, organized by plan",
+        categories: [
+          {
+            name: "Components and locations",
+            features: [
+              {
+                name: "Number of components",
+                starter: "50",
+                pro: "1,000",
+                enterprise: "Unlimited"
+              },
+              {
+                name: "Locations",
+                starter: "1",
+                pro: "Unlimited",
+                enterprise: "Unlimited"
+              },
+              {
+                name: "Concurrent users",
+                starter: "2",
+                pro: "25",
+                enterprise: "Unlimited"
+              }
+            ]
+          },
+          {
+            name: "Features",
+            features: [
+              {
+                name: "Visual mapping",
+                starter: "Basic",
+                pro: "Advanced",
+                enterprise: "Custom"
+              },
+              {
+                name: "REST API",
+                starter: "❌",
+                pro: "✅",
+                enterprise: "✅"
+              },
+              {
+                name: "LDAP integration",
+                starter: "❌",
+                pro: "❌",
+                enterprise: "✅"
+              }
+            ]
+          },
+          {
+            name: "Support",
+            features: [
+              {
+                name: "Technical support",
+                starter: "Email",
+                pro: "24/7 Chat",
+                enterprise: "Dedicated"
+              },
+              {
+                name: "SLA",
+                starter: "❌",
+                pro: "99.5%",
+                enterprise: "99.9%"
+              },
+              {
+                name: "Training",
+                starter: "Documentation",
+                pro: "Videos",
+                enterprise: "On-site"
+              }
+            ]
+          }
+        ]
+      },
+      faq: {
+        title: "Frequently asked questions",
+        subtitle: "Everything you need to know about our pricing and licenses",
+        questions: [
+          {
+            question: "Can I change plans at any time?",
+            answer: "Yes, you can upgrade or downgrade your plan at any time. Changes are reflected immediately and billed proportionally."
+          },
+          {
+            question: "What does the free trial include?",
+            answer: "The 14-day trial includes full access to the Professional plan without restrictions. No credit card required."
+          },
+          {
+            question: "Are there discounts for annual payment?",
+            answer: "Yes, we offer 20% discount on all plans with annual billing. Plus, we include 2 additional months free."
+          },
+          {
+            question: "How does technical support work?",
+            answer: "Starter plan includes email support with 24-48h response. Professional has 24/7 chat and Enterprise has dedicated support."
+          },
+          {
+            question: "Can I integrate NetHive with my current systems?",
+            answer: "Yes, we offer complete REST API in Professional and Enterprise plans, plus specific integrations for popular systems."
+          },
+          {
+            question: "What happens if I exceed my component limit?",
+            answer: "We'll notify you when you approach the limit. You can upgrade your plan or contact us for expansion options."
+          }
+        ]
+      },
+      cta: {
+        title: "Ready to transform your infrastructure?",
+        subtitle: "Join over 500 companies that already trust NetHive",
+        features: [
+          "⚡ Implementation in less than 24 hours",
+          "🔒 Guaranteed enterprise security",
+          "📞 24-hour support in English",
+          "💰 No installation costs"
+        ],
+        primaryCta: "Start free trial",
+        secondaryCta: "Schedule custom demo"
+      }
+    },
+    soporte: {
+      hero: {
+        title: "Help Center",
+        subtitle: "Need help? We're here for you",
+        description: "Find quick answers, access complete documentation, and contact our technical support team.",
+        searchPlaceholder: "Search documentation..."
+      },
+      search: {
+        title: "How can we help you?",
+        subtitle: "Search our knowledge base or explore popular categories",
+        popularSearches: ["Initial setup", "User management", "API", "Integrations", "Troubleshooting"]
+      },
+      categories: {
+        title: "Help categories",
+        subtitle: "Explore our guides organized by topics",
+        items: [
+          {
+            icon: "📦",
+            title: "Inventory",
+            description: "Network components and equipment management",
+            articles: 12,
+            topics: ["Add equipment", "Manage components", "QR codes", "Import data"]
+          },
+          {
+            icon: "🔗",
+            title: "Connections",
+            description: "Connection mapping and documentation",
+            articles: 8,
+            topics: ["Create connections", "Visual mapping", "Cable tracing", "Document routes"]
+          },
+          {
+            icon: "👥",
+            title: "Users & Permissions",
+            description: "Access administration and roles",
+            articles: 6,
+            topics: ["Create users", "Assign roles", "Permissions", "SSO/LDAP"]
+          },
+          {
+            icon: "🔌",
+            title: "Integrations",
+            description: "Connect NetHive with your systems",
+            articles: 10,
+            topics: ["REST API", "Webhooks", "SNMP", "External systems"]
+          },
+          {
+            icon: "📊",
+            title: "Reports",
+            description: "Generate custom reports",
+            articles: 5,
+            topics: ["Standard reports", "Export data", "Schedule reports", "Dashboards"]
+          },
+          {
+            icon: "⚙️",
+            title: "Configuration",
+            description: "System configuration and customization",
+            articles: 9,
+            topics: ["Initial setup", "Customization", "Backup", "Maintenance"]
+          }
+        ]
+      },
+      guides: {
+        title: "Step-by-step guides",
+        subtitle: "Detailed tutorials to get the most out of NetHive",
+        featured: [
+          {
+            type: "video",
+            title: "NetHive initial setup",
+            description: "Learn to configure your NetHive instance from scratch in less than 30 minutes",
+            duration: "28 min",
+            difficulty: "Beginner",
+            thumbnail: "/image/global/dashboard1.png"
+          },
+          {
+            type: "article",
+            title: "Advanced inventory management",
+            description: "Master advanced functions to efficiently manage thousands of components",
+            readTime: "15 min",
+            difficulty: "Intermediate",
+            thumbnail: "/image/global/dashboard1.png"
+          },
+          {
+            type: "video",
+            title: "SNMP systems integration",
+            description: "Connect NetHive with your existing monitoring infrastructure",
+            duration: "45 min",
+            difficulty: "Advanced",
+            thumbnail: "/image/global/dashboard1.png"
+          }
+        ]
+      },
+      support: {
+        title: "Need more help?",
+        subtitle: "Our team is ready to help you",
+        options: [
+          {
+            type: "chat",
+            title: "Live chat",
+            description: "Talk to our support team",
+            available: "24/7",
+            icon: "💬",
+            action: "Start chat"
+          },
+          {
+            type: "ticket",
+            title: "Create ticket",
+            description: "Send a detailed inquiry",
+            available: "Response in 2-4h",
+            icon: "🎫",
+            action: "Create ticket"
+          },
+          {
+            type: "email",
+            title: "Send email",
+            description: "Contact via email",
+            available: "support@nethive.com",
+            icon: "📧",
+            action: "Send email"
+          }
+        ]
+      },
+      status: {
+        title: "System status",
+        subtitle: "Monitor the status of our services in real time",
+        currentStatus: "All systems operational",
+        statusColor: "green",
+        services: [
+          {
+            name: "Main API",
+            status: "Operational",
+            uptime: "99.9%"
+          },
+          {
+            name: "Web Panel",
+            status: "Operational",
+            uptime: "99.8%"
+          },
+          {
+            name: "Database",
+            status: "Operational",
+            uptime: "99.9%"
+          },
+          {
+            name: "Notifications",
+            status: "Operational",
+            uptime: "99.7%"
+          }
+        ],
+        linkText: "View full status page"
+      }
     }
-  },
+  }
 };

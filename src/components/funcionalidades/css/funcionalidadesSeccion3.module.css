@@ -1,0 +1,211 @@
+.screenshotsSection {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.screenshotsSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(34, 211, 238, 0.2) 0%, transparent 30%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+  background: linear-gradient(120deg, #fff, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.screenshotsContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tabNavigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.tabButton {
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: #cbd5e1;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.tabButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.tabButton.active {
+  background: linear-gradient(135deg, #3b82f6, #22d3ee);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+}
+
+.screenshotDisplay {
+  perspective: 1000px;
+}
+
+.imageContainer {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transform: rotateX(5deg) rotateY(-5deg);
+  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.imageContainer:hover {
+  transform: rotateX(0deg) rotateY(0deg) scale(1.02);
+}
+
+.screenshot {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 2rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.imageContainer:hover .imageOverlay {
+  transform: translateY(0);
+}
+
+.overlayContent {
+  color: white;
+}
+
+.overlayTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #22d3ee;
+}
+
+.overlayDescription {
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Animación de entrada */
+.imageContainer {
+  opacity: 0;
+  transform: rotateX(5deg) rotateY(-5deg) translateY(50px);
+  animation: slideInUp 0.8s ease forwards;
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: rotateX(5deg) rotateY(-5deg) translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .screenshotsSection {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .tabNavigation {
+    gap: 0.5rem;
+  }
+
+  .tabButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .imageContainer {
+    transform: none;
+    border-radius: 16px;
+  }
+
+  .imageContainer:hover {
+    transform: scale(1.02);
+  }
+
+  .overlayContent {
+    padding: 1rem;
+  }
+
+  .overlayTitle {
+    font-size: 1.25rem;
+  }
+
+  .overlayDescription {
+    font-size: 0.9rem;
+  }
+}

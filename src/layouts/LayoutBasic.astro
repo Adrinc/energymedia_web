@@ -1,5 +1,5 @@
 ---
-
+import { ViewTransitions } from 'astro:transitions';
 
 import RouterLinks from '../components/react_components/RouterLinks.jsx';
 
@@ -28,6 +28,9 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		
+		<!-- View Transitions para transiciones suaves entre páginas -->
+		<ViewTransitions />
 	
 	</head>
 	<header>
@@ -206,7 +209,83 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
 		overflow: hidden;
 	}
 
-  
+	/* Transiciones personalizadas para View Transitions */
+	@view-transition {
+		navigation: auto;
+	}
 
+	/* Transición principal - fade y slide suave */
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 0.5s;
+		animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
 
+	::view-transition-old(root) {
+		animation-name: slide-out-to-left;
+	}
+
+	::view-transition-new(root) {
+		animation-name: slide-in-from-right;
+	}
+
+	/* Animaciones personalizadas */
+	@keyframes slide-out-to-left {
+		from {
+			transform: translateX(0);
+			opacity: 1;
+		}
+		to {
+			transform: translateX(-30px);
+			opacity: 0;
+		}
+	}
+
+	@keyframes slide-in-from-right {
+		from {
+			transform: translateX(30px);
+			opacity: 0;
+		}
+		to {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+
+	/* Transición especial para el navbar - se mantiene fijo */
+	header {
+		view-transition-name: navbar;
+	}
+
+	::view-transition-old(navbar),
+	::view-transition-new(navbar) {
+		animation: none;
+	}
+
+	/* Transición especial para el footer */
+	footer {
+		view-transition-name: footer;
+	}
+
+	::view-transition-old(footer),
+	::view-transition-new(footer) {
+		animation-duration: 0.4s;
+		animation-timing-function: ease-out;
+	}
+
+	/* Animación de carga para mejorar la percepción */
+	html:not(.astro-route-transition) {
+		animation: page-initial-load 0.3s ease-out;
+	}
+
+	@keyframes page-initial-load {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 </style>

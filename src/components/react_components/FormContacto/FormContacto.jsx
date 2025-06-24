@@ -14,6 +14,8 @@ const FormContacto = () => {
     ayuda: '',
   });
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -70,9 +72,13 @@ const FormContacto = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      setIsSubmitting(false);
       return;
     }
     setErrors({});
@@ -89,20 +95,26 @@ const FormContacto = () => {
       organization_id: "6"
     };
 
-    try {
-      const response = await fetch("https://u-n8n.virtalus.cbluna-dev.com/webhook/contactus_process", {
+    try {//"https://u-n8n.virtalus.cbluna-dev.com/webhook/contactus_process"
+      const response = await fetch("", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
+      
       if (response.ok) {
-        alert(t.success);
+        setSubmitStatus('success');
         setFormData({ nombre: '', email: '', telefono: '', ayuda: '' });
+        setTimeout(() => setSubmitStatus(null), 5000);
       } else {
-        alert(t.fail);
+        setSubmitStatus('error');
+        setTimeout(() => setSubmitStatus(null), 5000);
       }
     } catch (err) {
-      alert(t.fail_connection);
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -111,6 +123,21 @@ const FormContacto = () => {
       <h2 className={styles.title}>
         {t.title}
       </h2>
+      
+      {submitStatus === 'success' && (
+        <div className={styles.successMessage}>
+          <div className={styles.successIcon}>✓</div>
+          {t.success}
+        </div>
+      )}
+      
+      {submitStatus === 'error' && (
+        <div className={styles.errorMessage}>
+          <div className={styles.errorIcon}>✗</div>
+          {t.fail}
+        </div>
+      )}
+
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.field}>
           <label className={styles.label} htmlFor="nombre">
@@ -126,6 +153,7 @@ const FormContacto = () => {
               value={formData.nombre}
               onChange={handleChange}
               placeholder={t.placeholder_nombre}
+              disabled={isSubmitting}
             />
           </div>
           {errors.nombre && <p className={styles.error}>{errors.nombre}</p>}
@@ -145,6 +173,7 @@ const FormContacto = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder={t.placeholder_email}
+              disabled={isSubmitting}
             />
           </div>
           {errors.email && <p className={styles.error}>{errors.email}</p>}
@@ -164,6 +193,7 @@ const FormContacto = () => {
               value={formData.telefono}
               onChange={handleChange}
               placeholder={t.placeholder_telefono}
+              disabled={isSubmitting}
             />
           </div>
           {errors.telefono && <p className={styles.error}>{errors.telefono}</p>}
@@ -182,13 +212,25 @@ const FormContacto = () => {
               value={formData.ayuda}
               onChange={handleChange}
               placeholder={t.placeholder_ayuda}
+              disabled={isSubmitting}
             ></textarea>
           </div>
           {errors.ayuda && <p className={styles.error}>{errors.ayuda}</p>}
         </div>
 
-        <button type="submit" className={styles.submitButton}>
-          {t.enviar}
+        <button 
+          type="submit" 
+          className={`${styles.submitButton} ${isSubmitting ? styles.submitting : ''}`}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <>
+              <div className={styles.spinner}></div>
+              {t.enviando || 'Enviando...'}
+            </>
+          ) : (
+            t.enviar
+          )}
         </button>
       </form>
     </div>
