@@ -49,7 +49,7 @@ const HomeSeccion3 = () => {
               </div>
             ))}
           </div>
-          <button className={styles.demoButton}>
+          <button className={styles.demoButton} onClick={() => window.location.href = '/demo'}>
             <span className={styles.demoIcon}>▶️</span>
             {textos.demoButton}
           </button>

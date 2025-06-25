@@ -35,7 +35,7 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
 	</head>
 	<header>
 
-		<RouterLinks  transition:persist client:only />
+		{showNavBar &&  <RouterLinks  transition:persist client:only />}
 
 	
 		

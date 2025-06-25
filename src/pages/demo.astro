@@ -1,0 +1,8 @@
+---
+import LayoutBasic from '../layouts/LayoutBasic.astro';
+import DemoInteractivo from '../components/demo/DemoInteractivo.jsx';
+---
+
+<LayoutBasic title="NetHive - Demo Interactiva" showFooter={false} showNavBar={false}>
+    <DemoInteractivo transition:persist client:only/>
+</LayoutBasic>
