@@ -108,7 +108,7 @@ const FuncionalidadesSeccion3 = () => {
       quote: ingles 
         ? "The visualization tools have transformed how we manage our infrastructure"
         : "Las herramientas de visualización han transformado cómo gestionamos nuestra infraestructura",
-      avatar: "/image/testimonials/avatar1.png"
+      avatar: "/image/testimonials/avatar2.png"
     },
     {
       name: "Miguel Rodriguez", 
@@ -117,7 +117,7 @@ const FuncionalidadesSeccion3 = () => {
       quote: ingles
         ? "NetHive's interface is intuitive and incredibly powerful"
         : "La interfaz de NetHive es intuitiva e increíblemente poderosa",
-      avatar: "/image/testimonials/avatar2.png"
+      avatar: "/image/testimonials/avatar1.png"
     }
   ];
 

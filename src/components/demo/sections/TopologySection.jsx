@@ -120,7 +120,7 @@ const TopologySection = ({ topologyConnections }) => {
           ingles ? 'Patch Panel 48p' : 'Patch Panel 48p',
           ingles ? 'UPS Backup' : 'UPS Respaldo'
         ],
-        ports: { active: 24, total: 48 }
+        ports: { active: 2, total: 48 }
       },
     },
     {
