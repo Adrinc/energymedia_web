@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { isEnglish } from '../../data/variables';
 import { useStore } from '@nanostores/react';
-import StatCard from './StatCard';
+
+// Importar los componentes de secciones
+import DashboardSection from './sections/DashboardSection';
+import InventorySection from './sections/InventorySection';
+import TopologySection from './sections/TopologySection';
+import AlertsSection from './sections/AlertsSection';
+import SettingsSection from './sections/SettingsSection';
+
 import styles from "./css/demoInteractivo.module.css";
 
 const DemoInteractivo = () => {
@@ -61,39 +68,11 @@ const DemoInteractivo = () => {
     return () => clearInterval(alertInterval);
   }, [ingles]);
 
-  // Estadísticas calculadas dinámicamente basadas en los datos
-  const getStats = () => {
-    const switches = inventoryData.filter(item => item.tipo === 'Switch').length;
-    const patches = inventoryData.filter(item => item.tipo === 'Patch Panel').length;
-    const connections = topologyConnections.filter(conn => conn.estado === 'Activo').length;
-    const activeAlerts = alertsData.filter(alert => alert.tipo !== 'Info').length;
-
-    return {
-      switches: { value: switches, label: ingles ? "Active Switches" : "Switches Activos" },
-      patches: { value: patches, label: ingles ? "Patch Panels" : "Patch Panels" },
-      connections: { value: connections, label: ingles ? "Active Connections" : "Conexiones Activas" },
-      alerts: { value: activeAlerts, label: ingles ? "Active Alerts" : "Alertas Activas" }
-    };
-  };
-
   const content = {
     es: {
       title: "Demo Interactiva NetHive",
       subtitle: "Dashboard de Control de Infraestructura MDF/IDF",
       backButton: "Volver al inicio",
-      mdf: {
-        title: "MDF",
-        status: "En línea",
-        components: ["Switch Principal", "Patch Panel"]
-      },
-      idf1: {
-        title: "IDF 1",
-        components: ["Switch", "Patch Panel"]
-      },
-      idf2: {
-        title: "IDF 2", 
-        components: ["Switch", "Patch Panel", "UPS"]
-      },
       navigation: {
         dashboard: "Dashboard",
         inventory: "Inventario",
@@ -106,19 +85,6 @@ const DemoInteractivo = () => {
       title: "NetHive Interactive Demo",
       subtitle: "MDF/IDF Infrastructure Control Dashboard",
       backButton: "Back to home",
-      mdf: {
-        title: "MDF",
-        status: "Online",
-        components: ["Main Switch", "Patch Panel"]
-      },
-      idf1: {
-        title: "IDF 1",
-        components: ["Switch", "Patch Panel"]
-      },
-      idf2: {
-        title: "IDF 2",
-        components: ["Switch", "Patch Panel", "UPS"]
-      },
       navigation: {
         dashboard: "Dashboard",
         inventory: "Inventory",
@@ -146,384 +112,37 @@ const DemoInteractivo = () => {
   const renderContent = () => {
     switch(activeSection) {
       case 'dashboard':
-        return renderDashboard();
+        return (
+          <DashboardSection
+            inventoryData={inventoryData}
+            topologyConnections={topologyConnections}
+            alertsData={alertsData}
+            alerts={alerts}
+            onNavClick={handleNavClick}
+            onComponentClick={handleComponentClick}
+          />
+        );
       case 'inventory':
-        return renderInventory();
+        return <InventorySection inventoryData={inventoryData} />;
       case 'topology':
-        return renderTopology();
+        return <TopologySection topologyConnections={topologyConnections} />;
       case 'alerts':
-        return renderAlerts();
+        return <AlertsSection alertsData={alertsData} />;
       case 'settings':
-        return renderSettings();
+        return <SettingsSection configData={configData} />;
       default:
-        return renderDashboard();
+        return (
+          <DashboardSection
+            inventoryData={inventoryData}
+            topologyConnections={topologyConnections}
+            alertsData={alertsData}
+            alerts={alerts}
+            onNavClick={handleNavClick}
+            onComponentClick={handleComponentClick}
+          />
+        );
     }
   };
-
-  const renderDashboard = () => {
-    const stats = getStats();
-    
-    return (
-      <>
-        {/* Stats Cards usando el componente reutilizable */}
-        <div className={styles.statsGrid}>
-          <StatCard
-            icon="🔌"
-            value={stats.switches.value}
-            label={stats.switches.label}
-            color="#2563eb"
-            trend={{ type: 'up', value: '+2' }}
-            onClick={() => handleNavClick('inventory')}
-          />
-          <StatCard
-            icon="📋"
-            value={stats.patches.value}
-            label={stats.patches.label}
-            color="#059669"
-            onClick={() => handleNavClick('inventory')}
-          />
-          <StatCard
-            icon="🔗"
-            value={stats.connections.value}
-            label={stats.connections.label}
-            color="#0891b2"
-            trend={{ type: 'up', value: '98%' }}
-            onClick={() => handleNavClick('topology')}
-          />
-          <StatCard
-            icon="⚠️"
-            value={stats.alerts.value}
-            label={stats.alerts.label}
-            color="#dc2626"
-            trend={{ type: 'down', value: '-1' }}
-            onClick={() => handleNavClick('alerts')}
-          />
-        </div>
-
-        {/* Topology Diagram */}
-        <div className={styles.topologySection}>
-          <div className={styles.sectionHeader}>
-            <h3>{ingles ? 'Network Infrastructure Overview' : 'Vista General de Infraestructura'}</h3>
-            <div className={styles.topologyStats}>
-              <span className={styles.topologyStat}>
-                <span className={styles.statusDot}></span>
-                {ingles ? '1 MDF Active' : '1 MDF Activo'}
-              </span>
-              <span className={styles.topologyStat}>
-                <span className={styles.statusDot}></span>
-                {ingles ? '2 IDFs Online' : '2 IDFs En Línea'}
-              </span>
-            </div>
-          </div>
-          
-          <div className={styles.topologyContainer}>
-            {/* MDF */}
-            <div 
-              className={`${styles.networkNode} ${styles.mdf}`}
-              onClick={() => handleComponentClick('MDF')}
-            >
-              <div className={styles.nodeHeader}>
-                <span className={styles.nodeIcon}>🖥️</span>
-                <span className={styles.nodeTitle}>{textos.mdf.title}</span>
-              </div>
-              <div className={styles.statusIndicator}>
-                <span className={styles.statusDot}></span>
-                {textos.mdf.status}
-              </div>
-              <div className={styles.nodeComponents}>
-                {textos.mdf.components.map((comp, idx) => (
-                  <div key={idx} className={styles.component}>
-                    <span className={styles.componentDot}></span>
-                    {comp}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Connection Lines */}
-            <div className={styles.connectionLines}>
-              <div className={styles.connectionLine}></div>
-              <div className={styles.connectionLineRight}></div>
-            </div>
-
-            {/* IDFs */}
-            <div className={styles.idfContainer}>
-              <div 
-                className={`${styles.networkNode} ${styles.idf}`}
-                onClick={() => handleComponentClick('IDF1')}
-              >
-                <div className={styles.nodeHeader}>
-                  <span className={styles.nodeIcon}>🖲️</span>
-                  <span className={styles.nodeTitle}>{textos.idf1.title}</span>
-                </div>
-                <div className={styles.nodeComponents}>
-                  {textos.idf1.components.map((comp, idx) => (
-                    <div key={idx} className={styles.component}>
-                      <span className={styles.componentDot}></span>
-                      {comp}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div 
-                className={`${styles.networkNode} ${styles.idf}`}
-                onClick={() => handleComponentClick('IDF2')}
-              >
-                <div className={styles.nodeHeader}>
-                  <span className={styles.nodeIcon}>🖲️</span>
-                  <span className={styles.nodeTitle}>{textos.idf2.title}</span>
-                </div>
-                <div className={styles.nodeComponents}>
-                  {textos.idf2.components.map((comp, idx) => (
-                    <div key={idx} className={styles.component}>
-                      <span className={styles.componentDot}></span>
-                      {comp}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* End Devices */}
-            <div className={styles.endDevices}>
-              <div className={styles.endDevice}>
-                <div className={styles.deviceIcon}>💻</div>
-                <div className={styles.deviceLabel}>
-                  {ingles ? 'Workstations' : 'Estaciones'}
-                </div>
-              </div>
-              <div className={styles.endDevice}>
-                <div className={styles.deviceIcon}>💻</div>
-                <div className={styles.deviceLabel}>
-                  {ingles ? 'Servers' : 'Servidores'}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Alerts Panel */}
-        {alerts.length > 0 && (
-          <div className={styles.alertsPanel}>
-            <h3>{ingles ? 'Recent Alerts' : 'Alertas Recientes'}</h3>
-            {alerts.map(alert => (
-              <div key={alert.id} className={`${styles.alert} ${styles[alert.type]}`}>
-                {alert.message}
-              </div>
-            ))}
-          </div>
-        )}
-      </>
-    );
-  };
-
-  const renderInventory = () => (
-    <div className={styles.tableSection}>
-      <div className={styles.sectionHeader}>
-        <h3>{ingles ? 'Infrastructure Inventory' : 'Inventario de Infraestructura'}</h3>
-        <button className={styles.addButton}>
-          + {ingles ? 'Add Equipment' : 'Agregar Equipo'}
-        </button>
-      </div>
-      <div className={styles.tableContainer}>
-        <table className={styles.dataTable}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>{ingles ? 'Type' : 'Tipo'}</th>
-              <th>{ingles ? 'Model' : 'Modelo'}</th>
-              <th>{ingles ? 'Location' : 'Ubicación'}</th>
-              <th>{ingles ? 'Status' : 'Estado'}</th>
-              <th>{ingles ? 'Ports/Capacity' : 'Puertos/Capacidad'}</th>
-              <th>{ingles ? 'Install Date' : 'Fecha Instalación'}</th>
-              <th>{ingles ? 'Actions' : 'Acciones'}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {inventoryData.map((item) => (
-              <tr key={item.id} className={styles.tableRow}>
-                <td>{item.id}</td>
-                <td>
-                  <span className={styles.typeTag}>{item.tipo}</span>
-                </td>
-                <td>{item.modelo}</td>
-                <td>{item.ubicacion}</td>
-                <td>
-                  <span className={`${styles.statusBadge} ${styles.operativo}`}>
-                    {item.estado}
-                  </span>
-                </td>
-                <td>{item.puertos || item.longitud || item.capacidad || item.unidades}</td>
-                <td>{item.fechaInstalacion}</td>
-                <td>
-                  <div className={styles.actionButtons}>
-                    <button className={styles.actionBtn}>📝</button>
-                    <button className={styles.actionBtn}>🔍</button>
-                    <button className={styles.actionBtn}>🗑️</button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-
-  const renderTopology = () => (
-    <div className={styles.tableSection}>
-      <div className={styles.sectionHeader}>
-        <h3>{ingles ? 'Network Topology' : 'Topología de Red'}</h3>
-        <button className={styles.addButton}>
-          + {ingles ? 'Add Connection' : 'Agregar Conexión'}
-        </button>
-      </div>
-      <div className={styles.tableContainer}>
-        <table className={styles.dataTable}>
-          <thead>
-            <tr>
-              <th>{ingles ? 'From' : 'Origen'}</th>
-              <th>{ingles ? 'To' : 'Destino'}</th>
-              <th>{ingles ? 'Connection Type' : 'Tipo Conexión'}</th>
-              <th>{ingles ? 'Status' : 'Estado'}</th>
-              <th>{ingles ? 'Bandwidth' : 'Ancho de Banda'}</th>
-              <th>{ingles ? 'Actions' : 'Acciones'}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {topologyConnections.map((conn, index) => (
-              <tr key={index} className={styles.tableRow}>
-                <td>
-                  <div className={styles.nodeCell}>
-                    <span className={styles.nodeIcon}>🖥️</span>
-                    {conn.from}
-                  </div>
-                </td>
-                <td>
-                  <div className={styles.nodeCell}>
-                    <span className={styles.nodeIcon}>🖲️</span>
-                    {conn.to}
-                  </div>
-                </td>
-                <td>
-                  <span className={styles.connectionType}>{conn.tipo}</span>
-                </td>
-                <td>
-                  <span className={`${styles.statusBadge} ${conn.estado === 'Activo' ? styles.activo : styles.inactivo}`}>
-                    {conn.estado}
-                  </span>
-                </td>
-                <td>{conn.ancho_banda}</td>
-                <td>
-                  <div className={styles.actionButtons}>
-                    <button className={styles.actionBtn}>📊</button>
-                    <button className={styles.actionBtn}>🔧</button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-
-  const renderAlerts = () => (
-    <div className={styles.tableSection}>
-      <div className={styles.sectionHeader}>
-        <h3>{ingles ? 'System Alerts' : 'Alertas del Sistema'}</h3>
-        <button className={styles.clearButton}>
-          🗑️ {ingles ? 'Clear All' : 'Limpiar Todo'}
-        </button>
-      </div>
-      <div className={styles.tableContainer}>
-        <table className={styles.dataTable}>
-          <thead>
-            <tr>
-              <th>{ingles ? 'Type' : 'Tipo'}</th>
-              <th>{ingles ? 'Message' : 'Mensaje'}</th>
-              <th>{ingles ? 'Timestamp' : 'Fecha/Hora'}</th>
-              <th>{ingles ? 'Severity' : 'Criticidad'}</th>
-              <th>{ingles ? 'Actions' : 'Acciones'}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {alertsData.map((alert) => (
-              <tr key={alert.id} className={styles.tableRow}>
-                <td>
-                  <span className={`${styles.alertType} ${styles[alert.tipo.toLowerCase()]}`}>
-                    {alert.tipo}
-                  </span>
-                </td>
-                <td>{alert.mensaje}</td>
-                <td>{alert.timestamp}</td>
-                <td>
-                  <span className={`${styles.severityBadge} ${styles[alert.criticidad.toLowerCase()]}`}>
-                    {alert.criticidad}
-                  </span>
-                </td>
-                <td>
-                  <div className={styles.actionButtons}>
-                    <button className={styles.actionBtn}>✓</button>
-                    <button className={styles.actionBtn}>👁️</button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-
-  const renderSettings = () => (
-    <div className={styles.tableSection}>
-      <div className={styles.sectionHeader}>
-        <h3>{ingles ? 'System Configuration' : 'Configuración del Sistema'}</h3>
-        <button className={styles.saveButton}>
-          💾 {ingles ? 'Save Changes' : 'Guardar Cambios'}
-        </button>
-      </div>
-      <div className={styles.tableContainer}>
-        <table className={styles.dataTable}>
-          <thead>
-            <tr>
-              <th>{ingles ? 'Category' : 'Categoría'}</th>
-              <th>{ingles ? 'Parameter' : 'Parámetro'}</th>
-              <th>{ingles ? 'Value' : 'Valor'}</th>
-              <th>{ingles ? 'Description' : 'Descripción'}</th>
-              <th>{ingles ? 'Actions' : 'Acciones'}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {configData.map((config, index) => (
-              <tr key={index} className={styles.tableRow}>
-                <td>
-                  <span className={styles.categoryTag}>{config.categoria}</span>
-                </td>
-                <td>{config.parametro}</td>
-                <td>
-                  <input 
-                    type="text" 
-                    defaultValue={config.valor} 
-                    className={styles.configInput}
-                  />
-                </td>
-                <td className={styles.descriptionCell}>{config.descripcion}</td>
-                <td>
-                  <div className={styles.actionButtons}>
-                    <button className={styles.actionBtn}>✓</button>
-                    <button className={styles.actionBtn}>↻</button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
 
   return (
     <div className={styles.demoContainer}>

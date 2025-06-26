@@ -1,0 +1,322 @@
+/* Table Sections - PlutoGrid Style */
+.tableSection {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionHeader h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #7ae582 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.addButton, .clearButton, .saveButton {
+  background: linear-gradient(45deg, #7ae582 0%, #2563eb 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.clearButton {
+  background: linear-gradient(45deg, #dc2626 0%, #ef4444 100%);
+}
+
+.saveButton {
+  background: linear-gradient(45deg, #059669 0%, #10b981 100%);
+}
+
+.addButton:hover, .clearButton:hover, .saveButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(122, 229, 130, 0.3);
+}
+
+.tableContainer {
+  background: rgba(26, 32, 44, 0.5);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.dataTable thead {
+  background: rgba(122, 229, 130, 0.1);
+  border-bottom: 2px solid rgba(122, 229, 130, 0.3);
+}
+
+.dataTable th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #7ae582;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dataTable th:last-child {
+  border-right: none;
+}
+
+.tableRow {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tableRow:hover {
+  background: rgba(122, 229, 130, 0.05);
+  transform: scale(1.01);
+}
+
+.dataTable td {
+  padding: 1rem;
+  color: #e2e8f0;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+}
+
+.dataTable td:last-child {
+  border-right: none;
+}
+
+/* Table Cell Components */
+.typeTag {
+  background: linear-gradient(45deg, #3b82f6 0%, #1e40af 100%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusBadge.operativo, .statusBadge.activo {
+  background: linear-gradient(45deg, #059669 0%, #10b981 100%);
+  color: white;
+}
+
+.statusBadge.inactivo {
+  background: linear-gradient(45deg, #dc2626 0%, #ef4444 100%);
+  color: white;
+}
+
+.nodeCell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nodeCell .nodeIcon {
+  font-size: 1.2rem;
+}
+
+.connectionType {
+  background: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.alertType {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.alertType.warning {
+  background: linear-gradient(45deg, #f59e0b 0%, #fbbf24 100%);
+  color: #1a202c;
+}
+
+.alertType.info {
+  background: linear-gradient(45deg, #3b82f6 0%, #60a5fa 100%);
+  color: white;
+}
+
+.alertType.critical {
+  background: linear-gradient(45deg, #dc2626 0%, #ef4444 100%);
+  color: white;
+}
+
+.severityBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.severityBadge.alta {
+  background: linear-gradient(45deg, #dc2626 0%, #ef4444 100%);
+  color: white;
+}
+
+.severityBadge.media {
+  background: linear-gradient(45deg, #f59e0b 0%, #fbbf24 100%);
+  color: #1a202c;
+}
+
+.severityBadge.baja {
+  background: linear-gradient(45deg, #059669 0%, #10b981 100%);
+  color: white;
+}
+
+.categoryTag {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.configInput {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.5rem;
+  color: #f7fafc;
+  font-size: 0.875rem;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.configInput:focus {
+  outline: none;
+  border-color: #7ae582;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.descriptionCell {
+  max-width: 200px;
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-size: 0.8rem;
+  color: #a0aec0;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.actionBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.5rem;
+  color: #e2e8f0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionBtn:hover {
+  background: rgba(122, 229, 130, 0.2);
+  border-color: #7ae582;
+  transform: scale(1.1);
+}
+
+/* Responsive Design for Tables */
+@media (max-width: 1200px) {
+  .dataTable {
+    font-size: 0.8rem;
+  }
+  
+  .dataTable th,
+  .dataTable td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .sectionHeader {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .addButton, .clearButton, .saveButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .tableContainer {
+    overflow-x: auto;
+  }
+  
+  .dataTable {
+    min-width: 700px;
+  }
+  
+  .tableSection {
+    padding: 1rem;
+  }
+  
+  .sectionHeader h3 {
+    font-size: 1.25rem;
+  }
+  
+  .descriptionCell {
+    max-width: 150px;
+    font-size: 0.75rem;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .actionBtn {
+    min-width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+}

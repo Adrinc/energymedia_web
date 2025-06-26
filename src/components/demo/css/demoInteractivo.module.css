@@ -1,3 +1,4 @@
+/* Layout principal y estilos generales */
 .demoContainer {
   min-height: 100vh;
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
@@ -180,269 +181,6 @@
   transform: translateY(-2px);
 }
 
-/* Stats Grid */
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.statCard {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.statCard:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.15);
-  border-color: var(--card-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.statIcon {
-  font-size: 2.5rem;
-  padding: 1rem;
-  border-radius: 12px;
-  background: var(--card-color);
-  color: white;
-}
-
-.statContent {
-  flex: 1;
-}
-
-.statValue {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #f7fafc;
-  margin-bottom: 0.25rem;
-}
-
-.statLabel {
-  font-size: 0.875rem;
-  color: #a0aec0;
-  font-weight: 500;
-}
-
-/* Topology Section */
-.topologySection {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.topologyContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-  position: relative;
-}
-
-/* Network Nodes */
-.networkNode {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 1.5rem;
-  min-width: 200px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.networkNode:hover {
-  transform: scale(1.05);
-  border-color: #7ae582;
-  box-shadow: 0 15px 30px rgba(122, 229, 130, 0.3);
-}
-
-.mdf {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  border-color: #3b82f6;
-}
-
-.idf {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  border-color: #10b981;
-}
-
-.nodeHeader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.nodeIcon {
-  font-size: 1.5rem;
-}
-
-.nodeTitle {
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.statusIndicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 0.875rem;
-  color: #e2e8f0;
-}
-
-.statusDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.nodeComponents {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.component {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: #e2e8f0;
-}
-
-.componentDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #7ae582;
-}
-
-/* Connection Lines */
-.connectionLines {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 2px;
-  display: flex;
-}
-
-.connectionLine,
-.connectionLineRight {
-  height: 2px;
-  background: linear-gradient(90deg, #7ae582 0%, #2563eb 50%, #7ae582 100%);
-  flex: 1;
-  position: relative;
-  animation: dataFlow 3s infinite;
-}
-
-@keyframes dataFlow {
-  0% { background-position: -100% 0; }
-  100% { background-position: 100% 0; }
-}
-
-/* IDF Container */
-.idfContainer {
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-}
-
-/* End Devices */
-.endDevices {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.endDevice {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  padding: 1rem;
-  transition: all 0.3s ease;
-}
-
-.endDevice:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.deviceIcon {
-  font-size: 1.5rem;
-}
-
-/* Alerts Panel */
-.alertsPanel {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.alertsPanel h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.alert {
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
-  border-left: 4px solid;
-  animation: slideIn 0.3s ease;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.alert.warning {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: #f59e0b;
-  color: #fbbf24;
-}
-
-.alert.info {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: #3b82f6;
-  color: #60a5fa;
-}
-
 /* Modal */
 .modal {
   position: fixed;
@@ -518,332 +256,29 @@
   box-shadow: 0 10px 20px rgba(122, 229, 130, 0.3);
 }
 
-/* Table Sections - PlutoGrid Style */
-.tableSection {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.sectionHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.sectionHeader h3 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  background: linear-gradient(90deg, #7ae582 0%, #2563eb 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.addButton, .clearButton, .saveButton {
-  background: linear-gradient(45deg, #7ae582 0%, #2563eb 100%);
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.875rem;
-}
-
-.clearButton {
-  background: linear-gradient(45deg, #dc2626 0%, #ef4444 100%);
-}
-
-.saveButton {
-  background: linear-gradient(45deg, #059669 0%, #10b981 100%);
-}
-
-.addButton:hover, .clearButton:hover, .saveButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(122, 229, 130, 0.3);
-}
-
-.tableContainer {
-  background: rgba(26, 32, 44, 0.5);
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.dataTable {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.875rem;
-}
-
-.dataTable thead {
-  background: rgba(122, 229, 130, 0.1);
-  border-bottom: 2px solid rgba(122, 229, 130, 0.3);
-}
-
-.dataTable th {
-  padding: 1rem;
-  text-align: left;
-  font-weight: 600;
-  color: #7ae582;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.75rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dataTable th:last-child {
-  border-right: none;
-}
-
-.tableRow {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.tableRow:hover {
-  background: rgba(122, 229, 130, 0.05);
-  transform: scale(1.01);
-}
-
-.dataTable td {
-  padding: 1rem;
-  color: #e2e8f0;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
-  vertical-align: middle;
-}
-
-.dataTable td:last-child {
-  border-right: none;
-}
-
-/* Table Cell Components */
-.typeTag {
-  background: linear-gradient(45deg, #3b82f6 0%, #1e40af 100%);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.statusBadge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.statusBadge.operativo, .statusBadge.activo {
-  background: linear-gradient(45deg, #059669 0%, #10b981 100%);
-  color: white;
-}
-
-.statusBadge.inactivo {
-  background: linear-gradient(45deg, #dc2626 0%, #ef4444 100%);
-  color: white;
-}
-
-.nodeCell {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nodeCell .nodeIcon {
-  font-size: 1.2rem;
-}
-
-.connectionType {
-  background: rgba(59, 130, 246, 0.2);
-  color: #60a5fa;
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.alertType {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.alertType.warning {
-  background: linear-gradient(45deg, #f59e0b 0%, #fbbf24 100%);
-  color: #1a202c;
-}
-
-.alertType.info {
-  background: linear-gradient(45deg, #3b82f6 0%, #60a5fa 100%);
-  color: white;
-}
-
-.alertType.critical {
-  background: linear-gradient(45deg, #dc2626 0%, #ef4444 100%);
-  color: white;
-}
-
-.severityBadge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.severityBadge.alta {
-  background: linear-gradient(45deg, #dc2626 0%, #ef4444 100%);
-  color: white;
-}
-
-.severityBadge.media {
-  background: linear-gradient(45deg, #f59e0b 0%, #fbbf24 100%);
-  color: #1a202c;
-}
-
-.severityBadge.baja {
-  background: linear-gradient(45deg, #059669 0%, #10b981 100%);
-  color: white;
-}
-
-.categoryTag {
-  background: rgba(168, 85, 247, 0.2);
-  color: #c084fc;
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.configInput {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  padding: 0.5rem;
-  color: #f7fafc;
-  font-size: 0.875rem;
-  width: 100%;
-  transition: all 0.3s ease;
-}
-
-.configInput:focus {
-  outline: none;
-  border-color: #7ae582;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.descriptionCell {
-  max-width: 200px;
-  word-wrap: break-word;
-  line-height: 1.4;
-  font-size: 0.8rem;
-  color: #a0aec0;
-}
-
-.actionButtons {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.actionBtn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  padding: 0.5rem;
-  color: #e2e8f0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.875rem;
-  min-width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.actionBtn:hover {
-  background: rgba(122, 229, 130, 0.2);
-  border-color: #7ae582;
-  transform: scale(1.1);
-}
-
-/* Additional styles for improved topology section */
-.topologyStats {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.topologyStat {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: #e2e8f0;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.deviceLabel {
-  font-size: 0.75rem;
-  color: #a0aec0;
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
-
 /* Responsive Design */
 @media (max-width: 1024px) {
   .mainContent {
     flex-direction: column;
+    min-height: auto; /* Cambiar para que no calcule altura fija */
   }
 
   .sidebar {
     width: 100%;
     padding: 1rem 0;
+    margin-top: 0; /* Asegurar que no haya margin extra */
   }
 
   .navigation {
     flex-direction: row;
     overflow-x: auto;
     padding: 0 1rem;
+    margin-top: 1rem; /* Agregar margen superior para separar del header */
   }
 
   .navItem {
     white-space: nowrap;
     min-width: max-content;
-  }
-
-  .statsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-
-  .idfContainer {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .topologyContainer {
-    gap: 2rem;
   }
 }
 
@@ -852,22 +287,55 @@
     padding: 1rem;
     flex-direction: column;
     gap: 1rem;
+    align-items: stretch;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .headerLeft {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .headerRight {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .searchBox {
+    flex: 1;
+    margin-right: 1rem;
+  }
+
+  .searchInput {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .userProfile {
+    flex-shrink: 0;
+  }
+
+  .mainContent {
+    min-height: auto; /* Quitar altura calculada en responsive */
+    padding-top: 0; /* Asegurar que no haya padding extra */
+  }
+
+  .sidebar {
+    margin-top: 2.5rem; /* Margen adicional para separar del header más alto */
+  }
+
+  .navigation {
+    margin-top: 0; /* Resetear margen ya que el sidebar tiene margen */
   }
 
   .dashboardContent {
     padding: 1rem;
   }
 
-  .searchInput {
-    width: 200px;
-  }
-
   .title {
     font-size: 1.25rem;
-  }
-
-  .statsGrid {
-    grid-template-columns: 1fr;
   }
 
   .dashboardHeader {
@@ -880,56 +348,58 @@
     margin: 1rem;
     padding: 1.5rem;
   }
+}
 
-  .dataTable {
+/* Breakpoint adicional para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .header {
+    padding: 0.75rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .headerLeft {
+    gap: 0.5rem;
+  }
+
+  .logo {
+    height: 32px;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .searchInput {
     font-size: 0.8rem;
+    padding: 0.4rem 0.8rem 0.4rem 2rem;
   }
-  
-  .dataTable th,
-  .dataTable td {
-    padding: 0.75rem 0.5rem;
+
+  .searchIcon {
+    left: 0.5rem;
+    width: 14px;
+    height: 14px;
   }
-  
-  .sectionHeader {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-  
-  .addButton, .clearButton, .saveButton {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .tableContainer {
-    overflow-x: auto;
-  }
-  
-  .dataTable {
-    min-width: 700px;
-  }
-  
-  .tableSection {
-    padding: 1rem;
-  }
-  
-  .sectionHeader h3 {
-    font-size: 1.25rem;
-  }
-  
-  .descriptionCell {
-    max-width: 150px;
-    font-size: 0.75rem;
-  }
-  
-  .actionButtons {
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  
-  .actionBtn {
-    min-width: 28px;
+
+  .userAvatar {
+    width: 28px;
     height: 28px;
-    font-size: 0.75rem;
+  }
+
+  .mainContent {
+    min-height: auto; /* Asegurar que no haya altura calculada */
+  }
+
+  .sidebar {
+    margin-top: 1.5rem; /* Margen más grande para pantallas muy pequeñas */
+  }
+
+  .dashboardContent {
+    padding: 0.75rem;
+  }
+
+  .dashboardHeader h2 {
+    font-size: 1.5rem;
   }
 }
