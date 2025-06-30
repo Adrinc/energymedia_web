@@ -16,9 +16,7 @@ const DemoInteractivo = () => {
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [alerts, setAlerts] = useState([]);
   const [activeSection, setActiveSection] = useState('dashboard');
-
-  // Datos hardcodeados para el demo - ajustados para coherencia con el diagrama
-  const inventoryData = [
+  const [inventory, setInventory] = useState([
     { id: 1, tipo: 'Switch', modelo: 'Cisco 2960X-24PS', ubicacion: 'MDF-Rack-01', estado: 'Operativo', puertos: 24, fechaInstalacion: '2024-01-15' },
     { id: 2, tipo: 'Patch Panel', modelo: 'CommScope 1375055-2', ubicacion: 'MDF-Rack-01', estado: 'Operativo', puertos: 48, fechaInstalacion: '2024-01-15' },
     { id: 3, tipo: 'Switch', modelo: 'Cisco 2960X-48TS', ubicacion: 'IDF-01-Rack-01', estado: 'Operativo', puertos: 48, fechaInstalacion: '2024-02-10' },
@@ -27,8 +25,19 @@ const DemoInteractivo = () => {
     { id: 6, tipo: 'Patch Panel', modelo: 'Panduit DP485E88TGY', ubicacion: 'IDF-02-Rack-01', estado: 'Operativo', puertos: 48, fechaInstalacion: '2024-02-12' },
     { id: 7, tipo: 'Cable Cat6A', modelo: 'Belden 2413', ubicacion: 'MDF-IDF-01', estado: 'Operativo', longitud: '150m', fechaInstalacion: '2024-01-20' },
     { id: 8, tipo: 'UPS', modelo: 'APC Smart-UPS 3000VA', ubicacion: 'IDF-02-Rack-01', estado: 'Operativo', capacidad: '3000VA', fechaInstalacion: '2024-03-05' },
-    { id: 9, tipo: 'Fibra Optica', modelo: 'Corning SMF-28', ubicacion: 'MDF-IDF-02', estado: 'Operativo', tipo: 'Monomodo', fechaInstalacion: '2024-02-25' }
-  ];
+    { id: 9, tipo: 'Fibra Optica', modelo: 'Corning SMF-28', ubicacion: 'MDF-IDF-02', estado: 'Operativo', tipo: 'Monomodo', fechaInstalacion: '2024-02-25' },
+    { id: 10, tipo: 'Router', modelo: 'Cisco ISR 4321', ubicacion: 'MDF-Rack-01', estado: 'Operativo', puertos: 4, fechaInstalacion: '2024-01-10' },
+    { id: 11, tipo: 'Firewall', modelo: 'Fortinet FortiGate 100F', ubicacion: 'MDF-Rack-01', estado: 'Operativo', puertos: 14, fechaInstalacion: '2024-01-12' },
+    { id: 12, tipo: 'Switch', modelo: 'Cisco 2960X-24PS', ubicacion: 'IDF-03-Rack-01', estado: 'Operativo', puertos: 24, fechaInstalacion: '2024-03-15' },
+    { id: 13, tipo: 'Patch Panel', modelo: 'Panduit DP485E88TGY', ubicacion: 'IDF-03-Rack-01', estado: 'Operativo', puertos: 48, fechaInstalacion: '2024-03-15' },
+    { id: 14, tipo: 'UPS', modelo: 'APC Smart-UPS 1500VA', ubicacion: 'IDF-01-Rack-01', estado: 'Operativo', capacidad: '1500VA', fechaInstalacion: '2024-02-20' },
+    { id: 15, tipo: 'Cable Cat6A', modelo: 'Belden 2413', ubicacion: 'MDF-IDF-03', estado: 'Operativo', longitud: '200m', fechaInstalacion: '2024-03-10' },
+    { id: 16, tipo: 'Server Rack', modelo: 'APC NetShelter SX 42U', ubicacion: 'MDF-Rack-02', estado: 'Operativo', unidades: '42U', fechaInstalacion: '2024-01-05' },
+    { id: 17, tipo: 'PDU', modelo: 'APC Rack PDU 2G', ubicacion: 'MDF-Rack-02', estado: 'Operativo', puertos: 20, fechaInstalacion: '2024-01-08' },
+    { id: 18, tipo: 'Conversor Media', modelo: 'TP-Link MC220L', ubicacion: 'IDF-01-Rack-01', estado: 'Operativo', puertos: 2, fechaInstalacion: '2024-02-15' },
+    { id: 19, tipo: 'Access Point', modelo: 'Ubiquiti UniFi 6 Pro', ubicacion: 'Piso-02-Zona-A', estado: 'Operativo', capacidad: '300 usuarios', fechaInstalacion: '2024-03-20' },
+    { id: 20, tipo: 'KVM Switch', modelo: 'Raritan DKX3-101', ubicacion: 'MDF-Rack-01', estado: 'Operativo', puertos: 8, fechaInstalacion: '2024-01-18' }
+  ]);
 
   const topologyConnections = [
     { from: 'MDF', to: 'IDF-01', tipo: 'Fibra Optica', estado: 'Activo', ancho_banda: '10Gbps' },
@@ -109,12 +118,16 @@ const DemoInteractivo = () => {
     setActiveSection(section);
   };
 
+  const handleAddEquipment = (newEquipment) => {
+    setInventory(prevInventory => [...prevInventory, newEquipment]);
+  };
+
   const renderContent = () => {
     switch(activeSection) {
       case 'dashboard':
         return (
           <DashboardSection
-            inventoryData={inventoryData}
+            inventoryData={inventory}
             topologyConnections={topologyConnections}
             alertsData={alertsData}
             alerts={alerts}
@@ -123,7 +136,7 @@ const DemoInteractivo = () => {
           />
         );
       case 'inventory':
-        return <InventorySection inventoryData={inventoryData} />;
+        return <InventorySection inventoryData={inventory} onAddEquipment={handleAddEquipment} />;
       case 'topology':
         return <TopologySection topologyConnections={topologyConnections} />;
       case 'alerts':
@@ -133,7 +146,7 @@ const DemoInteractivo = () => {
       default:
         return (
           <DashboardSection
-            inventoryData={inventoryData}
+            inventoryData={inventory}
             topologyConnections={topologyConnections}
             alertsData={alertsData}
             alerts={alerts}
