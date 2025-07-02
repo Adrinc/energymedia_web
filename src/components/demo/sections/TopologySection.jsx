@@ -326,7 +326,7 @@ const TopologySection = ({ topologyConnections }) => {
           className={flowStyles.minimap}
           nodeColor={(node) => {
             switch (node.data?.type) {
-              case 'mdf': return '#3b82f6';
+              case 'mdf': return '#d58b0c';
               case 'idf': return '#10b981';
               case 'switch': return '#6366f1';
               case 'server': return '#8b5cf6';
