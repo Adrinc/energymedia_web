@@ -15,7 +15,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import styles from '../css/dashboardSection.module.css';
-import flowStyles from '../css/topologyFlow.module.css';
+import flowStyles from '../css/dashboardFlow.module.css'; // Cambiado de topologyFlow a dashboardFlow
 
 // Nodo personalizado para el dashboard
 const DashboardNode = ({ data }) => {

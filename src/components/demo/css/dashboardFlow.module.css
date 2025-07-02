@@ -1,34 +1,13 @@
-/* React Flow Container */
+/* React Flow Container - Dashboard específico */
 .flowContainer {
-  height: 900px; /* Aumentado de 700px a 800px */
+  height: 800px;
   width: 100%;
   background: rgba(26, 32, 44, 0.5);
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  /* Imagen de fondo */
-  background-image: url('/image/global/plano.jpg');
-  background-size: 100% 100%; /* Estira la imagen para llenar completamente el contenedor */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-blend-mode: overlay;
-}
-
-/* Imagen de fondo personalizada adicional */
-.backgroundImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/image/global/plano.jpg');
-  background-size: 100% 100%; /* Estira la imagen para llenar completamente el contenedor */
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.2; /* Aumentado ligeramente la opacidad para mejor visibilidad */
-  pointer-events: none;
-  z-index: 0;
+  /* Sin imagen de fondo para el dashboard */
 }
 
 /* Asegurar que React Flow esté por encima del fondo */
@@ -214,16 +193,16 @@
 .controls button {
   background: rgba(255, 255, 255, 0.1) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important; /* Cambiado de #e2e8f0 a blanco puro */
+  color: #ffffff !important;
   transition: all 0.3s ease !important;
-  font-size: 16px !important; /* Aumentar tamaño de iconos */
+  font-size: 16px !important;
 }
 
 .controls button:hover {
-  background: rgba(122, 229, 130, 0.3) !important; /* Aumentar opacidad del hover */
+  background: rgba(122, 229, 130, 0.3) !important;
   border-color: #7ae582 !important;
   color: #7ae582 !important;
-  transform: scale(1.1) !important; /* Efecto de escala en hover */
+  transform: scale(1.1) !important;
 }
 
 .controls button svg {
@@ -316,10 +295,10 @@
 }
 
 :global(.react-flow__edge-text) {
-  font-size: 12px !important; /* Aumentado de 10px a 12px */
-  font-weight: 700 !important; /* Aumentado de 600 a 700 */
-  fill: #ffffff !important; /* Cambiado de #e2e8f0 a blanco puro */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important; /* Agregar sombra para mejor legibilidad */
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  fill: #ffffff !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
   background: rgba(26, 32, 44, 0.8) !important;
   padding: 2px 6px !important;
   border-radius: 4px !important;
@@ -334,7 +313,7 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .flowContainer {
-    height: 700px; /* Aumentado de 600px a 700px */
+    height: 700px;
   }
   
   .customNode {
@@ -363,7 +342,7 @@
 
 @media (max-width: 768px) {
   .flowContainer {
-    height: 600px; /* Aumentado de 500px a 600px */
+    height: 600px;
   }
   
   .customNode {

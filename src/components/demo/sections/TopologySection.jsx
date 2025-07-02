@@ -340,6 +340,9 @@ const TopologySection = ({ topologyConnections }) => {
           size={1}
           color="#374151"
         />
+        
+        {/* Imagen de fondo personalizada */}
+        <div className={flowStyles.backgroundImage}></div>
       </ReactFlow>
       
       {/* Leyenda */}

@@ -96,21 +96,23 @@ const HomeSeccion1 = () => {
       
       <div className={`${styles.textosAnimados} ${styles[anim]}`}>
         <div className={styles.slideIcon}>{textos[index].icon}</div>
-        <span className={styles.titulo}>{textos[index].title}</span>
-        <span className={styles.subtitulo}>{textos[index].subtitle}</span>
-        
-        <div className={styles.indicators}>
-          {textos.map((_, i) => (
-            <div 
-              key={i} 
-              className={`${styles.indicator} ${i === index ? styles.active : ''}`}
-            >
+        <div className={styles.textContainer}>
+          <span className={styles.titulo}>{textos[index].title}</span>
+          <span className={styles.subtitulo}>{textos[index].subtitle}</span>
+          
+          <div className={styles.indicators}>
+            {textos.map((_, i) => (
               <div 
-                className={styles.progress} 
-                style={{ width: i === index ? `${progress}%` : '0%' }}
-              ></div>
-            </div>
-          ))}
+                key={i} 
+                className={`${styles.indicator} ${i === index ? styles.active : ''}`}
+              >
+                <div 
+                  className={styles.progress} 
+                  style={{ width: i === index ? `${progress}%` : '0%' }}
+                ></div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
