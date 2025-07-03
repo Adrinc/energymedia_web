@@ -4,7 +4,9 @@ import { isEnglish } from '../../../../data/variables';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import CompanyTableSection from './CompanyTableSection';
+import BranchesTableSection from './BranchesTableSection';
+import AddCompanyModal from './AddCompanyModal';
+import AddBranchModal from './AddBranchModal';
 import styles from './css/companySelector.module.css';
 
 // Configurar íconos de Leaflet
@@ -316,6 +318,10 @@ const CompanySelector = ({ onBranchSelect, onCompanySelect }) => {
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [viewMode, setViewMode] = useState('map'); // 'map' o 'table'
   const [companies, setCompanies] = useState([]);
+  const [showAddCompanyModal, setShowAddCompanyModal] = useState(false);
+  const [showAddBranchModal, setShowAddBranchModal] = useState(false);
+  const [editingCompany, setEditingCompany] = useState(null);
+  const [editingBranch, setEditingBranch] = useState(null);
   const mapRef = useRef(null);
 
   // Convertir companiesData a formato de array para la tabla
@@ -431,6 +437,78 @@ const CompanySelector = ({ onBranchSelect, onCompanySelect }) => {
         setSelectedCompany(null);
         setSelectedBranch(null);
       }
+    }
+  };
+
+  // Manejar CRUD de sucursales
+  const handleAddBranch = (branchData, isEdit = false) => {
+    if (!selectedCompany) return;
+    
+    if (isEdit) {
+      // Actualizar sucursal existente
+      const branchIndex = companiesData[selectedCompany].branches.findIndex(b => b.id === branchData.id);
+      if (branchIndex !== -1) {
+        companiesData[selectedCompany].branches[branchIndex] = branchData;
+      }
+      
+      // Actualizar en companies array
+      setCompanies(prev => prev.map(company => 
+        company.name === selectedCompany 
+          ? { 
+              ...company, 
+              branches: company.branches.map(branch => 
+                branch.id === branchData.id ? branchData : branch
+              )
+            }
+          : company
+      ));
+    } else {
+      // Agregar nueva sucursal
+      const newBranch = {
+        ...branchData,
+        id: Date.now(),
+        createdAt: new Date().toISOString()
+      };
+      
+      // Actualizar en companiesData
+      companiesData[selectedCompany].branches.push(newBranch);
+      
+      // Actualizar en companies array
+      setCompanies(prev => prev.map(company => 
+        company.name === selectedCompany 
+          ? { ...company, branches: [...company.branches, newBranch] }
+          : company
+      ));
+    }
+    
+    setShowAddBranchModal(false);
+    setEditingBranch(null);
+  };
+
+  const handleEditBranch = (branchData) => {
+    setEditingBranch(branchData);
+    setShowAddBranchModal(true);
+  };
+
+  const handleDeleteBranch = (branchId) => {
+    if (!selectedCompany) return;
+    
+    // Actualizar en companiesData
+    companiesData[selectedCompany].branches = companiesData[selectedCompany].branches.filter(b => b.id !== branchId);
+    
+    // Actualizar en companies array
+    setCompanies(prev => prev.map(company => 
+      company.name === selectedCompany 
+        ? { 
+            ...company, 
+            branches: company.branches.filter(branch => branch.id !== branchId)
+          }
+        : company
+    ));
+    
+    // Si la sucursal eliminada estaba seleccionada, limpiar selección
+    if (selectedBranch && selectedBranch.id === branchId) {
+      setSelectedBranch(null);
     }
   };
 
@@ -574,9 +652,16 @@ const CompanySelector = ({ onBranchSelect, onCompanySelect }) => {
       selectBranchInfo: "Selecciona una sucursal en el mapa para ver su dashboard",
       noBranchSelected: "Ninguna sucursal seleccionada",
       selectedBranch: "Sucursal seleccionada:",
+      selectedCompany: "Empresa seleccionada:",
       mapView: "Vista de Mapa",
-      tableView: "Gestión de Empresas",
-      viewToggle: "Cambiar Vista"
+      tableView: "Gestión de Sucursales",
+      viewToggle: "Cambiar Vista",
+      addCompany: "Añadir Empresa",
+      addBranch: "Añadir Sucursal",
+      branchesOf: "Sucursales de",
+      selectCompanyFirst: "Selecciona una empresa primero",
+      noCompanySelectedTitle: "No hay empresa seleccionada",
+      noCompanySelectedDesc: "Por favor, selecciona una empresa de la lista para ver sus sucursales."
     },
     en: {
       title: "Select Company",
@@ -587,9 +672,16 @@ const CompanySelector = ({ onBranchSelect, onCompanySelect }) => {
       selectBranchInfo: "Select a branch on the map to view its dashboard",
       noBranchSelected: "No branch selected",
       selectedBranch: "Selected branch:",
+      selectedCompany: "Selected company:",
       mapView: "Map View",
-      tableView: "Company Management",
-      viewToggle: "Toggle View"
+      tableView: "Branch Management",
+      viewToggle: "Toggle View",
+      addCompany: "Add Company",
+      addBranch: "Add Branch",
+      branchesOf: "Branches of",
+      selectCompanyFirst: "Please select a company first",
+      noCompanySelectedTitle: "No company selected",
+      noCompanySelectedDesc: "Please select a company from the list to view its branches."
     }
   };
 
@@ -597,102 +689,127 @@ const CompanySelector = ({ onBranchSelect, onCompanySelect }) => {
 
   return (
     <div className={styles.container}>
-      {viewMode === 'table' ? (
-        /* Vista de tabla */
-        <div className={styles.tableView}>
-          {/* Header con toggle para vista de tabla */}
-          <div className={styles.tableHeader}>
-            <div className={styles.tableHeaderContent}>
-              <h2>{currentTextos.tableView}</h2>
-              <div className={styles.tableViewToggle}>
-                <button 
-                  className={`${styles.toggleBtn} ${viewMode === 'map' ? styles.active : ''}`}
-                  onClick={() => setViewMode('map')}
-                >
-                  🗺️ {currentTextos.mapView}
-                </button>
-                <button 
-                  className={`${styles.toggleBtn} ${viewMode === 'table' ? styles.active : ''}`}
-                  onClick={() => setViewMode('table')}
-                >
-                  📊 {currentTextos.tableView}
-                </button>
+      {/* Panel lateral izquierdo - Siempre visible */}
+      <div className={styles.sidebar}>
+        <div className={styles.sidebarHeader}>
+          <h2>{currentTextos.title}</h2>
+          <p>{currentTextos.subtitle}</p>
+        </div>
+        
+        <div className={styles.companiesList}>
+          {companies.map((company) => (
+            <div
+              key={company.name}
+              className={`${styles.companyCard} ${selectedCompany === company.name ? styles.selected : ''}`}
+              onClick={() => handleCompanySelect(company.name)}
+            >
+              <h3>{company.name}</h3>
+              <p><strong>{currentTextos.industryLabel}</strong> {company.industry}</p>
+              <p><strong>{currentTextos.branchesLabel}</strong> {company.branches.length}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Botón para añadir empresa - Solo visible en vista de tabla */}
+        {viewMode === 'table' && (
+          <div className={styles.addCompanySection}>
+            <button 
+              className={styles.addCompanyButton}
+              onClick={() => setShowAddCompanyModal(true)}
+            >
+              <span className={styles.addIcon}>+</span>
+              {currentTextos.addCompany}
+            </button>
+          </div>
+        )}
+
+        {/* Información de sucursal seleccionada - Solo en vista de mapa */}
+        {viewMode === 'map' && (
+          <div className={styles.branchInfo}>
+            {selectedBranch ? (
+              <div className={styles.selectedBranchInfo}>
+                <h4>{currentTextos.selectedBranch}</h4>
+                <div className={styles.branchDetails}>
+                  <p><strong>{selectedBranch.name}</strong></p>
+                  <p>{selectedBranch.city}</p>
+                  <p>{selectedBranch.employees} {currentTextos.employeesLabel}</p>
+                </div>
               </div>
+            ) : (
+              <div className={styles.noBranchSelected}>
+                <p>{selectedCompany ? currentTextos.selectBranchInfo : currentTextos.noBranchSelected}</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Información de empresa seleccionada - Solo en vista de tabla */}
+        {viewMode === 'table' && selectedCompany && (
+          <div className={styles.companyInfo}>
+            <h4>{currentTextos.selectedCompany}</h4>
+            <div className={styles.companyDetails}>
+              <p><strong>{selectedCompany}</strong></p>
+              <p>{companiesData[selectedCompany].industry}</p>
+              <p>{companiesData[selectedCompany].branches.length} {currentTextos.branchesLabel}</p>
+              <button 
+                className={styles.addBranchButton}
+                onClick={() => setShowAddBranchModal(true)}
+              >
+                <span className={styles.addIcon}>+</span>
+                {currentTextos.addBranch}
+              </button>
             </div>
           </div>
-          
-          {/* Contenido de la tabla */}
-          <div className={styles.tableContent}>
-            <CompanyTableSection
-              companies={companies}
-              onAddCompany={handleAddCompany}
-              onEditCompany={handleEditCompany}
-              onDeleteCompany={handleDeleteCompany}
-            />
+        )}
+
+        {/* Toggle de vista en la sidebar */}
+        <div className={styles.sidebarFooter}>
+          <div className={styles.viewToggle}>
+            <button 
+              className={`${styles.toggleBtn} ${viewMode === 'map' ? styles.active : ''}`}
+              onClick={() => setViewMode('map')}
+            >
+              🗺️ {currentTextos.mapView}
+            </button>
+            <button 
+              className={`${styles.toggleBtn} ${viewMode === 'table' ? styles.active : ''}`}
+              onClick={() => setViewMode('table')}
+            >
+              📊 {currentTextos.tableView}
+            </button>
           </div>
         </div>
-      ) : (
-        /* Vista de mapa */
-        <>
-          {/* Panel lateral izquierdo */}
-          <div className={styles.sidebar}>
-            <div className={styles.sidebarHeader}>
-              <h2>{currentTextos.title}</h2>
-              <p>{currentTextos.subtitle}</p>
+      </div>
+
+      {/* Contenido principal */}
+      <div className={styles.mainContent}>
+        {viewMode === 'table' ? (
+          /* Vista de tabla */
+          <div className={styles.tableView}>
+            <div className={styles.tableHeader}>
+              <h2>{selectedCompany ? `${currentTextos.branchesOf} ${selectedCompany}` : currentTextos.selectCompanyFirst}</h2>
             </div>
             
-            <div className={styles.companiesList}>
-              {companies.map((company) => (
-                <div
-                  key={company.name}
-                  className={`${styles.companyCard} ${selectedCompany === company.name ? styles.selected : ''}`}
-                  onClick={() => handleCompanySelect(company.name)}
-                >
-                  <h3>{company.name}</h3>
-                  <p><strong>{currentTextos.industryLabel}</strong> {company.industry}</p>
-                  <p><strong>{currentTextos.branchesLabel}</strong> {company.branches.length}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Información de sucursal seleccionada */}
-            <div className={styles.branchInfo}>
-              {selectedBranch ? (
-                <div className={styles.selectedBranchInfo}>
-                  <h4>{currentTextos.selectedBranch}</h4>
-                  <div className={styles.branchDetails}>
-                    <p><strong>{selectedBranch.name}</strong></p>
-                    <p>{selectedBranch.city}</p>
-                    <p>{selectedBranch.employees} {currentTextos.employeesLabel}</p>
-                  </div>
-                </div>
+            <div className={styles.tableContent}>
+              {selectedCompany ? (
+                <BranchesTableSection
+                  branches={companiesData[selectedCompany].branches}
+                  companyName={selectedCompany}
+                  onAddBranch={handleAddBranch}
+                  onEditBranch={handleEditBranch}
+                  onDeleteBranch={handleDeleteBranch}
+                />
               ) : (
-                <div className={styles.noBranchSelected}>
-                  <p>{selectedCompany ? currentTextos.selectBranchInfo : currentTextos.noBranchSelected}</p>
+                <div className={styles.noCompanySelected}>
+                  <div className={styles.noCompanyIcon}>🏢</div>
+                  <h3>{currentTextos.noCompanySelectedTitle}</h3>
+                  <p>{currentTextos.noCompanySelectedDesc}</p>
                 </div>
               )}
             </div>
-
-            {/* Toggle de vista en la sidebar */}
-            <div className={styles.sidebarFooter}>
-              <div className={styles.viewToggle}>
-                <button 
-                  className={`${styles.toggleBtn} ${viewMode === 'map' ? styles.active : ''}`}
-                  onClick={() => setViewMode('map')}
-                >
-                  🗺️ {currentTextos.mapView}
-                </button>
-                <button 
-                  className={`${styles.toggleBtn} ${viewMode === 'table' ? styles.active : ''}`}
-                  onClick={() => setViewMode('table')}
-                >
-                  📊 {currentTextos.tableView}
-                </button>
-              </div>
-            </div>
           </div>
-
-          {/* Mapa */}
+        ) : (
+          /* Vista de mapa */
           <div className={styles.mapContainer}>
             <MapContainer
               center={mapCenter}
@@ -725,8 +842,26 @@ const CompanySelector = ({ onBranchSelect, onCompanySelect }) => {
               position={tooltipPosition}
             />
           </div>
-        </>
-      )}
+        )}
+      </div>
+
+      {/* Modal para agregar/editar empresa */}
+      <AddCompanyModal
+        isOpen={showAddCompanyModal}
+        onClose={() => setShowAddCompanyModal(false)}
+        onSaveCompany={handleAddCompany}
+        editingCompany={editingCompany}
+        existingCompanies={companies}
+      />
+
+      {/* Modal para agregar/editar sucursal */}
+      <AddBranchModal
+        isOpen={showAddBranchModal}
+        onClose={() => setShowAddBranchModal(false)}
+        onSaveBranch={handleAddBranch}
+        editingBranch={editingBranch}
+        companyName={selectedCompany}
+      />
     </div>
   );
 };

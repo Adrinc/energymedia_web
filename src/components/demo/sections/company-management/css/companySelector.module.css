@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-/* Sidebar */
+/* Sidebar - Siempre visible */
 .sidebar {
   width: 350px;
   background: rgba(26, 32, 44, 0.95);
@@ -472,13 +472,113 @@
   z-index: 10;
 }
 
+/* Área principal - Contenido dinámico */
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Botón para añadir empresa en sidebar */
+.addCompanySection {
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.addCompanyButton {
+  width: 100%;
+  background: linear-gradient(45deg, #7ae582 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(122, 229, 130, 0.3);
+}
+
+.addCompanyButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122, 229, 130, 0.4);
+}
+
+.addIcon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Información de empresa seleccionada */
+.companyInfo {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.companyInfo h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #7ae582;
+}
+
+.companyDetails {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.companyDetails p {
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
+.companyDetails p:first-child {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f7fafc;
+  margin-top: 0;
+}
+
+.addBranchButton {
+  width: 100%;
+  background: rgba(122, 229, 130, 0.2);
+  color: #7ae582;
+  border: 1px solid rgba(122, 229, 130, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.addBranchButton:hover {
+  background: rgba(122, 229, 130, 0.3);
+  border-color: rgba(122, 229, 130, 0.5);
+}
+
 /* Table View */
 .tableView {
   width: 100%;
-  min-height: 80vh;
+  height: 100%;
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* Table Header */
@@ -488,17 +588,10 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1.5rem 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
 }
 
-.tableHeaderContent {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.tableHeaderContent h2 {
+.tableHeader h2 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
@@ -508,103 +601,54 @@
   -webkit-text-fill-color: transparent;
 }
 
-.tableViewToggle {
-  display: flex;
-  background: rgba(26, 32, 44, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  gap: 0.5rem;
-  position: relative;
-  z-index: 10;
-}
-
-.tableViewToggle .toggleBtn {
-  background: transparent;
-  border: none;
-  color: #a0aec0;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  white-space: nowrap;
-  min-height: 44px;
-  position: relative;
-  z-index: 11;
-  outline: none;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.tableViewToggle .toggleBtn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #e2e8f0;
-  transform: none;
-}
-
-.tableViewToggle .toggleBtn:active {
-  transform: scale(0.98);
-}
-
-.tableViewToggle .toggleBtn.active {
-  background: linear-gradient(45deg, #7ae582 0%, #2563eb 100%);
-  color: white;
-  box-shadow: 0 4px 15px rgba(122, 229, 130, 0.3);
-}
-
-.tableViewToggle .toggleBtn.active:hover {
-  background: linear-gradient(45deg, #7ae582 0%, #2563eb 100%);
-  color: white;
-}
-
-/* Table Content */
 .tableContent {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
 }
 
-/* Responsive Design */
+/* Estado sin empresa seleccionada */
+.noCompanySelected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #a0aec0;
+}
+
+.noCompanyIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.noCompanySelected h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: #e2e8f0;
+}
+
+.noCompanySelected p {
+  margin: 0;
+  font-size: 1rem;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+/* Responsive Design - Actualizado */
 @media (max-width: 1024px) {
   .sidebar {
     width: 300px;
-  }
-  
-  .sidebarHeader {
-    padding: 1.5rem 1rem 0.75rem;
-  }
-  
-  .companyCard {
-    padding: 1rem;
-  }
-  
-  .sidebarFooter {
-    padding: 0.75rem;
   }
   
   .tableHeader {
     padding: 1.25rem 1.5rem;
   }
   
-  .tableHeaderContent {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-  
-  .tableViewToggle {
-    align-self: flex-end;
+  .tableContent {
+    padding: 1.5rem;
   }
 }
 
@@ -623,72 +667,40 @@
     flex-direction: column;
   }
   
-  .mapContainer {
+  .mainContent {
     height: 40vh;
     order: 1;
+    flex: none;
   }
   
-  .sidebarHeader h2 {
-    font-size: 1.25rem;
-  }
-  
-  .companiesList {
-    max-height: 25vh;
-    overflow-y: auto;
-    flex: 1;
-  }
-  
-  .companyCard {
-    padding: 0.75rem;
-  }
-  
-  .companyCard h3 {
-    font-size: 1rem;
-  }
-  
-  .branchInfo {
-    padding: 1rem;
-    min-height: auto;
-  }
-  
-  .sidebarFooter {
-    padding: 0.75rem;
-    margin-top: 0;
-  }
-  
-  .viewToggle {
-    padding: 0.4rem;
-  }
-  
-  .toggleBtn {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.8rem;
+  .mapContainer {
+    height: 100%;
   }
   
   .tableView {
-    padding: 0;
+    height: 100%;
   }
   
   .tableHeader {
     padding: 1rem;
   }
   
-  .tableHeaderContent {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-  }
-  
-  .tableHeaderContent h2 {
-    font-size: 1.25rem;
-  }
-  
-  .tableViewToggle {
-    padding: 0.4rem;
-  }
-  
   .tableContent {
     padding: 1rem;
+  }
+  
+  .addCompanyButton {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .companyInfo {
+    padding: 1rem;
+  }
+  
+  .addBranchButton {
+    padding: 0.6rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -697,65 +709,32 @@
     max-height: 65vh;
   }
   
-  .mapContainer {
+  .mainContent {
     height: 35vh;
-  }
-  
-  .sidebarHeader {
-    padding: 1rem 0.75rem 0.5rem;
-  }
-  
-  .companiesList {
-    padding: 0.75rem;
-    gap: 0.75rem;
-    max-height: 20vh;
-  }
-  
-  .companyCard {
-    padding: 0.75rem;
-  }
-  
-  .branchInfo {
-    padding: 0.75rem;
-  }
-  
-  .sidebarFooter {
-    padding: 0.5rem;
-  }
-  
-  .viewToggle {
-    padding: 0.3rem;
-  }
-  
-  .toggleBtn {
-    padding: 0.5rem 0.6rem;
-    font-size: 0.75rem;
-    gap: 0.25rem;
   }
   
   .tableHeader {
     padding: 0.75rem;
   }
   
-  .tableHeaderContent {
-    gap: 0.5rem;
-  }
-  
-  .tableHeaderContent h2 {
-    font-size: 1.125rem;
-  }
-  
-  .tableViewToggle {
-    padding: 0.3rem;
-  }
-  
-  .tableViewToggle .toggleBtn {
-    padding: 0.5rem 0.6rem;
-    font-size: 0.75rem;
+  .tableHeader h2 {
+    font-size: 1.25rem;
   }
   
   .tableContent {
     padding: 0.75rem;
+  }
+  
+  .noCompanyIcon {
+    font-size: 3rem;
+  }
+  
+  .noCompanySelected h3 {
+    font-size: 1.25rem;
+  }
+  
+  .noCompanySelected p {
+    font-size: 0.9rem;
   }
 }
 
