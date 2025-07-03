@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../data/variables';
 import styles from './css/addEquipmentModal.module.css';
@@ -19,6 +19,7 @@ const AddEquipmentModal = ({ isOpen, onClose, onAddEquipment, inventoryData }) =
   });
   const [imagePreview, setImagePreview] = useState(null);
   const [preventClose, setPreventClose] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const resetForm = () => {
     setNewEquipment({
@@ -38,9 +39,28 @@ const AddEquipmentModal = ({ isOpen, onClose, onAddEquipment, inventoryData }) =
 
   const handleClose = () => {
     if (!preventClose) {
-      resetForm();
-      onClose();
+      // Verificar si hay datos en el formulario
+      const hasData = Object.values(newEquipment).some(value => 
+        value !== '' && value !== 'Operativo' && value !== new Date().toISOString().split('T')[0] && value !== null
+      );
+      
+      if (hasData) {
+        setShowConfirmation(true);
+      } else {
+        resetForm();
+        onClose();
+      }
     }
+  };
+
+  const confirmClose = () => {
+    setShowConfirmation(false);
+    resetForm();
+    onClose();
+  };
+
+  const cancelClose = () => {
+    setShowConfirmation(false);
   };
 
   const handleOverlayClick = (e) => {
@@ -115,6 +135,37 @@ const AddEquipmentModal = ({ isOpen, onClose, onAddEquipment, inventoryData }) =
   return (
     <div className={styles.modalOverlay} onClick={handleOverlayClick}>
       <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+        {/* Modal de confirmación */}
+        {showConfirmation && (
+          <div className={styles.confirmationOverlay}>
+            <div className={styles.confirmationModal}>
+              <div className={styles.confirmationHeader}>
+                <h4>{ingles ? 'Confirm Exit' : 'Confirmar Salida'}</h4>
+              </div>
+              <div className={styles.confirmationContent}>
+                <p>{ingles ? 'Continue with iteration?' : '¿Desea continuar con la iteración?'}</p>
+                <p className={styles.confirmationWarning}>
+                  {ingles ? 'Unsaved data will be lost.' : 'Se perderán los datos no guardados.'}
+                </p>
+              </div>
+              <div className={styles.confirmationActions}>
+                <button
+                  className={styles.confirmationCancel}
+                  onClick={cancelClose}
+                >
+                  {ingles ? 'Cancel' : 'Cancelar'}
+                </button>
+                <button
+                  className={styles.confirmationConfirm}
+                  onClick={confirmClose}
+                >
+                  {ingles ? 'Continue' : 'Continuar'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className={styles.modalHeader}>
           <h3>{ingles ? 'Add New Equipment' : 'Agregar Nuevo Equipo'}</h3>
           <div className={styles.headerControls}>

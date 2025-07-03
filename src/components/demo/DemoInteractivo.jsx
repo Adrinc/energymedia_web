@@ -3,7 +3,8 @@ import { isEnglish } from '../../data/variables';
 import { useStore } from '@nanostores/react';
 
 // Importar los componentes de secciones
-import DashboardSection from './sections/DashboardSection';
+import CompanySelector from './sections/company-management/CompanySelector';
+import DashboardSection from './sections/dashboard/DashboardSection';
 import InventorySection from './sections/InventorySection';
 import TopologySection from './sections/TopologySection';
 import AlertsSection from './sections/AlertsSection';
@@ -15,7 +16,9 @@ const DemoInteractivo = () => {
   const ingles = useStore(isEnglish);
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [alerts, setAlerts] = useState([]);
-  const [activeSection, setActiveSection] = useState('dashboard');
+  const [activeSection, setActiveSection] = useState('company-selector'); // Cambiar inicio a company-selector
+  const [selectedBranchData, setSelectedBranchData] = useState(null); // Datos de la sucursal seleccionada
+  const [selectedCompany, setSelectedCompany] = useState(null); // Empresa seleccionada
   const [inventory, setInventory] = useState([
     { id: 1, tipo: 'Switch', modelo: 'Cisco 2960X-24PS', ubicacion: 'MDF-Rack-01', estado: 'Operativo', puertos: 24, fechaInstalacion: '2024-01-15' },
     { id: 2, tipo: 'Patch Panel', modelo: 'CommScope 1375055-2', ubicacion: 'MDF-Rack-01', estado: 'Operativo', puertos: 48, fechaInstalacion: '2024-01-15' },
@@ -122,17 +125,35 @@ const DemoInteractivo = () => {
     setInventory(prevInventory => [...prevInventory, newEquipment]);
   };
 
+  const handleBranchSelect = (branchData) => {
+    setSelectedBranchData(branchData);
+    setInventory(branchData.inventory);
+    setActiveSection('dashboard'); // Cambiar automáticamente al dashboard
+  };
+
+  const handleCompanySelect = (company) => {
+    setSelectedCompany(company);
+  };
+
   const renderContent = () => {
     switch(activeSection) {
+      case 'company-selector':
+        return (
+          <CompanySelector
+            onBranchSelect={handleBranchSelect}
+            onCompanySelect={handleCompanySelect}
+          />
+        );
       case 'dashboard':
         return (
           <DashboardSection
-            inventoryData={inventory}
-            topologyConnections={topologyConnections}
-            alertsData={alertsData}
+            inventoryData={selectedBranchData ? selectedBranchData.inventory : inventory}
+            topologyConnections={selectedBranchData ? selectedBranchData.topologyConnections : topologyConnections}
+            alertsData={selectedBranchData ? selectedBranchData.alertsData : alertsData}
             alerts={alerts}
             onNavClick={handleNavClick}
             onComponentClick={handleComponentClick}
+            branchInfo={selectedBranchData ? selectedBranchData.branchInfo : null}
           />
         );
       case 'inventory':
@@ -159,79 +180,100 @@ const DemoInteractivo = () => {
 
   return (
     <div className={styles.demoContainer}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.headerLeft}>
-          <img src="/logo_nh_b.png" alt="NetHive" className={styles.logo} />
-          <h1 className={styles.title}>{textos.title}</h1>
-        </div>
-        <div className={styles.headerRight}>
-          <div className={styles.searchBox}>
-            <input type="text" placeholder="Search..." className={styles.searchInput} />
-            <svg className={styles.searchIcon} viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-            </svg>
-          </div>
-          <div className={styles.userProfile}>
-            <img src="/icons/user.svg" alt="User" className={styles.userAvatar} />
-          </div>
-        </div>
-      </header>
+      {/* Solo mostrar header y sidebar si no estamos en company-selector */}
+      {activeSection !== 'company-selector' && (
+        <>
+          {/* Header */}
+          <header className={styles.header}>
+            <div className={styles.headerLeft}>
+              <img src="/logo_nh_b.png" alt="NetHive" className={styles.logo} />
+              <h1 className={styles.title}>{textos.title}</h1>
+              {selectedBranchData && (
+                <div className={styles.branchIndicator}>
+                  <span className={styles.branchName}>{selectedBranchData.branchInfo.name}</span>
+                  <span className={styles.companyName}>({selectedBranchData.branchInfo.company})</span>
+                </div>
+              )}
+            </div>
+            <div className={styles.headerRight}>
+              <div className={styles.searchBox}>
+                <input type="text" placeholder="Search..." className={styles.searchInput} />
+                <svg className={styles.searchIcon} viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.5 6.5 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+              </div>
+              <div className={styles.userProfile}>
+                <img src="/icons/user.svg" alt="User" className={styles.userAvatar} />
+              </div>
+            </div>
+          </header>
 
-      <div className={styles.mainContent}>
-        {/* Sidebar */}
-        <aside className={styles.sidebar}>
-          <nav className={styles.navigation}>
-            <div 
-              className={`${styles.navItem} ${activeSection === 'dashboard' ? styles.active : ''}`}
-              onClick={() => handleNavClick('dashboard')}
-            >
-              <span className={styles.navIcon}>📊</span>
-              {textos.navigation.dashboard}
-            </div>
-            <div 
-              className={`${styles.navItem} ${activeSection === 'inventory' ? styles.active : ''}`}
-              onClick={() => handleNavClick('inventory')}
-            >
-              <span className={styles.navIcon}>📦</span>
-              {textos.navigation.inventory}
-            </div>
-            <div 
-              className={`${styles.navItem} ${activeSection === 'topology' ? styles.active : ''}`}
-              onClick={() => handleNavClick('topology')}
-            >
-              <span className={styles.navIcon}>🌐</span>
-              {textos.navigation.topology}
-            </div>
-            <div 
-              className={`${styles.navItem} ${activeSection === 'alerts' ? styles.active : ''}`}
-              onClick={() => handleNavClick('alerts')}
-            >
-              <span className={styles.navIcon}>🚨</span>
-              {textos.navigation.alerts}
-            </div>
-            <div 
-              className={`${styles.navItem} ${activeSection === 'settings' ? styles.active : ''}`}
-              onClick={() => handleNavClick('settings')}
-            >
-              <span className={styles.navIcon}>⚙️</span>
-              {textos.navigation.settings}
-            </div>
-          </nav>
-        </aside>
+          <div className={styles.mainContent}>
+            {/* Sidebar */}
+            <aside className={styles.sidebar}>
+              <nav className={styles.navigation}>
+                <div 
+                  className={`${styles.navItem} ${activeSection === 'company-selector' ? styles.active : ''}`}
+                  onClick={() => handleNavClick('company-selector')}
+                >
+                  <span className={styles.navIcon}>🏢</span>
+                  {ingles ? 'Companies' : 'Empresas'}
+                </div>
+                <div 
+                  className={`${styles.navItem} ${activeSection === 'dashboard' ? styles.active : ''}`}
+                  onClick={() => handleNavClick('dashboard')}
+                >
+                  <span className={styles.navIcon}>📊</span>
+                  {textos.navigation.dashboard}
+                </div>
+                <div 
+                  className={`${styles.navItem} ${activeSection === 'inventory' ? styles.active : ''}`}
+                  onClick={() => handleNavClick('inventory')}
+                >
+                  <span className={styles.navIcon}>📦</span>
+                  {textos.navigation.inventory}
+                </div>
+                <div 
+                  className={`${styles.navItem} ${activeSection === 'topology' ? styles.active : ''}`}
+                  onClick={() => handleNavClick('topology')}
+                >
+                  <span className={styles.navIcon}>🌐</span>
+                  {textos.navigation.topology}
+                </div>
+                <div 
+                  className={`${styles.navItem} ${activeSection === 'alerts' ? styles.active : ''}`}
+                  onClick={() => handleNavClick('alerts')}
+                >
+                  <span className={styles.navIcon}>🚨</span>
+                  {textos.navigation.alerts}
+                </div>
+                <div 
+                  className={`${styles.navItem} ${activeSection === 'settings' ? styles.active : ''}`}
+                  onClick={() => handleNavClick('settings')}
+                >
+                  <span className={styles.navIcon}>⚙️</span>
+                  {textos.navigation.settings}
+                </div>
+              </nav>
+            </aside>
 
-        {/* Dashboard Content */}
-        <main className={styles.dashboardContent}>
-          <div className={styles.dashboardHeader}>
-            <h2>{textos.navigation[activeSection]}</h2>
-            <button className={styles.backButton} onClick={handleBackToHome}>
-              ← {textos.backButton}
-            </button>
+            {/* Dashboard Content */}
+            <main className={styles.dashboardContent}>
+              <div className={styles.dashboardHeader}>
+                <h2>{activeSection === 'company-selector' ? (ingles ? 'Select Company' : 'Seleccionar Empresa') : textos.navigation[activeSection]}</h2>
+                <button className={styles.backButton} onClick={handleBackToHome}>
+                  ← {textos.backButton}
+                </button>
+              </div>
+
+              {renderContent()}
+            </main>
           </div>
+        </>
+      )}
 
-          {renderContent()}
-        </main>
-      </div>
+      {/* Render CompanySelector directamente cuando está activo */}
+      {activeSection === 'company-selector' && renderContent()}
 
       {/* Selected Component Modal */}
       {selectedComponent && (

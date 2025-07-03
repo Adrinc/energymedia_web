@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useStore } from '@nanostores/react';
-import { isEnglish } from '../../../data/variables';
-import StatCard from '../StatCard';
+import { isEnglish } from '../../../../data/variables';
 import ReactFlow, {
   MiniMap,
   Controls,
@@ -14,13 +13,12 @@ import ReactFlow, {
   Position,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import styles from '../css/dashboardSection.module.css';
-import flowStyles from '../css/dashboardFlow.module.css'; // Cambiado de topologyFlow a dashboardFlow
+import styles from './css/dashboardVisual.module.css';
 
 // Nodo personalizado para el dashboard
 const DashboardNode = ({ data }) => {
   return (
-    <div className={`${flowStyles.customNode} ${flowStyles[data.type]}`}>
+    <div className={`${styles.customNode} ${styles[data.type]}`}>
       {/* Handles para conexiones */}
       <Handle
         type="target"
@@ -67,23 +65,23 @@ const DashboardNode = ({ data }) => {
         }}
       />
       
-      <div className={flowStyles.nodeHeader}>
-        <div className={flowStyles.nodeIcon}>{data.icon}</div>
-        <div className={flowStyles.nodeTitle}>{data.label}</div>
+      <div className={styles.nodeHeader}>
+        <div className={styles.nodeIcon}>{data.icon}</div>
+        <div className={styles.nodeTitle}>{data.label}</div>
       </div>
       
       {data.status && (
-        <div className={flowStyles.nodeStatus}>
-          <div className={`${flowStyles.statusDot} ${flowStyles[data.status]}`}></div>
+        <div className={styles.nodeStatus}>
+          <div className={`${styles.statusDot} ${styles[data.status]}`}></div>
           <span>{data.statusText}</span>
         </div>
       )}
       
       {data.stats && (
-        <div className={flowStyles.equipmentList}>
+        <div className={styles.equipmentList}>
           {data.stats.map((stat, idx) => (
-            <div key={idx} className={flowStyles.equipment}>
-              <span className={flowStyles.equipmentDot}></span>
+            <div key={idx} className={styles.equipment}>
+              <span className={styles.equipmentDot}></span>
               <span>{stat.label}: {stat.value}</span>
             </div>
           ))}
@@ -91,7 +89,7 @@ const DashboardNode = ({ data }) => {
       )}
       
       {data.health && (
-        <div className={flowStyles.portStatus}>
+        <div className={styles.portStatus}>
           {data.health}
         </div>
       )}
@@ -103,16 +101,8 @@ const nodeTypes = {
   dashboard: DashboardNode,
 };
 
-const DashboardSection = ({ 
-  inventoryData, 
-  topologyConnections, 
-  alertsData, 
-  alerts, 
-  onNavClick, 
-  onComponentClick 
-}) => {
+const DashboardVisual = ({ inventoryData, topologyConnections, alertsData, onNavClick }) => {
   const ingles = useStore(isEnglish);
-  const [viewMode, setViewMode] = useState('visual');
 
   // Estadísticas calculadas dinámicamente basadas en los datos
   const getStats = () => {
@@ -136,7 +126,7 @@ const DashboardSection = ({
     {
       id: 'overview-1',
       type: 'dashboard',
-      position: { x: 500, y: 80 }, // Más centrado y con mayor separación superior
+      position: { x: 500, y: 80 },
       data: {
         label: ingles ? 'Network Overview' : 'Vista General de Red',
         icon: '🌐',
@@ -153,7 +143,7 @@ const DashboardSection = ({
     {
       id: 'switches-1',
       type: 'dashboard',
-      position: { x: 100, y: 350 }, // Mayor separación vertical y horizontal
+      position: { x: 100, y: 350 },
       data: {
         label: ingles ? 'Switch Infrastructure' : 'Infraestructura de Switches',
         icon: '🔌',
@@ -170,7 +160,7 @@ const DashboardSection = ({
     {
       id: 'connections-1',
       type: 'dashboard',
-      position: { x: 900, y: 350 }, // Mayor separación horizontal
+      position: { x: 900, y: 350 },
       data: {
         label: ingles ? 'Active Connections' : 'Conexiones Activas',
         icon: '🔗',
@@ -187,7 +177,7 @@ const DashboardSection = ({
     {
       id: 'alerts-1',
       type: 'dashboard',
-      position: { x: 500, y: 650 }, // Mayor separación vertical y centrado
+      position: { x: 500, y: 650 },
       data: {
         label: ingles ? 'System Alerts' : 'Alertas del Sistema',
         icon: stats.alerts.value > 0 ? '⚠️' : '✅',
@@ -285,8 +275,8 @@ const DashboardSection = ({
     }
   }, [onNavClick]);
 
-  const renderVisualDashboard = () => (
-    <div className={flowStyles.flowContainer}>
+  return (
+    <div className={styles.flowContainer}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -301,9 +291,9 @@ const DashboardSection = ({
         attributionPosition="bottom-left"
         proOptions={{ hideAttribution: true }}
       >
-        <Controls className={flowStyles.controls} />
+        <Controls className={styles.controls} />
         <MiniMap 
-          className={flowStyles.minimap}
+          className={styles.minimap}
           nodeColor={(node) => {
             switch (node.data?.type) {
               case 'mdf': return '#3b82f6';
@@ -323,100 +313,25 @@ const DashboardSection = ({
       </ReactFlow>
       
       {/* Leyenda del Dashboard */}
-      <div className={flowStyles.legend}>
+      <div className={styles.legend}>
         <h4>{ingles ? 'System Status' : 'Estado del Sistema'}</h4>
-        <div className={flowStyles.legendItems}>
-          <div className={flowStyles.legendItem}>
-            <div className={`${flowStyles.legendDot} ${flowStyles.active}`}></div>
+        <div className={styles.legendItems}>
+          <div className={styles.legendItem}>
+            <div className={`${styles.legendDot} ${styles.active}`}></div>
             <span>{ingles ? 'Operational' : 'Operacional'}</span>
           </div>
-          <div className={flowStyles.legendItem}>
-            <div className={`${flowStyles.legendDot} ${flowStyles.warning}`}></div>
+          <div className={styles.legendItem}>
+            <div className={`${styles.legendDot} ${styles.warning}`}></div>
             <span>{ingles ? 'Attention' : 'Atención'}</span>
           </div>
-          <div className={flowStyles.legendItem}>
-            <div className={`${flowStyles.legendDot} ${flowStyles.inactive}`}></div>
+          <div className={styles.legendItem}>
+            <div className={`${styles.legendDot} ${styles.inactive}`}></div>
             <span>{ingles ? 'Offline' : 'Desconectado'}</span>
           </div>
         </div>
       </div>
     </div>
   );
-
-  const renderStatsView = () => (
-    <>
-      {/* Stats Cards usando el componente reutilizable */}
-      <div className={styles.statsGrid}>
-        <StatCard
-          icon="🔌"
-          value={stats.switches.value}
-          label={stats.switches.label}
-          color="#2563eb"
-          trend={{ type: 'up', value: '+2' }}
-          onClick={() => onNavClick('inventory')}
-        />
-        <StatCard
-          icon="📋"
-          value={stats.patches.value}
-          label={stats.patches.label}
-          color="#059669"
-          onClick={() => onNavClick('inventory')}
-        />
-        <StatCard
-          icon="🔗"
-          value={stats.connections.value}
-          label={stats.connections.label}
-          color="#0891b2"
-          trend={{ type: 'up', value: '98%' }}
-          onClick={() => onNavClick('topology')}
-        />
-        <StatCard
-          icon="⚠️"
-          value={stats.alerts.value}
-          label={stats.alerts.label}
-          color="#dc2626"
-          trend={{ type: 'down', value: '-1' }}
-          onClick={() => onNavClick('alerts')}
-        />
-      </div>
-
-      {/* Alerts Panel */}
-      {alerts.length > 0 && (
-        <div className={styles.alertsPanel}>
-          <h3>{ingles ? 'Recent Alerts' : 'Alertas Recientes'}</h3>
-          {alerts.map(alert => (
-            <div key={alert.id} className={`${styles.alert} ${styles[alert.type]}`}>
-              {alert.message}
-            </div>
-          ))}
-        </div>
-      )}
-    </>
-  );
-
-  return (
-    <div className={styles.topologySection}>
-      <div className={styles.sectionHeader}>
-        <h3>{ingles ? 'Infrastructure Dashboard' : 'Panel de Infraestructura'}</h3>
-        <div className={flowStyles.viewControls}>
-          <button 
-            className={`${flowStyles.viewButton} ${viewMode === 'visual' ? flowStyles.active : ''}`}
-            onClick={() => setViewMode('visual')}
-          >
-            🌐 {ingles ? 'Visual Overview' : 'Vista Visual'}
-          </button>
-          <button 
-            className={`${flowStyles.viewButton} ${viewMode === 'stats' ? flowStyles.active : ''}`}
-            onClick={() => setViewMode('stats')}
-          >
-            📊 {ingles ? 'Statistics' : 'Estadísticas'}
-          </button>
-        </div>
-      </div>
-      
-      {viewMode === 'visual' ? renderVisualDashboard() : renderStatsView()}
-    </div>
-  );
 };
 
-export default DashboardSection;
+export default DashboardVisual;

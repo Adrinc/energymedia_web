@@ -16,37 +16,6 @@
   z-index: 1;
 }
 
-/* Controles de Vista */
-.viewControls {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.viewButton {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  color: #e2e8f0;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.875rem;
-}
-
-.viewButton:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #7ae582;
-}
-
-.viewButton.active {
-  background: linear-gradient(45deg, #7ae582 0%, #2563eb 100%);
-  color: white;
-  border-color: #7ae582;
-}
-
 /* Nodos personalizados */
 .customNode {
   background: linear-gradient(145deg, #2d3748 0%, #1a202c 100%);
@@ -327,16 +296,6 @@
   
   .nodeIcon {
     font-size: 1.25rem;
-  }
-  
-  .viewControls {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: stretch;
-  }
-  
-  .viewButton {
-    justify-content: center;
   }
 }
 

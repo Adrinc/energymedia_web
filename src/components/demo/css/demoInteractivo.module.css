@@ -94,6 +94,30 @@
   filter: invert(1);
 }
 
+/* Branch Indicator in Header */
+.branchIndicator {
+  margin-left: 2rem;
+  padding: 0.5rem 1rem;
+  background: rgba(122, 229, 130, 0.1);
+  border: 1px solid rgba(122, 229, 130, 0.3);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.branchName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #7ae582;
+}
+
+.companyName {
+  font-size: 0.75rem;
+  color: #a0aec0;
+  font-weight: 400;
+}
+
 /* Main Content */
 .mainContent {
   display: flex;
