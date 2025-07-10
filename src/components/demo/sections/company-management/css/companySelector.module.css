@@ -177,6 +177,11 @@
   font-family: inherit !important;
 }
 
+/* Ocultar la atribución de Leaflet */
+:global(.leaflet-control-attribution) {
+  display: none !important;
+}
+
 :global(.leaflet-popup-content-wrapper) {
   background: rgba(26, 32, 44, 0.95) !important;
   backdrop-filter: blur(10px) !important;

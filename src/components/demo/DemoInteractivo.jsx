@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { isEnglish } from '../../data/variables';
 import { useStore } from '@nanostores/react';
 
+// Importar el componente de login
+import LoginScreen from './LoginScreen';
+
 // Importar los componentes de secciones
 import CompanySelector from './sections/company-management/CompanySelector';
 import DashboardSection from './sections/dashboard/DashboardSection';
@@ -14,11 +17,12 @@ import styles from "./css/demoInteractivo.module.css";
 
 const DemoInteractivo = () => {
   const ingles = useStore(isEnglish);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado del login
   const [selectedComponent, setSelectedComponent] = useState(null);
   const [alerts, setAlerts] = useState([]);
-  const [activeSection, setActiveSection] = useState('company-selector'); // Cambiar inicio a company-selector
-  const [selectedBranchData, setSelectedBranchData] = useState(null); // Datos de la sucursal seleccionada
-  const [selectedCompany, setSelectedCompany] = useState(null); // Empresa seleccionada
+  const [activeSection, setActiveSection] = useState('company-selector');
+  const [selectedBranchData, setSelectedBranchData] = useState(null);
+  const [selectedCompany, setSelectedCompany] = useState(null);
   const [inventory, setInventory] = useState([
     { id: 1, tipo: 'Switch', modelo: 'Cisco 2960X-24PS', ubicacion: 'MDF-Rack-01', estado: 'Operativo', puertos: 24, fechaInstalacion: '2024-01-15' },
     { id: 2, tipo: 'Patch Panel', modelo: 'CommScope 1375055-2', ubicacion: 'MDF-Rack-01', estado: 'Operativo', puertos: 48, fechaInstalacion: '2024-01-15' },
@@ -67,7 +71,9 @@ const DemoInteractivo = () => {
   ];
 
   useEffect(() => {
-    // Simular alertas dinámicas
+    // Solo ejecutar alertas dinámicas si está logueado
+    if (!isLoggedIn) return;
+    
     const alertInterval = setInterval(() => {
       const newAlert = {
         id: Date.now(),
@@ -78,7 +84,7 @@ const DemoInteractivo = () => {
     }, 5000);
 
     return () => clearInterval(alertInterval);
-  }, [ingles]);
+  }, [ingles, isLoggedIn]);
 
   const content = {
     es: {
@@ -109,6 +115,11 @@ const DemoInteractivo = () => {
 
   const textos = ingles ? content.en : content.es;
 
+  // Handler para el login exitoso
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
   const handleBackToHome = () => {
     window.location.href = '/';
   };
@@ -128,12 +139,17 @@ const DemoInteractivo = () => {
   const handleBranchSelect = (branchData) => {
     setSelectedBranchData(branchData);
     setInventory(branchData.inventory);
-    setActiveSection('dashboard'); // Cambiar automáticamente al dashboard
+    setActiveSection('dashboard');
   };
 
   const handleCompanySelect = (company) => {
     setSelectedCompany(company);
   };
+
+  // Si no está logueado, mostrar la pantalla de login
+  if (!isLoggedIn) {
+    return <LoginScreen onLogin={handleLoginSuccess} />;
+  }
 
   const renderContent = () => {
     switch(activeSection) {

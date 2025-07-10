@@ -14,7 +14,7 @@ const DashboardSection = ({
   onComponentClick 
 }) => {
   const ingles = useStore(isEnglish);
-  const [viewMode, setViewMode] = useState('visual');
+  const [viewMode, setViewMode] = useState('stats'); // Cambiado de 'visual' a 'stats'
 
   return (
     <div className={styles.topologySection}>
@@ -22,16 +22,16 @@ const DashboardSection = ({
         <h3>{ingles ? 'Infrastructure Dashboard' : 'Panel de Infraestructura'}</h3>
         <div className={styles.viewControls}>
           <button 
-            className={`${styles.viewButton} ${viewMode === 'visual' ? styles.active : ''}`}
-            onClick={() => setViewMode('visual')}
-          >
-            🌐 {ingles ? 'Visual Overview' : 'Vista Visual'}
-          </button>
-          <button 
             className={`${styles.viewButton} ${viewMode === 'stats' ? styles.active : ''}`}
             onClick={() => setViewMode('stats')}
           >
             📊 {ingles ? 'Statistics' : 'Estadísticas'}
+          </button>
+          <button 
+            className={`${styles.viewButton} ${viewMode === 'visual' ? styles.active : ''}`}
+            onClick={() => setViewMode('visual')}
+          >
+            🌐 {ingles ? 'Visual Overview' : 'Vista Visual'}
           </button>
         </div>
       </div>
