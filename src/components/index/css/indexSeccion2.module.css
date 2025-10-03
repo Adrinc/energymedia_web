@@ -1,239 +1,321 @@
-.section {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
-  padding: 5rem 2rem;
-  width: 100vw;
-  overflow: hidden;
-  position: relative;
-}
+/* ========================================
+   INDEX SECCIÓN 2 - DIFERENCIADORES CLAVE
+   Sistema "Cine-Data Multicultural" - Energy Media
+   Diseño: Asimétrico cinematográfico con efectos visuales
+   ======================================== */
 
-.section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(37, 99, 235, 0.03) 0px,
-    rgba(37, 99, 235, 0.03) 2px,
-    transparent 2px,
-    transparent 10px
-  );
-  pointer-events: none;
-}
-
-.container {
-  max-width: 1200px;
+/* === GRID ASIMÉTRICO CINEMATOGRÁFICO === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--em-space-lg);
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
 }
 
-/* .title {
-  text-align: center;
-  color: #1e293b;
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 4rem;
+/* Layout asimétrico para desktop */
+.grid > div:nth-child(1) {
+  grid-column: 1 / 7;
+  grid-row: 1;
+}
+
+.grid > div:nth-child(2) {
+  grid-column: 7 / 13;
+  grid-row: 1;
+}
+
+.grid > div:nth-child(3) {
+  grid-column: 1 / 7;
+  grid-row: 2;
+}
+
+.grid > div:nth-child(4) {
+  grid-column: 7 / 13;
+  grid-row: 2;
+}
+
+/* === CARD DE DIFERENCIADOR CON EFECTO GLASS === */
+.differentiatorCard {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 255, 255, 0.98) 100%
+  );
+  backdrop-filter: blur(20px);
+  border-radius: var(--em-radius-xl);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: 
+    var(--em-shadow-card),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.4s var(--em-ease-smooth);
+  border: 1px solid rgba(103, 46, 146, 0.1);
   position: relative;
-  padding-bottom: 1.5rem;
-  animation: slideDown 0.6s ease-out;
-}
-
-.title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, #2563eb, #1e40af);
-  border-radius: 2px;
-}
- */
-.title {
-  text-align: center;
-  position: relative;
-  font-size: 3rem;
-  color: #1a202c;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: slideDown 0.6s ease-out;
-}
-
-.title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, #2563eb, #1e40af);
-  border-radius: 2px;
-}
-
-/* .title::before {
-  content: '🎯';
-  position: absolute;
-  top: -2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: bounce 2s infinite;
-} */
-
-.benefitsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  padding: 1rem;
-}
-
-.benefitCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 2.5rem 2rem;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  animation: fadeIn 0.6s ease-out forwards;
+  overflow: hidden;
+  
+  /* Animación de entrada */
   opacity: 0;
-  transform: translateY(20px);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: fadeInScale 0.7s var(--em-ease-smooth) forwards;
 }
 
-.benefitCard:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.95);
+/* Efecto de brillo sutil en el fondo */
+.differentiatorCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(62, 200, 247, 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  transition: transform 0.6s var(--em-ease-smooth);
 }
 
-.iconContainer {
-  width: 110px;
-  height: 110px;
+/* Borde gradiente animado en hover */
+.differentiatorCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--em-radius-xl);
+  padding: 2px;
+  background: var(--em-gradient-purple-cyan);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s var(--em-ease-smooth);
+}
+
+.differentiatorCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    var(--em-shadow-card-hover),
+    0 0 40px rgba(103, 46, 146, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+}
+
+.differentiatorCard:hover::before {
+  transform: rotate(180deg);
+}
+
+.differentiatorCard:hover::after {
+  opacity: 1;
+}
+
+/* === ÍCONO CINEMATOGRÁFICO CON EFECTOS === */
+.iconWrapper {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--em-gradient-purple-cyan);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  border-radius: 50%;
-  margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
+  margin-bottom: var(--em-space-lg);
+  transition: all 0.4s var(--em-ease-smooth);
   position: relative;
-  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+  box-shadow: 
+    0 8px 20px rgba(103, 46, 146, 0.25),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.iconContainer::after {
+/* Anillo exterior pulsante */
+.iconWrapper::before {
   content: '';
   position: absolute;
-  inset: 3px;
+  inset: -4px;
   border-radius: 50%;
-  border: 2px dashed rgba(255, 255, 255, 0.3);
+  background: var(--em-gradient-purple-cyan);
+  opacity: 0.3;
+  animation: pulse 3s ease-in-out infinite;
 }
 
-.benefitCard:hover .iconContainer {
-  transform: scale(1.1) rotate(5deg);
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+.differentiatorCard:hover .iconWrapper {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 
+    0 12px 30px rgba(103, 46, 146, 0.35),
+    0 0 30px rgba(62, 200, 247, 0.3),
+    inset 0 -2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .icon {
-  font-size: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 2.75rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s var(--em-ease-smooth);
+}
+
+.differentiatorCard:hover .icon {
+  transform: scale(1.1);
+}
+
+/* === CONTENIDO CON JERARQUÍA VISUAL === */
+.cardTitle {
+  font-family: var(--em-font-headline);
+  font-size: var(--em-text-h3);
+  font-weight: 700;
+  color: var(--em-text-primary);
+  margin-bottom: var(--em-space-md);
+  line-height: var(--em-leading-tight);
+  position: relative;
+  letter-spacing: -0.01em;
+}
+
+/* Línea decorativa bajo el título */
+.cardTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
   width: 60px;
-  height: 60px;
-  color: white;
+  height: 3px;
+  background: var(--em-gradient-purple-cyan);
+  border-radius: 2px;
+  transition: width 0.4s var(--em-ease-smooth);
 }
 
-.benefitTitle {
-  color: #22292f;
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  transition: color 0.3s ease;
+.differentiatorCard:hover .cardTitle::after {
+  width: 100px;
 }
 
-.benefitCard:hover .benefitTitle {
-  color: #2563eb;
+.cardDescription {
+  font-family: var(--em-font-body);
+  font-size: var(--em-text-body);
+  color: var(--em-text-gray);
+  line-height: var(--em-leading-relaxed);
+  margin: var(--em-space-md) 0 0 0;
 }
 
-.benefitText {
-  color: #4a5568;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideDown {
+/* === ANIMACIONES CINEMATOGRÁFICAS === */
+@keyframes fadeInScale {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(40px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes bounce {
+@keyframes pulse {
   0%, 100% {
-    transform: translateX(-50%) translateY(0);
+    transform: scale(1);
+    opacity: 0.3;
   }
   50% {
-    transform: translateX(-50%) translateY(-10px);
+    transform: scale(1.1);
+    opacity: 0.15;
   }
 }
 
-/* Añadimos delays para las cards */
-.benefitCard:nth-child(1) { animation-delay: 0.1s; }
-.benefitCard:nth-child(2) { animation-delay: 0.2s; }
-.benefitCard:nth-child(3) { animation-delay: 0.3s; }
-.benefitCard:nth-child(4) { animation-delay: 0.4s; }
-.benefitCard:nth-child(5) { animation-delay: 0.5s; }
+/* === RESPONSIVE === */
 
-@media (max-width: 1024px) {
-  .benefitsGrid {
+/* Tablet (768px-1023px) */
+@media (max-width: 1023px) {
+  .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: var(--em-space-lg);
   }
   
-  .title {
-    font-size: 2.5rem;
+  .grid > div:nth-child(1),
+  .grid > div:nth-child(2),
+  .grid > div:nth-child(3),
+  .grid > div:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  
+  .differentiatorCard {
+    padding: var(--em-space-xl);
+  }
+  
+  .iconWrapper {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .icon {
+    font-size: 2.25rem;
+  }
+  
+  .cardTitle {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  }
+  
+  .cardDescription {
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
   }
 }
 
-@media (max-width: 640px) {
-  .section {
-    padding: 3rem 1rem;
+/* Mobile (hasta 767px) */
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--em-space-lg);
   }
   
-  .title {
+  .differentiatorCard {
+    padding: var(--em-space-xl);
+  }
+  
+  .iconWrapper {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .icon {
     font-size: 2rem;
   }
   
-  .benefitsGrid {
-    grid-template-columns: 1fr;
+  .cardTitle {
+    font-size: 1.35rem;
   }
   
-  .benefitCard {
-    padding: 2rem 1.5rem;
+  .cardDescription {
+    font-size: 1rem;
+  }
+}
+
+/* === ACCESIBILIDAD: Reduce Motion === */
+@media (prefers-reduced-motion: reduce) {
+  .differentiatorCard {
+    animation: fadeIn 0.4s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .differentiatorCard:hover {
+    transform: none;
+  }
+  
+  .differentiatorCard:hover .iconWrapper {
+    transform: scale(1.05);
+  }
+  
+  .iconWrapper::before {
+    animation: none;
+    opacity: 0.2;
+  }
+  
+  .differentiatorCard:hover .icon {
+    transform: none;
+  }
+  
+  .cardTitle::after,
+  .differentiatorCard::before {
+    transition: none;
   }
 }

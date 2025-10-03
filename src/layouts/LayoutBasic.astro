@@ -5,6 +5,12 @@ import RouterLinks from '../components/react_components/RouterLinks.jsx';
 
 import FootNetHive from '../components/global/FootNetHive';
 
+// Importar fuentes desde Fontsource (sistema Cine-Data Multicultural)
+import '@fontsource/poppins/700.css';  // Bold para headlines
+import '@fontsource/poppins/800.css';  // Extra Bold para H1
+import '@fontsource/inter/400.css';    // Regular para body
+import '@fontsource/inter/500.css';    // Medium para énfasis
+import '@fontsource/inter/600.css';    // Semi-bold para botones/labels
 
 
 interface Props {
@@ -95,51 +101,109 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
   font-display: swap;
 }
 	:root {
-		--primary-color: #000000;
-		--secondary-color: #58aafc;
-		--tertiary-color: #2f47c5;
-		--cuaternary-color: #60bed7;
-
-		--primary-text-color: #ffffff;
-		--secondary-text-color: #0a5968;
-		--tertiary-text-color: #ededed;
+		/* ========================================
+		   ENERGY MEDIA - SISTEMA "CINE-DATA MULTICULTURAL"
+		   ======================================== */
 		
-		--primary-buttom-color: #d9a45e;
-		--primary-buttom-fill-text-color: #fffefa;
-		--primary-buttom-outline-text-color: #8b705f;
-		--primary-buttom-fill-shadow: 0 5px 2px #966f34;
+		/* === PALETA CORE === */
+		--em-purple-primary: #672E92;        /* Morado Energy (marca, botones principales) */
+		--em-purple-light: #A47EB9;          /* Lavanda medio (fondos suaves, tarjetas) */
+		--em-purple-deep: #7E2B7F;           /* Morado profundo (gradientes, secciones dark) */
+		
+		/* === ACENTOS === */
+		--em-cyan-accent: #3EC8F7;           /* Cian brillante (estados activos, highlights) */
+		--em-orange-accent: #F56831;         /* Naranja cálido (badges, micro-llamadas) */
+		--em-amber-accent: #FAB03D;          /* Ámbar (etiquetas, indicadores) */
+		--em-red-accent: #EF1D25;            /* Rojo (alertas/errores, énfasis puntual) */
+		
+		/* === NEUTROS CON TINTE LAVANDA === */
+		--em-bg-offwhite: #F7F5FA;           /* Off-white (fondo de página) */
+		--em-border-light: #E1DDEC;          /* Gris lavanda claro (bordes, dividers) */
+		--em-border-medium: #DDCDDC;         /* Gris lavanda medio (fills sutiles) */
+		--em-text-primary: #1A1024;          /* Ink (texto principal) */
+		--em-text-light: #FFFFFF;            /* Blanco (texto sobre morado) */
+		--em-text-gray: #6B6B7B;             /* Gris para textos secundarios */
+		
+		/* === GRADIENTES CINEMATOGRÁFICOS === */
+		--em-gradient-purple-cyan: linear-gradient(135deg, #672E92, #3EC8F7);
+		--em-gradient-purple-black: linear-gradient(180deg, #672E92, #1A1024);
+		--em-gradient-purple-magenta: linear-gradient(135deg, #7E2B7F, #672E92);
+		--em-gradient-dark-purple: linear-gradient(180deg, #1A1024 0%, #672E92 100%);
+		--em-gradient-light-lavender: linear-gradient(180deg, #F7F5FA 0%, #E1DDEC 100%);
+		--em-gradient-cta: linear-gradient(135deg, #672E92 0%, #A47EB9 100%);
+		
+		/* === TIPOGRAFÍA CINE-DATA === */
+		--em-font-headline: 'Poppins', 'Plus Jakarta Sans', 'Inter', sans-serif;
+		--em-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+		
+		/* === ESCALA TIPOGRÁFICA (Mobile-first responsive) === */
+		--em-text-h1: clamp(3.5rem, 5vw, 4rem);        /* 56-64px */
+		--em-text-h2: clamp(2.25rem, 3.5vw, 2.5rem);   /* 36-40px */
+		--em-text-h3: clamp(1.5rem, 2vw, 1.75rem);     /* 24-28px */
+		--em-text-body: clamp(1rem, 1.5vw, 1.125rem);  /* 16-18px */
+		--em-text-caption: 0.875rem;                   /* 14px */
+		--em-text-small: 0.75rem;                      /* 12px */
+		
+		/* === LINE-HEIGHT === */
+		--em-leading-tight: 1.2;
+		--em-leading-normal: 1.5;
+		--em-leading-relaxed: 1.75;
+		
+		/* === SOMBRAS CINEMATOGRÁFICAS (3 capas de profundidad) === */
+		--em-shadow-card: 
+			0 10px 30px rgba(103, 46, 146, 0.08),
+			0 2px 8px rgba(103, 46, 146, 0.04);
+		--em-shadow-card-hover: 
+			0 15px 40px rgba(103, 46, 146, 0.12),
+			0 4px 12px rgba(103, 46, 146, 0.06);
+		--em-shadow-dramatic: 
+			0 20px 50px rgba(103, 46, 146, 0.15),
+			0 8px 16px rgba(103, 46, 146, 0.08);
+		--em-shadow-glow-cyan: 0 0 20px rgba(62, 200, 247, 0.3);
+		--em-shadow-glow-purple: 0 0 20px rgba(103, 46, 146, 0.4);
+		
+		/* === EASING CINEMATOGRÁFICO === */
+		--em-ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+		--em-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+		--em-ease-enter: cubic-bezier(0.4, 0, 0.2, 1);
+		--em-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+		
+		/* === SPACING (8px base) === */
+		--em-space-xs: 0.5rem;    /* 8px */
+		--em-space-sm: 1rem;      /* 16px */
+		--em-space-md: 1.5rem;    /* 24px */
+		--em-space-lg: 2rem;      /* 32px */
+		--em-space-xl: 3rem;      /* 48px */
+		--em-space-2xl: 4rem;     /* 64px */
+		--em-space-3xl: 6rem;     /* 96px */
+		
+		/* === BORDER RADIUS === */
+		--em-radius-sm: 8px;
+		--em-radius-md: 12px;
+		--em-radius-lg: 20px;
+		--em-radius-xl: 24px;
+		--em-radius-full: 9999px;
+		
+		/* === BREAKPOINTS (para JS si se necesita) === */
+		--em-breakpoint-sm: 640px;
+		--em-breakpoint-md: 768px;
+		--em-breakpoint-lg: 1024px;
+		--em-breakpoint-xl: 1280px;
+		--em-breakpoint-2xl: 1536px;
 
-		--primary-gradient: linear-gradient(to right, #fdf8f2, #fffbf0, #f5e9d9 );
-		--secondary-gradient: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--tertiary-color));
-		--tertiary-gradient: linear-gradient(to right, #afa09d, #72869f, #501b0b);
-
-		--main-bg-color: linear-gradient(to bottom, #ede6cc, #f0e3d0, #c8a98c );
-		--primary-bg-color: #00000000;
-		--secondary-bg-color: #e9e9e9;
-
-		--primary-glass-color: #525065;
-		--secondary-glass-color: #7398ab;
-
-		--primary-nav-color: #020d2b;
-		--primary-nav-border-color: #353c70;
-
-		--font-family-primary: 'Inter', sans-serif;
-		--font-family-secondary: 'OpenSans', sans-serif;
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-		--fs-xl: clamp(3.5rem, 12vw + 1rem, 12rem);
-		--fs-lg: clamp(1.25rem, 2vw, 1.5rem);
-		--fs-md: clamp(1rem, 1.5vw, 1.25rem);
-		--fs-sm: clamp(0.875rem, 1.25vw, 1rem);
-		--fs-xs: clamp(0.75rem, 1vw, 0.875rem);
-		--fs-xxs: clamp(0.625rem, 0.75vw, 0.75rem);
+		/* === VARIABLES LEGACY (mantener compatibilidad) === */
+		--primary-color: var(--em-purple-primary);
+		--secondary-color: var(--em-cyan-accent);
+		--font-family-primary: var(--em-font-body);
+		--font-family-secondary: var(--em-font-body);
+		
+		/* === TAMAÑOS LEGACY === */
+		--fs-xl: var(--em-text-h1);
+		--fs-lg: var(--em-text-h2);
+		--fs-md: var(--em-text-h3);
+		--fs-sm: var(--em-text-body);
+		--fs-xs: var(--em-text-caption);
+		--fs-xxs: var(--em-text-small);
 	}
 
 	*, 
@@ -153,7 +217,6 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
 
 	html {
 	position: relative;
-	/* overflow: hidden; */
 	overflow-x: hidden;
 	-webkit-user-select: none;
     -moz-user-select: none;
@@ -161,19 +224,38 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
     user-select:none;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
-	background-color: #141414;
+	background-color: var(--em-bg-offwhite);
 	
     overflow-y: scroll;
-  scrollbar-width: thin; /* Firefox: Scrollbar más delgado */
-  scrollbar-color: #003a8c rgba(0, 0, 0, 0.2); /* Firefox: Color del thumb y track */
+	scrollbar-width: thin; /* Firefox: Scrollbar más delgado */
+	scrollbar-color: var(--em-purple-primary) var(--em-border-light); /* Firefox: Color morado */
+	}
+	
+	/* Scrollbar personalizado para Webkit (Chrome, Safari, Edge) */
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+	
+	::-webkit-scrollbar-track {
+		background: var(--em-border-light);
+	}
+	
+	::-webkit-scrollbar-thumb {
+		background: var(--em-purple-primary);
+		border-radius: var(--em-radius-full);
+	}
+	
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--em-purple-deep);
 	}
     
 	body{
-		font-family: var(--font-family-primary);
-		/* background: #0D0E26; */
-		background: #141414;
+		font-family: var(--em-font-body);
+		background: var(--em-bg-offwhite);
+		color: var(--em-text-primary);
 		z-index: 0;
-	/* 	overflow: hidden; */
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 	
 
@@ -203,10 +285,39 @@ const {title, showNavBar=true, showFooter=true, dataLayout, seoData } = Astro.pr
 		width: 100%;
 		min-height: fit-content;
 		height: auto;
-		font-family: var(--font-family-primary);
-		background: #141414;
+		font-family: var(--em-font-body);
+		background: var(--em-gradient-purple-black);
 		z-index: 1;
 		overflow: hidden;
+	}
+	
+	/* === UTILITY CLASSES CINEMATOGRÁFICAS === */
+	.cinematic-grain::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+		pointer-events: none;
+		z-index: 1;
+	}
+	
+	.text-gradient-purple-cyan {
+		background: var(--em-gradient-purple-cyan);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+	
+	/* === ACCESIBILIDAD: Reduce Motion === */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
 	}
 
 	/* Transiciones personalizadas para View Transitions */

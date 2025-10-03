@@ -17,6 +17,12 @@ const NavBar = () => {
   const ingles = useStore(isEnglish);
   const textosNavbar = ingles ? translations.en.navbar : translations.es.navbar;
 
+  // Función para navegar al inicio
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    window.location.href = '/';
+  };
+
   useEffect(() => {
     // Detectar scroll para efectos de navbar
     const handleScroll = () => {
@@ -178,10 +184,12 @@ const NavBar = () => {
       {isOpen && <div className={styles.overlay} onClick={toggleMenu} />}
       
       {/* Logo con efecto de hover mejorado */}
-      <div className={styles.logopic}>
-        <img src="/logo_nh_b.png" alt="NetHive Logo" />
-        <div className={styles.logoGlow}></div>
-      </div>
+      <a href="/" onClick={handleLogoClick} className={styles.logoLink}>
+        <div className={styles.logopic}>
+          <img src="/logo.gif" alt="Energy Media Logo" />
+          <div className={styles.logoGlow}></div>
+        </div>
+      </a>
 
       {/* Switch de países mejorado */}
       <div className={styles.countrySwitch}>
@@ -224,41 +232,57 @@ const NavBar = () => {
         </li>
         <li className={styles.navItem}>
           <a 
-            href="/funcionalidades" 
-            className={`${styles.navLink} ${isActiveLink("/funcionalidades") ? styles.activeLink : ""}`}
+            href="/servicios" 
+            className={`${styles.navLink} ${isActiveLink("/servicios") ? styles.activeLink : ""}`}
           >
-            {textosNavbar.funcionalidades}
+            {textosNavbar.servicios}
           </a>
         </li>
         <li className={styles.navItem}>
           <a 
-            href="/precios" 
-            className={`${styles.navLink} ${isActiveLink("/precios") ? styles.activeLink : ""}`}
+            href="/casos" 
+            className={`${styles.navLink} ${isActiveLink("/casos") ? styles.activeLink : ""}`}
           >
-            {textosNavbar.precios}
+            {textosNavbar.casos}
           </a>
         </li>
         <li className={styles.navItem}>
           <a 
-            href="/soporte" 
-            className={`${styles.navLink} ${isActiveLink("/soporte") ? styles.activeLink : ""}`}
+            href="/metodologia" 
+            className={`${styles.navLink} ${isActiveLink("/metodologia") ? styles.activeLink : ""}`}
           >
-            {textosNavbar.soporte}
+            {textosNavbar.metodologia}
           </a>
         </li>
         <li className={styles.navItem}>
           <a 
-            href="/contacto" 
-            className={`${styles.navLink} ${isActiveLink("/contacto") ? styles.activeLink : ""}`}
+            href="/oye" 
+            className={`${styles.navLink} ${isActiveLink("/oye") ? styles.activeLink : ""}`}
           >
-            {textosNavbar.contacto}
+            {textosNavbar.oye}
+          </a>
+        </li>
+        <li className={styles.navItem}>
+          <a 
+            href="/recursos" 
+            className={`${styles.navLink} ${isActiveLink("/recursos") ? styles.activeLink : ""}`}
+          >
+            {textosNavbar.recursos}
+          </a>
+        </li>
+        <li className={styles.navItem}>
+          <a 
+            href="/nosotros" 
+            className={`${styles.navLink} ${isActiveLink("/nosotros") ? styles.activeLink : ""}`}
+          >
+            {textosNavbar.nosotros}
           </a>
         </li>
         
-        {/* Botón de login separado para móvil */}
+        {/* Botón de CTA separado para móvil */}
         <li className={`${styles.navItem} ${styles.mobileLoginItem} ${styles.mobileOnly}`}>
-          <a className={`${styles.buyButton} ${styles.mobileLoginButton}`} href="#registrarse">
-            <span className={styles.buttonText}>{textosNavbar.iniciarSesion}</span>
+          <a className={`${styles.buyButton} ${styles.mobileLoginButton}`} href="/contacto">
+            <span className={styles.buttonText}>{textosNavbar.contacto}</span>
             <div className={styles.buttonShine}></div>
           </a>
         </li>
@@ -266,24 +290,24 @@ const NavBar = () => {
 
       {/* Grupo de íconos sociales con efectos mejorados */}
       <div className={styles.socialIconsGroup}>
-        <a href="https://www.linkedin.com/company/nethive" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+        <a href="https://www.linkedin.com/company/energymedia" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
           <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
-        <a href="https://twitter.com/nethive" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+        <a href="https://twitter.com/energymedia" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
           <img src="/icons/twitter.svg" alt="Twitter" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
-        <a href="mailto:info@nethive.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-          <img src="/icons/email.svg" alt="Email" className={styles.icon} />
+        <a href="https://www.instagram.com/energymedia" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+          <img src="/icons/insta.svg" alt="Instagram" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
       </div>
 
       {/* Botón de contacto con efectos premium */}
       <div className={styles.desktopOnly}>
-        <a className={styles.buyButton} href="#registrarse">
-          <span className={styles.buttonText}>{textosNavbar.iniciarSesion}</span>
+        <a className={styles.buyButton} href="/contacto">
+          <span className={styles.buttonText}>{textosNavbar.contacto}</span>
           <div className={styles.buttonShine}></div>
         </a>
       </div>

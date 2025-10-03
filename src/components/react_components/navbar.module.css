@@ -1,14 +1,18 @@
-/* Variables CSS para consistencia */
+/* Variables CSS para Energy Media */
 :root {
-  --primary-blue: #2563eb;
-  --primary-green: #7ae582;
-  --accent-orange: #ffb454;
-  --text-light: #f5f7fa;
-  --text-dark: #22292f;
-  --bg-dark: rgba(15, 15, 20, 0.95);
-  --bg-glass: rgba(255, 255, 255, 0.1);
-  --shadow-light: 0 4px 32px rgba(37, 99, 235, 0.15);
-  --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --primary-purple: #672E92;
+  --primary-purple-light: #A47EB9;
+  --accent-cyan: #3EC8F7;
+  --accent-orange: #F56831;
+  --accent-amber: #FAB03D;
+  --text-light: #FFFFFF;
+  --text-dark: #1A1024;
+  --bg-off-white: #F7F5FA;
+  --bg-dark: rgba(26, 16, 36, 0.95);
+  --bg-glass: rgba(164, 126, 185, 0.1);
+  --border-lavender: #E1DDEC;
+  --shadow-light: 0 4px 32px rgba(103, 46, 146, 0.15);
+  --shadow-heavy: 0 20px 60px rgba(103, 46, 146, 0.3);
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.2s ease-out;
 }
@@ -19,7 +23,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background: var(--bg-dark);
+  background: linear-gradient(135deg, rgba(26, 16, 36, 0.85) 0%, rgba(103, 46, 146, 0.75) 50%, rgba(26, 16, 36, 0.85) 100%);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   color: var(--text-light);
@@ -28,21 +32,50 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(37, 99, 235, 0.3);
-  box-shadow: var(--shadow-light);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, rgba(103, 46, 146, 0.5), rgba(62, 200, 247, 0.8), rgba(245, 104, 49, 0.5)) 1;
+  box-shadow: 
+    0 4px 24px rgba(103, 46, 146, 0.3),
+    0 1px 0 rgba(62, 200, 247, 0.2) inset;
   max-height: 80px;
   transition: var(--transition-smooth);
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  position: relative;
+}
+
+/* Efecto de luz animado en el fondo */
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(62, 200, 247, 0.1), transparent);
+  animation: navbarShine 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes navbarShine {
+  0%, 100% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
 }
 
 /* Efecto cuando se hace scroll */
 .navbar.scrolled {
-  background: rgba(10, 10, 15, 0.98);
+  background: linear-gradient(135deg, rgba(26, 16, 36, 0.95) 0%, rgba(103, 46, 146, 0.85) 50%, rgba(26, 16, 36, 0.95) 100%);
   backdrop-filter: blur(25px) saturate(200%);
   -webkit-backdrop-filter: blur(25px) saturate(200%);
-  box-shadow: var(--shadow-heavy);
-  border-bottom-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 
+    0 8px 32px rgba(103, 46, 146, 0.4),
+    0 1px 0 rgba(62, 200, 247, 0.3) inset;
+  border-image: linear-gradient(90deg, rgba(103, 46, 146, 0.7), rgba(62, 200, 247, 1), rgba(245, 104, 49, 0.7)) 1;
 }
 
 /* Overlay para móvil */
@@ -59,24 +92,37 @@
 }
 
 /* Logo mejorado con efectos */
+.logoLink {
+  display: block;
+  text-decoration: none;
+  z-index: 10;
+  position: relative;
+}
+
 .logopic {
   position: relative;
   width: 160px;
   height: 3.5rem;
-  z-index: 2;
+  z-index: 10;
   cursor: pointer;
   transition: var(--transition-smooth);
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--primary-purple);
 }
 
 .logopic:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(103, 46, 146, 0.3);
+  border-color: var(--accent-cyan);
 }
 
 .logopic img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.3));
   transition: var(--transition-smooth);
 }
 
@@ -85,12 +131,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(62, 200, 247, 0.2) 0%, transparent 70%);
   border-radius: 50%;
   transition: var(--transition-smooth);
   pointer-events: none;
+  z-index: -1;
 }
 
 .logopic:hover .logoGlow {
@@ -105,6 +152,7 @@
   margin: 0;
   padding: 0;
   position: relative;
+  z-index: 10;
 }
 
 .navItem {
@@ -130,6 +178,7 @@
   user-select: none;
   outline: none;
   overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Efecto de fondo en hover */
@@ -140,12 +189,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, var(--bg-glass), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(135deg, rgba(62, 200, 247, 0.15), rgba(103, 46, 146, 0.2));
   border-radius: 12px;
   opacity: 0;
   transform: scale(0.8);
   transition: var(--transition-smooth);
   z-index: -1;
+  border: 1px solid rgba(62, 200, 247, 0.3);
 }
 
 .navLink:hover::before {
@@ -162,9 +212,10 @@
   transform: translateX(-50%);
   width: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-amber));
   border-radius: 3px;
   transition: var(--transition-smooth);
+  box-shadow: 0 0 8px rgba(62, 200, 247, 0.5);
 }
 
 .navLink:hover::after {
@@ -172,15 +223,18 @@
 }
 
 .navLink:hover {
-  color: var(--primary-green);
+  color: var(--accent-cyan);
   transform: translateY(-2px);
+  text-shadow: 0 0 10px rgba(62, 200, 247, 0.5);
 }
 
 /* Indicador para enlace activo */
 .activeLink {
-  color: var(--primary-green) !important;
-  background: var(--bg-glass);
-  border: 1px solid rgba(122, 229, 130, 0.3);
+  color: var(--accent-cyan) !important;
+  background: rgba(62, 200, 247, 0.1);
+  border: 1px solid rgba(62, 200, 247, 0.4);
+  text-shadow: 0 0 10px rgba(62, 200, 247, 0.6);
+  box-shadow: 0 0 15px rgba(62, 200, 247, 0.2);
 }
 
 .activeLink::after {
@@ -333,6 +387,8 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+  z-index: 10;
+  position: relative;
 }
 
 .socialLink {
@@ -343,8 +399,8 @@
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: var(--bg-glass);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(62, 200, 247, 0.05);
+  border: 1px solid rgba(62, 200, 247, 0.2);
   transition: var(--transition-smooth);
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
@@ -353,21 +409,23 @@
 
 .socialLink:hover {
   transform: translateY(-3px) scale(1.05);
-  background: rgba(37, 99, 235, 0.2);
-  border-color: var(--primary-blue);
-  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+  background: rgba(62, 200, 247, 0.15);
+  border-color: var(--accent-cyan);
+  box-shadow: 
+    0 8px 25px rgba(62, 200, 247, 0.4),
+    0 0 20px rgba(62, 200, 247, 0.3) inset;
 }
 
 .icon {
   width: 20px;
   height: 20px;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   transition: var(--transition-smooth);
   z-index: 2;
 }
 
 .socialLink:hover .icon {
-  filter: brightness(0) saturate(100%) invert(88%) sepia(11%) saturate(1188%) hue-rotate(93deg) brightness(97%) contrast(88%);
+  filter: brightness(0) saturate(100%) invert(71%) sepia(98%) saturate(2000%) hue-rotate(167deg) brightness(98%) contrast(93%) drop-shadow(0 0 8px rgba(62, 200, 247, 0.8));
 }
 
 .iconRipple {
@@ -377,7 +435,7 @@
   transform: translate(-50%, -50%) scale(0);
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(122, 229, 130, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(62, 200, 247, 0.4) 0%, transparent 70%);
   border-radius: 50%;
   transition: var(--transition-smooth);
   pointer-events: none;
@@ -399,6 +457,7 @@
   position: relative;
   backdrop-filter: blur(10px);
   transition: var(--transition-smooth);
+  z-index: 10;
 }
 
 .switchIconContainer {
@@ -426,9 +485,9 @@
 }
 
 .active {
-  border-color: var(--primary-green);
-  background: rgba(122, 229, 130, 0.1);
-  box-shadow: 0 0 20px rgba(122, 229, 130, 0.3);
+  border-color: var(--accent-cyan);
+  background: rgba(62, 200, 247, 0.1);
+  box-shadow: 0 0 20px rgba(62, 200, 247, 0.3);
 }
 
 .active .switchIcon {
@@ -446,7 +505,7 @@
   transform: translateX(-50%);
   width: 20px;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+  background: linear-gradient(90deg, var(--primary-purple), var(--accent-cyan));
   border-radius: 3px;
   transition: var(--transition-smooth);
 }
@@ -454,8 +513,8 @@
 /* Botón CTA premium */
 .buyButton {
   position: relative;
-  background: linear-gradient(135deg, var(--accent-orange), #ff9500);
-  color: var(--text-dark);
+  background: linear-gradient(135deg, #672E92 0%, #A47EB9 100%);
+  color: white;
   padding: 0.875rem 2rem;
   border-radius: 16px;
   text-decoration: none;
@@ -463,8 +522,10 @@
   letter-spacing: 0.025em;
   font-size: 0.95rem;
   transition: var(--transition-smooth);
-  border: none;
-  box-shadow: 0 4px 20px rgba(255, 180, 84, 0.3);
+  border: 2px solid rgba(164, 126, 185, 0.4);
+  box-shadow: 
+    0 4px 20px rgba(103, 46, 146, 0.4),
+    0 0 30px rgba(103, 46, 146, 0.2) inset;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
@@ -472,12 +533,16 @@
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .buyButton:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 30px rgba(255, 180, 84, 0.4);
-  background: linear-gradient(135deg, #ff9500, var(--accent-orange));
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 8px 30px rgba(62, 200, 247, 0.6),
+    0 0 40px rgba(62, 200, 247, 0.3) inset;
+  background: linear-gradient(135deg, #3EC8F7 0%, #672E92 100%);
+  border-color: rgba(62, 200, 247, 0.6);
 }
 
 .buttonText {

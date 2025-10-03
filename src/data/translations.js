@@ -8,12 +8,13 @@ export const translations = {
     projectsSubtitle: "Un poco de nuestro trabajo",
     navbar: {
       inicio: "Inicio",
-      funcionalidades: "Funcionalidades",
-      precios: "Precios",
-      contacto: "Contacto",
-      soporte: "Soporte",
-      iniciarSesion: "Iniciar Sesión",
-      registrarse: "Registrarse"
+      servicios: "Servicios",
+      casos: "Casos",
+      metodologia: "Metodología",
+      oye: "OYE",
+      recursos: "Recursos",
+      nosotros: "Nosotros",
+      contacto: "Contacto"
     },
     home: {
       soluciones: {
@@ -620,12 +621,13 @@ export const translations = {
     projectsSubtitle: "A glimpse of our work",
     navbar: {
       inicio: "Home",
-      funcionalidades: "Features",
-      precios: "Pricing",
-      contacto: "Contact",
-      soporte: "Support",
-      iniciarSesion: "Login",
-      registrarse: "Sign Up"
+      servicios: "Services",
+      casos: "Cases",
+      metodologia: "Methodology",
+      oye: "OYE",
+      recursos: "Resources",
+      nosotros: "About Us",
+      contacto: "Contact"
     },
     home: {
       soluciones: {

@@ -1,169 +1,120 @@
-import React from "react";
-import { isEnglish } from '../../../data/variables';
+import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
-import styles from "../css/indexSeccion5.module.css";
+import { isEnglish } from '../../../data/variables';
+import { translationsIndex } from '../../../data/translationsIndex';
+import CinematicSection from '../../global/CinematicSection';
+import styles from '../css/indexSeccion5.module.css';
 
-const HomeSeccion5 = () => {
+/**
+ * IndexSeccion5 - Metodología Timeline
+ * 5 pasos del proceso de trabajo con animación vertical/horizontal
+ * Sistema "Cine-Data Multicultural" - Energy Media
+ */
+const IndexSeccion5 = () => {
   const ingles = useStore(isEnglish);
+  const t = ingles ? translationsIndex.en.methodology : translationsIndex.es.methodology;
+  
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+  const sectionRef = useRef(null);
 
-  const content = {
-    es: {
-      title: "Planes y Precios",
-      subtitle: "Elige el plan que mejor se adapte a tus necesidades",
-      plans: [
-        {
-          name: "Starter",
-          price: "$99",
-          period: "/mes",
-          popular: false,
-          features: [
-            "Hasta 100 dispositivos",
-            "1 MDF + 2 IDFs",
-            "Alertas básicas",
-            "Reportes mensuales",
-            "Soporte por email",
-            "1 usuario administrador"
-          ],
-          buttonText: "Comenzar prueba"
-        },
-        {
-          name: "Pro",
-          price: "$299",
-          period: "/mes",
-          popular: true,
-          features: [
-            "Hasta 500 dispositivos",
-            "3 MDFs + 10 IDFs",
-            "Alertas avanzadas",
-            "Reportes personalizados",
-            "Soporte prioritario 24/7",
-            "5 usuarios con roles"
-          ],
-          buttonText: "Prueba gratuita de 14 días"
-        },
-        {
-          name: "Enterprise",
-          price: "Personalizado",
-          period: "",
-          popular: false,
-          features: [
-            "Dispositivos ilimitados",
-            "MDFs + IDFs ilimitados",
-            "Alertas personalizadas",
-            "API completa",
-            "Soporte dedicado",
-            "Usuarios ilimitados"
-          ],
-          buttonText: "Contactar ventas"
+  // Intersection Observer para animar al scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
         }
-      ]
-    },
-    en: {
-      title: "Plans & Pricing",
-      subtitle: "Choose the plan that best fits your needs",
-      plans: [
-        {
-          name: "Starter",
-          price: "$99",
-          period: "/month",
-          popular: false,
-          features: [
-            "Up to 100 devices",
-            "1 MDF + 2 IDFs",
-            "Basic alerts",
-            "Monthly reports",
-            "Email support",
-            "1 admin user"
-          ],
-          buttonText: "Start trial"
-        },
-        {
-          name: "Pro",
-          price: "$299",
-          period: "/month",
-          popular: true,
-          features: [
-            "Up to 500 devices",
-            "3 MDFs + 10 IDFs",
-            "Advanced alerts",
-            "Custom reports",
-            "24/7 priority support",
-            "5 users with roles"
-          ],
-          buttonText: "14-day free trial"
-        },
-        {
-          name: "Enterprise",
-          price: "Custom",
-          period: "",
-          popular: false,
-          features: [
-            "Unlimited devices",
-            "Unlimited MDFs + IDFs",
-            "Custom alerts",
-            "Full API access",
-            "Dedicated support",
-            "Unlimited users"
-          ],
-          buttonText: "Contact sales"
-        }
-      ]
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-  };
 
-  const textos = ingles ? content.en : content.es;
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Auto-progreso de steps (visual)
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % t.steps.length);
+    }, 3000); // Cambia cada 3 segundos
+
+    return () => clearInterval(interval);
+  }, [isVisible, t.steps.length]);
 
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <div className={styles.decorativeCircle}></div>
-          <h2 className={styles.title}>
-            {textos.title}
-            <span className={styles.glowDot}></span>
-          </h2>
-          <p className={styles.subtitle}>{textos.subtitle}</p>
-          <div className={styles.headerUnderline}></div>
+    <CinematicSection variant="light" withAnimation={true}>
+      <div ref={sectionRef} className={styles.methodologyContainer}>
+        {/* Título de sección */}
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>{t.title}</h2>
+          <p className={styles.sectionSubtitle}>{t.subtitle}</p>
         </div>
-        <div className={styles.pricingGrid}>
-          {textos.plans.map((plan, index) => (
-            <div 
-              key={index} 
-              className={`${styles.pricingCard} ${plan.popular ? styles.popular : ''}`}
+
+        {/* Timeline de 5 pasos */}
+        <div className={styles.timeline}>
+          {/* Línea conectora */}
+          <div className={styles.timelineConnector}></div>
+
+          {/* Steps */}
+          {t.steps.map((step, index) => (
+            <div
+              key={index}
+              className={`${styles.timelineStep} ${
+                isVisible ? styles.visible : ''
+              } ${activeStep === index ? styles.active : ''}`}
+              style={{ animationDelay: `${index * 0.2}s` }}
+              onMouseEnter={() => setActiveStep(index)}
             >
-              {plan.popular && (
-                <>
-                  <span className={styles.popularBadge}>
-                    {ingles ? "Most popular" : "Más popular"}
-                  </span>
-                  <div className={styles.shine}></div>
-                </>
-              )}
-              <h3 className={styles.planName}>{plan.name}</h3>
-              <div className={styles.price}>
-                {plan.price}
-                <span className={styles.period}>{plan.period}</span>
+              {/* Número del paso con círculo */}
+              <div className={styles.stepNumber}>
+                <div className={styles.numberCircle}>
+                  <span className={styles.number}>{step.number}</span>
+                  <div className={styles.pulseRing}></div>
+                </div>
+                <span className={styles.stepIcon}>{step.icon}</span>
               </div>
-              <ul className={styles.featuresList}>
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className={styles.featureItem}>
-                    <span className={styles.featureIcon}>✓</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <button 
-                className={`${styles.ctaButton} ${plan.popular ? styles.primary : styles.secondary}`}
-              >
-                {plan.buttonText}
-              </button>
-              {plan.popular && <div className={styles.glow}></div>}
+
+              {/* Contenido del paso */}
+              <div className={styles.stepContent}>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDescription}>{step.description}</p>
+                
+                {/* Deliverable badge */}
+                <div className={styles.deliverableBadge}>
+                  <span className={styles.deliverableLabel}>
+                    {ingles ? "Deliverable:" : "Entregable:"}
+                  </span>
+                  <span className={styles.deliverableText}>{step.deliverable}</span>
+                </div>
+              </div>
+
+              {/* Conector al siguiente paso */}
+              {index < t.steps.length - 1 && (
+                <div className={styles.stepConnector}></div>
+              )}
             </div>
           ))}
         </div>
+
+        {/* CTA */}
+        <div className={styles.ctaContainer}>
+          <a href="/metodologia" className={styles.btnLearnMore}>
+            {t.cta}
+          </a>
+        </div>
       </div>
-    </section>
+    </CinematicSection>
   );
 };
 
-export default HomeSeccion5;
+export default IndexSeccion5;

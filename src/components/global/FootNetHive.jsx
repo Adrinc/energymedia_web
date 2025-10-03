@@ -15,22 +15,31 @@ const FootNetHive = () => {
 
   const content = {
     es: {
-      description: "NetHive es la solución líder en gestión de infraestructura MDF/IDF, proporcionando control total y visibilidad en tiempo real de tus activos de red.",
+      description: "Energy Media conecta marcas con audiencias hispanas y multiculturales a través de creatividad cultural auténtica y estrategias digitales data-driven que generan crecimiento real.",
       contact: {
         title: "Contacto",
-        address: "Torre NetHive, Av. Tecnológica 2324",
+        address: "Insurgentes Sur 1458, Piso 12",
         city: "Ciudad de México, México",
-        email: "contacto@nethive.com",
-        phone: "+52 (55) 1234-5678"
+        email: "hola@energymedia.mx",
+        phone: "+52 (55) 8888-9999"
       },
       links: {
-        company: {
-          title: "Compañía",
+        servicios: {
+          title: "Servicios",
           items: [
-            { text: "Sobre Nosotros", url: "/about" },
-            { text: "Casos de Éxito", url: "/cases" },
-            { text: "Blog", url: "/blog" },
-            { text: "Carreras", url: "/careers" }
+            { text: "Video Marketing Digital", url: "/servicios#video" },
+            { text: "Marketing Digital 360", url: "/servicios#digital" },
+            { text: "Branding Cultural", url: "/servicios#branding" },
+            { text: "Analítica & OYE", url: "/servicios#oye" }
+          ]
+        },
+        empresa: {
+          title: "Empresa",
+          items: [
+            { text: "Quiénes Somos", url: "/nosotros" },
+            { text: "Metodología", url: "/metodologia" },
+            { text: "Casos de Éxito", url: "/casos" },
+            { text: "Recursos", url: "/recursos" }
           ]
         },
         legal: {
@@ -40,35 +49,36 @@ const FootNetHive = () => {
             { text: "Política de Privacidad", url: "/privacy" },
             { text: "Cookies", url: "/cookies" }
           ]
-        },
-        support: {
-          title: "Soporte",
-          items: [
-            { text: "Centro de Ayuda", url: "/help" },
-            { text: "Documentación", url: "/docs" },
-            { text: "Estado del Sistema", url: "/status" }
-          ]
         }
       },
-      copyright: "© 2025 NetHive. Todos los derechos reservados."
+      copyright: "© 2025 Energy Media. Todos los derechos reservados."
     },
     en: {
-      description: "NetHive is the leading solution in MDF/IDF infrastructure management, providing total control and real-time visibility of your network assets.",
+      description: "Energy Media connects brands with Hispanic and multicultural audiences through authentic cultural creativity and data-driven digital strategies that generate real growth.",
       contact: {
         title: "Contact",
-        address: "NetHive Tower, 2324 Tech Avenue",
+        address: "Insurgentes Sur 1458, Floor 12",
         city: "Mexico City, Mexico",
-        email: "contact@nethive.com",
-        phone: "+52 (55) 1234-5678"
+        email: "hello@energymedia.mx",
+        phone: "+52 (55) 8888-9999"
       },
       links: {
-        company: {
+        servicios: {
+          title: "Services",
+          items: [
+            { text: "Digital Video Marketing", url: "/servicios#video" },
+            { text: "360 Digital Marketing", url: "/servicios#digital" },
+            { text: "Cultural Branding", url: "/servicios#branding" },
+            { text: "Analytics & OYE", url: "/servicios#oye" }
+          ]
+        },
+        empresa: {
           title: "Company",
           items: [
-            { text: "About Us", url: "/about" },
-            { text: "Success Stories", url: "/cases" },
-            { text: "Blog", url: "/blog" },
-            { text: "Careers", url: "/careers" }
+            { text: "About Us", url: "/nosotros" },
+            { text: "Methodology", url: "/metodologia" },
+            { text: "Success Stories", url: "/casos" },
+            { text: "Resources", url: "/recursos" }
           ]
         },
         legal: {
@@ -78,17 +88,9 @@ const FootNetHive = () => {
             { text: "Privacy Policy", url: "/privacy" },
             { text: "Cookies", url: "/cookies" }
           ]
-        },
-        support: {
-          title: "Support",
-          items: [
-            { text: "Help Center", url: "/help" },
-            { text: "Documentation", url: "/docs" },
-            { text: "System Status", url: "/status" }
-          ]
         }
       },
-      copyright: "© 2025 NetHive. All rights reserved."
+      copyright: "© 2025 Energy Media. All rights reserved."
     }
   };
 
@@ -116,7 +118,7 @@ const FootNetHive = () => {
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.logoSection}>
-            <img src="/logo_nh_b.png" alt="NetHive" className={styles.logo} />
+            <img src="/logo.gif" alt="Energy Media" className={styles.logo} />
             <p className={styles.companyDescription}>{textos.description}</p>
             <div className={styles.contactInfo}>
               <div className={styles.contactItem}>
@@ -141,9 +143,20 @@ const FootNetHive = () => {
           </div>
 
           <div className={styles.linkSection}>
-            <h3 className={styles.linkTitle}>{textos.links.company.title}</h3>
+            <h3 className={styles.linkTitle}>{textos.links.servicios.title}</h3>
             <ul className={styles.linkList}>
-              {textos.links.company.items.map((item, index) => (
+              {textos.links.servicios.items.map((item, index) => (
+                <li key={index}>
+                  <a href={item.url} className={styles.link}>{item.text}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className={styles.linkSection}>
+            <h3 className={styles.linkTitle}>{textos.links.empresa.title}</h3>
+            <ul className={styles.linkList}>
+              {textos.links.empresa.items.map((item, index) => (
                 <li key={index}>
                   <a href={item.url} className={styles.link}>{item.text}</a>
                 </li>
@@ -161,30 +174,19 @@ const FootNetHive = () => {
               ))}
             </ul>
           </div>
-
-          <div className={styles.linkSection}>
-            <h3 className={styles.linkTitle}>{textos.links.support.title}</h3>
-            <ul className={styles.linkList}>
-              {textos.links.support.items.map((item, index) => (
-                <li key={index}>
-                  <a href={item.url} className={styles.link}>{item.text}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>{textos.copyright}</p>
           <div className={styles.socialLinks}>
-            <a href="https://linkedin.com/company/nethive" target="_blank" rel="noopener noreferrer">
+            <a href="https://linkedin.com/company/energymedia" target="_blank" rel="noopener noreferrer">
               <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.socialIcon} />
             </a>
-            <a href="https://twitter.com/nethive" target="_blank" rel="noopener noreferrer">
+            <a href="https://twitter.com/energymediamx" target="_blank" rel="noopener noreferrer">
               <img src="/icons/twitter.svg" alt="Twitter" className={styles.socialIcon} />
             </a>
-            <a href="mailto:contact@nethive.com">
-              <img src="/icons/email.svg" alt="Email" className={styles.socialIcon} />
+            <a href="https://instagram.com/energymediamx" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/insta.svg" alt="Instagram" className={styles.socialIcon} />
             </a>
           </div>
         </div>

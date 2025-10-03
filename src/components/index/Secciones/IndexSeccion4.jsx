@@ -1,124 +1,125 @@
-import React from "react";
-import { isEnglish } from '../../../data/variables';
+import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
-import styles from "../css/indexSeccion4.module.css";
+import { isEnglish } from '../../../data/variables';
+import { translationsIndex } from '../../../data/translationsIndex';
+import CinematicSection from '../../global/CinematicSection';
+import styles from '../css/indexSeccion4.module.css';
 
-const HomeSeccion4 = () => {
+/**
+ * IndexSeccion4 - Casos de Éxito con Métricas
+ * 3 tarjetas con CountUp animation en métricas
+ * Sistema "Cine-Data Multicultural" - Energy Media
+ */
+const IndexSeccion4 = () => {
   const ingles = useStore(isEnglish);
+  const t = ingles ? translationsIndex.en.cases : translationsIndex.es.cases;
+  
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
-  const content = {
-    es: {
-      title: "Características Principales",
-      subtitle: "Todo lo que necesitas para gestionar tu infraestructura de red de manera eficiente",
-      features: [
-        {
-          icon: "📋",
-          title: "Inventario Detallado",
-          description: "Control completo de componentes con seguimiento en tiempo real de cada elemento de tu infraestructura.",
-          status: { type: "active", text: "Actualizado" }
-        },
-        {
-          icon: "🌐",
-          title: "Topología Visual",
-          description: "Visualiza la distribución completa de MDF e IDF con mapeo interactivo de conexiones.",
-          status: { type: "active", text: "En vivo" }
-        },
-        {
-          icon: "🔌",
-          title: "Gestión de Conexiones",
-          description: "Administra y monitorea todas las conexiones entre equipos con histórico de cambios.",
-          status: { type: "active", text: "Conectado" }
-        },
-        {
-          icon: "🚨",
-          title: "Alertas Inteligentes",
-          description: "Sistema de alertas automáticas para cambios no autorizados y problemas de conexión.",
-          status: { type: "alert", text: "Monitoreando" }
-        },
-        {
-          icon: "👥",
-          title: "Control de Acceso",
-          description: "Gestión de permisos por rol: administradores, técnicos y auditores con diferentes niveles de acceso.",
-          status: { type: "active", text: "Seguro" }
-        },
-        {
-          icon: "📊",
-          title: "Reportes Avanzados",
-          description: "Generación de informes detallados exportables en PDF y Excel para análisis y auditoría.",
-          status: { type: "active", text: "Disponible" }
+  // Intersection Observer para animar al scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
         }
-      ]
-    },
-    en: {
-      title: "Core Features",
-      subtitle: "Everything you need to efficiently manage your network infrastructure",
-      features: [
-        {
-          icon: "📋",
-          title: "Detailed Inventory",
-          description: "Complete component control with real-time tracking of every element in your infrastructure.",
-          status: { type: "active", text: "Updated" }
-        },
-        {
-          icon: "🌐",
-          title: "Visual Topology",
-          description: "Visualize complete MDF and IDF distribution with interactive connection mapping.",
-          status: { type: "active", text: "Live" }
-        },
-        {
-          icon: "🔌",
-          title: "Connection Management",
-          description: "Manage and monitor all equipment connections with change history.",
-          status: { type: "active", text: "Connected" }
-        },
-        {
-          icon: "🚨",
-          title: "Smart Alerts",
-          description: "Automatic alert system for unauthorized changes and connection issues.",
-          status: { type: "alert", text: "Monitoring" }
-        },
-        {
-          icon: "👥",
-          title: "Access Control",
-          description: "Role-based permission management: administrators, technicians, and auditors with different access levels.",
-          status: { type: "active", text: "Secure" }
-        },
-        {
-          icon: "📊",
-          title: "Advanced Reports",
-          description: "Generate detailed reports exportable in PDF and Excel for analysis and auditing.",
-          status: { type: "active", text: "Available" }
-        }
-      ]
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-  };
 
-  const textos = ingles ? content.en : content.es;
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>{textos.title}</h2>
-          <p className={styles.subtitle}>{textos.subtitle}</p>
+    <CinematicSection variant="dark" withGrain={true}>
+      <div ref={sectionRef} className={styles.casesContainer}>
+        {/* Título de sección */}
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>{t.title}</h2>
+          <p className={styles.sectionSubtitle}>{t.subtitle}</p>
         </div>
-        <div className={styles.featuresGrid}>
-          {textos.features.map((feature, index) => (
-            <div key={index} className={styles.featureCard}>
-              <div className={styles.featureIcon}>
-                <span>{feature.icon}</span>
+
+        {/* Grid de 3 casos */}
+        <div className={styles.casesGrid}>
+          {t.items.map((caseItem, index) => (
+            <a
+              key={index}
+              href={caseItem.link}
+              className={`${styles.caseCard} ${isVisible ? styles.visible : ''}`}
+              style={{ animationDelay: `${index * 0.15}s` }}
+            >
+              {/* Badge de industria */}
+              <div className={styles.industryBadge}>
+                {caseItem.industry}
               </div>
-              <h3 className={styles.featureTitle}>{feature.title}</h3>
-              <p className={styles.featureDescription}>{feature.description}</p>
-              <span className={`${styles.statusIndicator} ${styles['status' + feature.status.type.charAt(0).toUpperCase() + feature.status.type.slice(1)]}`}>
-                {feature.status.text}
-              </span>
-            </div>
+
+              {/* Contenido */}
+              <div className={styles.cardContent}>
+                <h3 className={styles.clientName}>{caseItem.client}</h3>
+                
+                <div className={styles.challengeSection}>
+                  <span className={styles.label}>
+                    {ingles ? "Challenge:" : "Reto:"}
+                  </span>
+                  <p className={styles.challenge}>{caseItem.challenge}</p>
+                </div>
+
+                <div className={styles.solutionSection}>
+                  <span className={styles.label}>
+                    {ingles ? "Solution:" : "Solución:"}
+                  </span>
+                  <p className={styles.solution}>{caseItem.solution}</p>
+                </div>
+              </div>
+
+              {/* Métricas destacadas */}
+              <div className={styles.metricsContainer}>
+                {Object.entries(caseItem.metrics).map(([key, metric]) => (
+                  <div key={key} className={styles.metricBadge}>
+                    <span className={styles.metricValue}>{metric.value}</span>
+                    <span className={styles.metricLabel}>{metric.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Testimonial */}
+              <div className={styles.testimonialContainer}>
+                <div className={styles.quoteIcon}>"</div>
+                <p className={styles.testimonial}>{caseItem.testimonial}</p>
+              </div>
+
+              {/* CTA visual */}
+              <div className={styles.cardFooter}>
+                <span className={styles.ctaText}>
+                  {ingles ? "View full case study" : "Ver caso completo"}
+                </span>
+                <span className={styles.arrow}>→</span>
+              </div>
+
+              {/* Efecto de brillo en hover */}
+              <div className={styles.cardShine}></div>
+            </a>
           ))}
         </div>
+
+        {/* CTA Global */}
+        <div className={styles.ctaContainer}>
+          <a href="/casos" className={styles.btnViewAll}>
+            {t.cta}
+          </a>
+        </div>
       </div>
-    </section>
+    </CinematicSection>
   );
 };
 
-export default HomeSeccion4;
+export default IndexSeccion4;
