@@ -1,0 +1,42 @@
+---
+import LayoutBasic from '../layouts/LayoutBasic.astro';
+
+// Importar secciones
+import ServiciosSeccion1 from '../components/servicios/Secciones/ServiciosSeccion1.jsx';
+import ServiciosSeccion2 from '../components/servicios/Secciones/ServiciosSeccion2.jsx';
+import ServiciosSeccion3 from '../components/servicios/Secciones/ServiciosSeccion3.jsx';
+import ServiciosSeccion4 from '../components/servicios/Secciones/ServiciosSeccion4.jsx';
+import ServiciosSeccion5 from '../components/servicios/Secciones/ServiciosSeccion5.jsx';
+import ServiciosSeccion6 from '../components/servicios/Secciones/ServiciosSeccion6.jsx';
+import ServiciosSeccion7 from '../components/servicios/Secciones/ServiciosSeccion7.jsx';
+import ServiciosSeccion8 from '../components/servicios/Secciones/ServiciosSeccion8.jsx';
+---
+
+<LayoutBasic 
+  title="Servicios - Energy Media | Marketing Digital Multicultural" 
+  showFooter={true}
+>
+  <!-- Sección 1: Hero Banner con Parallax -->
+  <ServiciosSeccion1 transition:persist client:only />
+
+  <!-- Sección 2: Grid de 5 Servicios -->
+  <ServiciosSeccion2 transition:persist client:only />
+
+  <!-- Sección 3: ¿Por qué elegirnos? -->
+  <ServiciosSeccion3 transition:persist client:only />
+
+  <!-- Sección 4: Proceso General -->
+  <ServiciosSeccion4 transition:persist client:only />
+
+  <!-- Sección 5: Herramientas Martech -->
+  <ServiciosSeccion5 transition:persist client:only />
+
+  <!-- Sección 6: Casos Destacados -->
+  <ServiciosSeccion6 transition:persist client:only />
+
+  <!-- Sección 7: FAQs Generales -->
+  <ServiciosSeccion7 transition:persist client:only />
+
+  <!-- Sección 8: CTA Final Épico -->
+  <ServiciosSeccion8 transition:persist client:only />
+</LayoutBasic>
