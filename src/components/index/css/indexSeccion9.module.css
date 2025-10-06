@@ -1,0 +1,481 @@
+/* ========================================
+   INDEX SECCIÓN 9 - TESTIMONIOS
+   Validación social con quotes de clientes
+   Sistema "Cine-Data Multicultural" - Energy Media
+   ======================================== */
+
+/* === SECCIÓN PRINCIPAL === */
+.testimonialsSection {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    var(--em-bg-offwhite) 100%
+  );
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  overflow: hidden;
+}
+
+.testimonialsContainer {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 40px);
+}
+
+/* === HEADER === */
+.headerBlock {
+  text-align: center;
+  margin-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+.sectionTitle {
+  font-family: var(--em-font-headline);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--em-text-primary);
+  line-height: var(--em-leading-tight);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--em-space-md);
+}
+
+/* Línea decorativa */
+.sectionTitle::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: var(--em-gradient-purple-cyan);
+  margin: var(--em-space-md) auto 0;
+  border-radius: 2px;
+}
+
+.sectionSubtitle {
+  font-family: var(--em-font-body);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--em-text-primary);
+  opacity: 0.75;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: var(--em-leading-relaxed);
+}
+
+/* === CARRUSEL DE TESTIMONIOS === */
+.carouselContainer {
+  position: relative;
+  margin-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+.testimonialCard {
+  position: relative;
+  background: white;
+  border-radius: var(--em-radius-xl);
+  padding: clamp(3rem, 6vw, 5rem);
+  box-shadow: 
+    0 20px 60px rgba(103, 46, 146, 0.12),
+    0 8px 20px rgba(103, 46, 146, 0.08);
+  border: 2px solid var(--em-border-light);
+  overflow: hidden;
+}
+
+/* Efecto de grano sutil */
+.testimonialCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gradiente decorativo superior */
+.testimonialCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--em-gradient-purple-cyan);
+}
+
+/* Comillas decorativas gigantes */
+.quoteIcon {
+  position: absolute;
+  top: clamp(1.5rem, 3vw, 2.5rem);
+  left: clamp(1.5rem, 3vw, 2.5rem);
+  font-family: Georgia, serif;
+  font-size: clamp(6rem, 12vw, 10rem);
+  color: var(--em-purple-primary);
+  opacity: 0.08;
+  line-height: 1;
+  z-index: 1;
+}
+
+.testimonialContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.quoteText {
+  font-family: var(--em-font-body);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--em-text-primary);
+  line-height: var(--em-leading-relaxed);
+  text-align: center;
+  max-width: 800px;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Métrica destacada */
+.metricHighlight {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2.5rem);
+  background: linear-gradient(
+    135deg,
+    rgba(62, 200, 247, 0.1),
+    rgba(103, 46, 146, 0.1)
+  );
+  border: 2px solid var(--em-cyan-accent);
+  border-radius: var(--em-radius-lg);
+  box-shadow: 
+    0 8px 20px rgba(62, 200, 247, 0.15),
+    0 0 30px rgba(62, 200, 247, 0.1);
+}
+
+.metricValue {
+  font-family: var(--em-font-headline);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 900;
+  background: var(--em-gradient-purple-cyan);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.metricLabel {
+  font-family: var(--em-font-body);
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 700;
+  color: var(--em-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 8px;
+}
+
+/* Información del cliente */
+.clientInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--em-space-md);
+  padding-top: var(--em-space-md);
+  border-top: 2px solid var(--em-border-light);
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--em-purple-primary);
+  box-shadow: 
+    0 8px 20px rgba(103, 46, 146, 0.2),
+    0 0 15px rgba(103, 46, 146, 0.1);
+}
+
+.clientDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.clientName {
+  font-family: var(--em-font-headline);
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--em-text-primary);
+  margin: 0;
+}
+
+.clientRole {
+  font-family: var(--em-font-body);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-weight: 500;
+  color: var(--em-text-primary);
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Estrellas de rating */
+.ratingStars {
+  display: flex;
+  gap: 6px;
+}
+
+.star {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--em-amber-accent);
+  filter: drop-shadow(0 2px 4px rgba(250, 176, 61, 0.3));
+}
+
+/* === CONTROLES DE NAVEGACIÓN === */
+.carouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.navButton {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--em-purple-primary);
+  color: var(--em-purple-primary);
+  font-size: 2.5rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s var(--em-ease-smooth);
+  box-shadow: 
+    0 4px 15px rgba(103, 46, 146, 0.1),
+    0 1px 4px rgba(103, 46, 146, 0.05);
+  line-height: 1;
+  padding: 0;
+}
+
+.navButton:hover {
+  background: var(--em-purple-primary);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 
+    0 8px 25px rgba(103, 46, 146, 0.25),
+    0 0 20px rgba(62, 200, 247, 0.2);
+}
+
+.navButton:active {
+  transform: scale(1.05);
+}
+
+/* Indicadores de punto */
+.dotsIndicator {
+  display: flex;
+  gap: 12px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--em-border-light);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dot:hover {
+  background: var(--em-purple-light);
+  transform: scale(1.2);
+}
+
+.dotActive {
+  background: var(--em-purple-primary);
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* === GRID DE MINI-TARJETAS === */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.miniCard {
+  display: flex;
+  align-items: center;
+  gap: var(--em-space-md);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: white;
+  border-radius: var(--em-radius-lg);
+  border: 2px solid var(--em-border-light);
+  box-shadow: 
+    0 4px 15px rgba(103, 46, 146, 0.06),
+    0 1px 4px rgba(103, 46, 146, 0.03);
+  cursor: pointer;
+  transition: all 0.4s var(--em-ease-smooth);
+}
+
+.miniCard:hover {
+  border-color: var(--em-purple-primary);
+  transform: translateY(-5px);
+  box-shadow: 
+    0 12px 35px rgba(103, 46, 146, 0.12),
+    0 4px 12px rgba(103, 46, 146, 0.08);
+}
+
+.miniCardActive {
+  border-color: var(--em-cyan-accent);
+  background: linear-gradient(
+    135deg,
+    rgba(62, 200, 247, 0.05),
+    rgba(103, 46, 146, 0.05)
+  );
+  box-shadow: 
+    0 12px 35px rgba(103, 46, 146, 0.15),
+    0 0 25px rgba(62, 200, 247, 0.15);
+}
+
+.miniAvatar {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--em-purple-primary);
+}
+
+.miniContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.miniName {
+  font-family: var(--em-font-headline);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 700;
+  color: var(--em-text-primary);
+  margin: 0;
+}
+
+.miniCompany {
+  font-family: var(--em-font-body);
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+  font-weight: 500;
+  color: var(--em-text-primary);
+  opacity: 0.65;
+  margin: 0;
+}
+
+.miniMetric {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.miniMetricValue {
+  font-family: var(--em-font-headline);
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  font-weight: 800;
+  color: var(--em-cyan-accent);
+}
+
+.miniMetricLabel {
+  font-family: var(--em-font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--em-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+/* === RESPONSIVE === */
+
+/* Tablet (768px-1199px) */
+@media (max-width: 1199px) {
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .miniCard {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile (hasta 767px) */
+@media (max-width: 767px) {
+  .testimonialsSection {
+    padding: clamp(3rem, 6vw, 4rem) 0;
+  }
+  
+  .testimonialCard {
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem);
+  }
+  
+  .quoteIcon {
+    font-size: clamp(4rem, 8vw, 6rem);
+    top: 1rem;
+    left: 1rem;
+  }
+  
+  .quoteText {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+  
+  .clientInfo {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .clientDetails {
+    align-items: center;
+  }
+  
+  .avatar {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .navButton {
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+  }
+  
+  .testimonialsGrid {
+    gap: var(--em-space-lg);
+  }
+  
+  .miniCard {
+    padding: var(--em-space-md);
+  }
+  
+  .miniAvatar {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+  }
+}
+
+/* === ACCESIBILIDAD: Reduce Motion === */
+@media (prefers-reduced-motion: reduce) {
+  .miniCard:hover,
+  .navButton:hover {
+    transform: none;
+  }
+  
+  .dot:hover {
+    transform: none;
+  }
+}
