@@ -49,7 +49,7 @@ const TESTIMONIALS = [
     name: 'Jennifer Lee',
     role: 'Director of Growth',
     company: 'Multicultural Healthcare',
-    avatar: '/image/testimonials/avatar1.png',
+    avatar: '/image/testimonials/Jenny.png',
     quote: {
       es: 'Lo que más valoramos es su enfoque cultural auténtico combinado con análisis profundo de datos. OYE nos dio insights que ninguna otra plataforma había detectado.',
       en: 'What we value most is their authentic cultural approach combined with deep data analysis. OYE gave us insights that no other platform had detected.'
