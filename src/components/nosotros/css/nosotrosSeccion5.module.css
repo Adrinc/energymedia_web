@@ -1,0 +1,166 @@
+/* nosotrosSeccion5.module.css */
+/* Equipo Multicultural */
+
+.teamSection {
+  padding: 5rem 0;
+  background: #FFFFFF;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.header.fadeInUp {
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #1A1024;
+  margin-bottom: 1rem;
+  font-family: var(--font-headline, 'Poppins', sans-serif);
+}
+
+.subtitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  color: #672E92;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: #1A1024;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* Expertise Grid */
+.expertiseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.expertiseCard {
+  background: #F7F5FA;
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 2px solid transparent;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.expertiseCard.fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.expertiseCard:hover {
+  background: #FFFFFF;
+  border-color: #672E92;
+  box-shadow: 0 12px 30px rgba(103, 46, 146, 0.12);
+  transform: translateY(-5px);
+}
+
+/* Icon Circle */
+.iconCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #672E92, #A47EB9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 20px rgba(103, 46, 146, 0.2);
+}
+
+.expertiseArea {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-weight: 700;
+  color: #1A1024;
+  margin-bottom: 0.75rem;
+}
+
+.expertiseSkills {
+  font-size: 0.9375rem;
+  color: #1A1024;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* CTA Block */
+.ctaBlock {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.ctaBlock.fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #672E92, #A47EB9);
+  color: #FFFFFF;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 8px 20px rgba(103, 46, 146, 0.2);
+}
+
+.ctaButton:hover {
+  box-shadow: 0 12px 30px rgba(103, 46, 146, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .teamSection {
+    padding: 3rem 0;
+  }
+
+  .expertiseGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .expertiseCard {
+    padding: 1.75rem;
+  }
+
+  .iconCircle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+  }
+}

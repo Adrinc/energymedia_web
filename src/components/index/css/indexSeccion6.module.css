@@ -104,6 +104,12 @@
 }
 
 .mockLogo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.oyeLogo {
   font-family: var(--em-font-headline);
   font-size: 1.8rem;
   font-weight: 800;
@@ -112,6 +118,16 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+}
+
+.oyeTagline {
+  font-family: var(--em-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--em-purple-primary);
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .mockStatus {
@@ -137,7 +153,143 @@
   50% { opacity: 0.3; }
 }
 
-/* === MOCK CHART === */
+/* === TOOLS SECTION (Herramientas de Listening) === */
+.toolsSection {
+  background: white;
+  border-radius: var(--em-radius-lg);
+  padding: var(--em-space-lg);
+  margin-bottom: var(--em-space-lg);
+}
+
+.toolsLabel {
+  font-family: var(--em-font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--em-purple-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--em-space-sm);
+  opacity: 0.8;
+}
+
+.toolLogos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.toolBadge {
+  padding: 10px 16px;
+  background: rgba(103, 46, 146, 0.08);
+  border: 1px solid rgba(103, 46, 146, 0.2);
+  border-radius: var(--em-radius-md);
+  font-family: var(--em-font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--em-purple-primary);
+  transition: all 0.3s ease;
+}
+
+.toolBadge:hover {
+  background: rgba(103, 46, 146, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(103, 46, 146, 0.15);
+}
+
+.plusBadge {
+  padding: 10px 16px;
+  background: var(--em-gradient-purple-cyan);
+  border-radius: var(--em-radius-md);
+  font-family: var(--em-font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+}
+
+/* === INSIGHTS VISUALIZATION === */
+.insightsVisualization {
+  background: white;
+  border-radius: var(--em-radius-lg);
+  padding: var(--em-space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: var(--em-space-lg);
+}
+
+.insightItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--em-radius-sm);
+  background: rgba(103, 46, 146, 0.03);
+  opacity: 0;
+  animation: slideInRight 0.5s var(--em-ease-smooth) forwards;
+  transition: all 0.3s ease;
+}
+
+.insightItem:hover {
+  background: rgba(103, 46, 146, 0.08);
+  transform: translateX(5px);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.insightIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.insightItem:has(.insightText) .insightIcon {
+  background: var(--em-cyan-accent);
+  color: white;
+}
+
+.insightItem:has(.insightAvoid) .insightIcon {
+  background: var(--em-orange-accent);
+  color: white;
+}
+
+.insightText {
+  font-family: var(--em-font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--em-purple-primary);
+}
+
+.insightAvoid {
+  font-family: var(--em-font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--em-orange-accent);
+  opacity: 0.9;
+}
+
+/* === MOCK CHART (mantener para compatibilidad pero ocultar si no se usa) === */
 .mockChart {
   position: relative;
   background: white;

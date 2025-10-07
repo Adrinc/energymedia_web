@@ -30,7 +30,7 @@ const FloatingParticles = () => {
         vy: (Math.random() - 0.5) * 0.5,
         size: Math.random() * 3 + 1,
         opacity: Math.random() * 0.5 + 0.1,
-        color: Math.random() > 0.5 ? 'rgba(180, 59, 255,' : 'rgba(85, 217, 255,'
+        color: Math.random() > 0.5 ? 'rgba(103, 46, 146,' : 'rgba(62, 200, 247,'
       });
     }
 
@@ -59,7 +59,7 @@ const FloatingParticles = () => {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(180, 59, 255, ${0.1 * (1 - distance / 100)})`;
+            ctx.strokeStyle = `rgba(103, 46, 146, ${0.15 * (1 - distance / 100)})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }

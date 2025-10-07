@@ -1,0 +1,185 @@
+/* nosotrosSeccion2.module.css */
+/* Timeline Histórico */
+
+.timelineSection {
+  padding: 5rem 0;
+  background: #FFFFFF;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.header.fadeInUp {
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #1A1024;
+  margin-bottom: 1rem;
+  font-family: var(--font-headline, 'Poppins', sans-serif);
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: #1A1024;
+  opacity: 0.8;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.phaseCard {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.phaseCard.fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Conector vertical entre fases */
+.connector {
+  position: absolute;
+  left: 50px;
+  top: 100px;
+  width: 3px;
+  height: calc(100% + 3rem);
+  background: linear-gradient(180deg, #672E92, #3EC8F7);
+  z-index: 0;
+}
+
+/* Ícono de época */
+.iconCircle {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #672E92, #A47EB9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(103, 46, 146, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.icon {
+  font-size: 2.5rem;
+}
+
+/* Contenido de la fase */
+.phaseContent {
+  flex: 1;
+  background: #F7F5FA;
+  padding: 2rem;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.phaseCard:hover .phaseContent {
+  background: #FFFFFF;
+  box-shadow: 0 12px 30px rgba(103, 46, 146, 0.12);
+  transform: translateX(5px);
+}
+
+.years {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgba(103, 46, 146, 0.1);
+  color: #672E92;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.phaseTitle {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: #1A1024;
+  margin-bottom: 0.75rem;
+}
+
+.phaseDescription {
+  font-size: 1rem;
+  color: #1A1024;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.highlightBadge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, rgba(62, 200, 247, 0.15), rgba(103, 46, 146, 0.15));
+  border: 1px solid rgba(62, 200, 247, 0.3);
+  color: #672E92;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timelineSection {
+    padding: 3rem 0;
+  }
+
+  .phaseCard {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .connector {
+    left: 49px;
+    top: 100px;
+  }
+
+  .iconCircle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+
+  .phaseContent {
+    padding: 1.5rem;
+  }
+
+  .phaseCard:hover .phaseContent {
+    transform: translateX(0);
+  }
+}

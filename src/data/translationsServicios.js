@@ -84,18 +84,18 @@ export const translationsServicios = {
         {
           id: "oye-analytics",
           icon: "📊",
-          title: "OYE Analytics",
-          tagline: "Decisiones con datos reales",
-          description: "Plataforma de listening language-neutral + dashboards de performance en tiempo real.",
+          title: "Analítica & Insights Culturales",
+          tagline: "Decisiones con datos y contexto multicultural",
+          description: "Social listening en 18+ idiomas + análisis cultural experto con metodología OYE.",
           bullets: [
-            "Social listening multicultural",
-            "KPIs personalizados por objetivo",
-            "Insights accionables semanales"
+            "Listening multicultural con herramientas profesionales",
+            "Identificación de triggers y avoidances culturales",
+            "Reports accionables con insights creativos"
           ],
-          badge: "Data-driven",
-          ctaLearnMore: "Ver plataforma OYE",
-          ctaSchedule: "Solicitar demo",
-          comingSoon: "Próximamente: tour interactivo de la plataforma"
+          badge: "Metodología OYE",
+          ctaLearnMore: "Conocer metodología",
+          ctaSchedule: "Solicitar consultoría",
+          comingSoon: "Próximamente: casos con insights OYE aplicados"
         }
       ]
     },
@@ -305,18 +305,18 @@ export const translationsServicios = {
         {
           id: "oye-analytics",
           icon: "📊",
-          title: "OYE Analytics",
-          tagline: "Decisions with real data",
-          description: "Language-neutral listening platform + real-time performance dashboards.",
+          title: "Analytics & Cultural Insights",
+          tagline: "Decisions with data and multicultural context",
+          description: "Social listening in 18+ languages + expert cultural analysis with OYE methodology.",
           bullets: [
-            "Multicultural social listening",
-            "Customized KPIs by objective",
-            "Weekly actionable insights"
+            "Multicultural listening with professional tools",
+            "Identification of cultural triggers and avoidances",
+            "Actionable reports with creative insights"
           ],
-          badge: "Data-driven",
-          ctaLearnMore: "View OYE platform",
-          ctaSchedule: "Request demo",
-          comingSoon: "Coming soon: interactive platform tour"
+          badge: "OYE Methodology",
+          ctaLearnMore: "Learn methodology",
+          ctaSchedule: "Request consultation",
+          comingSoon: "Coming soon: cases with applied OYE insights"
         }
       ]
     },

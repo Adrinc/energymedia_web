@@ -229,34 +229,34 @@ export const translationsIndex = {
     // SECCIÓN 6: OYE ANALYTICS + COPY PUENTE
     // ==========================================
     oye: {
-      title: "OYE: Listening multicultural en tiempo real",
-      subtitle: "Nuestra plataforma de analítica language-neutral",
+      title: "Insights Culturales con Metodología OYE",
+      subtitle: "Combinamos social listening avanzado con análisis cultural experto en 18+ idiomas",
       benefits: [
         {
-          icon: "⚡",
-          title: "Insights accionables en tiempo real",
-          description: "Detecta tendencias, temas y sentiment sin importar el idioma."
+          icon: "🔍",
+          title: "Social listening en 18+ idiomas",
+          description: "Escuchamos conversaciones multiculturales con contexto cultural real, no solo traducción."
         },
         {
-          icon: "🌎",
-          title: "Detección de oportunidades multiculturales",
-          description: "Identifica gaps de contenido y momentos culturales clave."
+          icon: "�",
+          title: "Identificación de triggers y avoidances",
+          description: "Descubrimos qué conecta y qué evitar para cada audiencia multicultural específica."
         },
         {
-          icon: "🎯",
-          title: "Mejora creativa basada en datos",
-          description: "Optimiza mensajes, tonos y formatos con evidencia sólida."
+          icon: "📊",
+          title: "Reports accionables con insights creativos",
+          description: "Transformamos datos en estrategias de contenido que mejoran performance y autenticidad."
         }
       ],
       features: [
-        "Listening en +15 idiomas",
-        "Sentiment analysis cultural",
-        "Topic modeling automático",
-        "Alertas de crisis en tiempo real",
-        "Integración con martech stack"
+        "Listening multicultural con herramientas profesionales",
+        "Análisis cultural experto (no automático)",
+        "Identificación de momentos culturales clave",
+        "Triggers y avoidances por segmento",
+        "Optimización continua de mensajes"
       ],
-      ctaPrimary: "Solicitar demo de OYE",
-      ctaSecondary: "Conocer más sobre OYE",
+      ctaPrimary: "Descubre nuestra metodología",
+      ctaSecondary: "Ver casos con OYE",
       
       // Copy puente hacia Sección 7 (Reel)
       bridge: {
@@ -750,34 +750,34 @@ export const translationsIndex = {
 
     // SECTION 6: OYE
     oye: {
-      title: "OYE: Real-time multicultural listening",
-      subtitle: "Our language-neutral analytics platform",
+      title: "Cultural Insights with OYE Methodology",
+      subtitle: "We combine advanced social listening with expert cultural analysis in 18+ languages",
       benefits: [
         {
-          icon: "⚡",
-          title: "Actionable insights in real-time",
-          description: "Detect trends, topics, and sentiment regardless of language."
+          icon: "🔍",
+          title: "Social listening in 18+ languages",
+          description: "We listen to multicultural conversations with real cultural context, not just translation."
         },
         {
-          icon: "🌎",
-          title: "Multicultural opportunity detection",
-          description: "Identify content gaps and key cultural moments."
+          icon: "�",
+          title: "Trigger and avoidance identification",
+          description: "We discover what connects and what to avoid for each specific multicultural audience."
         },
         {
-          icon: "🎯",
-          title: "Data-driven creative improvement",
-          description: "Optimize messages, tones, and formats with solid evidence."
+          icon: "📊",
+          title: "Actionable reports with creative insights",
+          description: "We transform data into content strategies that improve performance and authenticity."
         }
       ],
       features: [
-        "Listening in +15 languages",
-        "Cultural sentiment analysis",
-        "Automatic topic modeling",
-        "Real-time crisis alerts",
-        "Martech stack integration"
+        "Multicultural listening with professional tools",
+        "Expert cultural analysis (not automatic)",
+        "Key cultural moment identification",
+        "Triggers and avoidances by segment",
+        "Continuous message optimization"
       ],
-      ctaPrimary: "Request OYE demo",
-      ctaSecondary: "Learn more about OYE",
+      ctaPrimary: "Discover our methodology",
+      ctaSecondary: "See cases with OYE",
       
       bridge: {
         text1: "You've seen ",

@@ -1,0 +1,184 @@
+/* metodologiaSeccion4.module.css */
+/* Mini Case Studies - OYE en acción */
+
+.casesSection {
+  padding: 5rem 0;
+  background: #F7F5FA;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.header.fadeInUp {
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #1A1024;
+  margin-bottom: 1rem;
+  font-family: var(--font-headline, 'Poppins', sans-serif);
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: #1A1024;
+  opacity: 0.8;
+}
+
+/* Cases Grid */
+.casesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+.caseCard {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 2px solid transparent;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.caseCard.fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.caseCard:hover {
+  border-color: #E1DDEC;
+  box-shadow: 0 12px 30px rgba(103, 46, 146, 0.12);
+  transform: translateY(-5px);
+}
+
+.caseCard.active {
+  border-color: #672E92;
+  box-shadow: 0 16px 40px rgba(103, 46, 146, 0.18);
+}
+
+/* Industry badge */
+.industry {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #672E92, #A47EB9);
+  color: #FFFFFF;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.sectionLabel {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #672E92;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.sectionText {
+  font-size: 0.9375rem;
+  color: #1A1024;
+  line-height: 1.6;
+}
+
+.sectionText.highlight {
+  background: rgba(62, 200, 247, 0.1);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #3EC8F7;
+  font-weight: 500;
+}
+
+/* Result Section */
+.resultSection {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #E1DDEC;
+}
+
+.metricBig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(103, 46, 146, 0.05), rgba(62, 200, 247, 0.05));
+  border-radius: 12px;
+}
+
+.metricValue {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #672E92;
+  font-family: var(--font-headline, 'Poppins', sans-serif);
+  line-height: 1;
+}
+
+.metricLabel {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1A1024;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.resultDetail {
+  font-size: 0.9375rem;
+  color: #1A1024;
+  line-height: 1.5;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .casesSection {
+    padding: 3rem 0;
+  }
+
+  .casesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .caseCard {
+    padding: 1.5rem;
+  }
+
+  .metricValue {
+    font-size: 2.5rem;
+  }
+}

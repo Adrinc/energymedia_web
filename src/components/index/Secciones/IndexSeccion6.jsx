@@ -60,9 +60,9 @@ const IndexSeccion6 = () => {
           {/* Header */}
           <div className={styles.sectionHeader}>
             <div className={styles.badge}>
-              <span className={styles.badgeIcon}>📡</span>
+              <span className={styles.badgeIcon}>�</span>
               <span className={styles.badgeText}>
-                {ingles ? "Proprietary Platform" : "Plataforma propia"}
+                {ingles ? "Proprietary Methodology" : "Metodología propia"}
               </span>
             </div>
             <h2 className={styles.sectionTitle}>{t.title}</h2>
@@ -71,45 +71,61 @@ const IndexSeccion6 = () => {
 
           {/* Content Grid */}
           <div className={styles.contentGrid}>
-            {/* Mock de interfaz OYE */}
+            {/* Herramientas + Análisis Cultural */}
             <div className={`${styles.mockInterface} ${isVisible ? styles.visible : ''}`}>
               <div className={styles.mockHeader}>
-                <div className={styles.mockLogo}>OYE</div>
+                <div className={styles.mockLogo}>
+                  <span className={styles.oyeLogo}>OYE</span>
+                  <span className={styles.oyeTagline}>
+                    {ingles ? "Cultural Insights" : "Insights Culturales"}
+                  </span>
+                </div>
                 <div className={styles.mockStatus}>
                   <span className={styles.statusDot}></span>
-                  {ingles ? "Live monitoring" : "Monitoreo en vivo"}
+                  {ingles ? "Methodology in action" : "Metodología en acción"}
                 </div>
               </div>
 
-              {/* Mock de gráfico de listening */}
-              <div className={styles.mockChart}>
-                <div className={styles.chartBars}>
-                  {[65, 82, 45, 91, 73, 58, 88, 62].map((height, i) => (
-                    <div
-                      key={i}
-                      className={styles.chartBar}
-                      style={{
-                        height: `${height}%`,
-                        animationDelay: `${i * 0.1}s`
-                      }}
-                    ></div>
-                  ))}
+              {/* Herramientas de Listening (logos reales) */}
+              <div className={styles.toolsSection}>
+                <p className={styles.toolsLabel}>
+                  {ingles ? "Powered by professional tools:" : "Con herramientas profesionales:"}
+                </p>
+                <div className={styles.toolLogos}>
+                  <div className={styles.toolBadge}>Brandwatch</div>
+                  <div className={styles.toolBadge}>Sprinklr</div>
+                  <div className={styles.toolBadge}>Talkwalker</div>
+                  <div className={styles.plusBadge}>
+                    + {ingles ? "Expert Analysis" : "Análisis Experto"}
+                  </div>
                 </div>
+              </div>
 
-                {/* Topic chips flotantes */}
-                <div className={styles.topicChips}>
-                  <div className={styles.chip} style={{ animationDelay: '0.2s' }}>
-                    🇲🇽 Cultura mexicana
-                  </div>
-                  <div className={styles.chip} style={{ animationDelay: '0.4s' }}>
-                    🎉 Día de Muertos
-                  </div>
-                  <div className={styles.chip} style={{ animationDelay: '0.6s' }}>
-                    📱 Social trends
-                  </div>
-                  <div className={styles.chip} style={{ animationDelay: '0.8s' }}>
-                    💬 Sentiment positivo
-                  </div>
+              {/* Cultural Insights Visualization (más abstracto) */}
+              <div className={styles.insightsVisualization}>
+                <div className={styles.insightItem} style={{ animationDelay: '0.2s' }}>
+                  <span className={styles.insightIcon}>✓</span>
+                  <span className={styles.insightText}>
+                    {ingles ? "Family-first messaging" : "Mensajes centrados en familia"}
+                  </span>
+                </div>
+                <div className={styles.insightItem} style={{ animationDelay: '0.4s' }}>
+                  <span className={styles.insightIcon}>✓</span>
+                  <span className={styles.insightText}>
+                    {ingles ? "Code-switching natural" : "Code-switching natural"}
+                  </span>
+                </div>
+                <div className={styles.insightItem} style={{ animationDelay: '0.6s' }}>
+                  <span className={styles.insightIcon}>✗</span>
+                  <span className={styles.insightAvoid}>
+                    {ingles ? "Avoid stereotypes" : "Evitar estereotipos"}
+                  </span>
+                </div>
+                <div className={styles.insightItem} style={{ animationDelay: '0.8s' }}>
+                  <span className={styles.insightIcon}>✗</span>
+                  <span className={styles.insightAvoid}>
+                    {ingles ? "Literal translation" : "Traducción literal"}
+                  </span>
                 </div>
               </div>
 
@@ -147,10 +163,10 @@ const IndexSeccion6 = () => {
 
               {/* CTAs */}
               <div className={styles.ctaGroup}>
-                <a href="/oye" className={styles.btnPrimary}>
+                <a href="/metodologia#oye" className={styles.btnPrimary}>
                   {t.ctaPrimary}
                 </a>
-                <a href="/oye#features" className={styles.btnSecondary}>
+                <a href="/portfolio" className={styles.btnSecondary}>
                   {t.ctaSecondary}
                 </a>
               </div>

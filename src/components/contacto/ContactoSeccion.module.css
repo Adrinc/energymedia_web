@@ -8,11 +8,11 @@
   padding: 40px 20px;
   margin-top: 80px; /* Compensar la altura del navbar */
   background: linear-gradient(135deg, 
-    #0D0E26 0%, 
-    #1a0a4e 25%, 
-    #0D0E26 50%,
-    #1a1a3e 75%,
-    #0D0E26 100%);
+    #1A1024 0%, 
+    #672E92 25%, 
+    #1A1024 50%,
+    #672E92 75%,
+    #1A1024 100%);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
   overflow: hidden;
@@ -32,9 +32,9 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(180, 59, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(85, 217, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(124, 6, 235, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(103, 46, 146, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(62, 200, 247, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(103, 46, 146, 0.08) 0%, transparent 50%);
   animation: floatingOrbs 20s ease-in-out infinite;
 }
 
@@ -128,8 +128,8 @@
   width: 120%;
   height: 120%;
   background: radial-gradient(circle, 
-    rgba(180, 59, 255, 0.05) 0%, 
-    rgba(85, 217, 255, 0.03) 50%, 
+    rgba(103, 46, 146, 0.08) 0%, 
+    rgba(62, 200, 247, 0.05) 50%, 
     transparent 100%);
   border-radius: 50%;
   animation: pulse 4s ease-in-out infinite;
@@ -163,7 +163,7 @@
 
 .logo:hover {
   transform: scale(1.05) translateY(-5px);
-  filter: drop-shadow(0 12px 24px rgba(180, 59, 255, 0.3));
+  filter: drop-shadow(0 12px 24px rgba(103, 46, 146, 0.4));
 }
 
 .title {
@@ -171,13 +171,13 @@
   margin-bottom: 15px;
   font-weight: 800;
   background: linear-gradient(135deg, 
-    #47f6ff 0%, 
-    #B43BFF 50%, 
-    #55D9FF 100%);
+    #3EC8F7 0%, 
+    #672E92 50%, 
+    #3EC8F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 30px rgba(71, 246, 255, 0.5);
+  text-shadow: 0 0 30px rgba(62, 200, 247, 0.5);
   animation: titleGlow 2s ease-in-out infinite alternate;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -185,10 +185,10 @@
 
 @keyframes titleGlow {
   from {
-    text-shadow: 0 0 20px rgba(71, 246, 255, 0.3);
+    text-shadow: 0 0 20px rgba(62, 200, 247, 0.3);
   }
   to {
-    text-shadow: 0 0 40px rgba(180, 59, 255, 0.6);
+    text-shadow: 0 0 40px rgba(103, 46, 146, 0.6);
   }
 }
 
@@ -219,9 +219,9 @@
   max-width: 3000px;
   max-height: 3000px;
   background: radial-gradient(circle at center, 
-    rgba(55, 91, 235, 0.2) 0%, 
-    rgba(180, 59, 255, 0.1) 25%, 
-    rgba(85, 217, 255, 0.05) 50%, 
+    rgba(103, 46, 146, 0.2) 0%, 
+    rgba(62, 200, 247, 0.1) 25%, 
+    rgba(103, 46, 146, 0.05) 50%, 
     transparent 70%);
   z-index: 1;
   pointer-events: none;
@@ -243,10 +243,10 @@
   height: 100%;
   background-image: 
     radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(180, 59, 255, 0.4), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(85, 217, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(103, 46, 146, 0.4), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(62, 200, 247, 0.4), transparent),
     radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.2), transparent),
-    radial-gradient(2px 2px at 160px 30px, rgba(180, 59, 255, 0.3), transparent);
+    radial-gradient(2px 2px at 160px 30px, rgba(103, 46, 146, 0.3), transparent);
   background-repeat: repeat;
   background-size: 200px 200px;
   animation: sparkle 20s linear infinite;

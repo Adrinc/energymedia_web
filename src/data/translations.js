@@ -9,11 +9,10 @@ export const translations = {
     navbar: {
       inicio: "Inicio",
       servicios: "Servicios",
-      casos: "Casos",
+      portfolio: "Portfolio",
       metodologia: "Metodología",
-      oye: "OYE",
-      recursos: "Recursos",
       nosotros: "Nosotros",
+      recursos: "Recursos",
       contacto: "Contacto"
     },
     home: {
@@ -622,11 +621,10 @@ export const translations = {
     navbar: {
       inicio: "Home",
       servicios: "Services",
-      casos: "Cases",
+      portfolio: "Portfolio",
       metodologia: "Methodology",
-      oye: "OYE",
-      recursos: "Resources",
       nosotros: "About Us",
+      recursos: "Resources",
       contacto: "Contact"
     },
     home: {

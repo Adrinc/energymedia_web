@@ -240,10 +240,10 @@ const NavBar = () => {
         </li>
         <li className={styles.navItem}>
           <a 
-            href="/casos" 
-            className={`${styles.navLink} ${isActiveLink("/casos") ? styles.activeLink : ""}`}
+            href="/portfolio" 
+            className={`${styles.navLink} ${isActiveLink("/portfolio") ? styles.activeLink : ""}`}
           >
-            {textosNavbar.casos}
+            {textosNavbar.portfolio}
           </a>
         </li>
         <li className={styles.navItem}>
@@ -256,10 +256,10 @@ const NavBar = () => {
         </li>
         <li className={styles.navItem}>
           <a 
-            href="/oye" 
-            className={`${styles.navLink} ${isActiveLink("/oye") ? styles.activeLink : ""}`}
+            href="/nosotros" 
+            className={`${styles.navLink} ${isActiveLink("/nosotros") ? styles.activeLink : ""}`}
           >
-            {textosNavbar.oye}
+            {textosNavbar.nosotros}
           </a>
         </li>
         <li className={styles.navItem}>
@@ -268,14 +268,6 @@ const NavBar = () => {
             className={`${styles.navLink} ${isActiveLink("/recursos") ? styles.activeLink : ""}`}
           >
             {textosNavbar.recursos}
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a 
-            href="/nosotros" 
-            className={`${styles.navLink} ${isActiveLink("/nosotros") ? styles.activeLink : ""}`}
-          >
-            {textosNavbar.nosotros}
           </a>
         </li>
         
