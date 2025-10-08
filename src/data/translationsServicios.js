@@ -22,9 +22,9 @@ export const translationsServicios = {
           icon: "🎬",
           title: "Video Marketing Digital",
           tagline: "Video que conecta y convierte",
-          description: "De la TV al performance digital: spots, reels y campañas que generan ROI medible.",
+          description: "Producción profesional para plataformas digitales: social ads, reels y campañas que generan ROI medible.",
           bullets: [
-            "Producción cinematográfica con Emmy",
+            "Producción cinematográfica profesional",
             "Social ads nativos (TikTok, Reels, YouTube)",
             "Test A/B creativo continuo"
           ],
@@ -82,20 +82,20 @@ export const translationsServicios = {
           comingSoon: "Próximamente: stack tecnológico y portfolio de proyectos"
         },
         {
-          id: "oye-analytics",
+          id: "analytics",
           icon: "📊",
-          title: "Analítica & Insights Culturales",
-          tagline: "Decisiones con datos y contexto multicultural",
-          description: "Social listening en 18+ idiomas + análisis cultural experto con metodología OYE.",
+          title: "Analítica & Insights de Datos",
+          tagline: "Decisiones basadas en datos y métricas en tiempo real",
+          description: "Análisis de datos avanzado + insights accionables para optimización continua.",
           bullets: [
-            "Listening multicultural con herramientas profesionales",
-            "Identificación de triggers y avoidances culturales",
-            "Reports accionables con insights creativos"
+            "Análisis de datos con herramientas profesionales",
+            "Identificación de patrones y oportunidades",
+            "Reports accionables con recomendaciones estratégicas"
           ],
-          badge: "Metodología OYE",
+          badge: "Data-Driven",
           ctaLearnMore: "Conocer metodología",
           ctaSchedule: "Solicitar consultoría",
-          comingSoon: "Próximamente: casos con insights OYE aplicados"
+          comingSoon: "Próximamente: casos de éxito con análisis aplicado"
         }
       ]
     },
@@ -113,13 +113,13 @@ export const translationsServicios = {
         },
         {
           icon: "📺",
-          title: "De TV a digital sin perder calidad",
-          description: "Producción Emmy + mentalidad performance. El mejor de ambos mundos."
+          title: "Calidad cinematográfica para digital",
+          description: "Producción profesional + mentalidad performance. El mejor de ambos mundos."
         },
         {
           icon: "🔬",
-          title: "Data-driven con OYE",
-          description: "Listening language-neutral y optimización continua basada en insights reales."
+          title: "Data-driven con análisis en tiempo real",
+          description: "Análisis de datos y optimización continua basada en insights reales y accionables."
         },
         {
           icon: "📈",
@@ -196,15 +196,15 @@ export const translationsServicios = {
         },
         {
           question: "¿Qué los hace diferentes de otras agencias?",
-          answer: "Tres cosas: (1) Expertise cultural auténtico (no traducción genérica), (2) Producción de video de clase Emmy + mentalidad performance, (3) OYE Analytics - nuestra plataforma propia de listening language-neutral."
+          answer: "Tres cosas: (1) Expertise cultural auténtico (no traducción genérica), (2) Producción de video profesional + mentalidad performance, (3) Stack tecnológico completo (marketing + desarrollo + IA) bajo un mismo techo."
         },
         {
           question: "¿Puedo combinar varios servicios?",
-          answer: "¡Absolutamente! De hecho, los mejores resultados vienen de estrategias integradas. Por ejemplo: Video Marketing + Social Ads + OYE Analytics."
+          answer: "¡Absolutamente! De hecho, los mejores resultados vienen de estrategias integradas. Por ejemplo: Video Marketing + Social Ads + Desarrollo Web."
         },
         {
           question: "¿Cómo miden el éxito?",
-          answer: "Definimos KPIs claros desde el inicio (ROAS, CAC, Leads, Revenue, etc.) y reportamos semanalmente con OYE Analytics. Transparencia total."
+          answer: "Definimos KPIs claros desde el inicio (ROAS, CAC, Leads, Revenue, etc.) y reportamos semanalmente con análisis de datos en tiempo real. Transparencia total."
         },
         {
           question: "¿Trabajan con presupuestos pequeños?",
@@ -243,9 +243,9 @@ export const translationsServicios = {
           icon: "🎬",
           title: "Digital Video Marketing",
           tagline: "Video that connects and converts",
-          description: "From TV to digital performance: spots, reels, and campaigns that generate measurable ROI.",
+          description: "Professional production for digital platforms: social ads, reels, and campaigns that generate measurable ROI.",
           bullets: [
-            "Emmy-winning cinematic production",
+            "Professional cinematic production",
             "Native social ads (TikTok, Reels, YouTube)",
             "Continuous creative A/B testing"
           ],
@@ -303,20 +303,20 @@ export const translationsServicios = {
           comingSoon: "Coming soon: tech stack and project portfolio"
         },
         {
-          id: "oye-analytics",
+          id: "analytics",
           icon: "📊",
-          title: "Analytics & Cultural Insights",
-          tagline: "Decisions with data and multicultural context",
-          description: "Social listening in 18+ languages + expert cultural analysis with OYE methodology.",
+          title: "Analytics & Data Insights",
+          tagline: "Data-driven decisions with real-time metrics",
+          description: "Advanced data analysis + actionable insights for continuous optimization.",
           bullets: [
-            "Multicultural listening with professional tools",
-            "Identification of cultural triggers and avoidances",
-            "Actionable reports with creative insights"
+            "Data analysis with professional tools",
+            "Pattern and opportunity identification",
+            "Actionable reports with strategic recommendations"
           ],
-          badge: "OYE Methodology",
+          badge: "Data-Driven",
           ctaLearnMore: "Learn methodology",
           ctaSchedule: "Request consultation",
-          comingSoon: "Coming soon: cases with applied OYE insights"
+          comingSoon: "Coming soon: success cases with applied analysis"
         }
       ]
     },
@@ -334,13 +334,13 @@ export const translationsServicios = {
         },
         {
           icon: "📺",
-          title: "From TV to digital without losing quality",
-          description: "Emmy production + performance mindset. The best of both worlds."
+          title: "Cinematic quality for digital",
+          description: "Professional production + performance mindset. The best of both worlds."
         },
         {
           icon: "🔬",
-          title: "Data-driven with OYE",
-          description: "Language-neutral listening and continuous optimization based on real insights."
+          title: "Data-driven with real-time analysis",
+          description: "Data analysis and continuous optimization based on real, actionable insights."
         },
         {
           icon: "📈",
@@ -417,15 +417,15 @@ export const translationsServicios = {
         },
         {
           question: "What makes you different from other agencies?",
-          answer: "Three things: (1) Authentic cultural expertise (not generic translation), (2) Emmy-level video production + performance mindset, (3) OYE Analytics - our proprietary language-neutral listening platform."
+          answer: "Three things: (1) Authentic cultural expertise (not generic translation), (2) Professional video production + performance mindset, (3) Complete tech stack (marketing + development + AI) under one roof."
         },
         {
           question: "Can I combine multiple services?",
-          answer: "Absolutely! In fact, the best results come from integrated strategies. For example: Video Marketing + Social Ads + OYE Analytics."
+          answer: "Absolutely! In fact, the best results come from integrated strategies. For example: Video Marketing + Social Ads + Web Development."
         },
         {
           question: "How do you measure success?",
-          answer: "We define clear KPIs from the start (ROAS, CAC, Leads, Revenue, etc.) and report weekly with OYE Analytics. Total transparency."
+          answer: "We define clear KPIs from the start (ROAS, CAC, Leads, Revenue, etc.) and report weekly with real-time data analysis. Total transparency."
         },
         {
           question: "Do you work with small budgets?",

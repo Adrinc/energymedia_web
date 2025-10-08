@@ -22,7 +22,7 @@ const ServiciosSeccion6 = () => {
       industry: "Healthcare",
       client: "Regional Hospital Network",
       challenge: "Increase patient acquisition in Hispanic communities",
-      services: ["Video Marketing", "Social Ads", "OYE Analytics"],
+      services: ["Video Marketing", "Social Ads", "Data Analytics"],
       metrics: [
         { label: "Patient Inquiries", value: "+156%" },
         { label: "Cost per Lead", value: "-34%" },
@@ -48,7 +48,7 @@ const ServiciosSeccion6 = () => {
       industry: "Education",
       client: "Online Learning Platform",
       challenge: "Boost enrollment in bilingual programs",
-      services: ["Video Marketing", "Marketing 360", "OYE Analytics"],
+      services: ["Video Marketing", "Marketing 360", "Data Analytics"],
       metrics: [
         { label: "Enrollments", value: "+214%" },
         { label: "CAC", value: "-28%" },
@@ -75,7 +75,7 @@ const ServiciosSeccion6 = () => {
       industry: "Salud",
       client: "Red Hospitalaria Regional",
       challenge: "Aumentar captación de pacientes en comunidades hispanas",
-      services: ["Video Marketing", "Social Ads", "OYE Analytics"],
+      services: ["Video Marketing", "Social Ads", "Data Analytics"],
       metrics: [
         { label: "Consultas de pacientes", value: "+156%" },
         { label: "Costo por lead", value: "-34%" },
@@ -101,7 +101,7 @@ const ServiciosSeccion6 = () => {
       industry: "Educación",
       client: "Plataforma de aprendizaje online",
       challenge: "Aumentar inscripciones en programas bilingües",
-      services: ["Video Marketing", "Marketing 360", "OYE Analytics"],
+      services: ["Video Marketing", "Marketing 360", "Data Analytics"],
       metrics: [
         { label: "Inscripciones", value: "+214%" },
         { label: "CAC", value: "-28%" },

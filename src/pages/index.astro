@@ -4,6 +4,7 @@ import LayoutBasic from '../layouts/LayoutBasic.astro';
 import IndexSeccion1 from '../components/index/Secciones/IndexSeccion1.jsx';
 import IndexSeccion2 from '../components/index/Secciones/IndexSeccion2.jsx';
 import IndexSeccion3 from '../components/index/Secciones/IndexSeccion3.jsx';
+import IndexSeccion3B from '../components/index/Secciones/IndexSeccion3B.jsx'; // 🆕 LOS 5 PILARES
 import IndexSeccion4 from '../components/index/Secciones/IndexSeccion4.jsx';
 import IndexSeccion5 from '../components/index/Secciones/IndexSeccion5.jsx';
 import IndexSeccion6 from '../components/index/Secciones/IndexSeccion6.jsx';
@@ -15,28 +16,34 @@ import IndexSeccion11 from '../components/index/Secciones/IndexSeccion11.jsx';
 
 ---
 
-<LayoutBasic title="Energy Media - Creatividad multicultural + performance digital" showFooter={true}>
-    <!-- FASE 1: Hero + Diferenciadores -->
+<LayoutBasic title="Energy Media - Agencia digital full-service" showFooter={true}>
+    <!-- Sección 1-2: Hero + Diferenciadores -->
     <IndexSeccion1 transition:persist client:only/>
     <IndexSeccion2 transition:persist client:only/>
     
-    <!-- FASE 2: Servicios + Casos -->
+    <!-- Sección 3: Servicios destacados (resumen) -->
     <IndexSeccion3 transition:persist client:only/>
+    
+    <!-- 🆕 Sección 3B: LOS 5 PILARES (expandibles con detalle) -->
+    <IndexSeccion3B transition:persist client:only/>
+    
+    <!-- Sección 4: Casos con métricas -->
     <IndexSeccion4 transition:persist client:only/>
     
-    <!-- FASE 3: Metodología + OYE -->
+    <!-- Sección 5: Metodología/Proceso -->
     <IndexSeccion5 transition:persist client:only/>
-    <IndexSeccion6 transition:persist client:only/>
     
-    <!-- FASE 4: VIDEO REEL (LA JOYA DE LA CORONA) 🎬 -->
+    <!-- Sección 7: 🎬 VIDEO SHOWCASE (9 videos optimizados) -->
     <IndexSeccion7 transition:persist client:only/>
     
-    <!-- FASE 5: Logos de Clientes + Testimonios -->
+    <!-- Sección 6: 🏢 LOGOS CLIENTES -->
+    <IndexSeccion6 transition:persist client:only/>
+    
+    <!-- Sección 8-9: Testimonios + Planes -->
     <IndexSeccion8 transition:persist client:only/>
     <IndexSeccion9 transition:persist client:only/>
     
-    <!-- FASE 6: Planes + CTA Final 🎯 -->
+    <!-- Sección 10: CTA Final + Newsletter -->
     <IndexSeccion10 transition:persist client:only/>
-    <IndexSeccion11 transition:persist client:only/>
 </LayoutBasic>
 

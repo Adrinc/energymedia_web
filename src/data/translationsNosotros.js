@@ -40,10 +40,10 @@ export const translationsNosotros = {
         },
         {
           years: "2021-2024",
-          title: "Agencia Integral Multicultural",
-          description: "Hoy ofrecemos el stack completo: video, SEO, SEM, social ads, email, analítica cultural con OYE. Misma calidad Emmy, nuevo objetivo: ROI.",
+          title: "Agencia Integral Digital",
+          description: "Hoy ofrecemos el stack completo: video, SEO, SEM, social ads, email, desarrollo web/apps, análisis de datos. Calidad profesional, objetivo claro: ROI.",
           icon: "🚀",
-          highlight: "OYE Analytics Platform"
+          highlight: "Stack Tecnológico Completo"
         }
       ]
     },
@@ -108,7 +108,7 @@ export const translationsNosotros = {
           icon: "📈",
           details: [
             "Tracking completo: GA4, píxeles, UTMs",
-            "OYE Analytics para listening cultural",
+            "Análisis de datos en tiempo real",
             "A/B testing continuo (creative + audience)"
           ]
         }
@@ -131,7 +131,7 @@ export const translationsNosotros = {
         },
         {
           area: "Data & Analytics",
-          skills: "Analistas con expertise en GA4, Looker Studio, Hotjar, Brandwatch. Metodología OYE para insights culturales."
+          skills: "Analistas con expertise en GA4, Looker Studio, Hotjar, Brandwatch. Metodología data-driven para insights accionables."
         },
         {
           area: "Cultural Strategists",
@@ -194,10 +194,10 @@ export const translationsNosotros = {
         },
         {
           years: "2021-2024",
-          title: "Full-Service Multicultural Agency",
-          description: "Today we offer the complete stack: video, SEO, SEM, social ads, email, cultural analytics with OYE. Same Emmy quality, new goal: ROI.",
+          title: "Full-Service Digital Agency",
+          description: "Today we offer the complete stack: video, SEO, SEM, social ads, email, web/app development, data analysis. Professional quality, clear goal: ROI.",
           icon: "🚀",
-          highlight: "OYE Analytics Platform"
+          highlight: "Complete Tech Stack"
         }
       ]
     },
@@ -262,7 +262,7 @@ export const translationsNosotros = {
           icon: "📈",
           details: [
             "Complete tracking: GA4, pixels, UTMs",
-            "OYE Analytics for cultural listening",
+            "Real-time data analysis",
             "Continuous A/B testing (creative + audience)"
           ]
         }
@@ -285,7 +285,7 @@ export const translationsNosotros = {
         },
         {
           area: "Data & Analytics",
-          skills: "Analysts with expertise in GA4, Looker Studio, Hotjar, Brandwatch. OYE methodology for cultural insights."
+          skills: "Analysts with expertise in GA4, Looker Studio, Hotjar, Brandwatch. Data-driven methodology for actionable insights."
         },
         {
           area: "Cultural Strategists",

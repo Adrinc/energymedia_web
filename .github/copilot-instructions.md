@@ -1,7 +1,14 @@
 # Instrucciones Copilot - Energy Media
 
 ## Descripción General del Proyecto
-Esta es una aplicación web híbrida **Astro + React** para "Energy Media" - agencia de marketing digital integral con diferenciador cultural hispano/multicultural. El sitio es bilingüe (ES/EN) con enfoque en video marketing digital, estrategias data-driven, analítica con OYE (language-neutral), y servicios escalables para audiencias multiculturales.
+Esta es una aplicación web híbrida **Astro + React** para "Energy Media" - **agencia digital full-service** especializada en marketing digital, branding, desarrollo web/apps y servicios de IA. El sitio es bilingüe (ES/EN) con enfoque en resultados medibles, tecnología de punta y estrategias escalables para empresas B2B y B2C.
+
+### Pilares de Servicio (5 Core)
+1. **Marketing Digital Integral** - SEO, SEM, Social Ads, Email Marketing, Influencers
+2. **Branding & Identidad Corporativa Completa** - Logos, manuales de marca, diseño gráfico
+3. **Desarrollo Web & E-commerce Profesional** - Sitios web, apps móviles, portales empresariales
+4. **Servicios Especializados** - Inteligencia Artificial, Video Marketing, CRO, Analítica
+5. **Consultoría Estratégica Personalizada** - Auditorías, roadmaps de crecimiento digital, optimización
 
 ## ⚡ Reglas de Oro (Leer Primero)
 
@@ -36,7 +43,8 @@ src/data/translations{NombrePagina}.js
 ```
 - `translationsIndex.js` para `index.astro`
 - `translationsServicios.js` para `servicios.astro`
-- `translationsCasos.js` para `casos.astro`
+- `translationsNosotros.js` para `nosotros.astro`
+- `translationsMetodologia.js` para `metodologia.astro` (será renombrado a "Proceso")
 - `translations.js` para elementos globales (navbar, footer)
 
 ### 6. Componentes Globales
@@ -48,22 +56,22 @@ src/components/global/  # NavBar, Footer, animaciones compartidas
 ### 7. Responsive Design
 **TODO** debe funcionar en móvil, tablet y desktop. Siempre incluir media queries.
 
-### 8. Sistema de Diseño "Cine-Data Multicultural"
-**Concepto visual**: Elegancia cinematográfica + precisión medible + acentos culturales vibrantes.
+### 8. Sistema de Diseño "Digital Performance"
+**Concepto visual**: Elegancia profesional + precisión medible + tecnología de punta.
 
-**Palabras clave**: cinematográfico, sofisticado, vibrante, medible, multicultural.
+**Palabras clave**: profesional, sofisticado, vibrante, medible, resultados, innovación.
 
 **Regla 70/20/10**: 70% neutros (off-white, lavanda), 20% morados (marca), 10% acentos (cian, naranja, ámbar).
 
 ---
 
-## 🎨 Sistema de Diseño "Cine-Data Multicultural"
+## 🎨 Sistema de Diseño "Digital Performance"
 
 ### Filosofía Visual
 El diseño de Energy Media fusiona:
-- **Cine**: Elegancia cinematográfica, calidad premium, storytelling visual
+- **Profesionalismo**: Elegancia corporativa, calidad premium, confianza
 - **Data**: Precisión medible, métricas visibles, performance-first
-- **Multicultural**: Acentos vibrantes, autenticidad cultural, inclusión
+- **Innovación**: Tecnología de punta, IA, automatización, escalabilidad
 
 ### Paleta de Colores y Atmósferas
 
@@ -258,10 +266,6 @@ El diseño de Energy Media fusiona:
 </div>
 ```
 
-#### **Módulo OYE**
-- Visualización **duotono** morado/cian (NO arcoíris)
-- Coherencia con marca, autoridad técnica
-
 ### Voz y Copy (Performance con Alma)
 
 #### **Titulares**
@@ -327,7 +331,7 @@ Uso: Separadores entre secciones, footer de CTA final.
 2. **NO** glassmorphism excesivo (solo navbar/footer, suficiente)
 3. **NO** más de 3 colores por sección (disciplina 70/20/10)
 4. **NO** animaciones "rebote" o circus (usar easing suave)
-5. **NO** gradientes arcoíris en OYE (solo duotono morado/cian)
+5. **NO** gradientes arcoíris (solo duotono morado/cian)
 6. **NO** texto blanco sobre naranja/ámbar (contraste bajo)
 7. **NO** videos sin métricas visibles (siempre badge de KPI)
 8. **NO** CTAs genéricos ("Click aquí" → "Agenda tu consultoría")
@@ -383,7 +387,6 @@ src/
 │   ├── casos/       # Casos de éxito con métricas
 │   ├── nosotros/    # Quiénes somos (manifiesto, equipo, premios)
 │   ├── metodologia/ # Framework de trabajo (5 pasos)
-│   ├── oye/         # Plataforma OYE Analytics
 │   ├── recursos/    # Blog, guías, webinars
 │   ├── contacto/    # Formulario + agenda + mapa
 │   ├── global/      # Componentes compartidos (navbar, footer, animaciones)
@@ -413,42 +416,22 @@ src/components/index/
 │   ├── IndexSeccion3.jsx      # Servicios destacados (grid 5)
 │   ├── IndexSeccion4.jsx      # Casos con métricas (3 tarjetas)
 │   ├── IndexSeccion5.jsx      # Metodología (timeline 5 pasos)
-│   ├── IndexSeccion6.jsx      # OYE Analytics + copy puente
-│   ├── IndexSeccion7.jsx      # 🎬 VIDEO REEL (la joya de la corona)
-│   ├── IndexSeccion8.jsx      # Logos de clientes
-│   ├── IndexSeccion9.jsx      # Testimonios
-│   ├── IndexSeccion10.jsx     # Planes (Start / Grow / Scale)
-│   └── IndexSeccion11.jsx     # CTA final + Newsletter
+│   ├── IndexSeccion6.jsx      # 🎬 VIDEO SHOWCASE (6-9 videos seleccionados)
+│   ├── IndexSeccion7.jsx      # Logos de clientes
+│   ├── IndexSeccion8.jsx      # Testimonios
+│   ├── IndexSeccion9.jsx      # Planes (Start / Grow / Scale)
+│   └── IndexSeccion10.jsx     # CTA final + Newsletter
 ├── components/
 │   ├── DifferentiatorCard.jsx  # Card de diferenciador
 │   ├── ServiceCard.jsx         # Card de servicio
 │   ├── CaseMetricCard.jsx      # Card de caso con KPIs
-│   ├── VideoReelGrid.jsx       # Grid dinámico de videos (Sección 7)
-│   ├── VideoLightbox.jsx       # Modal cinematográfico para videos
-│   └── VideoCard.jsx           # Card individual de video con métricas
+│   ├── VideoShowcaseGrid.jsx   # Grid de videos (Sección 6)
+│   ├── VideoLightbox.jsx       # Modal para videos
+│   └── VideoCard.jsx           # Card individual de video
 └── css/
     ├── indexSeccion1.module.css
     ├── indexSeccion2.module.css
-    ├── indexSeccion7.module.css  # Estilos especiales para el reel
-    └── ...
-│   ├── IndexSeccion2.jsx      # Diferenciadores clave (4 cards)
-│   ├── IndexSeccion3.jsx      # Servicios destacados (grid 5)
-│   ├── IndexSeccion4.jsx      # Casos con métricas (3 tarjetas)
-│   ├── IndexSeccion5.jsx      # Cómo trabajamos (timeline 5 pasos)
-│   ├── IndexSeccion6.jsx      # Módulo OYE Analytics
-│   ├── IndexSeccion7.jsx      # Reel / Galería de Video
-│   ├── IndexSeccion8.jsx      # Clientes / Logotipos
-│   ├── IndexSeccion9.jsx      # Testimonios
-│   ├── IndexSeccion10.jsx     # Planes (Start / Grow / Scale)
-│   └── IndexSeccion11.jsx     # CTA final + Newsletter
-├── components/
-│   ├── DifferentiatorCard.jsx  # Card de diferenciador
-│   ├── ServiceCard.jsx         # Card de servicio
-│   ├── CaseMetricCard.jsx      # Card de caso con KPIs
-│   └── VideoPlayer.jsx         # Player de Vimeo
-└── css/
-    ├── indexSeccion1.module.css
-    ├── indexSeccion2.module.css
+    ├── indexSeccion6.module.css  # Estilos para video showcase
     └── ...
 ```
 
@@ -543,11 +526,8 @@ src/data/
 ├── translations.js              # Traducciones GLOBALES (navbar, footer, elementos compartidos)
 ├── translationsIndex.js         # Exclusivo para index.astro (11 secciones)
 ├── translationsServicios.js     # Exclusivo para páginas de servicios
-├── translationsCasos.js         # Exclusivo para casos.astro
 ├── translationsNosotros.js      # Exclusivo para nosotros.astro
-├── translationsMetodologia.js   # Exclusivo para metodologia.astro
-├── translationsOye.js           # Exclusivo para oye.astro
-├── translationsRecursos.js      # Exclusivo para recursos.astro
+├── translationsMetodologia.js   # Exclusivo para metodologia.astro (será renombrado a "Proceso")
 ├── translationsContacto.js      # Exclusivo para contacto.astro
 └── vimeoVideos.js               # Lista de URLs de videos de Vimeo
 ```
@@ -865,80 +845,422 @@ const cases = [
 ];
 ```
 
-### 5. Módulo OYE Analytics
-```jsx
-// IndexSeccion6.jsx - OYE (language-neutral analytics)
-const OYEModule = () => {
-  return (
-    <div className="oye-module">
-      {/* Mock de gráfico/listening con chips de temas/idiomas */}
-      <ul>
-        <li>Insights accionables en tiempo real</li>
-        <li>Detección de oportunidades multiculturales</li>
-        <li>Mejora creativa basada en datos</li>
-      </ul>
-      <button>Solicitar demo de OYE</button>
-    </div>
-  );
-};
-```
-
 ## Estructura del Sitio
 
 ### Mapa del Sitio (Alto Nivel)
 ```
-├── Inicio (11 secciones)
-├── Servicios (dropdown)
-│   ├── Video Marketing Digital
-│   ├── Marketing Digital 360 (SEO, SEM, Social Ads, Email, etc.)
-│   ├── Branding & Creatividad Cultural
-│   ├── Web & Apps
-│   └── Analítica & OYE
-├── Casos de éxito (listado + fichas)
-├── Quiénes somos (manifiesto + equipo + premios)
-├── Metodología (5 pasos)
-├── OYE (página dedicada)
-├── Recursos (blog + guías + webinars)
-├── Contacto (form + agenda + mapa)
+├── Inicio (11 secciones - NUEVA ESTRUCTURA)
+├── Servicios (5 pilares)
+│   ├── Marketing Digital Integral
+│   ├── Branding & Identidad Corporativa
+│   ├── Desarrollo Web & E-commerce
+│   ├── Servicios Especializados (IA, Video, CRO)
+│   └── Consultoría Estratégica
+├── Proceso (6 pasos)
+├── Nosotros (misión + valores + equipo)
+├── Contacto (form + info)
 └── ES / EN (selector de idioma)
 ```
 
-### Página Inicio - 11 Secciones (Detallado)
+### Filosofía de Comunicación "Problema → Solución → Prueba"
 
-#### **Sección 1: Hero con Video Teaser** 
-**Objetivo**: Impacto visual inmediato + propuesta de valor clara + CTAs
+**CRÍTICO**: Energy Media NO habla de "nosotros" primero, sino del **cliente** primero:
 
-**Elementos**:
-- **Video de fondo**: Loop corto (15-20 seg, muted) - teaser cinemático que da vibra "somos expertos en video"
-- **Overlay oscuro**: Para legibilidad del texto
-- **H1**: "Creatividad multicultural + performance digital = crecimiento real"
-- **Subtitle**: "Video que conecta. Estrategias que venden."
-- **CTAs**:
-  - Primario: "Agenda tu consultoría" (morado brillante)
-  - Secundario: "Ver casos" (outline)
+1. **PROBLEMA** - Identificar el dolor del cliente (por qué están aquí)
+2. **SOLUCIÓN** - Mostrar cómo resolvemos con servicios concretos + tecnología
+3. **PRUEBA** - Validar con métricas reales, garantías, testimonios
 
-**Notas técnicas**:
-- Video debe ser **optimizado** (<5MB si es local)
-- Texto con `text-shadow` para legibilidad
-- Animación de entrada fade-in para H1/subtitle
-- CTAs con hover effects (elevación + brillo)
+**Anti-Patrón PROHIBIDO**: "Nuestros servicios", "Nuestros 5 pilares", "Quiénes somos" antes de mostrar valor.
+
+**Patrón CORRECTO**: "¿Por qué elegirnos?" (beneficios), "Resultados garantizados" (prueba), LUEGO "Servicios integrales".
 
 ---
 
-#### **Sección 2: Diferenciadores Clave**
-**Objetivo**: Establecer por qué Energy Media es diferente
+### Página Inicio - 11 Secciones (Nueva Estructura)
+
+**FLUJO NARRATIVO**: Hero → Por Qué → Resultados → Servicios → Paquetes → Proceso → Video → Certs → Testimonios → FAQs → CTA Final
+
+---
+
+#### **Sección 1: Hero - "Transforma tu Negocio"** 
+**Objetivo**: Promesa de transformación + oferta de valor inmediata
 
 **Elementos**:
-- **4 cards** en grid responsive (2x2 desktop, 1 columna móvil)
+- **Video de fondo**: Loop corto (15-20 seg, muted) - agencia digital profesional
+- **Overlay oscuro**: Para legibilidad del texto
+- **H1**: "Transforma tu negocio en líder digital con resultados garantizados"
+- **Subtitle**: "Marketing digital + desarrollo web + IA. Todo en un solo lugar. Primeros resultados en 30 días o reembolso completo."
+- **CTAs**:
+  - Primario: "Agenda tu consultoría gratuita ($5,000 MXN de valor)"
+  - Secundario: "Ver nuestros resultados"
+
+**Notas técnicas**:
+- Video optimizado (<5MB si es local)
+- H1 con `font-size: clamp(2.5rem, 5vw, 4rem)`
+- CTA primario con badge "GRATIS - $5K valor"
+- Animación de entrada fade-in para H1/subtitle
+
+---
+
+#### **Sección 2: ¿Por Qué Elegirnos?** (antes "Diferenciadores")
+**Objetivo**: Establecer beneficios tangibles para el cliente
+
+**Elementos**:
+- **6 razones** en grid responsive (3x2 desktop, 1 columna móvil)
 - Cada card:
   - Ícono distintivo (circular con gradiente morado→cian)
-  - Título corto
-  - Descripción 2-3 líneas
+  - Título corto orientado a beneficio
+  - Descripción 2-3 líneas con valor concreto
 
-**Diferenciadores**:
-1. **Cultura que convierte** - Insight cultural auténtico para campañas que resuenan
-2. **Video enfocado a performance** - De la TV al ROI medible en digital
-3. **Datos & OYE en tiempo real** - Listening language-neutral para decisiones ágiles
+**Razones (6)**:
+1. **Experiencia Comprobada** - +8 años transformando negocios digitales con +200 clientes satisfechos
+2. **Enfoque Data-Driven** - Decisiones basadas en datos reales, no corazonadas. ROI medible en cada campaña.
+3. **Equipo Multidisciplinario** - Marketers + Diseñadores + Desarrolladores + Especialistas en IA trabajando juntos
+4. **Tecnología de Punta** - Stack completo: CRM, automatización, IA, analytics en tiempo real
+5. **Soporte Prioritario** - Respuesta en <2 horas. Sin esperas, sin excusas.
+6. **Planes Flexibles** - Desde startups hasta enterprises. Crece a tu ritmo.
+
+**Notas técnicas**:
+- Cards con `box-shadow` morada
+- Hover: elevación (`translateY(-5px)`) + sombra más intensa
+- Animación de entrada: aparecer en secuencia al hacer scroll
+
+---
+
+#### **Sección 3: Resultados Garantizados** ⭐ NUEVA
+**Objetivo**: Prueba social ANTES de servicios - mostrar métricas reales upfront
+
+**Elementos**:
+- **Título impactante**: "Resultados que Transforman Negocios"
+- **Subtitle**: "No prometemos magia. Entregamos crecimiento medible respaldado por garantía de 90 días."
+- **4 métricas grandes** en grid (2x2 desktop):
+  - **+200% Tráfico Web** - Promedio en primeros 6 meses
+  - **+150% Generación de Leads** - Con optimización continua
+  - **+300% Engagement** - En redes sociales orgánicas y pagadas
+  - **400-600% ROI** - En campañas de email marketing bien ejecutadas
+- **Garantía visible**:
+  - Badge grande: "GARANTÍA 90 DÍAS"
+  - Copy: "Si no ves resultados medibles en 90 días, reembolso completo. Sin preguntas."
+- **Micro-copy**: "Primeros resultados en 30 días. Respuesta <2 horas. Satisfacción garantizada."
+
+**Notas técnicas**:
+- Fondo degradado morado→negro (bloque "cine")
+- Métricas con animación CountUp al aparecer
+- Badges con fondo cian/ámbar al 15%
+- Garantía con ícono de escudo + borde brillante
+
+---
+
+#### **Sección 4: Servicios Integrales** (antes "Servicios Destacados")
+**Objetivo**: Mostrar portafolio completo con énfasis en IA + Desarrollo Web/Apps
+
+**Elementos**:
+- **Título**: "Servicios Integrales para Tu Crecimiento Digital"
+- **Subtitle**: "De la estrategia a la ejecución. Todo en un solo lugar."
+- **Grid de 6 servicios** (responsive: 3x2 desktop, 1 columna móvil)
+- Cada card:
+  - Ícono/emoji representativo
+  - Título del servicio
+  - Tagline corto (1 línea)
+  - Copy breve (2-3 bullets de valor)
+  - Link "Explorar servicio →"
+
+**Servicios (6)**:
+1. **SEO & SEM Profesional** 🎯
+   - Tagline: "Domina Google. Más tráfico, más ventas."
+   - Bullets: Posicionamiento orgánico + Google Ads + Analítica avanzada
+   
+2. **Redes Sociales & Paid Ads** 📱
+   - Tagline: "Convierte scrollers en clientes."
+   - Bullets: Meta Ads + TikTok Ads + LinkedIn Ads + Gestión de comunidad
+   
+3. **Branding & Diseño Gráfico** 🎨
+   - Tagline: "Marca memorable que destaca."
+   - Bullets: Logos + Identidad corporativa + Manual de marca + Diseño publicitario
+   
+4. **Desarrollo Web & Apps Móviles** 💻⚡ **ÉNFASIS**
+   - Tagline: "Portales web, CRM, apps móviles a medida."
+   - Bullets: Sitios web responsive + E-commerce + Apps iOS/Android + Portales empresariales + CRM personalizado
+   
+5. **Email Marketing & Automatización** 📧
+   - Tagline: "Nurturing que vende en piloto automático."
+   - Bullets: Campañas segmentadas + Automatización + A/B testing + ROI 400-600%
+   
+6. **Marketing con IA & Automatización** 🤖⚡ **ÉNFASIS**
+   - Tagline: "Inteligencia artificial al servicio de tu negocio."
+   - Bullets: Chatbots inteligentes + Automatización de procesos + Análisis predictivo + Personalización a escala
+
+**Notas técnicas**:
+- Cards con `border-radius: 20px`
+- Gradiente sutil de fondo (off-white → lavanda claro)
+- Servicios 4 y 6 con badge "⚡ DESTACADO" en esquina superior
+- Hover: card se eleva, link cambia a cian
+
+---
+
+#### **Sección 5: Paquetes & Soluciones** (antes Sec9, movida aquí)
+**Objetivo**: Transparencia de inversión - mostrar pricing orientativo sin asustar
+
+**Elementos**:
+- **Título**: "Elige tu Plan de Crecimiento"
+- **Subtitle**: "Soluciones escalables desde $8,000 MXN/mes. Planes personalizables según tus objetivos."
+- **3 cards de paquetes** (grid horizontal)
+- Cada paquete:
+  - Nombre del plan (STARTER / GROWTH ⭐ / PREMIUM)
+  - Rango de precio MXN
+  - Descripción breve (para quién es)
+  - Bullets de entregables clave (5-7)
+  - CTA: "Solicitar propuesta personalizada"
+
+**Paquetes**:
+```
+STARTER - Primeros Pasos Digitales
+$8,000 - $15,000 MXN/mes
+
+Para: Pequeñas empresas iniciando en digital o con presupuesto limitado
+
+✓ Sitio web profesional responsive (hasta 5 páginas)
+✓ SEO básico + Google My Business optimizado
+✓ Gestión de 2 redes sociales (contenido orgánico)
+✓ Configuración de analytics y tracking
+✓ Report mensual con métricas clave
+✓ Soporte por email (<24hrs)
+
+---
+
+GROWTH - Escalamiento con Data ⭐ MÁS POPULAR
+$16,000 - $30,000 MXN/mes
+
+Para: Empresas en crecimiento que buscan maximizar ROI y escalar con estrategia
+
+✓ Todo en STARTER +
+✓ Campañas pagadas multicanal (Meta, Google, LinkedIn)
+✓ Email marketing automatizado (hasta 10K contactos)
+✓ Producción de video mensual (2-3 piezas para social ads)
+✓ A/B testing creativo y de copy
+✓ Landing pages optimizadas para conversión
+✓ Report quincenal + call de estrategia
+✓ Soporte prioritario (<2hrs)
+
+---
+
+PREMIUM - Liderazgo Digital Total
+$31,000 - $50,000+ MXN/mes
+
+Para: Empresas establecidas con presupuesto 6 figuras que buscan dominar su industria
+
+✓ Todo en GROWTH +
+✓ Desarrollo web/app avanzado (portales, CRM, e-commerce)
+✓ Implementación de IA (chatbots, automatización, análisis predictivo)
+✓ Producción de video ilimitada + equipo creativo dedicado
+✓ Consultoría estratégica mensual (roadmap trimestral)
+✓ Campañas en todos los canales disponibles
+✓ Report semanal + optimización continua
+✓ Account Manager dedicado + soporte 24/7
+```
+
+**Notas técnicas**:
+- Card GROWTH destacada (escala más grande 1.05x, borde brillante cian)
+- Badge "⭐ MÁS POPULAR" en GROWTH
+- Hover: elevación de la card
+- CTA con gradiente morado
+- Nota al pie: "* Planes personalizables. Agenda consultoría gratuita para cotización exacta."
+
+---
+
+#### **Sección 6: Nuestro Proceso de Trabajo** (antes Sec5 "Metodología")
+**Objetivo**: Transparencia en el flujo - reducir fricción mostrando cómo trabajamos
+
+**Elementos**:
+- **Título**: "Cómo Transformamos tu Negocio (Paso a Paso)"
+- **Subtitle**: "Proceso probado en +200 clientes. Sin sorpresas, solo resultados."
+- **Timeline horizontal/vertical** (responsive)
+- **6 pasos numerados** con:
+  - Número del paso (círculo grande morado)
+  - Título del paso
+  - Descripción breve (2-3 líneas)
+  - Duración estimada
+  - Entregables clave
+
+**Pasos (6)**:
+1. **Descubrimiento & Auditoría** (Semana 1)
+   - Analizamos tu negocio, competencia, audiencia, situación digital actual
+   - Entregable: Diagnóstico completo con oportunidades identificadas
+
+2. **Estrategia & Roadmap** (Semana 2)
+   - Creamos plan de crecimiento 90 días con KPIs medibles
+   - Entregable: Roadmap detallado + propuesta de inversión
+
+3. **Implementación & Setup** (Semanas 3-4)
+   - Configuramos herramientas, tracking, martech stack, producción inicial
+   - Entregable: Infraestructura digital funcionando + primeras campañas live
+
+4. **Optimización Continua** (Mes 2+)
+   - Test A/B, iteración creativa, ajuste de segmentación, mejora de CTR/CVR
+   - Entregable: Reports quincenales + ajustes basados en data
+
+5. **Reporting & Transparencia** (Ongoing)
+   - Dashboards en tiempo real + calls de revisión estratégica
+   - Entregable: Reports personalizados + acceso a analytics 24/7
+
+6. **Escalamiento & Crecimiento** (Mes 3+)
+   - Expansión a nuevos canales, audiencias, formatos basados en resultados
+   - Entregable: Plan de escalamiento + inversión incremental recomendada
+
+**Notas técnicas**:
+- Línea conectora entre pasos (gradiente morado→cian)
+- Animación de aparición al scroll
+- Íconos por paso: lupa → mapa → engranaje → gráfico ascendente → dashboard → cohete
+- Duración con badge pequeño (ej: "1 semana", "Ongoing")
+
+---
+
+#### **Sección 7: Video Showcase** ✅ (Mantener actual)
+**Objetivo**: Mostrar calidad de producción de video
+
+**Elementos** (ya implementados):
+- Título: "Nuestro Trabajo en Video"
+- Subtitle: "Producimos video para plataformas digitales: social ads, reels, YouTube, corporativo"
+- Grid de 9 videos seleccionados con lightbox
+- CTA: "¿Necesitas video profesional para tu marca?"
+
+**Notas técnicas**:
+- Grid responsive (3 columnas desktop, 2 tablet, 1 móvil)
+- Videos de `vimeoVideos.js` (9 mejores seleccionados)
+- Lightbox con `framer-motion`
+- Lazy loading de iframes
+
+---
+
+#### **Sección 8: Certificaciones & Partners** ⭐ NUEVA (modificar IndexSeccion8.jsx existente)
+**Objetivo**: Autoridad mediante logos de herramientas/certificaciones
+
+**Elementos**:
+- **Título**: "Certificados por los Mejores"
+- **Subtitle**: "Socios oficiales de las plataformas líderes en marketing y tecnología"
+- **Grid de logos** (6-8 logos)
+  - Google Partner
+  - Meta Business Partner
+  - HubSpot Partner
+  - Shopify Partner
+  - LinkedIn Marketing Partner
+  - Microsoft Advertising
+  - AWS Partner (si aplica)
+  - Vimeo (si aplica)
+- **Micro-copy al pie**: "Capacitación continua en las últimas herramientas y estrategias del mercado"
+
+**Notas técnicas**:
+- Logos en escala de grises, hover → color
+- Grid responsive (4 logos desktop, 2 móvil)
+- Fondo off-white o lavanda muy claro
+- Cards con border sutil, hover elevación ligera
+
+---
+
+#### **Sección 9: Testimonios + Estadísticas** (modificar IndexSeccion8.jsx actual → renombrar a Sec9)
+**Objetivo**: Validación emocional + datos de satisfacción
+
+**Elementos**:
+- **Título**: "Lo Que Dicen Nuestros Clientes"
+- **Subtitle**: "Más de 200 empresas confiaron en nosotros. Estos son sus resultados."
+- **2-3 testimonios** en cards grandes con:
+  - Texto del testimonio (2-4 líneas)
+  - Nombre + rol + empresa
+  - Avatar/foto (opcional)
+  - Resultado concreto: "Aumentamos ventas 3x en 6 meses"
+- **4 estadísticas de satisfacción** (badges pequeños al pie):
+  - 98% Tasa de Satisfacción
+  - 85% Clientes Recurrentes (renuevan)
+  - 92% Recomiendan Energy Media
+  - 4.9/5 Calificación Promedio
+
+**Notas técnicas**:
+- Testimonios con `box-shadow` y borde lavanda
+- Quote con comillas grandes decorativas
+- Stats con iconos: ⭐ (satisfacción), 🔁 (recurrentes), 👍 (recomiendan), ⭐⭐⭐⭐⭐ (rating)
+- Carrusel si hay más de 3 testimonios
+
+---
+
+#### **Sección 10: FAQs - Preguntas Frecuentes** ⭐ NUEVA (modificar IndexSeccion10.jsx actual)
+**Objetivo**: Reducir fricción pre-contacto respondiendo objeciones comunes
+
+**Elementos**:
+- **Título**: "Preguntas Frecuentes"
+- **Subtitle**: "Todo lo que necesitas saber antes de comenzar"
+- **Accordion de 4-6 preguntas** (expandible/colapsable)
+
+**Preguntas clave (de referencia doc)**:
+1. **¿Cuánto tiempo toma ver resultados?**
+   - Respuesta: "Primeros resultados medibles en 30 días (tráfico, engagement). ROI significativo en 90 días. Campañas de awareness pueden tomar 60-90 días. Te damos visibilidad completa con reports quincenales."
+
+2. **¿Qué pasa si no estoy satisfecho?**
+   - Respuesta: "Garantía de 90 días. Si no ves resultados medibles en ese periodo, reembolso completo sin preguntas. Además, contratos flexibles sin permanencia forzada."
+
+3. **¿Trabajan con mi industria?**
+   - Respuesta: "Sí. Hemos trabajado con e-commerce, servicios profesionales, B2B tech, educación, salud, fintech, retail. Si vendes online o necesitas leads, podemos ayudarte."
+
+4. **¿Qué tipo de soporte ofrecen?**
+   - Respuesta: "GROWTH y PREMIUM: respuesta <2 horas en horario laboral. STARTER: <24 horas. Todos los planes incluyen account manager asignado y acceso a dashboards 24/7."
+
+5. **¿Puedo cambiar de plan después?** (opcional)
+   - Respuesta: "Totalmente. Muchos clientes empiezan con STARTER y escalan a GROWTH cuando ven resultados. Sin penalizaciones por upgrade/downgrade."
+
+6. **¿Requieren permanencia mínima?** (opcional)
+   - Respuesta: "Plan inicial de 90 días para garantizar tiempo suficiente de optimización. Después, mes a mes. Sin ataduras de 12-24 meses."
+
+**Notas técnicas**:
+- Accordion con `framer-motion` para smooth expand/collapse
+- Ícono + / - para indicar estado
+- Fondo alternado (pregunta impar: off-white, par: lavanda claro)
+- Hover: pregunta se ilumina ligeramente
+
+---
+
+#### **Sección 11: CTA Final + Oferta Especial** ⭐ NUEVA (reescribir IndexSeccion11.jsx actual)
+**Objetivo**: Última oportunidad de conversión con oferta de valor irresistible
+
+**Elementos**:
+- **Bandera morada** con degradado (full-width, bloque "cine")
+- **Badge destacado**: "OFERTA LIMITADA - Nuevos Clientes"
+- **Título grande centrado**: "Agenda tu Consultoría Estratégica Gratuita"
+- **Subtitle**: "Valor: $5,000 MXN. Hoy: GRATIS. Analizamos tu negocio y te damos roadmap de crecimiento sin compromiso."
+- **5 bullets de valor**:
+  - ✓ Auditoría completa de tu presencia digital (30-45 min)
+  - ✓ Identificación de 3-5 oportunidades de crecimiento rápidas
+  - ✓ Recomendaciones de inversión personalizadas
+  - ✓ Estimación de ROI esperado en 90 días
+  - ✓ Plan de acción inmediato (sin letra chica)
+- **Botón CTA grande**: "Agenda Ahora (Sin Costo)"
+- **Garantía visible**: "🛡️ Garantía de 90 días. Resultados o reembolso."
+- **Newsletter opcional** (al pie):
+  - Copy: "O recibe tips de marketing digital + casos de éxito en tu inbox"
+  - Input email + botón "Suscribirse"
+
+**Notas técnicas**:
+- Fondo degradado morado→magenta oscuro
+- CTA con animación `pulse` sutil
+- Badge "OFERTA LIMITADA" con efecto blink suave (no molesto)
+- Newsletter con validación de email
+- Integración Mailchimp/ConvertKit (futuro)
+
+---
+
+### Resumen de Flujo Narrativo (Journey del Usuario - NUEVO)
+
+1. **Hero (Sec1)**: Promesa de transformación + oferta gratis → "Te engancho"
+2. **¿Por Qué Elegirnos? (Sec2)**: 6 beneficios concretos → "Te convenzo"
+3. **Resultados Garantizados (Sec3)**: Métricas reales + garantía 90 días → "Te demuestro (prueba upfront)"
+4. **Servicios (Sec4)**: Qué hacemos (con IA + Web/Apps) → "Te informo con énfasis en diferenciadores"
+5. **Paquetes (Sec5)**: Inversión transparente → "Te estructuro opciones"
+6. **Proceso (Sec6)**: Cómo trabajamos → "Te tranquilizo con claridad"
+7. **Video Showcase (Sec7)**: Calidad visual → "Te muestro ejecución"
+8. **Certificaciones (Sec8)**: Autoridad de herramientas → "Te valido (expertise)"
+9. **Testimonios+Stats (Sec9)**: Clientes felices → "Te valido (social)"
+10. **FAQs (Sec10)**: Respondo objeciones → "Te elimino fricción"
+11. **CTA Final (Sec11)**: Oferta irresistible → "Te convierto (última oportunidad)"
+
+**Resultado**: Embudo completo que pone al CLIENTE primero (problema→solución→prueba), muestra valor antes de pedir contacto, enfatiza IA+Web/Apps, y reduce fricción con transparencia (pricing, FAQs, garantías).
 4. **Escalabilidad con reporting claro** - Desde pruebas hasta campañas multimillonarias
 
 **Notas técnicas**:
@@ -960,11 +1282,11 @@ const OYEModule = () => {
   - Link "Ver servicio →"
 
 **Servicios**:
-1. **Video Marketing Digital** - Spots, social ads, reels que generan ROI
-2. **Marketing Digital 360** - SEO, SEM, Social Ads, Email, Influencers
-3. **Branding & Creatividad Cultural** - Identidad que conecta con audiencias multiculturales
-4. **Web & Apps** - Portales, e-commerce, landings optimizadas
-5. **Analítica & OYE** - Plataforma de listening + insights accionables
+1. **Video Marketing Digital** - Producción profesional enfocada en performance digital
+2. **Marketing Digital Integral** - SEO, SEM, Social Ads, Email Marketing, Influencers
+3. **Branding & Identidad Corporativa Completa** - Logos, manuales de marca, diseño gráfico
+4. **Desarrollo Web & E-commerce Profesional** - Sitios web, apps móviles, portales empresariales
+5. **Servicios Especializados** - Inteligencia Artificial, Video Marketing, CRO, Analítica
 
 **Notas técnicas**:
 - Cards con `border-radius: 20px`
@@ -1028,71 +1350,33 @@ Métricas:
 
 ---
 
-#### **Sección 6: OYE Analytics + Copy Puente**
-**Objetivo**: Presentar herramienta diferenciadora + transición al reel
+#### **Sección 6: 🎬 VIDEO SHOWCASE (Nuestro Trabajo en Video)**
+**Objetivo**: Mostrar calidad y variedad de producción de video
 
 **Elementos**:
-- **Mock de interfaz OYE** (gráfico de listening con chips de temas/idiomas)
-- **3 bullets de valor**:
-  - Insights accionables en tiempo real
-  - Detección de oportunidades multiculturales
-  - Mejora creativa basada en datos
-- **CTA**: "Solicitar demo de OYE"
-- **Copy puente al final**: 
-  > "Ya viste cómo medimos. Ahora mira cómo se ve en pantalla."
-
-**Notas técnicas**:
-- Fondo con gradiente sutil lavanda
-- Mock interactivo (hover sobre chips)
-- Copy puente en texto grande, centrado, transición visual al negro
-
----
-
-#### **Sección 7: 🎬 VIDEO REEL (La Joya de la Corona)**
-**Objetivo**: Deslumbrar con prueba visual del expertise + performance
-
-**Sub-secciones**:
-
-##### **A. Intro Cinemática**
-- Fondo negro/morado profundo
-- Texto grande centrado:
-  - "Video que conecta. Video que vende."
-  - "De TV a digital: spots, social ads y campañas que generan ROI."
-
-##### **B. Mosaico Dinámico de Videos**
-- **6-8 videos** en grid asimétrico (mix 16:9 horizontal + 9:16 vertical)
+- **Título**: "Nuestro Trabajo en Video" o "Contenido Visual que Destaca"
+- **Subtitle**: "Producimos video para plataformas digitales: social ads, reels, YouTube, corporativo"
+- **Grid de 6-9 videos seleccionados** en diseño elegante
 - Cada video card:
-  - **Poster estático** inicial
-  - **Al hover**: Preview animado (primeros segundos del clip)
-  - **Etiquetas visibles**:
-    - Logo/nombre del cliente
-    - Tag cultural (ej. "Campaña bilingüe", "TikTok native", "YouTube Ads")
-    - **Métrica destacada**: "+42% CTR" / "3.1x ROAS" en badge brillante
+  - Thumbnail estático
+  - Al hover: ligero efecto (scale/brillo)
+  - Título del proyecto
+  - Tipo/categoría (Social Ad, Corporate, Testimonial, etc.)
+- **Modal/Lightbox** al hacer clic:
+  - Player de Vimeo
+  - Información básica del proyecto
+  - Fondo degradado morado→negro
 
-##### **C. Lightbox Cinematográfico**
-- Al hacer clic en un video → modal full-screen
-- Player de Vimeo centrado
-- Sidebar con:
-  - Nombre del cliente
-  - Objetivo de la campaña
-  - Solución implementada
-  - Resultado (métrica + copy)
-  - Frase breve: "De la TV a tu feed en 24 horas"
-- Fondo: degradado morado→negro
-
-##### **D. Micro-Storytelling (3 Argumentos)**
-Bloque debajo del grid con 3 íconos + textos:
-- 🎥 **Producción premiada (Emmy)** - Calidad cinematográfica
-- 📱 **Nativos digitales** - Piezas para social ads, reels, YouTube, streaming
-- 📊 **Performance first** - Medimos views, CTR y conversiones
-
-##### **E. CTA Destacado**
-- Banner horizontal con gradiente morado→cian
-- Texto grande: "Convierte tu mensaje en el próximo video que todos recuerdan"
-- Botón: "Agenda tu consultoría de video marketing" (cian brillante, hover naranja)
+**CTA**:
+- "¿Necesitas video profesional para tu marca?"
+- Botón: "Agenda tu consultoría" → /contacto
 
 **Notas técnicas**:
-- Grid con `CSS Grid` asimétrico (template areas)
+- Grid responsive (3 columnas desktop, 2 tablet, 1 móvil)
+- Videos de `vimeoVideos.js` (seleccionar 6-9 mejores)
+- Lightbox con `framer-motion` para animaciones suaves
+- Lazy loading de iframes
+- **SIN métricas de performance** (focus en calidad visual)
 - Hover state con `transform: scale(1.05)` + sombra cian
 - Lightbox con `framer-motion` para animaciones suaves
 - Videos de `vimeoVideos.js` (33 URLs disponibles)
@@ -1147,7 +1431,7 @@ Bloque debajo del grid con 3 íconos + textos:
 
 **Ejemplo**:
 ```
-START - Para marcas que inician en digital multicultural
+START - Para marcas que inician en digital
 - Video ads piloto (2-3 piezas)
 - Setup de tracking y analytics
 - Campaña en 1 canal (Meta o Google)
@@ -1157,13 +1441,13 @@ GROW - Para marcas escalando con data
 - Producción mensual de video (6-8 piezas)
 - Campaña multi-canal (Meta, Google, TikTok)
 - A/B testing creativo
-- OYE Insights
+- Insights + optimización
 - Report quincenal
 
 SCALE - Para marcas con presupuesto 6 figuras+
 - Producción ilimitada + equipo dedicado
 - Campañas en todos los canales
-- OYE + consultoría estratégica
+- IA + consultoría estratégica
 - Report semanal + optimización continua
 ```
 
@@ -1179,11 +1463,11 @@ SCALE - Para marcas con presupuesto 6 figuras+
 
 **Elementos**:
 - **Bandera morada** con degradado (full-width)
-- Texto grande centrado: "Listos para crecer con cultura y datos"
-- Subtitle: "Agenda tu consultoría gratuita y descubre cómo hacer que tu marca conecte"
+- Texto grande centrado: "Listos para crecer con estrategia y datos"
+- Subtitle: "Agenda tu consultoría gratuita y descubre cómo hacer que tu marca crezca"
 - **Botón CTA grande**: "Agenda tu consultoría" (cian brillante, animación de pulso)
 - **Newsletter opcional**:
-  - Copy: "O recibe tips de marketing multicultural en tu inbox"
+  - Copy: "O recibe tips de marketing digital en tu inbox"
   - Input email + botón "Suscribirse"
 
 **Notas técnicas**:
@@ -1201,20 +1485,13 @@ SCALE - Para marcas con presupuesto 6 figuras+
 3. **Servicios (Sec3)**: Qué hacemos → "Te informo"
 4. **Casos (Sec4)**: Qué logramos → "Te demuestro"
 5. **Metodología (Sec5)**: Cómo trabajamos → "Te tranquilizo"
-6. **OYE (Sec6)**: Con qué herramientas → "Te innovo" + **Copy puente** → "Ahora mira esto..."
-7. **🎬 VIDEO REEL (Sec7)**: **MOMENTO WOW** → "Te deslumbro"
-8. **Logos (Sec8)**: Quién confía → "Te valido (autoridad)"
-9. **Testimonios (Sec9)**: Qué dicen → "Te valido (social)"
-10. **Planes (Sec10)**: Cómo empezar → "Te estructuro"
-11. **CTA Final (Sec11)**: Actúa ahora → "Te convierto"
+6. **Video Showcase (Sec6)**: Qué producimos → "Te muestro calidad"
+7. **Logos (Sec7)**: Quién confía → "Te valido (autoridad)"
+8. **Testimonios (Sec8)**: Qué dicen → "Te valido (social)"
+9. **Planes (Sec9)**: Cómo empezar → "Te estructuro"
+10. **CTA Final (Sec10)**: Actúa ahora → "Te convierto"
 
-**Resultado**: Embudo completo que mezcla racionalidad (secciones 2-6) con emoción (sección 7) y cierre persuasivo (secciones 8-11).
-6. **OYE Analytics** (mock gráfico + CTA demo)
-7. **Reel de Video** (carrusel Vimeo)
-8. **Logos de clientes** (slider)
-9. **Testimonios** (2-3 quotes)
-10. **Planes** (Start / Grow / Scale)
-11. **CTA final** (bandera morada + newsletter)
+**Resultado**: Embudo completo que mezcla racionalidad (secciones 2-5) con prueba visual (sección 6-8) y cierre persuasivo (secciones 9-10).
 
 ### Páginas de Servicios - Plantilla (8 secciones)
 1. **Hero corto** (beneficio principal)
@@ -1275,7 +1552,7 @@ SCALE - Para marcas con presupuesto 6 figuras+
 
 ## SEO & Datos Estructurados
 
-- **Title y meta** por página orientados a "marketing digital multicultural / hispano"
+- **Title y meta** por página orientados a "agencia digital, marketing, desarrollo web, IA"
 - **Schema**: Organization, Product/Service, FAQPage, BreadcrumbList, VideoObject (en casos y reel)
 - **Tracking**: GA4 + GTM + píxeles (Meta/LinkedIn/Google Ads)
 - **Consent banner** obligatorio
@@ -1300,26 +1577,106 @@ SCALE - Para marcas con presupuesto 6 figuras+
 
 ## Contexto de Negocio - Energy Media
 
-### Identidad Transformada
-- **Antes**: Agencia audiovisual enfocada en TV y producción de video para mercado hispano
-- **Ahora**: Agencia de marketing digital integral con base cultural hispana/multicultural
-- **Diferencial**: Creatividad cultural + estrategias data-driven + OYE Analytics (language-neutral)
+### Identidad Actual
+Energy Media es una **agencia digital full-service** que combina marketing, tecnología y creatividad para impulsar el crecimiento medible de empresas B2B y B2C. Con enfoque en resultados basados en datos, ofrece servicios integrados desde branding hasta desarrollo de aplicaciones, pasando por marketing digital y servicios de IA.
 
-### Servicios Core
-1. **Video Marketing Digital**: producción enfocada en performance (social ads, streaming, animaciones)
-2. **Marketing Digital 360**: SEO, SEM, Social Ads, Email/Automations, Influencers, Programmatic, CRO
-3. **Branding & Creatividad Cultural**: insight cultural auténtico, adaptación de contexto
-4. **Web & Apps**: portales, e-commerce, landings optimizadas, desarrollo web
-5. **Analítica & OYE**: plataforma propia de listening multicultura, insights accionables
+### Servicios Core (5 Pilares)
+1. **Marketing Digital Integral**: SEO, SEM, Social Ads, Email Marketing, Influencers, Programmatic, CRO
+2. **Branding & Identidad Corporativa Completa**: Logos, manuales de marca, diseño gráfico, estrategia de comunicación
+3. **Desarrollo Web & E-commerce Profesional**: Sitios web, apps móviles, portales empresariales, e-commerce
+4. **Servicios Especializados**: Inteligencia Artificial, Video Marketing, CRO, Analítica avanzada
+5. **Consultoría Estratégica Personalizada**: Auditorías digitales, roadmaps de crecimiento, optimización continua
 
-### Metodología (5 Pasos)
-1. Descubrimiento cultural & de negocio
-2. Plan de crecimiento (90 días + KPIs)
-3. Producción & setup (video, tracking, martech)
-4. Optimización continua (test A/B, creatividades)
-5. Escalamiento (nuevas audiencias y formatos)
+### Proceso de Trabajo (6 Pasos) - ACTUALIZADO
+1. **Descubrimiento & Auditoría** (Semana 1) - Análisis de negocio + situación digital actual
+2. **Estrategia & Roadmap** (Semana 2) - Plan de crecimiento 90 días con KPIs medibles
+3. **Implementación & Setup** (Semanas 3-4) - Herramientas, tracking, martech, producción inicial
+4. **Optimización Continua** (Mes 2+) - Test A/B, iteración creativa, mejora de CTR/CVR
+5. **Reporting & Transparencia** (Ongoing) - Dashboards en tiempo real + calls estratégicas
+6. **Escalamiento & Crecimiento** (Mes 3+) - Nuevos canales, audiencias, formatos
 
-### Tono y Mensajes
-- **Híbrido**: Humano/cultural (cercanía auténtica) + Técnico/data-driven (resultados medibles)
-- **Propuesta de valor**: "Creatividad multicultural + performance digital = crecimiento real"
-- **Diferenciador**: Combina expertise cultural hispano con metodologías escalables y ROI comprobado
+### Tono y Mensajes - ACTUALIZADO
+
+**FILOSOFÍA**: Problema → Solución → Prueba (NO "Nosotros → Servicios → Contacto")
+
+#### Principios de Copy:
+- **Verbos activos**: "Transforma", "Domina", "Convierte", "Escala" (no pasivos)
+- **Números concretos**: "+200% tráfico", "42:1 ROI", "$5,000 MXN valor" (no vagos)
+- **Garantías explícitas**: "90 días o reembolso", "<2 horas respuesta", "Primeros resultados 30 días"
+- **Beneficio-primero**: "Para pequeñas empresas iniciando..." (no "Nuestro plan básico...")
+- **Transparencia**: Rangos de precio visibles ($8K-50K MXN), proceso detallado
+
+#### Estructura de Servicio (Template):
+```
+1. TAGLINE emocional (1 línea)
+2. PROBLEMA que resuelve (implícito o explícito)
+3. SOLUCIÓN con bullets (3-5)
+4. MÉTRICA de éxito (% aumento, ROI, tiempo)
+5. CTA específico ("Explorar servicio →")
+```
+
+**Ejemplo aplicado**:
+```
+SEO & SEM Profesional 🎯
+
+Tagline: "Domina Google. Más tráfico, más ventas."
+Problema: (implícito: bajo ranking, poca visibilidad)
+Solución:
+  • Posicionamiento orgánico sostenible
+  • Google Ads optimizados con datos
+  • Analítica avanzada para decisiones
+Métrica: "+200% tráfico orgánico en 6 meses (promedio)"
+CTA: "Explorar SEO/SEM →"
+```
+
+#### Propuesta de Valor Central:
+"Marketing digital + desarrollo web + IA. **Todo en un solo lugar**. Primeros resultados en 30 días o reembolso completo."
+
+#### Diferenciadores Clave (énfasis):
+- **IA & Automatización**: Chatbots, análisis predictivo, personalización a escala
+- **Desarrollo Completo**: Apps móviles, portales web, CRM personalizado, e-commerce
+- **Data-Driven Total**: Decisiones basadas en datos reales, no corazonadas
+- **Garantía 90 Días**: Resultados medibles o dinero de vuelta
+
+---
+
+## Anti-Patrones (Para No Verse Genérica)
+
+### ❌ **PROHIBIDO en Energy Media:**
+
+#### **Contenido y Copy**:
+1. **NO** "Nuestros 5 pilares" o "Nuestros servicios" explícito (demasiado corporativo/frío)
+2. **NO** beneficios abstractos sin números ("Mejoramos tu presencia digital" → ❌ / "+200% tráfico web" → ✅)
+3. **NO** servicios sin contexto de problema ("Hacemos SEO" → ❌ / "Domina Google con SEO" → ✅)
+4. **NO** enfoque "us-focused" vs "client-focused" ("Somos expertos en..." → ❌ / "Transforma tu negocio con..." → ✅)
+5. **NO** CTAs genéricos ("Click aquí", "Más info" → ❌ / "Agenda tu consultoría", "Ver resultados" → ✅)
+
+#### **Diseño Visual**:
+6. **NO** stock ilustrado sin relación cultural (priorizar footage propio o genérico profesional)
+7. **NO** glassmorphism excesivo (solo navbar/footer, suficiente)
+8. **NO** más de 3 colores por sección (disciplina 70/20/10: neutros/morados/acentos)
+9. **NO** animaciones "rebote" o circus (usar easing suave `--em-ease-smooth`)
+10. **NO** gradientes arcoíris (solo duotono morado/cian o morado/magenta)
+
+#### **Accesibilidad**:
+11. **NO** texto blanco sobre naranja/ámbar (contraste bajo - usar texto oscuro)
+12. **NO** videos sin controles/pause (debe poder pausarse)
+13. **NO** animaciones sin `@media (prefers-reduced-motion: reduce)`
+
+#### **Estructura**:
+14. **NO** videos sin métricas visibles (siempre badge de KPI si es caso de éxito)
+15. **NO** PascalCase en archivos CSS (`IndexSeccion1.module.css` → ❌ / `indexSeccion1.module.css` → ✅)
+16. **NO** mezclar ES/EN en mismo objeto de traducción (separar `es` y `en` estrictamente)
+17. **NO** componentes específicos de página en `src/components/global/`
+18. **NO** hardcodear URLs de Vimeo (usar `vimeoVideos.js`)
+19. **NO** crear componentes con sufijo "B" (IndexSeccion8B → ❌ / **modificar IndexSeccion8.jsx existente** → ✅)
+
+#### **Comunicación**:
+20. **NO** hablar de "nosotros" antes de mostrar valor al cliente
+21. **NO** esconder pricing (mostrar rangos MXN con disclaimer "personalizable")
+22. **NO** omitir garantías/tiempos de respuesta (transparencia total)
+23. **NO** mencionar OYE, TV, Emmy, "multicultural" como foco principal (ya eliminados)
+
+---
+
+## Componente Base: CinematicSection

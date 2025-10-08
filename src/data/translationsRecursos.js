@@ -35,7 +35,7 @@ export const translationsRecursos = {
         {
           icon: "🎓",
           title: "Webinars & Workshops",
-          description: "Sesiones grabadas con expertos en video marketing, OYE Analytics y estrategias multiculturales.",
+          description: "Sesiones grabadas con expertos en video marketing, análisis de datos y estrategias digitales.",
           badge: "En vivo"
         }
       ]
@@ -122,7 +122,7 @@ export const translationsRecursos = {
         {
           icon: "🎓",
           title: "Webinars & Workshops",
-          description: "Recorded sessions with experts in video marketing, OYE Analytics, and multicultural strategies.",
+          description: "Recorded sessions with experts in video marketing, data analysis, and digital strategies.",
           badge: "Live"
         }
       ]

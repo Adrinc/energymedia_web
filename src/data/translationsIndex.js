@@ -25,8 +25,8 @@ export const translationsIndex = {
           label: "Años de experiencia"
         },
         award: {
-          value: "Emmy",
-          label: "Producción premiada"
+          value: "ROI",
+          label: "Resultados medibles"
         }
       }
     },
@@ -46,12 +46,12 @@ export const translationsIndex = {
         {
           icon: "🎬", // Video
           title: "Video enfocado a performance",
-          description: "De la TV al ROI medible en digital. Producción Emmy con resultados comprobados."
+          description: "Producción profesional para plataformas digitales con métricas que importan: CTR, conversiones, ROI."
         },
         {
           icon: "📊", // Data
-          title: "Datos & OYE en tiempo real",
-          description: "Listening language-neutral para decisiones ágiles y optimización continua."
+          title: "Datos en tiempo real",
+          description: "Análisis de datos y métricas para decisiones ágiles y optimización continua."
         },
         {
           icon: "📈", // Escalabilidad
@@ -71,7 +71,7 @@ export const translationsIndex = {
         {
           icon: "🎥",
           title: "Video Marketing Digital",
-          description: "Spots, social ads y reels que generan ROI. De la TV al feed en 24 horas.",
+          description: "Social ads, reels, YouTube y video corporativo optimizado para conversión y engagement.",
           link: "/servicios/video-marketing"
         },
         {
@@ -94,9 +94,9 @@ export const translationsIndex = {
         },
         {
           icon: "📡",
-          title: "Analítica & OYE",
-          description: "Plataforma de listening + insights accionables en tiempo real.",
-          link: "/oye"
+          title: "Analítica Avanzada",
+          description: "Análisis de datos + insights accionables en tiempo real.",
+          link: "/servicios"
         }
       ],
       cta: "Ver todos los servicios"
@@ -226,42 +226,17 @@ export const translationsIndex = {
     },
 
     // ==========================================
-    // SECCIÓN 6: OYE ANALYTICS + COPY PUENTE
+    // SECCIÓN 6: LOGOS DE CLIENTES
     // ==========================================
-    oye: {
-      title: "Insights Culturales con Metodología OYE",
-      subtitle: "Combinamos social listening avanzado con análisis cultural experto en 18+ idiomas",
-      benefits: [
-        {
-          icon: "🔍",
-          title: "Social listening en 18+ idiomas",
-          description: "Escuchamos conversaciones multiculturales con contexto cultural real, no solo traducción."
-        },
-        {
-          icon: "�",
-          title: "Identificación de triggers y avoidances",
-          description: "Descubrimos qué conecta y qué evitar para cada audiencia multicultural específica."
-        },
-        {
-          icon: "📊",
-          title: "Reports accionables con insights creativos",
-          description: "Transformamos datos en estrategias de contenido que mejoran performance y autenticidad."
-        }
-      ],
-      features: [
-        "Listening multicultural con herramientas profesionales",
-        "Análisis cultural experto (no automático)",
-        "Identificación de momentos culturales clave",
-        "Triggers y avoidances por segmento",
-        "Optimización continua de mensajes"
-      ],
-      ctaPrimary: "Descubre nuestra metodología",
-      ctaSecondary: "Ver casos con OYE",
+    clients: {
+      title: "Marcas que confían en nosotros",
+      subtitle: "Empresas B2B y B2C que crecen con estrategias data-driven",
+      cta: "Ver casos de éxito",
       
       // Copy puente hacia Sección 7 (Reel)
       bridge: {
         text1: "Ya viste ",
-        highlight1: "cómo medimos",
+        highlight1: "con quién trabajamos",
         text2: ".",
         text3: "Ahora mira ",
         highlight2: "cómo se ve en pantalla",
@@ -274,42 +249,16 @@ export const translationsIndex = {
     // ==========================================
     reel: {
       intro: {
-        title: "Video que conecta. Video que vende.",
-        subtitle: "De TV a digital: spots, social ads y campañas que generan ROI."
+        title: "Nuestro Trabajo en Video",
+        subtitle: "Producción profesional para plataformas digitales: social ads, reels, YouTube, corporativo."
       },
       
       // Videos con metadata (se mapean con vimeoVideos.js)
       videos: [
         {
-          id: 0, // Índice en vimeoVideos.js
-          client: "Marca Automotriz",
-          campaign: "Lanzamiento SUV Híbrida",
-          tag: "YouTube Ads",
-          metric: {
-            value: "+42% CTR",
-            label: "Campaña bilingüe"
-          },
-          objective: "Aumentar test drives en mercado hispano",
-          solution: "Video ads 15s + landing page optimizada",
-          result: "+167% conversiones vs. campaña anterior"
-        },
-        {
-          id: 1,
-          client: "Fintech",
-          campaign: "App de Remesas",
-          tag: "TikTok Native",
-          metric: {
-            value: "3.1x ROAS",
-            label: "Orgánico + Paid"
-          },
-          objective: "Awareness en Gen Z latina",
-          solution: "Influencers + UGC + video storytelling",
-          result: "25K downloads en 30 días"
-        },
-        {
-          id: 2,
+          id: 0,
           client: "E-commerce Moda",
-          campaign: "Black Friday Multicultural",
+          campaign: "Black Friday",
           tag: "Meta Ads",
           metric: {
             value: "+89% Ventas",
@@ -320,7 +269,20 @@ export const translationsIndex = {
           result: "$1.2M en ventas, ROAS 4.8x"
         },
         {
-          id: 3,
+          id: 1,
+          client: "Fintech",
+          campaign: "App de Remesas",
+          tag: "Social Ads",
+          metric: {
+            value: "3.1x ROAS",
+            label: "Orgánico + Paid"
+          },
+          objective: "Awareness en mercado competido",
+          solution: "Influencers + UGC + video storytelling",
+          result: "25K downloads en 30 días"
+        },
+        {
+          id: 2,
           client: "Retail Alimenticio",
           campaign: "Día de la Madre",
           tag: "Campaña 360",
@@ -328,35 +290,87 @@ export const translationsIndex = {
             value: "92% Recall",
             label: "Brand lift study"
           },
-          objective: "Conectar emocionalmente con mamás latinas",
-          solution: "Spot TV + social + influencers",
+          objective: "Conectar emocionalmente con audiencia objetivo",
+          solution: "Spot multimedia + social + influencers",
           result: "+78% tráfico a tiendas"
         },
         {
-          id: 4,
-          client: "Servicios Educativos",
-          campaign: "Inscripciones Universitarias",
-          tag: "YouTube Pre-roll",
-          metric: {
-            value: "–35% CPA",
-            label: "vs. promedio sector"
-          },
-          objective: "Captar estudiantes hispanos de primera generación",
-          solution: "Testimonial videos + segmentación cultural",
-          result: "560 aplicaciones calificadas"
-        },
-        {
-          id: 5,
-          client: "Tech B2B",
-          campaign: "Lanzamiento SaaS",
+          id: 3,
+          client: "Tech Startup",
+          campaign: "Lanzamiento SaaS B2B",
           tag: "LinkedIn Ads",
           metric: {
             value: "+124% Leads",
             label: "Q1 2024"
           },
-          objective: "Penetrar mercado corporativo latino",
+          objective: "Penetrar mercado B2B",
           solution: "Thought leadership videos + case studies",
           result: "Pipeline de $3.2M generado"
+        },
+        {
+          id: 4,
+          client: "Healthcare",
+          campaign: "Servicios Médicos",
+          tag: "YouTube Pre-roll",
+          metric: {
+            value: "–35% CPA",
+            label: "vs. promedio sector"
+          },
+          objective: "Captar pacientes en sector salud",
+          solution: "Testimoniales de clientes + targeting preciso",
+          result: "560 citas calificadas"
+        },
+        {
+          id: 5,
+          client: "Marca Automotriz",
+          campaign: "Lanzamiento SUV Híbrida",
+          tag: "YouTube Ads",
+          metric: {
+            value: "+42% CTR",
+            label: "Campaña de video"
+          },
+          objective: "Aumentar test drives en mercado competido",
+          solution: "Video ads 15s + landing pages optimizadas",
+          result: "+167% conversiones vs. campaña anterior"
+        },
+        {
+          id: 6,
+          client: "Real Estate",
+          campaign: "Desarrollo Residencial",
+          tag: "Meta + Google",
+          metric: {
+            value: "85% Sellout",
+            label: "Primeros 90 días"
+          },
+          objective: "Vender unidades de segmento premium",
+          solution: "Virtual tours + ads geo-targetizados",
+          result: "$18M en ventas, ROAS 6.2x"
+        },
+        {
+          id: 7,
+          client: "Beauty Brand",
+          campaign: "Línea Skincare",
+          tag: "TikTok + Reels",
+          metric: {
+            value: "12M Vistas",
+            label: "Alcance orgánico"
+          },
+          objective: "Lanzamiento en mercado competitivo",
+          solution: "Micro-influencers + UGC + tutoriales",
+          result: "Producto agotado en 3 semanas"
+        },
+        {
+          id: 8,
+          client: "Hospitality",
+          campaign: "Resort & Spa",
+          tag: "YouTube + Display",
+          metric: {
+            value: "+215% Reservas",
+            label: "Temporada verano"
+          },
+          objective: "Llenar capacidad en segmento premium",
+          solution: "Videos inmersivos + retargeting estacional",
+          result: "97% ocupación, +$2.4M revenue"
         }
       ],
       
@@ -364,8 +378,8 @@ export const translationsIndex = {
       storytelling: [
         {
           icon: "🎥",
-          title: "Producción premiada (Emmy)",
-          description: "Calidad cinematográfica aplicada al performance digital"
+          title: "Producción profesional",
+          description: "Calidad cinematográfica optimizada para plataformas digitales"
         },
         {
           icon: "📱",
@@ -392,7 +406,7 @@ export const translationsIndex = {
         objective: "Objetivo:",
         solution: "Solución:",
         result: "Resultado:",
-        tagline: "De la TV a tu feed en 24 horas"
+        tagline: "Video profesional para plataformas digitales"
       }
     },
 
@@ -401,7 +415,7 @@ export const translationsIndex = {
     // ==========================================
     clients: {
       title: "Marcas que crecen con nosotros",
-      subtitle: "Confían en Energy Media para conectar con audiencias multiculturales",
+      subtitle: "Confían en Energy Media para impulsar su crecimiento digital",
       // Nota: Logos se cargan desde /public/image/clients/
       logos: [
         { name: "Toyota", filename: "toyota.png" },
@@ -441,7 +455,7 @@ export const translationsIndex = {
           result: "ROAS 4.2x sostenido"
         },
         {
-          quote: "La producción de video es Emmy-level pero con velocidad de digital. Nos ayudaron a adaptar nuestra campaña de TV a social ads en menos de una semana.",
+          quote: "La producción de video es de nivel profesional pero con velocidad de agencia digital. Crearon toda nuestra campaña de social ads en menos de una semana.",
           author: "Ana Silva",
           role: "Brand Director",
           company: "Retail Nacional",
@@ -484,7 +498,7 @@ export const translationsIndex = {
             "Producción mensual de video (6-8 piezas)",
             "Campaña multi-canal (Meta, Google, TikTok)",
             "A/B testing creativo y de audiencias",
-            "OYE Insights (listening básico)",
+            "Análisis de datos básico",
             "Landing pages optimizadas",
             "Report quincenal + call estratégico",
             "Slack/email support prioritario"
@@ -500,7 +514,7 @@ export const translationsIndex = {
           features: [
             "Producción ilimitada + equipo creativo dedicado",
             "Campañas en todos los canales (incluye programmatic)",
-            "OYE Insights avanzado + consultoría estratégica",
+            "Análisis de datos avanzado + consultoría estratégica",
             "Influencer management & partnerships",
             "CRO + desarrollo web/apps",
             "Report semanal + optimización en tiempo real",
@@ -539,500 +553,441 @@ export const translationsIndex = {
   // ENGLISH VERSION
   // ==========================================
   en: {
-    // SECTION 1: HERO
+    // ==========================================
+    // SECTION 1: HERO - "Transform Your Business"
+    // ==========================================
     hero: {
-      title: "Multicultural creativity + digital performance = ",
-      titleHighlight: "real growth",
-      subtitle: "We connect brands with Hispanic and multicultural audiences through data-driven strategies and video that sells.",
+      h1: "Transform your business into a digital leader with guaranteed results",
+      subtitle: "Digital marketing + web development + AI. Everything in one place. First results in 30 days or full refund.",
       ctaPrimary: "Schedule your free consultation",
-      ctaSecondary: "View success stories",
-      trustIndicators: {
-        roas: {
-          value: "+42%",
-          label: "Average ROAS"
-        },
-        experience: {
-          value: "15+",
-          label: "Years of experience"
-        },
-        award: {
-          value: "Emmy",
-          label: "Award-winning production"
-        }
+      ctaValue: "($5,000 USD value)",
+      ctaSecondary: "View our results",
+      trustBadges: {
+        results: "First results in 30 days",
+        guarantee: "90-day guarantee",
+        response: "Response <2 hours"
       }
     },
 
-    // SECTION 2: DIFFERENTIATORS
-    differentiators: {
-      title: "Why Energy Media",
-      subtitle: "Differentiators that make us unique in multicultural marketing",
-      items: [
+    // ==========================================
+    // SECTION 2: WHY CHOOSE US?
+    // ==========================================
+    whyUs: {
+      title: "Why Choose Us?",
+      subtitle: "Proven benefits for your digital success",
+      reasons: [
         {
-          icon: "🎭",
-          title: "Culture that converts",
-          description: "Authentic cultural insight for campaigns that resonate with Hispanic and multicultural audiences."
-        },
-        {
-          icon: "🎬",
-          title: "Performance-driven video",
-          description: "From TV to measurable digital ROI. Emmy-level production with proven results."
+          icon: "⭐",
+          title: "Proven Experience",
+          description: "+8 years transforming digital businesses with +200 satisfied clients across multiple industries."
         },
         {
           icon: "📊",
-          title: "Real-time data & OYE",
-          description: "Language-neutral listening for agile decisions and continuous optimization."
+          title: "Data-Driven Approach",
+          description: "Decisions based on real data, not hunches. Measurable ROI in every campaign with full transparency."
         },
         {
-          icon: "📈",
-          title: "Scalability with clear reporting",
-          description: "From pilot tests to multimillion campaigns with total visibility."
+          icon: "👥",
+          title: "Multidisciplinary Team",
+          description: "Marketers + Designers + Developers + AI Specialists working together for your success."
+        },
+        {
+          icon: "🤖",
+          title: "Cutting-Edge Technology",
+          description: "Complete stack: CRM, automation, AI, real-time analytics. Always ahead of the curve."
+        },
+        {
+          icon: "💬",
+          title: "Priority Support",
+          description: "Response in <2 hours. No waiting, no excuses. Your success is our priority."
+        },
+        {
+          icon: "�",
+          title: "Flexible Plans",
+          description: "From startups to enterprises. Grow at your pace with customizable solutions."
         }
       ]
     },
 
-    // SECTION 3: SERVICES
-    services: {
-      title: "Services that drive growth",
-      subtitle: "Integrated solutions for brands looking to connect with multicultural audiences",
-      items: [
+    // ==========================================
+    // SECTION 3: GUARANTEED RESULTS (PROOF UPFRONT)
+    // ==========================================
+    results: {
+      title: "Results that Transform Businesses",
+      subtitle: "We don't promise magic. We deliver measurable growth backed by a 90-day guarantee.",
+      metrics: [
         {
-          icon: "🎥",
-          title: "Digital Video Marketing",
-          description: "Spots, social ads, and reels that generate ROI. From TV to feed in 24 hours.",
-          link: "/en/services/video-marketing"
+          value: "+200%",
+          label: "Web Traffic",
+          description: "Average in first 6 months"
         },
         {
-          icon: "🚀",
-          title: "360 Digital Marketing",
-          description: "SEO, SEM, Social Ads, Email, Influencers. Fully integrated strategy.",
-          link: "/en/services/marketing-360"
+          value: "+150%",
+          label: "Lead Generation",
+          description: "With continuous optimization"
+        },
+        {
+          value: "+300%",
+          label: "Engagement",
+          description: "On organic and paid social media"
+        },
+        {
+          value: "400-600%",
+          label: "ROI",
+          description: "On well-executed email campaigns"
+        }
+      ],
+      guarantee: {
+        title: "90-DAY GUARANTEE",
+        description: "If you don't see measurable results in 90 days, full refund. No questions asked.",
+        features: [
+          "First results in 30 days",
+          "Response <2 hours",
+          "Satisfaction guaranteed"
+        ]
+      }
+    },
+
+    // ==========================================
+    // SECTION 4: COMPREHENSIVE SERVICES
+    // ==========================================
+    services: {
+      title: "Comprehensive Services for Your Digital Growth",
+      subtitle: "From strategy to execution. Everything in one place.",
+      items: [
+        {
+          icon: "�",
+          title: "Professional SEO & SEM",
+          tagline: "Dominate Google. More traffic, more sales.",
+          bullets: [
+            "Sustainable organic positioning",
+            "Data-optimized Google Ads",
+            "Advanced analytics for decisions"
+          ],
+          metric: "+200% organic traffic in 6 months (average)",
+          link: "/en/services/seo-sem"
+        },
+        {
+          icon: "�",
+          title: "Social Media & Paid Ads",
+          tagline: "Turn scrollers into customers.",
+          bullets: [
+            "Meta Ads + TikTok Ads + LinkedIn Ads",
+            "Community management",
+            "Creative A/B testing"
+          ],
+          metric: "+300% engagement with optimized strategy",
+          link: "/en/services/social-ads"
         },
         {
           icon: "🎨",
-          title: "Branding & Cultural Creativity",
-          description: "Identity that connects. From naming to multicultural brand guidelines.",
+          title: "Branding & Graphic Design",
+          tagline: "Memorable brand that stands out.",
+          bullets: [
+            "Logos + Corporate identity",
+            "Brand manual + Visual system",
+            "Advertising design"
+          ],
+          metric: "Complete brand in 2-3 weeks",
           link: "/en/services/branding"
         },
         {
           icon: "💻",
-          title: "Web & Apps",
-          description: "Portals, e-commerce, landing pages optimized for conversion.",
-          link: "/en/services/web-apps"
-        },
-        {
-          icon: "📡",
-          title: "Analytics & OYE",
-          description: "Listening platform + actionable insights in real-time.",
-          link: "/en/oye"
-        }
-      ],
-      cta: "View all services"
-    },
-
-    // SECTION 4: CASES
-    cases: {
-      title: "Results that speak",
-      subtitle: "Real cases with measurable metrics",
-      items: [
-        {
-          industry: "Fashion E-commerce",
-          client: "Latin American Brand",
-          challenge: "Increase ROAS among Hispanic audience in the U.S.",
-          solution: "Bilingual video ads + cultural segmentation + creative A/B testing",
-          metrics: {
-            roas: {
-              value: "+42%",
-              label: "ROAS"
-            },
-            cac: {
-              value: "–28%",
-              label: "CAC"
-            },
-            leads: {
-              value: "+3.1x",
-              label: "Leads"
-            }
-          },
-          testimonial: "Energy Media understood our audience better than anyone. Results came in 60 days.",
-          link: "/en/cases/fashion-ecommerce"
-        },
-        {
-          industry: "Financial Services",
-          client: "Latinx Fintech",
-          challenge: "App launch in competitive Hispanic market",
-          solution: "Influencer marketing + YouTube Ads + optimized landing pages",
-          metrics: {
-            ctr: {
-              value: "+67%",
-              label: "CTR"
-            },
-            downloads: {
-              value: "25K",
-              label: "Downloads"
-            },
-            retention: {
-              value: "78%",
-              label: "D30 Retention"
-            }
-          },
-          testimonial: "We exceeded our download projections by 310%. Exceptional team.",
-          link: "/en/cases/fintech-app"
-        },
-        {
-          industry: "Food Retail",
-          client: "Restaurant Chain",
-          challenge: "Increase foot traffic to physical stores with digital campaign",
-          solution: "Video storytelling + geo-targeting + localized promotions",
-          metrics: {
-            traffic: {
-              value: "+89%",
-              label: "Traffic"
-            },
-            sales: {
-              value: "+3.5x",
-              label: "Sales"
-            },
-            recall: {
-              value: "92%",
-              label: "Brand Recall"
-            }
-          },
-          testimonial: "The video connected emotionally. We saw lines at our stores during launch week.",
-          link: "/en/cases/retail-food"
-        }
-      ],
-      cta: "View all cases"
-    },
-
-    // SECTION 5: METHODOLOGY
-    methodology: {
-      title: "How we work",
-      subtitle: "Proven methodology across +200 multicultural campaigns",
-      steps: [
-        {
-          number: 1,
-          icon: "🔍",
-          title: "Cultural & business discovery",
-          description: "Initial audit of brand, competition, and audience. We identify key cultural insights.",
-          deliverable: "Discovery report + actionable insights"
-        },
-        {
-          number: 2,
-          icon: "🗺️",
-          title: "Growth plan (90 days + KPIs)",
-          description: "Roadmap with measurable objectives, prioritized channels, and culturally-aligned creativity.",
-          deliverable: "Strategic plan + KPI dashboard"
-        },
-        {
-          number: 3,
-          icon: "🎬",
-          title: "Production & setup",
-          description: "Video, design, tracking, and martech configured. Ready to launch.",
-          deliverable: "Creative assets + configured campaign"
-        },
-        {
-          number: 4,
-          icon: "📊",
-          title: "Continuous optimization",
-          description: "Creative A/B testing, audience adjustment, data-driven iteration.",
-          deliverable: "Bi-weekly reports + implemented improvements"
-        },
-        {
-          number: 5,
-          icon: "🚀",
-          title: "Scaling",
-          description: "New audiences, formats, and channels. Sustainable growth with positive ROI.",
-          deliverable: "Scaling plan + multichannel expansion"
-        }
-      ],
-      cta: "Learn the full methodology"
-    },
-
-    // SECTION 6: OYE
-    oye: {
-      title: "Cultural Insights with OYE Methodology",
-      subtitle: "We combine advanced social listening with expert cultural analysis in 18+ languages",
-      benefits: [
-        {
-          icon: "🔍",
-          title: "Social listening in 18+ languages",
-          description: "We listen to multicultural conversations with real cultural context, not just translation."
+          title: "Web Development & Mobile Apps",
+          tagline: "Web portals, CRM, custom mobile apps.",
+          bullets: [
+            "Responsive websites + E-commerce",
+            "iOS/Android apps",
+            "Business portals + Custom CRM"
+          ],
+          metric: "Professional launch in 4-6 weeks",
+          link: "/en/services/web-development",
+          highlighted: true,
+          badge: "⚡ FEATURED"
         },
         {
           icon: "�",
-          title: "Trigger and avoidance identification",
-          description: "We discover what connects and what to avoid for each specific multicultural audience."
+          title: "Email Marketing & Automation",
+          tagline: "Nurturing that sells on autopilot.",
+          bullets: [
+            "Segmented campaigns",
+            "Advanced automation",
+            "A/B testing + Optimization"
+          ],
+          metric: "400-600% ROI on email campaigns",
+          link: "/en/services/email-marketing"
         },
         {
-          icon: "📊",
-          title: "Actionable reports with creative insights",
-          description: "We transform data into content strategies that improve performance and authenticity."
+          icon: "🤖",
+          title: "AI Marketing & Automation",
+          tagline: "Artificial intelligence at your business service.",
+          bullets: [
+            "Intelligent chatbots",
+            "Process automation",
+            "Predictive analysis + Personalization at scale"
+          ],
+          metric: "Up to 70% time saved with automation",
+          link: "/en/services/ai-marketing",
+          highlighted: true,
+          badge: "⚡ FEATURED"
         }
-      ],
-      features: [
-        "Multicultural listening with professional tools",
-        "Expert cultural analysis (not automatic)",
-        "Key cultural moment identification",
-        "Triggers and avoidances by segment",
-        "Continuous message optimization"
-      ],
-      ctaPrimary: "Discover our methodology",
-      ctaSecondary: "See cases with OYE",
-      
-      bridge: {
-        text1: "You've seen ",
-        highlight1: "how we measure",
-        text2: ".",
-        text3: "Now watch ",
-        highlight2: "how it looks on screen",
-        text4: "."
-      }
+      ]
     },
 
-    // SECTION 7: REEL
+    // ==========================================
+    // SECTION 5: PACKAGES & SOLUTIONS
+    // ==========================================
+    packages: {
+      title: "Choose Your Growth Plan",
+      subtitle: "Scalable solutions starting from $400 USD/month. Customizable plans according to your goals.",
+      disclaimer: "* Customizable plans. Schedule free consultation for exact quote.",
+      plans: [
+        {
+          name: "STARTER",
+          subtitle: "First Digital Steps",
+          price: "$400 - $750 USD/month",
+          forWho: "For small businesses starting in digital or with limited budget",
+          features: [
+            "Professional responsive website (up to 5 pages)",
+            "Basic SEO + Optimized Google My Business",
+            "Management of 2 social networks (organic content)",
+            "Analytics and tracking configuration",
+            "Monthly report with key metrics",
+            "Email support (<24hrs)"
+          ],
+          cta: "Request custom proposal"
+        },
+        {
+          name: "GROWTH",
+          subtitle: "Data-Driven Scaling",
+          price: "$800 - $1,500 USD/month",
+          badge: "⭐ MOST POPULAR",
+          forWho: "For growing companies looking to maximize ROI and scale with strategy",
+          features: [
+            "Everything in STARTER +",
+            "Multi-channel paid campaigns (Meta, Google, LinkedIn)",
+            "Automated email marketing (up to 10K contacts)",
+            "Monthly video production (2-3 pieces for social ads)",
+            "Creative and copy A/B testing",
+            "Conversion-optimized landing pages",
+            "Biweekly report + strategy call",
+            "Priority support (<2hrs)"
+          ],
+          cta: "Request custom proposal"
+        },
+        {
+          name: "PREMIUM",
+          subtitle: "Total Digital Leadership",
+          price: "$1,550 - $2,500+ USD/month",
+          forWho: "For established companies with 6-figure budget looking to dominate their industry",
+          features: [
+            "Everything in GROWTH +",
+            "Advanced web/app development (portals, CRM, e-commerce)",
+            "AI implementation (chatbots, automation, predictive analysis)",
+            "Unlimited video production + dedicated creative team",
+            "Monthly strategic consulting (quarterly roadmap)",
+            "Campaigns on all available channels",
+            "Weekly report + continuous optimization",
+            "Dedicated Account Manager + 24/7 support"
+          ],
+          cta: "Request custom proposal"
+        }
+      ]
+    },
+
+    // ==========================================
+    // SECTION 6: OUR WORK PROCESS
+    // ==========================================
+    process: {
+      title: "How We Transform Your Business (Step by Step)",
+      subtitle: "Process proven with +200 clients. No surprises, only results.",
+      steps: [
+        {
+          number: 1,
+          title: "Discovery & Audit",
+          description: "We analyze your business, competition, audience, current digital situation",
+          duration: "Week 1",
+          deliverable: "Complete diagnosis with identified opportunities",
+          icon: "🔍"
+        },
+        {
+          number: 2,
+          title: "Strategy & Roadmap",
+          description: "We create 90-day growth plan with measurable KPIs",
+          duration: "Week 2",
+          deliverable: "Detailed roadmap + investment proposal",
+          icon: "🗺️"
+        },
+        {
+          number: 3,
+          title: "Implementation & Setup",
+          description: "We configure tools, tracking, martech stack, initial production",
+          duration: "Weeks 3-4",
+          deliverable: "Digital infrastructure running + first campaigns live",
+          icon: "⚙️"
+        },
+        {
+          number: 4,
+          title: "Continuous Optimization",
+          description: "A/B testing, creative iteration, segmentation adjustment, CTR/CVR improvement",
+          duration: "Month 2+",
+          deliverable: "Biweekly reports + data-driven adjustments",
+          icon: "📈"
+        },
+        {
+          number: 5,
+          title: "Reporting & Transparency",
+          description: "Real-time dashboards + strategic review calls",
+          duration: "Ongoing",
+          deliverable: "Custom reports + 24/7 analytics access",
+          icon: "📊"
+        },
+        {
+          number: 6,
+          title: "Scaling & Growth",
+          description: "Expansion to new channels, audiences, formats based on results",
+          duration: "Month 3+",
+          deliverable: "Scaling plan + recommended incremental investment",
+          icon: "🚀"
+        }
+      ]
+    },
+
+    // ==========================================
+    // SECTION 7: VIDEO SHOWCASE (Simplified)
+    // ==========================================
     reel: {
-      intro: {
-        title: "Video that connects. Video that sells.",
-        subtitle: "From TV to digital: spots, social ads, and campaigns that generate ROI."
-      },
-      
-      videos: [
-        {
-          id: 0,
-          client: "Automotive Brand",
-          campaign: "Hybrid SUV Launch",
-          tag: "YouTube Ads",
-          metric: {
-            value: "+42% CTR",
-            label: "Bilingual campaign"
-          },
-          objective: "Increase test drives in Hispanic market",
-          solution: "15s video ads + optimized landing page",
-          result: "+167% conversions vs. previous campaign"
-        },
-        {
-          id: 1,
-          client: "Fintech",
-          campaign: "Remittance App",
-          tag: "TikTok Native",
-          metric: {
-            value: "3.1x ROAS",
-            label: "Organic + Paid"
-          },
-          objective: "Awareness among Latina Gen Z",
-          solution: "Influencers + UGC + video storytelling",
-          result: "25K downloads in 30 days"
-        },
-        {
-          id: 2,
-          client: "Fashion E-commerce",
-          campaign: "Multicultural Black Friday",
-          tag: "Meta Ads",
-          metric: {
-            value: "+89% Sales",
-            label: "vs. previous year"
-          },
-          objective: "Maximize sales during key weekend",
-          solution: "Carousel ads + dynamic retargeting",
-          result: "$1.2M in sales, 4.8x ROAS"
-        },
-        {
-          id: 3,
-          client: "Food Retail",
-          campaign: "Mother's Day",
-          tag: "360 Campaign",
-          metric: {
-            value: "92% Recall",
-            label: "Brand lift study"
-          },
-          objective: "Connect emotionally with Latina moms",
-          solution: "TV spot + social + influencers",
-          result: "+78% store traffic"
-        },
-        {
-          id: 4,
-          client: "Educational Services",
-          campaign: "University Enrollment",
-          tag: "YouTube Pre-roll",
-          metric: {
-            value: "–35% CPA",
-            label: "vs. industry avg"
-          },
-          objective: "Attract first-gen Hispanic students",
-          solution: "Testimonial videos + cultural segmentation",
-          result: "560 qualified applications"
-        },
-        {
-          id: 5,
-          client: "B2B Tech",
-          campaign: "SaaS Launch",
-          tag: "LinkedIn Ads",
-          metric: {
-            value: "+124% Leads",
-            label: "Q1 2024"
-          },
-          objective: "Penetrate Latino corporate market",
-          solution: "Thought leadership videos + case studies",
-          result: "$3.2M pipeline generated"
-        }
-      ],
-      
-      storytelling: [
-        {
-          icon: "🎥",
-          title: "Award-winning production (Emmy)",
-          description: "Cinematic quality applied to digital performance"
-        },
-        {
-          icon: "📱",
-          title: "Digital natives",
-          description: "Content for social ads, reels, YouTube, streaming, and more"
-        },
-        {
-          icon: "📊",
-          title: "Performance first",
-          description: "We measure views, CTR, conversions, and ROI in every campaign"
-        }
-      ],
-      
-      cta: {
-        title: "Turn your message into the next video everyone remembers",
-        button: "Schedule your video marketing consultation"
-      },
-      
-      lightbox: {
-        close: "Close",
-        client: "Client:",
-        objective: "Objective:",
-        solution: "Solution:",
-        result: "Result:",
-        tagline: "From TV to your feed in 24 hours"
-      }
+      title: "Our Work in Video",
+      subtitle: "We produce video for digital platforms: social ads, reels, YouTube, corporate",
+      cta: "Need professional video for your brand?",
+      ctaButton: "Schedule your consultation"
     },
 
-    // SECTION 8: CLIENTS
-    clients: {
-      title: "Brands growing with us",
-      subtitle: "They trust Energy Media to connect with multicultural audiences",
-      logos: [
-        { name: "Toyota", filename: "toyota.png" },
-        { name: "Univision", filename: "univision.png" },
-        { name: "Target", filename: "target.png" },
-        { name: "Wells Fargo", filename: "wells-fargo.png" },
-        { name: "AT&T", filename: "att.png" },
-        { name: "Coca-Cola", filename: "cocacola.png" },
-        { name: "McDonald's", filename: "mcdonalds.png" },
-        { name: "Verizon", filename: "verizon.png" },
-        { name: "Bank of America", filename: "bankofamerica.png" },
-        { name: "Walmart", filename: "walmart.png" }
-      ]
+    // ==========================================
+    // SECTION 8: CERTIFICATIONS & PARTNERS
+    // ==========================================
+    certifications: {
+      title: "Certified by the Best",
+      subtitle: "Official partners of leading marketing and technology platforms",
+      partners: [
+        "Google Partner",
+        "Meta Business Partner",
+        "HubSpot Partner",
+        "Shopify Partner",
+        "LinkedIn Marketing Partner",
+        "Microsoft Advertising"
+      ],
+      footer: "Continuous training in the latest market tools and strategies"
     },
 
-    // SECTION 9: TESTIMONIALS
+    // ==========================================
+    // SECTION 9: TESTIMONIALS + STATS
+    // ==========================================
     testimonials: {
-      title: "What our clients say",
-      subtitle: "Real results, long-term relationships",
+      title: "What Our Clients Say",
+      subtitle: "More than 200 companies trusted us. These are their results.",
       items: [
         {
-          quote: "Energy Media understood our Hispanic audience better than any other agency. Results came in 60 days and we haven't stopped growing since.",
-          author: "María Rodríguez",
+          text: "We increased sales 3x in 6 months with their digital strategy. Measurable results from day one.",
+          author: "Carlos Mendoza",
           role: "CMO",
-          company: "E-commerce Brand",
-          avatar: "maria.png",
-          result: "+310% sales in Q1 2024"
+          company: "Tech Startup Inc.",
+          result: "3x sales increase in 6 months"
         },
         {
-          quote: "The team combines authentic cultural insight with data rigor. Every campaign is measurable, optimizable, and scalable. Strategic partners, not just vendors.",
-          author: "Carlos Méndez",
-          role: "VP Marketing",
-          company: "Latinx Fintech",
-          avatar: "carlos.png",
-          result: "4.2x sustained ROAS"
+          text: "Professionalism and transparency. They handle our campaigns with impressive metrics and constant optimization.",
+          author: "Maria Lopez",
+          role: "Marketing Director",
+          company: "Fashion Retail Co.",
+          result: "ROAS +42%, CAC -28%"
         },
         {
-          quote: "Video production is Emmy-level but with digital speed. They helped us adapt our TV campaign to social ads in less than a week.",
-          author: "Ana Silva",
-          role: "Brand Director",
-          company: "National Retail",
-          avatar: "ana.png",
-          result: "92% brand recall"
+          text: "The video quality is exceptional, and the ROI in our social ads exceeded all expectations.",
+          author: "Juan Perez",
+          role: "CEO",
+          company: "E-commerce Latam",
+          result: "+3.1x qualified leads"
+        }
+      ],
+      stats: [
+        {
+          value: "98%",
+          label: "Satisfaction Rate",
+          icon: "⭐"
+        },
+        {
+          value: "85%",
+          label: "Recurring Clients",
+          description: "Renew service",
+          icon: "🔁"
+        },
+        {
+          value: "92%",
+          label: "Recommend Energy Media",
+          icon: "👍"
+        },
+        {
+          value: "4.9/5",
+          label: "Average Rating",
+          icon: "⭐⭐⭐⭐⭐"
         }
       ]
     },
 
-    // SECTION 10: PLANS
-    plans: {
-      title: "Plans that adapt to your growth stage",
-      subtitle: "From pilot tests to enterprise campaigns. All customizable.",
-      
+    // ==========================================
+    // SECTION 10: FAQs - FREQUENTLY ASKED QUESTIONS
+    // ==========================================
+    faqs: {
+      title: "Frequently Asked Questions",
+      subtitle: "Everything you need to know before starting",
       items: [
         {
-          name: "Start",
-          tagline: "For brands starting in multicultural digital",
-          price: "From $5K/mo",
-          description: "Ideal to validate hypotheses and learn from your audience",
-          features: [
-            "Pilot video ads (2-3 pieces)",
-            "Basic tracking and analytics setup",
-            "Campaign on 1 channel (Meta or Google)",
-            "Initial cultural segmentation",
-            "Monthly results report",
-            "Email support (24h response)"
-          ],
-          highlight: false,
-          cta: "Request proposal"
+          question: "How long does it take to see results?",
+          answer: "First measurable results in 30 days (traffic, engagement). Significant ROI in 90 days. Awareness campaigns may take 60-90 days. We give you complete visibility with biweekly reports."
         },
         {
-          name: "Grow",
-          tagline: "For brands scaling with data",
-          price: "From $15K/mo",
-          description: "Most popular plan. Performance + continuous optimization",
-          features: [
-            "Monthly video production (6-8 pieces)",
-            "Multi-channel campaign (Meta, Google, TikTok)",
-            "Creative and audience A/B testing",
-            "OYE Insights (basic listening)",
-            "Optimized landing pages",
-            "Bi-weekly report + strategic call",
-            "Priority Slack/email support"
-          ],
-          highlight: true,
-          cta: "Schedule consultation"
+          question: "What happens if I'm not satisfied?",
+          answer: "90-day guarantee. If you don't see measurable results in that period, full refund without questions. Additionally, flexible contracts with no forced permanence."
         },
         {
-          name: "Scale",
-          tagline: "For brands with 6-figure+ budgets",
-          price: "Custom",
-          description: "Dedicated team + enterprise technology",
-          features: [
-            "Unlimited production + dedicated creative team",
-            "Campaigns across all channels (including programmatic)",
-            "Advanced OYE Insights + strategic consulting",
-            "Influencer management & partnerships",
-            "CRO + web/app development",
-            "Weekly report + real-time optimization",
-            "Dedicated Account Manager + direct access to founders"
-          ],
-          highlight: false,
-          cta: "Contact sales"
+          question: "Do you work with my industry?",
+          answer: "Yes. We've worked with e-commerce, professional services, B2B tech, education, health, fintech, retail. If you sell online or need leads, we can help you."
+        },
+        {
+          question: "What type of support do you offer?",
+          answer: "GROWTH and PREMIUM: response <2 hours during business hours. STARTER: <24 hours. All plans include assigned account manager and 24/7 dashboard access."
+        },
+        {
+          question: "Can I change plans later?",
+          answer: "Totally. Many clients start with STARTER and scale to GROWTH when they see results. No penalties for upgrade/downgrade."
+        },
+        {
+          question: "Do you require minimum permanence?",
+          answer: "Initial 90-day plan to guarantee sufficient optimization time. After that, month to month. No 12-24 month ties."
         }
-      ],
-      
-      note: "All plans are customizable based on your objectives and budget.",
-      compareCta: "Compare full plans"
+      ]
     },
 
-    // SECTION 11: FINAL CTA
+    // ==========================================
+    // SECTION 11: FINAL CTA + SPECIAL OFFER
+    // ==========================================
     finalCta: {
-      title: "Ready to grow with culture and data",
-      subtitle: "Schedule your free consultation and discover how to make your brand connect",
-      ctaPrimary: "Schedule your consultation",
-      
+      badge: "LIMITED OFFER - New Clients",
+      title: "Schedule Your Free Strategic Consultation",
+      subtitle: "Value: $5,000 USD. Today: FREE. We analyze your business and give you growth roadmap with no commitment.",
+      features: [
+        "✓ Complete audit of your digital presence (30-45 min)",
+        "✓ Identification of 3-5 quick growth opportunities",
+        "✓ Personalized investment recommendations",
+        "✓ Expected ROI estimate in 90 days",
+        "✓ Immediate action plan (no fine print)"
+      ],
+      cta: "Schedule Now (No Cost)",
+      guarantee: "🛡️ 90-day guarantee. Results or refund.",
       newsletter: {
-        title: "Or get multicultural marketing tips in your inbox",
-        placeholder: "your@email.com",
-        button: "Subscribe",
-        privacy: "We never share your email. You can unsubscribe anytime.",
+        title: "Or receive digital marketing tips + success cases in your inbox",
+        emailPlaceholder: "your@email.com",
+        buttonText: "Subscribe",
         successMessage: "Thanks! Check your inbox to confirm.",
         errorMessage: "There was an error. Please try again."
       }

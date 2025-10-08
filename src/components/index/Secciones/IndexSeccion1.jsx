@@ -13,44 +13,44 @@ const IndexSeccion1 = () => {
   const ingles = useStore(isEnglish);
   const t = ingles ? translationsIndex.en.hero : translationsIndex.es.hero;
   
-  // Carrusel de frases dinámicas
+  // Carrusel de frases dinámicas - 5 PILARES
   const slides = ingles ? [
     {
-      title: "Multicultural creativity",
-      highlight: "+ digital performance",
-      subtitle: "Video that connects. Strategies that sell.",
-      icon: "🎬"
+      title: "Digital marketing",
+      highlight: "+ web development",
+      subtitle: "Complete tech stack for real growth.",
+      icon: "🚀"
     },
     {
-      title: "Data-driven insights",
-      highlight: "+ cultural authenticity",
-      subtitle: "OYE Analytics: Real-time multicultural listening.",
+      title: "Data-driven strategies",
+      highlight: "+ professional video",
+      subtitle: "Metrics that matter. Video that converts.",
       icon: "📊"
     },
     {
-      title: "From TV to digital",
-      highlight: "+ measurable ROI",
-      subtitle: "Emmy-winning production meets performance marketing.",
-      icon: "🏆"
+      title: "Branding + AI",
+      highlight: "+ strategic consulting",
+      subtitle: "From identity to scalable digital solutions.",
+      icon: "�"
     }
   ] : [
     {
-      title: "Creatividad multicultural",
-      highlight: "+ performance digital",
-      subtitle: "Video que conecta. Estrategias que venden.",
-      icon: "🎬"
+      title: "Marketing digital",
+      highlight: "+ desarrollo web",
+      subtitle: "Stack tecnológico completo para crecimiento real.",
+      icon: "🚀"
     },
     {
-      title: "Insights basados en datos",
-      highlight: "+ autenticidad cultural",
-      subtitle: "OYE Analytics: Listening multicultural en tiempo real.",
+      title: "Estrategias data-driven",
+      highlight: "+ video profesional",
+      subtitle: "Métricas que importan. Video que convierte.",
       icon: "📊"
     },
     {
-      title: "De la TV a digital",
-      highlight: "+ ROI medible",
-      subtitle: "Producción Emmy meets marketing de performance.",
-      icon: "🏆"
+      title: "Branding + IA",
+      highlight: "+ consultoría estratégica",
+      subtitle: "De la identidad a soluciones digitales escalables.",
+      icon: "�"
     }
   ];
 

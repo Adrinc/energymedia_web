@@ -6,9 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from '../css/indexSeccion7.module.css';
 
 /**
- * IndexSeccion7 - VIDEO REEL (La Joya de la Corona)
- * Galería cinematográfica con lightbox y hover previews
- * Sistema "Cine-Data Multicultural" - Energy Media
+ * IndexSeccion7 - VIDEO SHOWCASE
+ * Galería de producción de video con lightbox profesional
+ * Sistema "Digital Performance" - Energy Media
  */
 
 // 9 videos seleccionados con metadata
@@ -17,20 +17,20 @@ const VIDEO_SHOWCASE = [
     id: '897006857',
     client: 'E-commerce Moda',
     campaign: 'Campaña Black Friday',
-    tag: 'Bilingüe ES/EN',
+    tag: 'Social Ads',
     metric: { value: '+42%', label: 'ROAS' },
-    objective: 'Aumentar ROAS en audiencia hispana en EE.UU.',
-    solution: 'Video ads bilingües con segmentación cultural y A/B testing creativo',
+    objective: 'Aumentar ROAS en campaña de temporada alta',
+    solution: 'Video ads con segmentación precisa y A/B testing creativo',
     result: '+167% conversiones vs. campaña anterior',
     format: '16:9'
   },
   {
     id: '1119883818',
-    client: 'Fintech Latinx',
+    client: 'Fintech',
     campaign: 'App de Remesas',
     tag: 'TikTok Native',
     metric: { value: '+67%', label: 'CTR' },
-    objective: 'Lanzamiento de app en mercado hispano competido',
+    objective: 'Lanzamiento de app en mercado competido',
     solution: 'Influencer marketing + TikTok Ads nativos verticales',
     result: '25K downloads en primeras 2 semanas',
     format: '9:16'
@@ -52,8 +52,8 @@ const VIDEO_SHOWCASE = [
     campaign: 'Lanzamiento SaaS',
     tag: 'Instagram Reels',
     metric: { value: '2.3M', label: 'Views' },
-    objective: 'Awareness de producto en mercado B2B multicultural',
-    solution: 'Reels educativos + testimoniales en español e inglés',
+    objective: 'Awareness de producto en mercado B2B',
+    solution: 'Reels educativos + testimoniales de clientes',
     result: '+156% engagement rate vs. industria',
     format: '9:16'
   },
@@ -63,8 +63,8 @@ const VIDEO_SHOWCASE = [
     campaign: 'Servicios Médicos',
     tag: 'Social Ads',
     metric: { value: '+3.1x', label: 'Leads' },
-    objective: 'Generar leads calificados en comunidad hispana',
-    solution: 'Video testimoniales auténticos + landing pages culturalmente relevantes',
+    objective: 'Generar leads calificados en sector salud',
+    solution: 'Video testimoniales auténticos + landing pages optimizadas',
     result: '-34% costo por lead adquirido',
     format: '16:9'
   },
@@ -86,20 +86,9 @@ const VIDEO_SHOWCASE = [
     tag: 'Video Ads FB/IG',
     metric: { value: '-28%', label: 'CAC' },
     objective: 'Reducir costo de adquisición de clientes potenciales',
-    solution: 'Tours virtuales + targeting multicultural preciso',
+    solution: 'Tours virtuales + targeting preciso',
     result: '43 unidades vendidas en 90 días',
     format: '16:9'
-  },
-  {
-    id: '1106543448',
-    client: 'Education',
-    campaign: 'Plataforma E-Learning',
-    tag: 'Multicultural',
-    metric: { value: '25K', label: 'Downloads' },
-    objective: 'Posicionar app educativa en mercado hispano',
-    solution: 'Video ads multicanal + partnerships con influencers educativos',
-    result: '4.8⭐ rating promedio en stores',
-    format: '9:16'
   },
   {
     id: '1106542411',
@@ -107,21 +96,10 @@ const VIDEO_SHOWCASE = [
     campaign: 'Línea de Skincare',
     tag: 'YouTube + Meta',
     metric: { value: '78%', label: 'D30 Retention' },
-    objective: 'Lanzar marca en audiencia femenina multicultural',
+    objective: 'Lanzar marca de belleza en mercado competitivo',
     solution: 'Video reviews + tutorials + unboxing experiences',
     result: '+3.8x ROAS sostenido por 6 meses',
     format: '16:9'
-  },
-  {
-    id: '1106533496',
-    client: 'Nonprofit / ONG',
-    campaign: 'Campaña de Awareness',
-    tag: 'Storytelling Social',
-    metric: { value: '1.8M', label: 'Reach' },
-    objective: 'Generar conciencia sobre causa social en comunidad hispana',
-    solution: 'Video emocional + amplificación orgánica + influencers',
-    result: '45K firmas de petición en 2 semanas',
-    format: '9:16'
   },
   {
     id: '1098651741',
@@ -129,21 +107,10 @@ const VIDEO_SHOWCASE = [
     campaign: 'Resort & Spa',
     tag: 'Luxury Travel',
     metric: { value: '+215%', label: 'Bookings' },
-    objective: 'Aumentar reservas en audiencia hispana de alto poder adquisitivo',
+    objective: 'Aumentar reservas en segmento premium',
     solution: 'Video inmersivo 360° + targeting premium',
     result: '$2.4M en revenue atribuido directamente',
     format: '16:9'
-  },
-  {
-    id: '1098263467',
-    client: 'Entertainment',
-    campaign: 'Estreno de Serie',
-    tag: 'Streaming Promo',
-    metric: { value: '4.2M', label: 'Views' },
-    objective: 'Maximizar viewership del episodio piloto',
-    solution: 'Teasers cortos + countdown + memes culturales',
-    result: '#1 en trending topics durante lanzamiento',
-    format: '9:16'
   }
 ];
 
@@ -229,8 +196,8 @@ const IndexSeccion7 = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               {ingles 
-                ? "From TV to digital: spots, social ads and campaigns that generate ROI."
-                : "De TV a digital: spots, social ads y campañas que generan ROI."
+                ? "Professional video for digital platforms: social ads, reels, YouTube, corporate content that converts."
+                : "Video profesional para plataformas digitales: social ads, reels, YouTube, contenido corporativo que convierte."
               }
             </motion.p>
           </div>
@@ -505,7 +472,7 @@ const IndexSeccion7 = () => {
                   </div>
 
                   <div className={styles.sidebarQuote}>
-                    💬 "{ingles ? "From TV to your feed in 24 hours" : "De la TV a tu feed en 24 horas"}"
+                    💬 "{ingles ? "Professional video optimized for digital platforms" : "Video profesional optimizado para plataformas digitales"}"
                   </div>
 
                   <a href="/casos" className={styles.sidebarCta}>
