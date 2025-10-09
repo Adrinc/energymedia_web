@@ -53,7 +53,7 @@ const PortfolioSeccion1 = () => {
           playsInline
           className={styles.heroVideo}
         >
-          <source src="/videos/v_bg_3.mp4" type="video/mp4" />
+          <source src="/videos/hero3.mp4" type="video/mp4" />
         </video>
         <div className={styles.videoOverlay}></div>
       </div>

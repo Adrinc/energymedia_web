@@ -183,7 +183,7 @@ const IndexSeccion5 = () => {
               <ul className={styles.featuresList}>
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className={styles.feature}>
-                    <span className={styles.checkIcon}></span>
+                    <span className={styles.checkIcon}>✓</span>
                     {feature}
                   </li>
                 ))}

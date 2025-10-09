@@ -13,7 +13,7 @@ const IndexSeccion4 = () => {
       subtitle: "De la estrategia a la ejecución. Todo en un solo lugar.",
       items: [
         {
-          icon: "",
+          icon: "🎯",
           title: "SEO & SEM Profesional",
           tagline: "Domina Google. Más tráfico, más ventas.",
           bullets: [
@@ -24,7 +24,7 @@ const IndexSeccion4 = () => {
           metric: "+200% tráfico orgánico (promedio 6 meses)"
         },
         {
-          icon: "",
+          icon: "📱",
           title: "Redes Sociales & Paid Ads",
           tagline: "Convierte scrollers en clientes.",
           bullets: [
@@ -35,7 +35,7 @@ const IndexSeccion4 = () => {
           metric: "+300% engagement optimizado"
         },
         {
-          icon: "",
+          icon: "🎨",
           title: "Branding & Diseño Gráfico",
           tagline: "Marca memorable que destaca.",
           bullets: [
@@ -46,7 +46,7 @@ const IndexSeccion4 = () => {
           metric: "Marca completa en 2-3 semanas"
         },
         {
-          icon: "",
+          icon: "💻",
           title: "Desarrollo Web & Apps Móviles",
           tagline: "Portales web, CRM, apps móviles a medida.",
           bullets: [
@@ -56,10 +56,10 @@ const IndexSeccion4 = () => {
           ],
           metric: "Lanzamiento en 4-6 semanas",
           highlighted: true,
-          badge: " DESTACADO"
+          badge: "⚡ DESTACADO"
         },
         {
-          icon: "",
+          icon: "📧",
           title: "Email Marketing & Automatización",
           tagline: "Nurturing que vende en piloto automático.",
           bullets: [
@@ -70,7 +70,7 @@ const IndexSeccion4 = () => {
           metric: "400-600% ROI en email"
         },
         {
-          icon: "",
+          icon: "🤖",
           title: "Marketing con IA & Automatización",
           tagline: "Inteligencia artificial al servicio de tu negocio.",
           bullets: [
@@ -80,7 +80,7 @@ const IndexSeccion4 = () => {
           ],
           metric: "70% tiempo ahorrado",
           highlighted: true,
-          badge: " DESTACADO"
+          badge: "⚡ DESTACADO"
         }
       ]
     },
@@ -90,7 +90,7 @@ const IndexSeccion4 = () => {
       subtitle: "From strategy to execution. Everything in one place.",
       items: [
         {
-          icon: "",
+          icon: "🎯",
           title: "Professional SEO & SEM",
           tagline: "Dominate Google. More traffic, more sales.",
           bullets: [
@@ -101,7 +101,7 @@ const IndexSeccion4 = () => {
           metric: "+200% organic traffic (6mo avg)"
         },
         {
-          icon: "",
+          icon: "📱",
           title: "Social Media & Paid Ads",
           tagline: "Turn scrollers into customers.",
           bullets: [
@@ -112,7 +112,7 @@ const IndexSeccion4 = () => {
           metric: "+300% optimized engagement"
         },
         {
-          icon: "",
+          icon: "🎨",
           title: "Branding & Graphic Design",
           tagline: "Memorable brand that stands out.",
           bullets: [
@@ -123,7 +123,7 @@ const IndexSeccion4 = () => {
           metric: "Complete brand in 2-3 weeks"
         },
         {
-          icon: "",
+          icon: "💻",
           title: "Web Development & Mobile Apps",
           tagline: "Web portals, CRM, custom mobile apps.",
           bullets: [
@@ -133,10 +133,10 @@ const IndexSeccion4 = () => {
           ],
           metric: "Launch in 4-6 weeks",
           highlighted: true,
-          badge: " FEATURED"
+          badge: "⚡ FEATURED"
         },
         {
-          icon: "",
+          icon: "📧",
           title: "Email Marketing & Automation",
           tagline: "Nurturing that sells on autopilot.",
           bullets: [
@@ -147,7 +147,7 @@ const IndexSeccion4 = () => {
           metric: "400-600% email ROI"
         },
         {
-          icon: "",
+          icon: "🤖",
           title: "AI Marketing & Automation",
           tagline: "Artificial intelligence at your service.",
           bullets: [
@@ -157,7 +157,7 @@ const IndexSeccion4 = () => {
           ],
           metric: "70% time saved",
           highlighted: true,
-          badge: " FEATURED"
+          badge: "⚡ FEATURED"
         }
       ]
     }

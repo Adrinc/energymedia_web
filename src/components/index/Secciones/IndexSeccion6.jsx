@@ -18,7 +18,9 @@ const IndexSeccion6 = () => {
           duration: "Semana 1",
           description: "Analizamos tu negocio, competencia, audiencia, situación digital actual",
           deliverable: "Diagnóstico completo con oportunidades identificadas",
-          icon: "🔍"
+          icon: "🔍",
+          image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+          color: "#667eea"
         },
         {
           number: 2,
@@ -26,7 +28,9 @@ const IndexSeccion6 = () => {
           duration: "Semana 2",
           description: "Creamos plan de crecimiento 90 días con KPIs medibles",
           deliverable: "Roadmap detallado + propuesta de inversión",
-          icon: "🗺️"
+          icon: "🗺️",
+          image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+          color: "#f093fb"
         },
         {
           number: 3,
@@ -34,7 +38,9 @@ const IndexSeccion6 = () => {
           duration: "Semanas 3-4",
           description: "Configuramos herramientas, tracking, martech stack, producción inicial",
           deliverable: "Infraestructura digital + primeras campañas live",
-          icon: "⚙️"
+          icon: "⚙️",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+          color: "#4facfe"
         },
         {
           number: 4,
@@ -42,7 +48,9 @@ const IndexSeccion6 = () => {
           duration: "Mes 2+",
           description: "A/B testing, iteración creativa, mejora de CTR/CVR",
           deliverable: "Reports quincenales + ajustes basados en data",
-          icon: "📈"
+          icon: "📈",
+          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+          color: "#fa709a"
         },
         {
           number: 5,
@@ -50,7 +58,9 @@ const IndexSeccion6 = () => {
           duration: "Ongoing",
           description: "Dashboards en tiempo real + calls de revisión estratégica",
           deliverable: "Reports personalizados + acceso analytics 24/7",
-          icon: "📊"
+          icon: "📊",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+          color: "#30cfd0"
         },
         {
           number: 6,
@@ -58,7 +68,9 @@ const IndexSeccion6 = () => {
           duration: "Mes 3+",
           description: "Expansión a nuevos canales, audiencias, formatos basados en resultados",
           deliverable: "Plan de escalamiento + inversión incremental",
-          icon: "🚀"
+          icon: "🚀",
+          image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
+          color: "#a8edea"
         }
       ]
     },
@@ -73,7 +85,9 @@ const IndexSeccion6 = () => {
           duration: "Week 1",
           description: "We analyze your business, competition, audience, current digital situation",
           deliverable: "Complete diagnosis with identified opportunities",
-          icon: "🔍"
+          icon: "🔍",
+          image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+          color: "#667eea"
         },
         {
           number: 2,
@@ -81,7 +95,9 @@ const IndexSeccion6 = () => {
           duration: "Week 2",
           description: "We create 90-day growth plan with measurable KPIs",
           deliverable: "Detailed roadmap + investment proposal",
-          icon: "🗺️"
+          icon: "🗺️",
+          image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+          color: "#f093fb"
         },
         {
           number: 3,
@@ -89,7 +105,9 @@ const IndexSeccion6 = () => {
           duration: "Weeks 3-4",
           description: "We configure tools, tracking, martech stack, initial production",
           deliverable: "Digital infrastructure + first campaigns live",
-          icon: "⚙️"
+          icon: "⚙️",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+          color: "#4facfe"
         },
         {
           number: 4,
@@ -97,7 +115,9 @@ const IndexSeccion6 = () => {
           duration: "Month 2+",
           description: "A/B testing, creative iteration, CTR/CVR improvement",
           deliverable: "Biweekly reports + data-driven adjustments",
-          icon: "📈"
+          icon: "📈",
+          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+          color: "#fa709a"
         },
         {
           number: 5,
@@ -105,7 +125,9 @@ const IndexSeccion6 = () => {
           duration: "Ongoing",
           description: "Real-time dashboards + strategic review calls",
           deliverable: "Custom reports + 24/7 analytics access",
-          icon: "📊"
+          icon: "📊",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+          color: "#30cfd0"
         },
         {
           number: 6,
@@ -113,7 +135,9 @@ const IndexSeccion6 = () => {
           duration: "Month 3+",
           description: "Expansion to new channels, audiences, formats based on results",
           deliverable: "Scaling plan + recommended investment",
-          icon: "🚀"
+          icon: "🚀",
+          image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
+          color: "#a8edea"
         }
       ]
     }
@@ -146,32 +170,70 @@ const IndexSeccion6 = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.section}>
+    <section ref={sectionRef} className={styles.processSection}>
+      {/* Background Shapes */}
+      <div className={styles.bgShapes}>
+        <div className={styles.shape1}></div>
+        <div className={styles.shape2}></div>
+      </div>
+
       <div className={styles.container}>
+        {/* Header */}
         <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
           <span className={styles.badge}>{t.badge}</span>
-          <h2 className={styles.title}>{t.title}</h2>
-          <p className={styles.subtitle}>{t.subtitle}</p>
+          <h2 className={styles.sectionTitle}>{t.title}</h2>
+          <p className={styles.sectionSubtitle}>{t.subtitle}</p>
         </div>
 
-        <div className={styles.timeline}>
+        {/* Steps Container with Alternating Layout */}
+        <div className={styles.stepsContainer}>
           {t.steps.map((step, index) => (
             <div
               key={index}
-              className={styles.stepWrapper}
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className={`${styles.stepRow} ${index % 2 !== 0 ? styles.reverse : ''} ${
+                isVisible ? styles.fadeInUp : ''
+              }`}
+              style={{ 
+                animationDelay: `${index * 0.15}s`,
+                '--step-color': step.color
+              }}
             >
-              <div className={styles.numberNode}>{step.number}</div>
-              
-              <div className={styles.stepCard}>
-                <span className={styles.stepIcon}>{step.icon}</span>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <span className={styles.durationBadge}>{step.duration}</span>
-                <p className={styles.stepDescription}>{step.description}</p>
-                <div className={styles.deliverables}>
-                  <div className={styles.deliverable}>
-                    <span className={styles.checkIcon}>✓</span>
-                    {step.deliverable}
+              {/* Image Container */}
+              <div className={styles.imageContainer}>
+                <div className={styles.imageWrapper}>
+                  <img
+                    src={step.image}
+                    alt={step.title}
+                    className={styles.stepImage}
+                    loading="lazy"
+                  />
+                  <div className={styles.imageOverlay}></div>
+                  <div className={styles.glowEffect}></div>
+                </div>
+                
+                {/* Number Badge */}
+                <div className={styles.numberBadge}>
+                  <span className={styles.stepNumber}>{step.number}</span>
+                </div>
+
+                {/* Icon Badge */}
+                <div className={styles.iconBadge}>
+                  <span className={styles.badgeIcon}>{step.icon}</span>
+                </div>
+              </div>
+
+              {/* Content Container */}
+              <div className={styles.contentContainer}>
+                <div className={styles.contentWrapper}>
+                  <span className={styles.durationBadge}>{step.duration}</span>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDescription}>{step.description}</p>
+                  
+                  <div className={styles.deliverableBox}>
+                    <div className={styles.deliverableIcon}>✓</div>
+                    <div className={styles.deliverableContent}>
+                      <strong>Entregable:</strong> {step.deliverable}
+                    </div>
                   </div>
                 </div>
               </div>

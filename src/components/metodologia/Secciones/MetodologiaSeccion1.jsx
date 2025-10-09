@@ -45,7 +45,7 @@ const MetodologiaSeccion1 = () => {
         muted
         playsInline
       >
-        <source src="/videos/v_bg_4.mp4" type="video/mp4" />
+        <source src="/videos/hero4.mp4" type="video/mp4" />
       </video>
       
       {/* Overlay oscuro para legibilidad */}
@@ -64,13 +64,21 @@ const MetodologiaSeccion1 = () => {
           </p>
 
           <div className={styles.ctaGroup}>
+            <div className={styles.ctaPrimary}>
+              {t.ctaPrimary}
+            </div>
+            <div className={styles.ctaSecondary}>
+              {t.ctaSecondary}
+            </div>
+          </div>
+        {/*   <div className={styles.ctaGroup}>
             <a href="/portfolio" className={styles.ctaPrimary}>
               {t.ctaPrimary}
             </a>
             <a href="/contacto" className={styles.ctaSecondary}>
               {t.ctaSecondary}
             </a>
-          </div>
+          </div> */}
         </div>
 
         {/* Decoración */}

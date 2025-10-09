@@ -162,6 +162,16 @@ const IndexSeccion7 = () => {
     <>
       {/* Sección Principal */}
       <section className={styles.reelSection}>
+        {/* Video de fondo abstracto difuminado */}
+        <video 
+          className={styles.backgroundVideo}
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        >
+          <source src="/videos/v_bg_4.mp4" type="video/mp4" />
+        </video>
         
         <div className={styles.reelContainer}>
           {/* A. Intro Cinemática */}

@@ -9,6 +9,7 @@
   background: #1A1024; /* Fallback si el video no carga */
   padding: 6rem 0 4rem;
   overflow: hidden;
+  margin-top: 80px;
 }
 
 /* Video de fondo */
@@ -109,6 +110,7 @@
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(62, 200, 247, 0.4);
   background: #F56831;
+  cursor: pointer;
 }
 
 .ctaSecondary {
@@ -121,6 +123,7 @@
   font-size: 1rem;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  
 }
 
 .ctaSecondary:hover {
@@ -128,6 +131,7 @@
   border-color: #3EC8F7;
   color: #3EC8F7;
   transform: translateY(-2px);
+  cursor: pointer;
 }
 
 /* Decoración de fondo (ahora complementa el video) */
