@@ -275,15 +275,15 @@ const NavBar = () => {
 
       {/* Grupo de íconos sociales con efectos mejorados */}
       <div className={styles.socialIconsGroup}>
-        <a href="https://www.linkedin.com/company/energymedia" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+        <a href="https://www.linkedin.com/company/energy-media-pro/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
           <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
-        <a href="https://twitter.com/energymedia" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
-          <img src="/icons/twitter.svg" alt="Twitter" className={styles.icon} />
+        <a href="https://www.facebook.com/energymediaofficial" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+          <img src="/icons/facebook.svg" alt="Facebook" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>
-        <a href="https://www.instagram.com/energymedia" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+        <a href="https://www.instagram.com/energymedia_official/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
           <img src="/icons/insta.svg" alt="Instagram" className={styles.icon} />
           <div className={styles.iconRipple}></div>
         </a>

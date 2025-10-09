@@ -405,6 +405,7 @@
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+    color: #e2e8f0;
 }
 
 .socialLink:hover {
@@ -422,6 +423,7 @@
   filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   transition: var(--transition-smooth);
   z-index: 2;
+    color: #e2e8f0;
 }
 
 .socialLink:hover .icon {

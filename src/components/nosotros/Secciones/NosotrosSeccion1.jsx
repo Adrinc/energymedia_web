@@ -45,7 +45,7 @@ const NosotrosSeccion1 = () => {
         muted
         playsInline
       >
-        <source src="/videos/v_bg_5.mp4" type="video/mp4" />
+        <source src="/videos/hero5.mp4" type="video/mp4" />
       </video>
       
       {/* Overlay oscuro para legibilidad */}

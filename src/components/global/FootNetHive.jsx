@@ -15,31 +15,31 @@ const FootNetHive = () => {
 
   const content = {
     es: {
-      description: "Energy Media conecta marcas con audiencias hispanas y multiculturales a través de creatividad cultural auténtica y estrategias digitales data-driven que generan crecimiento real.",
+      description: "Agencia digital full-service que combina marketing, tecnología y creatividad para impulsar el crecimiento medible de empresas B2B y B2C con estrategias basadas en datos.",
       contact: {
         title: "Contacto",
-        address: "Insurgentes Sur 1458, Piso 12",
-        city: "Ciudad de México, México",
-        email: "hola@energymedia.mx",
-        phone: "+52 (55) 8888-9999"
+        address: "Chula Vista, CA",
+        city: "California, USA",
+        email: "info@energymedia.pro",
+        phone: "(619) 585-9398"
       },
       links: {
         servicios: {
           title: "Servicios",
           items: [
-            { text: "Video Marketing Digital", url: "/servicios#video" },
-            { text: "Marketing Digital 360", url: "/servicios#digital" },
-            { text: "Branding Cultural", url: "/servicios#branding" },
-            { text: "Analítica & OYE", url: "/servicios#oye" }
+            { text: "Marketing Digital", url: "/servicios#marketing" },
+            { text: "Branding & Diseño", url: "/servicios#branding" },
+            { text: "Desarrollo Web & Apps", url: "/servicios#desarrollo" },
+            { text: "IA & Automatización", url: "/servicios#ia" }
           ]
         },
         empresa: {
           title: "Empresa",
           items: [
             { text: "Quiénes Somos", url: "/nosotros" },
-            { text: "Metodología", url: "/metodologia" },
-            { text: "Casos de Éxito", url: "/casos" },
-            { text: "Recursos", url: "/recursos" }
+            { text: "Proceso", url: "/metodologia" },
+            { text: "Portfolio", url: "/portfolio" },
+            { text: "Contacto", url: "/contacto" }
           ]
         },
         legal: {
@@ -54,31 +54,31 @@ const FootNetHive = () => {
       copyright: "© 2025 Energy Media. Todos los derechos reservados."
     },
     en: {
-      description: "Energy Media connects brands with Hispanic and multicultural audiences through authentic cultural creativity and data-driven digital strategies that generate real growth.",
+      description: "Full-service digital agency that combines marketing, technology and creativity to drive measurable growth for B2B and B2C companies with data-driven strategies.",
       contact: {
         title: "Contact",
-        address: "Insurgentes Sur 1458, Floor 12",
-        city: "Mexico City, Mexico",
-        email: "hello@energymedia.mx",
-        phone: "+52 (55) 8888-9999"
+        address: "Chula Vista, CA",
+        city: "California, USA",
+        email: "info@energymedia.pro",
+        phone: "(619) 585-9398"
       },
       links: {
         servicios: {
           title: "Services",
           items: [
-            { text: "Digital Video Marketing", url: "/servicios#video" },
-            { text: "360 Digital Marketing", url: "/servicios#digital" },
-            { text: "Cultural Branding", url: "/servicios#branding" },
-            { text: "Analytics & OYE", url: "/servicios#oye" }
+            { text: "Digital Marketing", url: "/servicios#marketing" },
+            { text: "Branding & Design", url: "/servicios#branding" },
+            { text: "Web Development & Apps", url: "/servicios#desarrollo" },
+            { text: "AI & Automation", url: "/servicios#ia" }
           ]
         },
         empresa: {
           title: "Company",
           items: [
             { text: "About Us", url: "/nosotros" },
-            { text: "Methodology", url: "/metodologia" },
-            { text: "Success Stories", url: "/casos" },
-            { text: "Resources", url: "/recursos" }
+            { text: "Process", url: "/metodologia" },
+            { text: "Portfolio", url: "/portfolio" },
+            { text: "Contact", url: "/contacto" }
           ]
         },
         legal: {
@@ -179,14 +179,17 @@ const FootNetHive = () => {
         <div className={styles.bottom}>
           <p className={styles.copyright}>{textos.copyright}</p>
           <div className={styles.socialLinks}>
-            <a href="https://linkedin.com/company/energymedia" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/company/energy-media-pro/" target="_blank" rel="noopener noreferrer">
               <img src="/icons/linkedin.svg" alt="LinkedIn" className={styles.socialIcon} />
             </a>
-            <a href="https://twitter.com/energymediamx" target="_blank" rel="noopener noreferrer">
-              <img src="/icons/twitter.svg" alt="Twitter" className={styles.socialIcon} />
+            <a href="https://www.facebook.com/energymediaofficial" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/facebook.svg" alt="Facebook" className={styles.socialIcon} />
             </a>
-            <a href="https://instagram.com/energymediamx" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/energymedia_official/" target="_blank" rel="noopener noreferrer">
               <img src="/icons/insta.svg" alt="Instagram" className={styles.socialIcon} />
+            </a>
+            <a href="https://vimeo.com/user158647909" target="_blank" rel="noopener noreferrer">
+              <img src="/icons/vimeo.svg" alt="Vimeo" className={styles.socialIcon} />
             </a>
           </div>
         </div>

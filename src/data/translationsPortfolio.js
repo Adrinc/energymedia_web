@@ -1,13 +1,13 @@
-// translationsPortfolio.js
+﻿// translationsPortfolio.js
 // Traducciones para la página Portfolio (6 secciones)
 
 export const translationsPortfolio = {
   es: {
     // SECCIÓN 1: Hero
     hero: {
-      badge: "Producción premiada",
-      h1: "De la TV a tu feed: video que conecta",
-      subtitle: "15+ años creando contenido audiovisual para audiencias multiculturales. Emmy Award. 33 proyectos que demuestran por qué el video es nuestro ADN.",
+      badge: "Producción Digital Premium",
+      h1: "Video + Diseño + Estrategia = Resultados Medibles",
+      subtitle: "+8 años creando contenido que convierte para marcas digitales. 200+ proyectos de video marketing, branding y desarrollo que demuestran nuestro expertise.",
       ctaPrimary: "Explorar portfolio",
       ctaSecondary: "Agenda tu proyecto"
     },
@@ -28,90 +28,97 @@ export const translationsPortfolio = {
     videoGrid: {
       playButton: "Reproducir",
       viewDetails: "Ver detalles",
-      loadMore: "Cargar más videos",
-      noResults: "No se encontraron videos con estos filtros.",
-      tryAgain: "Intenta ajustar los filtros."
+      closeModal: "Cerrar",
+      projectInfo: "Información del Proyecto",
+      client: "Cliente",
+      industry: "Industria",
+      format: "Formato",
+      duration: "Duración",
+      objective: "Objetivo",
+      metrics: "Métricas",
+      tags: "Etiquetas"
     },
 
     // SECCIÓN 4: Capacidades de Producción
     capabilities: {
-      badge: "Lo que hacemos",
-      title: "Capacidades de producción integral",
-      subtitle: "De la pre-producción al lanzamiento: control creativo y técnico de principio a fin",
+      badge: "Nuestras Capacidades",
+      title: "Producción Digital Integral",
+      subtitle: "Video, diseño, desarrollo web y estrategia: todo lo que necesitas para destacar digitalmente",
       items: [
         {
           number: "01",
-          title: "Concepto & Guion",
-          description: "Estrategia narrativa con sensibilidad cultural auténtica. Guiones que conectan con audiencias multiculturales sin caer en estereotipos.",
-          icon: "✍️"
+          title: "Video Marketing Digital",
+          description: "Social ads, reels, YouTube, video corporativo. Producción profesional optimizada para cada plataforma con enfoque en CTR y conversión.",
+          icon: ""
         },
         {
           number: "02",
-          title: "Producción TV & Digital",
-          description: "Equipos Emmy-caliber para spots de TV, social ads, reels, YouTube, streaming. Multicámara, iluminación profesional, sound design.",
-          icon: "🎬"
+          title: "Branding & Diseño Visual",
+          description: "Identidad de marca completa: logos, manuales de marca, diseño gráfico, motion graphics, ilustraciones. Consistencia en todos los puntos de contacto.",
+          icon: ""
         },
         {
           number: "03",
-          title: "Post-Producción",
-          description: "Edición, color grading, motion graphics, VFX, animación 2D/3D. Adaptamos piezas a todos los formatos (16:9, 9:16, 1:1) y plataformas.",
-          icon: "🎨"
+          title: "Desarrollo Web & Apps",
+          description: "Sitios web responsive, e-commerce, apps móviles, portales empresariales. Stack moderno (React, Astro, Next.js) con enfoque en UX y performance.",
+          icon: ""
         },
         {
           number: "04",
-          title: "Optimización para Performance",
-          description: "No solo creamos video bonito: lo optimizamos para CTR, retención y conversión. Subtítulos, hooks, calls-to-action estratégicos.",
-          icon: "📊"
+          title: "Estrategia Data-Driven",
+          description: "Campañas digitales basadas en datos: SEO, SEM, Social Ads, Email Marketing. A/B testing, optimización continua, reportes transparentes.",
+          icon: ""
         }
       ]
     },
 
     // SECCIÓN 5: Reconocimientos
     awards: {
-      badge: "Reconocimientos",
-      title: "Calidad premiada",
-      subtitle: "15+ años de experiencia avalados por la industria",
-      emmyTitle: "Emmy Award",
-      emmyDescription: "Reconocimiento de la Academia Nacional de Artes y Ciencias de la Televisión por excelencia en producción para audiencia hispana.",
-      emmyYear: "2018 - Mejor Programa Cultural",
+      badge: "Nuestra Trayectoria",
+      title: "Resultados que Hablan por Sí Mismos",
+      subtitle: "+8 años de experiencia entregando proyectos digitales de calidad premium",
+      emmyTitle: "Calidad Profesional",
+      emmyDescription: "Producción de nivel broadcast adaptada al entorno digital. Estándares técnicos y creativos que garantizan resultados superiores.",
+      emmyYear: "Desde 2017",
       stats: [
         {
-          number: "15+",
-          label: "Años de experiencia"
+          number: "200+",
+          label: "Proyectos completados"
         },
         {
-          number: "300+",
-          label: "Proyectos entregados"
+          number: "98%",
+          label: "Tasa de satisfacción"
         },
         {
           number: "50+",
-          label: "Marcas que confían"
+          label: "Marcas confían en nosotros"
         },
         {
-          number: "18+",
-          label: "Idiomas cubiertos"
+          number: "3.2x",
+          label: "ROI promedio campañas"
         }
       ]
     },
 
     // SECCIÓN 6: CTA Final
     ctaFinal: {
-      badge: "Listo para comenzar",
-      title: "Convierte tu mensaje en el próximo video que todos recuerdan",
-      subtitle: "Desde concepto hasta distribución: producción Emmy-caliber enfocada en resultados medibles.",
+      badge: "Listo para Comenzar",
+      title: "Lleva tu Marca al Siguiente Nivel Digital",
+      subtitle: "Video, diseño, web y marketing digital: soluciones integradas enfocadas en resultados medibles para tu negocio.",
       bulletPrimary: "Consultoría gratuita de 30 minutos",
-      bulletSecondary: "Presupuesto personalizado en 48 horas",
-      bulletTertiary: "Producción ágil: primeras piezas en 2-3 semanas",
-      ctaPrimary: "Agenda tu consultoría de video",
-      ctaSecondary: "Ver nuestra metodología"
+      bulletSecondary: "Propuesta personalizada en 48 horas",
+      bulletTertiary: "Primeros resultados en 30 días",
+      ctaPrimary: "Agenda tu consultoría gratuita",
+      ctaSecondary: "Ver nuestro proceso"
     }
   },
+
   en: {
     // SECTION 1: Hero
     hero: {
-      badge: "Award-winning production",
-      h1: "From TV to your feed: video that connects",
-      subtitle: "15+ years creating audiovisual content for multicultural audiences. Emmy Award. 33 projects that prove why video is our DNA.",
+      badge: "Premium Digital Production",
+      h1: "Video + Design + Strategy = Measurable Results",
+      subtitle: "+8 years creating content that converts for digital brands. 200+ video marketing, branding and development projects showcasing our expertise.",
       ctaPrimary: "Explore portfolio",
       ctaSecondary: "Schedule your project"
     },
@@ -132,82 +139,88 @@ export const translationsPortfolio = {
     videoGrid: {
       playButton: "Play",
       viewDetails: "View details",
-      loadMore: "Load more videos",
-      noResults: "No videos found with these filters.",
-      tryAgain: "Try adjusting the filters."
+      closeModal: "Close",
+      projectInfo: "Project Info",
+      client: "Client",
+      industry: "Industry",
+      format: "Format",
+      duration: "Duration",
+      objective: "Objective",
+      metrics: "Metrics",
+      tags: "Tags"
     },
 
     // SECTION 4: Production Capabilities
     capabilities: {
-      badge: "What we do",
-      title: "Full-spectrum production capabilities",
-      subtitle: "From pre-production to launch: creative and technical control from start to finish",
+      badge: "Our Capabilities",
+      title: "Full-Service Digital Production",
+      subtitle: "Video, design, web development and strategy: everything you need to stand out digitally",
       items: [
         {
           number: "01",
-          title: "Concept & Scripting",
-          description: "Narrative strategy with authentic cultural sensitivity. Scripts that connect with multicultural audiences without falling into stereotypes.",
-          icon: "✍️"
+          title: "Digital Video Marketing",
+          description: "Social ads, reels, YouTube, corporate video. Professional production optimized for each platform with focus on CTR and conversion.",
+          icon: ""
         },
         {
           number: "02",
-          title: "TV & Digital Production",
-          description: "Emmy-caliber crews for TV spots, social ads, reels, YouTube, streaming. Multi-camera, professional lighting, sound design.",
-          icon: "🎬"
+          title: "Branding & Visual Design",
+          description: "Complete brand identity: logos, brand manuals, graphic design, motion graphics, illustrations. Consistency across all touchpoints.",
+          icon: ""
         },
         {
           number: "03",
-          title: "Post-Production",
-          description: "Editing, color grading, motion graphics, VFX, 2D/3D animation. We adapt pieces to all formats (16:9, 9:16, 1:1) and platforms.",
-          icon: "🎨"
+          title: "Web & App Development",
+          description: "Responsive websites, e-commerce, mobile apps, enterprise portals. Modern stack (React, Astro, Next.js) with focus on UX and performance.",
+          icon: ""
         },
         {
           number: "04",
-          title: "Performance Optimization",
-          description: "We don't just create beautiful video: we optimize it for CTR, retention and conversion. Subtitles, hooks, strategic calls-to-action.",
-          icon: "📊"
+          title: "Data-Driven Strategy",
+          description: "Data-based digital campaigns: SEO, SEM, Social Ads, Email Marketing. A/B testing, continuous optimization, transparent reporting.",
+          icon: ""
         }
       ]
     },
 
     // SECTION 5: Awards
     awards: {
-      badge: "Recognition",
-      title: "Award-winning quality",
-      subtitle: "15+ years of experience backed by the industry",
-      emmyTitle: "Emmy Award",
-      emmyDescription: "Recognition from the National Academy of Television Arts and Sciences for excellence in production for Hispanic audiences.",
-      emmyYear: "2018 - Best Cultural Program",
+      badge: "Our Track Record",
+      title: "Results That Speak for Themselves",
+      subtitle: "+8 years of experience delivering premium quality digital projects",
+      emmyTitle: "Professional Quality",
+      emmyDescription: "Broadcast-level production adapted to the digital environment. Technical and creative standards that guarantee superior results.",
+      emmyYear: "Since 2017",
       stats: [
         {
-          number: "15+",
-          label: "Years of experience"
+          number: "200+",
+          label: "Completed projects"
         },
         {
-          number: "300+",
-          label: "Projects delivered"
+          number: "98%",
+          label: "Satisfaction rate"
         },
         {
           number: "50+",
           label: "Brands trust us"
         },
         {
-          number: "18+",
-          label: "Languages covered"
+          number: "3.2x",
+          label: "Average campaign ROI"
         }
       ]
     },
 
     // SECTION 6: Final CTA
     ctaFinal: {
-      badge: "Ready to start",
-      title: "Turn your message into the next video everyone remembers",
-      subtitle: "From concept to distribution: Emmy-caliber production focused on measurable results.",
+      badge: "Ready to Start",
+      title: "Take Your Brand to the Next Digital Level",
+      subtitle: "Video, design, web and digital marketing: integrated solutions focused on measurable results for your business.",
       bulletPrimary: "Free 30-minute consultation",
-      bulletSecondary: "Custom quote in 48 hours",
-      bulletTertiary: "Agile production: first pieces in 2-3 weeks",
-      ctaPrimary: "Schedule your video consultation",
-      ctaSecondary: "View our methodology"
+      bulletSecondary: "Custom proposal in 48 hours",
+      bulletTertiary: "First results in 30 days",
+      ctaPrimary: "Schedule your free consultation",
+      ctaSecondary: "See our process"
     }
   }
 };
