@@ -1,7 +1,6 @@
 ﻿import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../../data/variables';
-import CinematicSection from '../../global/CinematicSection';
 import styles from '../css/indexSeccion2.module.css';
 
 const IndexSeccion2 = () => {
@@ -9,74 +8,76 @@ const IndexSeccion2 = () => {
   
   const content = {
     es: {
-      title: "¿Por Qué Elegirnos?",
-      subtitle: "Beneficios comprobados para tu éxito digital",
+      badge: "POR QUÉ ELEGIRNOS",
+      title: "Transformamos tu Negocio con Resultados Medibles",
+      subtitle: "Experiencia comprobada, tecnología de punta y equipo multidisciplinario para tu éxito digital",
       reasons: [
         {
-          icon: "⭐",
+          icon: "🏆",
           title: "Experiencia Comprobada",
-          description: "+8 años transformando negocios digitales con +200 clientes satisfechos en múltiples industrias."
+          description: "+8 años transformando negocios digitales con +200 clientes satisfechos"
         },
         {
           icon: "📊",
           title: "Enfoque Data-Driven",
-          description: "Decisiones basadas en datos reales, no corazonadas. ROI medible en cada campaña con transparencia total."
+          description: "Decisiones basadas en datos reales, no corazonadas. ROI medible en cada campaña."
         },
         {
           icon: "👥",
           title: "Equipo Multidisciplinario",
-          description: "Marketers + Diseñadores + Desarrolladores + Especialistas en IA trabajando juntos para tu éxito."
+          description: "Marketers + Diseñadores + Desarrolladores + Especialistas en IA trabajando juntos"
         },
         {
-          icon: "🤖",
+          icon: "⚡",
           title: "Tecnología de Punta",
-          description: "Stack completo: CRM, automatización, IA, analytics en tiempo real. Siempre a la vanguardia."
+          description: "Stack completo: CRM, automatización, IA, analytics en tiempo real"
         },
         {
-          icon: "💬",
+          icon: "�",
           title: "Soporte Prioritario",
-          description: "Respuesta en <2 horas. Sin esperas, sin excusas. Tu éxito es nuestra prioridad."
+          description: "Respuesta en <2 horas. Sin esperas, sin excusas."
         },
         {
-          icon: "📦",
+          icon: "�",
           title: "Planes Flexibles",
-          description: "Desde startups hasta enterprises. Crece a tu ritmo con soluciones personalizables."
+          description: "Desde startups hasta enterprises. Crece a tu ritmo."
         }
       ]
     },
     en: {
-      title: "Why Choose Us?",
-      subtitle: "Proven benefits for your digital success",
+      badge: "WHY CHOOSE US",
+      title: "We Transform Your Business with Measurable Results",
+      subtitle: "Proven experience, cutting-edge technology and multidisciplinary team for your digital success",
       reasons: [
         {
-          icon: "⭐",
+          icon: "🏆",
           title: "Proven Experience",
-          description: "+8 years transforming digital businesses with +200 satisfied clients across multiple industries."
+          description: "+8 years transforming digital businesses with 200+ satisfied clients"
         },
         {
           icon: "📊",
           title: "Data-Driven Approach",
-          description: "Decisions based on real data, not hunches. Measurable ROI in every campaign with total transparency."
+          description: "Decisions based on real data, not hunches. Measurable ROI in every campaign."
         },
         {
           icon: "👥",
           title: "Multidisciplinary Team",
-          description: "Marketers + Designers + Developers + AI Specialists working together for your success."
+          description: "Marketers + Designers + Developers + AI Specialists working together"
         },
         {
-          icon: "🤖",
+          icon: "⚡",
           title: "Cutting-Edge Technology",
-          description: "Complete stack: CRM, automation, AI, real-time analytics. Always at the forefront."
+          description: "Complete stack: CRM, automation, AI, real-time analytics"
         },
         {
-          icon: "💬",
+          icon: "�",
           title: "Priority Support",
-          description: "Response in <2 hours. No waiting, no excuses. Your success is our priority."
+          description: "Response in <2 hours. No waiting, no excuses."
         },
         {
-          icon: "📦",
+          icon: "�",
           title: "Flexible Plans",
-          description: "From startups to enterprises. Grow at your pace with customizable solutions."
+          description: "From startups to enterprises. Grow at your pace."
         }
       ]
     }
@@ -94,7 +95,7 @@ const IndexSeccion2 = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -109,28 +110,34 @@ const IndexSeccion2 = () => {
   }, []);
 
   return (
-    <CinematicSection variant='light' withAnimation={true}>
-      <div ref={sectionRef} className={styles.whyUsContainer}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>{t.title}</h2>
-          <p className={styles.sectionSubtitle}>{t.subtitle}</p>
+    <section ref={sectionRef} className={styles.section}>
+      <div className={styles.container}>
+        <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
+          <span className={styles.badge}>{t.badge}</span>
+          <h2 className={styles.title}>{t.title}</h2>
+          <p className={styles.subtitle}>{t.subtitle}</p>
         </div>
 
         <div className={styles.reasonsGrid}>
           {t.reasons.map((reason, index) => (
-            <div key={index} className={isVisible ? styles.fadeInUp : ''} style={{ animationDelay: (index * 0.1)+'s' }}>
-              <div className={styles.reasonCard}>
-                <div className={styles.iconWrapper}>
-                  <span className={styles.icon}>{reason.icon || ''}</span>
-                </div>
-                <h3 className={styles.reasonTitle}>{reason.title}</h3>
-                <p className={styles.reasonDescription}>{reason.description}</p>
+            <div
+              key={index}
+              className={styles.reasonCard}
+              style={{ animationDelay: `${index * 0.15}s` }}
+            >
+              <div className={styles.numberBadge}>{index + 1}</div>
+              
+              <div className={styles.iconContainer}>
+                <span className={styles.icon}>{reason.icon}</span>
               </div>
+              
+              <h3 className={styles.reasonTitle}>{reason.title}</h3>
+              <p className={styles.reasonDescription}>{reason.description}</p>
             </div>
           ))}
         </div>
       </div>
-    </CinematicSection>
+    </section>
   );
 };
 

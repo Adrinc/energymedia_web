@@ -1,28 +1,23 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../../data/variables';
-import CinematicSection from '../../global/CinematicSection';
 import styles from '../css/indexSeccion5.module.css';
 
-/**
- * IndexSeccion5 - Paquetes & Soluciones
- * 3 planes: STARTER / GROWTH / PREMIUM
- * Sistema "Cine-Data Multicultural" - Energy Media
- */
 const IndexSeccion5 = () => {
   const ingles = useStore(isEnglish);
   
   const content = {
     es: {
+      badge: "ELIGE TU PLAN",
       title: "Elige tu Plan de Crecimiento",
       subtitle: "Soluciones escalables desde $8,000 MXN/mes. Planes personalizables según tus objetivos.",
-      disclaimer: "* Planes personalizables. Agenda consultoría gratuita para cotización exacta.",
+      priceNote: "Inversión mensual con facturación flexible",
       plans: [
         {
           name: "STARTER",
           subtitle: "Primeros Pasos Digitales",
           price: "$8,000 - $15,000 MXN/mes",
-          forWho: "Para pequeñas empresas iniciando en digital o con presupuesto limitado",
+          target: "Para: Pequeñas empresas iniciando en digital o con presupuesto limitado",
           features: [
             "Sitio web profesional responsive (hasta 5 páginas)",
             "SEO básico + Google My Business optimizado",
@@ -37,8 +32,9 @@ const IndexSeccion5 = () => {
           name: "GROWTH",
           subtitle: "Escalamiento con Data",
           price: "$16,000 - $30,000 MXN/mes",
-          badge: "⭐ MÁS POPULAR",
-          forWho: "Para empresas en crecimiento que buscan maximizar ROI y escalar con estrategia",
+          target: "Para: Empresas en crecimiento que buscan maximizar ROI y escalar con estrategia",
+          popular: true,
+          popularBadge: " MÁS POPULAR",
           features: [
             "Todo en STARTER +",
             "Campañas pagadas multicanal (Meta, Google, LinkedIn)",
@@ -55,7 +51,7 @@ const IndexSeccion5 = () => {
           name: "PREMIUM",
           subtitle: "Liderazgo Digital Total",
           price: "$31,000 - $50,000+ MXN/mes",
-          forWho: "Para empresas establecidas con presupuesto 6 figuras que buscan dominar su industria",
+          target: "Para: Empresas establecidas con presupuesto 6 figuras que buscan dominar su industria",
           features: [
             "Todo en GROWTH +",
             "Desarrollo web/app avanzado (portales, CRM, e-commerce)",
@@ -68,23 +64,25 @@ const IndexSeccion5 = () => {
           ],
           cta: "Solicitar propuesta personalizada"
         }
-      ]
+      ],
+      footerText: "* Planes personalizables. Agenda consultoría gratuita para cotización exacta."
     },
     en: {
+      badge: "CHOOSE YOUR PLAN",
       title: "Choose Your Growth Plan",
-      subtitle: "Scalable solutions starting from $400 USD/month. Customizable plans according to your goals.",
-      disclaimer: "* Customizable plans. Schedule free consultation for exact quote.",
+      subtitle: "Scalable solutions from $400 USD/month. Customizable plans according to your goals.",
+      priceNote: "Monthly investment with flexible billing",
       plans: [
         {
           name: "STARTER",
-          subtitle: "First Digital Steps",
+          subtitle: "Digital First Steps",
           price: "$400 - $750 USD/month",
-          forWho: "For small businesses starting in digital or with limited budget",
+          target: "For: Small businesses starting digitally or with limited budget",
           features: [
             "Professional responsive website (up to 5 pages)",
-            "Basic SEO + Optimized Google My Business",
+            "Basic SEO + Google My Business optimization",
             "Management of 2 social networks (organic content)",
-            "Analytics and tracking configuration",
+            "Analytics and tracking setup",
             "Monthly report with key metrics",
             "Email support (<24hrs)"
           ],
@@ -94,8 +92,9 @@ const IndexSeccion5 = () => {
           name: "GROWTH",
           subtitle: "Data-Driven Scaling",
           price: "$800 - $1,500 USD/month",
-          badge: "⭐ MOST POPULAR",
-          forWho: "For growing companies looking to maximize ROI and scale with strategy",
+          target: "For: Growing businesses seeking to maximize ROI and scale strategically",
+          popular: true,
+          popularBadge: " MOST POPULAR",
           features: [
             "Everything in STARTER +",
             "Multi-channel paid campaigns (Meta, Google, LinkedIn)",
@@ -103,7 +102,7 @@ const IndexSeccion5 = () => {
             "Monthly video production (2-3 pieces for social ads)",
             "Creative and copy A/B testing",
             "Conversion-optimized landing pages",
-            "Biweekly report + strategy call",
+            "Bi-weekly report + strategy call",
             "Priority support (<2hrs)"
           ],
           cta: "Request custom proposal"
@@ -112,20 +111,21 @@ const IndexSeccion5 = () => {
           name: "PREMIUM",
           subtitle: "Total Digital Leadership",
           price: "$1,550 - $2,500+ USD/month",
-          forWho: "For established companies with 6-figure budget looking to dominate their industry",
+          target: "For: Established companies with 6-figure budgets seeking industry dominance",
           features: [
             "Everything in GROWTH +",
             "Advanced web/app development (portals, CRM, e-commerce)",
             "AI implementation (chatbots, automation, predictive analysis)",
             "Unlimited video production + dedicated creative team",
             "Monthly strategic consulting (quarterly roadmap)",
-            "Campaigns on all available channels",
+            "Campaigns across all available channels",
             "Weekly report + continuous optimization",
             "Dedicated Account Manager + 24/7 support"
           ],
           cta: "Request custom proposal"
         }
-      ]
+      ],
+      footerText: "* Customizable plans. Schedule free consultation for exact quote."
     }
   };
   
@@ -134,7 +134,6 @@ const IndexSeccion5 = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Intersection Observer para animar al scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -142,7 +141,7 @@ const IndexSeccion5 = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -157,60 +156,51 @@ const IndexSeccion5 = () => {
   }, []);
 
   return (
-    <CinematicSection variant="light" withAnimation={true}>
-      <div ref={sectionRef} className={styles.packagesContainer}>
-        {/* Título de sección */}
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>{t.title}</h2>
-          <p className={styles.sectionSubtitle}>{t.subtitle}</p>
+    <section ref={sectionRef} className={styles.section}>
+      <div className={styles.container}>
+        <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
+          <span className={styles.badge}>{t.badge}</span>
+          <h2 className={styles.title}>{t.title}</h2>
+          <p className={styles.subtitle}>{t.subtitle}</p>
+          <p className={styles.priceNote}>{t.priceNote}</p>
         </div>
 
-        {/* Grid de 3 paquetes */}
         <div className={styles.plansGrid}>
           {t.plans.map((plan, index) => (
             <div
               key={index}
-              className={`${styles.planCard} ${
-                isVisible ? styles.visible : ''
-              } ${plan.badge ? styles.featured : ''}`}
-              style={{ animationDelay: `${index * 0.15}s` }}
+              className={`${styles.planCard} ${plan.popular ? styles.popular : ''}`}
             >
-              {/* Badge destacado */}
-              {plan.badge && (
-                <div className={styles.popularBadge}>{plan.badge}</div>
+              {plan.popularBadge && (
+                <div className={styles.popularBadge}>{plan.popularBadge}</div>
               )}
 
-              {/* Header del plan */}
-              <div className={styles.planHeader}>
-                <h3 className={styles.planName}>{plan.name}</h3>
-                <p className={styles.planSubtitle}>{plan.subtitle}</p>
-                <p className={styles.planPrice}>{plan.price}</p>
-              </div>
+              <h3 className={styles.planName}>{plan.name}</h3>
+              <div className={styles.planSubtitle}>{plan.subtitle}</div>
+              <div className={styles.planPrice}>{plan.price}</div>
+              <p className={styles.planTarget} dangerouslySetInnerHTML={{ __html: plan.target }} />
 
-              {/* Para quién es */}
-              <p className={styles.forWho}>{plan.forWho}</p>
-
-              {/* Features */}
               <ul className={styles.featuresList}>
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className={styles.feature}>
+                    <span className={styles.checkIcon}></span>
                     {feature}
                   </li>
                 ))}
               </ul>
 
-              {/* CTA */}
-              <a href="/contacto" className={styles.btnPlan}>
+              <button className={styles.ctaButton}>
                 {plan.cta}
-              </a>
+              </button>
             </div>
           ))}
         </div>
 
-        {/* Disclaimer */}
-        <p className={styles.disclaimer}>{t.disclaimer}</p>
+        <div className={styles.footerNote}>
+          <p><strong>{t.footerText}</strong></p>
+        </div>
       </div>
-    </CinematicSection>
+    </section>
   );
 };
 

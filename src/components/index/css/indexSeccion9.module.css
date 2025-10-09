@@ -1,9 +1,17 @@
 /* INDEX SECCIÓN 9 - TESTIMONIOS + ESTADÍSTICAS - ULTRA PREMIUM DESIGN */
 
+/* === SECTION BASE === */
+.section {
+  position: relative;
+
+  background: linear-gradient(180deg, #F7F5FA 0%, #FFFFFF 100%);
+  overflow: hidden;
+}
+
 .testimonialsContainer {
   max-width: 1280px;
   margin: 0 auto;
-  padding: clamp(3rem, 8vw, 6rem) clamp(20px, 5vw, 40px);
+  padding: clamp(4rem, 8vw, 6rem) clamp(20px, 5vw, 40px);
   position: relative;
 }
 
@@ -55,24 +63,20 @@
 
 .sectionTitle {
   font-family: var(--em-font-headline);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 3.5vw, 3rem);
   font-weight: 900;
-  color: white;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   line-height: 1.2;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   position: relative;
   display: inline-block;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.4),
-               0 2px 10px rgba(62,200,247,0.3);
-  background: linear-gradient(135deg, #FFFFFF 0%, #E0F7FF 50%, #FFFFFF 100%);
+  background: linear-gradient(135deg, #672E92 0%, #3EC8F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: titleGlow 3s ease-in-out infinite;
 }
 
-/* Animación de brillo en el título */
+/* Animación de brillo en el título - REMOVIDA (no necesaria) */
 @keyframes titleGlow {
   0%, 100% {
     filter: drop-shadow(0 4px 15px rgba(62,200,247,0.4));
@@ -82,41 +86,33 @@
   }
 }
 
-/* Subrayado decorativo con gradiente BRILLANTE */
-.sectionTitle::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 5px;
-  background: linear-gradient(90deg, #3EC8F7, #62D5FF, #3EC8F7);
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(62, 200, 247, 0.8),
-              0 0 40px rgba(62, 200, 247, 0.5);
-  animation: underlineGlow 2s ease-in-out infinite;
-}
-
-@keyframes underlineGlow {
-  0%, 100% {
-    box-shadow: 0 4px 20px rgba(62, 200, 247, 0.8);
-  }
-  50% {
-    box-shadow: 0 6px 30px rgba(62, 200, 247, 1),
-                0 0 50px rgba(62, 200, 247, 0.7);
-  }
-}
+/* Subrayado decorativo - REMOVIDO (no necesario en fondo blanco) */
 
 .sectionSubtitle {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1.0625rem, 1.3vw, 1.125rem);
+  color: rgba(26, 16, 36, 0.7);
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.6;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
+/* === ANIMATIONS === */
+.fadeInUp {
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === TESTIMONIALS GRID === */
 .testimonialsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -262,7 +258,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
-  margin-top: 3.5rem;
+  margin-top: 1.5rem;
   padding: 3.5rem 0;
   border-top: 3px solid rgba(103, 46, 146, 0.1);
   position: relative;

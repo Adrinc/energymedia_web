@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../../data/variables';
-import CinematicSection from '../../global/CinematicSection';
 import styles from '../css/indexSeccion9.module.css';
 
 /**
@@ -161,10 +160,10 @@ const IndexSeccion9 = () => {
   }, [isVisible, t.items.length]);
 
   return (
-    <CinematicSection variant="light" withGrain={false}>
+    <section className={styles.section}>
       <div ref={sectionRef} className={styles.testimonialsContainer}>
         {/* Header */}
-        <div className={`${styles.sectionHeader} ${isVisible ? 'fadeInUp' : ''}`}>
+        <div className={`${styles.sectionHeader} ${isVisible ? styles.fadeInUp : ''}`}>
           <h2 className={styles.sectionTitle}>{t.title}</h2>
           <p className={styles.sectionSubtitle}>{t.subtitle}</p>
         </div>
@@ -203,7 +202,7 @@ const IndexSeccion9 = () => {
         </div>
 
         {/* Stats Grid */}
-        <div className={styles.statsGrid}>
+   {/*      <div className={styles.statsGrid}>
           {t.stats.map((stat, index) => (
             <div
               key={index}
@@ -218,9 +217,9 @@ const IndexSeccion9 = () => {
               )}
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
-    </CinematicSection>
+    </section>
   );
 };
 

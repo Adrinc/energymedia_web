@@ -108,7 +108,7 @@ const IndexSeccion10 = () => {
   };
 
   return (
-    <CinematicSection variant="light" withAnimation={true}>
+
       <div ref={sectionRef} className={styles.faqsContainer}>
         {/* Header */}
         <div className={`${styles.sectionHeader} ${isVisible ? styles.visible : ''}`}>
@@ -146,7 +146,7 @@ const IndexSeccion10 = () => {
           ))}
         </div>
       </div>
-    </CinematicSection>
+
   );
 };
 

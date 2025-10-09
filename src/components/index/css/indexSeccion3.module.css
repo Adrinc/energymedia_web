@@ -1,295 +1,342 @@
-/* INDEX SECCIÓN 3 - RESULTADOS GARANTIZADOS - ULTRA PREMIUM DESIGN */
+﻿/* indexSeccion3.module.css - RESULTADOS GARANTIZADOS - ULTRA PREMIUM */
 
-.resultsContainer {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(3rem, 8vw, 6rem) clamp(20px, 5vw, 40px);
+.section {
   position: relative;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1A1024 0%, #2A1434 30%, #1A1024 70%, #0A0612 100%);
+  padding: 10rem 2rem;
+  overflow: hidden;
 }
 
-.sectionTitle {
-  font-family: var(--em-font-headline);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900;
-  color: white;
-  text-align: center;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.3),
-               0 2px 10px rgba(62,200,247,0.2);
-  position: relative;
-  display: inline-block;
+/* ========== Fondo Grid Futurista ========== */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(103, 46, 146, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 46, 146, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* ========== Glow Spots ========== */
+.section::after {
+  content: '';
+  position: absolute;
   width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 50% 20%, rgba(62, 200, 247, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(103, 46, 146, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(245, 104, 49, 0.08) 0%, transparent 40%);
+  animation: glowPulse 15s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.sectionSubtitle {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  color: rgba(255, 255, 255, 0.9);
-  text-align: center;
-  max-width: 750px;
-  margin: 0 auto 4.5rem;
-  line-height: 1.7;
-  font-weight: 500;
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
 }
 
-.metricsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2.5rem;
-  margin-bottom: 4.5rem;
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
-.metricCard {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  border-radius: 24px;
-  padding: 2.5rem;
+/* ========== Header Épico ========== */
+.header {
   text-align: center;
-  transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
-  position: relative;
-  overflow: hidden;
+  margin-bottom: 6rem;
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-/* Efecto de glow animado en el fondo */
+.header.fadeInUp {
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #FFFFFF 0%, #3EC8F7 50%, #A47EB9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+/* ========== Metrics Grid Espectacular ========== */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+.metricCard {
+  position: relative;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  backdrop-filter: blur(30px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 25px 70px rgba(0, 0, 0, 0.4),
+    0 10px 20px rgba(103, 46, 146, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  opacity: 0;
+  animation: fadeInScale 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  text-align: center;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Barra superior colorida */
 .metricCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3EC8F7, #672E92, #F56831);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.metricCard:hover {
+  transform: translateY(-20px) scale(1.05);
+  border-color: rgba(62, 200, 247, 0.4);
+  box-shadow: 
+    0 40px 100px rgba(0, 0, 0, 0.5),
+    0 20px 40px rgba(62, 200, 247, 0.3),
+    0 0 60px rgba(62, 200, 247, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ========== Metric Value Gigante ========== */
+.metricValue {
+  font-size: clamp(3.5rem, 5vw, 5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #3EC8F7 0%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 1rem;
+  transition: all 0.5s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.metricCard:hover .metricValue {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 30px rgba(62, 200, 247, 0.8));
+}
+
+/* Glow animado */
+.metricValue::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 150%;
-  height: 150%;
-  background: radial-gradient(circle, rgba(62,200,247,0.15) 0%, transparent 70%);
-  transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(62, 200, 247, 0.3), transparent 70%);
   opacity: 0;
-  transition: all 0.6s ease;
-  z-index: 0;
-}
-
-.metricCard:hover::before {
-  transform: translate(-50%, -50%) scale(1.2);
-  opacity: 1;
-}
-
-/* Borde animado con gradiente */
-.metricCard::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(135deg, #3EC8F7, #62D5FF, #3EC8F7);
-  background-size: 200% 200%;
-  border-radius: 24px;
-  opacity: 0;
-  z-index: -1;
   transition: opacity 0.5s ease;
-  animation: borderFlow 3s linear infinite;
+  z-index: -1;
 }
 
-@keyframes borderFlow {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 200% 200%; }
+.metricCard:hover .metricValue::after {
+  opacity: 1;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.metricCard:hover {
-  transform: translateY(-10px) scale(1.03);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(62, 200, 247, 0.5);
-  box-shadow: 0 20px 50px rgba(62, 200, 247, 0.3),
-              0 10px 25px rgba(103, 46, 146, 0.2);
-}
-
-.metricCard:hover::after {
-  opacity: 0.6;
-}
-
-.metricValue {
-  font-family: var(--em-font-headline);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 900;
-  background: linear-gradient(135deg, #3EC8F7, #62D5FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.75rem;
-  line-height: 1;
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 4px 12px rgba(62,200,247,0.3));
-  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
-}
-
-.metricCard:hover .metricValue {
-  transform: scale(1.1);
-  filter: drop-shadow(0 6px 20px rgba(62,200,247,0.5));
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
 }
 
 .metricLabel {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: white;
+  color: #FFFFFF;
   margin-bottom: 0.75rem;
-  position: relative;
-  z-index: 1;
-  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.metricCard:hover .metricLabel {
+  color: #3EC8F7;
 }
 
 .metricDescription {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
-  position: relative;
-  z-index: 1;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  transition: color 0.3s ease;
 }
 
-/* SECCIÓN DE GARANTÍA */
-.guaranteeSection {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(15px);
-  border: 3px solid transparent;
-  background-image: 
-    linear-gradient(rgba(26,16,36,0.3), rgba(26,16,36,0.3)),
-    linear-gradient(135deg, #3EC8F7, #672E92, #3EC8F7);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  border-radius: 28px;
-  padding: 3rem;
-  text-align: center;
-  margin-bottom: 2.5rem;
+.metricCard:hover .metricDescription {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ========== Guarantee Box Épico ========== */
+.guaranteeContainer {
   position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, rgba(103, 46, 146, 0.15), rgba(62, 200, 247, 0.1));
+  backdrop-filter: blur(40px);
+  border-radius: 40px;
+  border: 2px solid rgba(62, 200, 247, 0.3);
+  box-shadow: 
+    0 30px 90px rgba(0, 0, 0, 0.5),
+    0 15px 30px rgba(103, 46, 146, 0.3),
+    0 0 80px rgba(62, 200, 247, 0.2),
+    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(62,200,247,0.2),
-              inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
-/* Efecto de escudo con brillo pulsante */
-.guaranteeSection::before {
-  content: '🛡️';
+/* Animated border */
+.guaranteeContainer::before {
+  content: '';
   position: absolute;
-  top: -30px;
-  right: 5%;
-  font-size: 8rem;
-  opacity: 0.08;
-  filter: blur(2px);
-  animation: shieldPulse 4s ease-in-out infinite;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 40px;
+  padding: 2px;
+  background: linear-gradient(90deg, #3EC8F7, #672E92, #F56831, #3EC8F7);
+  background-size: 300% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderFlow 4s linear infinite;
+  opacity: 0.6;
 }
 
-@keyframes shieldPulse {
-  0%, 100% { 
-    opacity: 0.08; 
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 0.15; 
-    transform: scale(1.05);
-  }
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
 }
 
 .guaranteeBadge {
-  display: inline-block;
-  background: linear-gradient(135deg, #3EC8F7, #62D5FF);
-  color: #1A1024;
-  padding: 1rem 2.5rem;
-  border-radius: 40px;
-  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, rgba(62, 200, 247, 0.3), rgba(103, 46, 146, 0.3));
+  border: 2px solid rgba(62, 200, 247, 0.5);
+  border-radius: 60px;
+  font-size: 1.125rem;
   font-weight: 800;
-  margin-bottom: 2rem;
+  color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  box-shadow: 0 10px 30px rgba(62,200,247,0.4),
-              inset 0 1px 0 rgba(255,255,255,0.5);
-  position: relative;
-  z-index: 1;
-  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  margin-bottom: 2rem;
+  box-shadow: 0 0 40px rgba(62, 200, 247, 0.4);
+  animation: badgePulse 3s ease-in-out infinite;
 }
 
-.guaranteeBadge:hover {
-  transform: scale(1.05);
-  box-shadow: 0 15px 40px rgba(62,200,247,0.5);
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 40px rgba(62, 200, 247, 0.4); }
+  50% { box-shadow: 0 0 60px rgba(62, 200, 247, 0.7); }
+}
+
+.shieldIcon {
+  font-size: 1.75rem;
+  filter: drop-shadow(0 0 10px rgba(62, 200, 247, 0.8));
 }
 
 .guaranteeText {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-  position: relative;
-  z-index: 1;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  color: #FFFFFF;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  text-align: center;
 }
 
-.guaranteeFeatures {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.25rem;
-  margin-top: 2rem;
-  position: relative;
-  z-index: 1;
+.featuresList {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
 
-.guaranteeFeature {
+.featureItem {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  color: rgba(255, 255, 255, 0.95);
+  gap: 0.75rem;
   font-size: 1rem;
-  padding: 0.75rem 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
-.guaranteeFeature:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(62, 200, 247, 0.4);
-  transform: translateX(5px);
+.featureItem:hover {
+  transform: translateY(-3px);
+  color: #3EC8F7;
 }
 
-.guaranteeFeature::before {
-  content: '✓';
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  background: linear-gradient(135deg, #3EC8F7, #62D5FF);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-weight: 900;
-  font-size: 0.9rem;
-  color: white;
-  box-shadow: 0 4px 12px rgba(62,200,247,0.4);
-  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+.checkIcon {
+  font-size: 1.5rem;
+  color: #3EC8F7;
+  filter: drop-shadow(0 0 8px rgba(62, 200, 247, 0.6));
 }
 
-.guaranteeFeature:hover::before {
-  transform: scale(1.15) rotate(360deg);
-}
-
-.microCopy {
-  text-align: center;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.65);
-  font-style: italic;
-  margin-top: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-/* Animaciones de entrada */
-.fadeInUp {
-  animation: fadeInUp 0.7s ease forwards;
-  opacity: 0;
-}
-
+/* ========== Animations ========== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(50px);
   }
   to {
     opacity: 1;
@@ -297,74 +344,57 @@
   }
 }
 
-/* Delay escalonado para métricas */
-.metricCard:nth-child(1) { animation-delay: 0s; }
-.metricCard:nth-child(2) { animation-delay: 0.1s; }
-.metricCard:nth-child(3) { animation-delay: 0.2s; }
-.metricCard:nth-child(4) { animation-delay: 0.3s; }
-
-/* Responsive */
-@media (max-width: 768px) {
+/* ========== Responsive Ultra ========== */
+@media (max-width: 1024px) {
   .metricsGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-  
-  .metricCard {
-    padding: 2rem 1.5rem;
-  }
-  
-  .metricValue {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
-  
-  .metricLabel {
-    font-size: 1rem;
-  }
-  
-  .guaranteeSection {
-    padding: 2.5rem 2rem;
-  }
-  
-  .guaranteeBadge {
-    padding: 0.85rem 2rem;
-    font-size: 0.95rem;
-  }
-  
-  .guaranteeText {
-    font-size: 1.2rem;
-  }
-  
-  .guaranteeFeatures {
-    grid-template-columns: 1fr;
-  }
-  
-  .guaranteeSection::before {
-    font-size: 5rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .section {
+    padding: 6rem 1.5rem;
+  }
+
+  .header {
+    margin-bottom: 4rem;
+  }
+
   .metricsGrid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
   }
-  
+
   .metricCard {
-    padding: 1.75rem 1.25rem;
+    padding: 2.5rem 2rem;
   }
-  
-  .guaranteeSection {
-    padding: 2rem 1.5rem;
+
+  .metricValue {
+    font-size: 3rem;
   }
-  
-  .guaranteeFeature {
-    font-size: 0.9rem;
-    padding: 0.65rem 1rem;
+
+  .guaranteeContainer {
+    padding: 3rem 2rem;
+    border-radius: 32px;
   }
-  
-  .guaranteeFeature::before {
-    width: 24px;
-    height: 24px;
-    font-size: 0.8rem;
+
+  .featuresList {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section::before,
+  .section::after,
+  .metricCard::before,
+  .metricValue::after,
+  .guaranteeContainer::before,
+  .guaranteeBadge,
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }

@@ -46,7 +46,7 @@ const ServiciosSeccion1NEW = () => {
           muted
           playsInline
         >
-          <source src="/videos/v_bg_3.mp4" type="video/mp4" />
+          <source src="/videos/hero2.mp4" type="video/mp4" />
         </video>
         
         {/* Overlay oscuro para legibilidad */}

@@ -222,7 +222,14 @@ const NavBar = () => {
 
       {/* Menú de navegación con indicadores activos */}
       <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`} ref={menuRef}>
-   
+    <li className={styles.navItem}>
+          <a 
+            href="/" 
+            className={`${styles.navLink} ${isActiveLink("/") ? styles.activeLink : ""}`}
+          >
+            {textosNavbar.inicio}
+          </a>
+        </li>
         <li className={styles.navItem}>
           <a 
             href="/servicios" 

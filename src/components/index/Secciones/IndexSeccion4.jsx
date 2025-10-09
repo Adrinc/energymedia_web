@@ -1,24 +1,19 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish } from '../../../data/variables';
-import CinematicSection from '../../global/CinematicSection';
 import styles from '../css/indexSeccion4.module.css';
 
-/**
- * IndexSeccion4 - Servicios Integrales
- * 6 servicios con énfasis en IA + Desarrollo Web/Apps
- * Sistema "Cine-Data Multicultural" - Energy Media
- */
 const IndexSeccion4 = () => {
   const ingles = useStore(isEnglish);
   
   const content = {
     es: {
-      title: "Servicios Integrales para Tu Crecimiento Digital",
+      badge: "SERVICIOS INTEGRALES",
+      title: "Servicios para Tu Crecimiento Digital",
       subtitle: "De la estrategia a la ejecución. Todo en un solo lugar.",
       items: [
         {
-          icon: "🎯",
+          icon: "",
           title: "SEO & SEM Profesional",
           tagline: "Domina Google. Más tráfico, más ventas.",
           bullets: [
@@ -26,11 +21,10 @@ const IndexSeccion4 = () => {
             "Google Ads optimizados con datos",
             "Analítica avanzada para decisiones"
           ],
-          metric: "+200% tráfico orgánico en 6 meses (promedio)",
-          link: "/servicios/seo-sem"
+          metric: "+200% tráfico orgánico (promedio 6 meses)"
         },
         {
-          icon: "📱",
+          icon: "",
           title: "Redes Sociales & Paid Ads",
           tagline: "Convierte scrollers en clientes.",
           bullets: [
@@ -38,11 +32,10 @@ const IndexSeccion4 = () => {
             "Gestión de comunidad",
             "A/B testing creativo"
           ],
-          metric: "+300% engagement con estrategia optimizada",
-          link: "/servicios/social-ads"
+          metric: "+300% engagement optimizado"
         },
         {
-          icon: "🎨",
+          icon: "",
           title: "Branding & Diseño Gráfico",
           tagline: "Marca memorable que destaca.",
           bullets: [
@@ -50,11 +43,10 @@ const IndexSeccion4 = () => {
             "Manual de marca + Sistema visual",
             "Diseño publicitario"
           ],
-          metric: "Marca completa en 2-3 semanas",
-          link: "/servicios/branding"
+          metric: "Marca completa en 2-3 semanas"
         },
         {
-          icon: "💻",
+          icon: "",
           title: "Desarrollo Web & Apps Móviles",
           tagline: "Portales web, CRM, apps móviles a medida.",
           bullets: [
@@ -62,13 +54,12 @@ const IndexSeccion4 = () => {
             "Apps iOS/Android",
             "Portales empresariales + CRM personalizado"
           ],
-          metric: "Lanzamiento profesional en 4-6 semanas",
-          link: "/servicios/desarrollo-web",
+          metric: "Lanzamiento en 4-6 semanas",
           highlighted: true,
-          badge: "⚡ DESTACADO"
+          badge: " DESTACADO"
         },
         {
-          icon: "📧",
+          icon: "",
           title: "Email Marketing & Automatización",
           tagline: "Nurturing que vende en piloto automático.",
           bullets: [
@@ -76,31 +67,30 @@ const IndexSeccion4 = () => {
             "Automatización avanzada",
             "A/B testing + Optimización"
           ],
-          metric: "400-600% ROI en campañas de email",
-          link: "/servicios/email-marketing"
+          metric: "400-600% ROI en email"
         },
         {
-          icon: "🤖",
+          icon: "",
           title: "Marketing con IA & Automatización",
           tagline: "Inteligencia artificial al servicio de tu negocio.",
           bullets: [
             "Chatbots inteligentes",
             "Automatización de procesos",
-            "Análisis predictivo + Personalización a escala"
+            "Análisis predictivo + Personalización"
           ],
-          metric: "Hasta 70% de tiempo ahorrado con automatización",
-          link: "/servicios/ia-marketing",
+          metric: "70% tiempo ahorrado",
           highlighted: true,
-          badge: "⚡ DESTACADO"
+          badge: " DESTACADO"
         }
       ]
     },
     en: {
-      title: "Comprehensive Services for Your Digital Growth",
+      badge: "COMPREHENSIVE SERVICES",
+      title: "Services for Your Digital Growth",
       subtitle: "From strategy to execution. Everything in one place.",
       items: [
         {
-          icon: "🎯",
+          icon: "",
           title: "Professional SEO & SEM",
           tagline: "Dominate Google. More traffic, more sales.",
           bullets: [
@@ -108,11 +98,10 @@ const IndexSeccion4 = () => {
             "Data-optimized Google Ads",
             "Advanced analytics for decisions"
           ],
-          metric: "+200% organic traffic in 6 months (average)",
-          link: "/en/services/seo-sem"
+          metric: "+200% organic traffic (6mo avg)"
         },
         {
-          icon: "📱",
+          icon: "",
           title: "Social Media & Paid Ads",
           tagline: "Turn scrollers into customers.",
           bullets: [
@@ -120,11 +109,10 @@ const IndexSeccion4 = () => {
             "Community management",
             "Creative A/B testing"
           ],
-          metric: "+300% engagement with optimized strategy",
-          link: "/en/services/social-ads"
+          metric: "+300% optimized engagement"
         },
         {
-          icon: "🎨",
+          icon: "",
           title: "Branding & Graphic Design",
           tagline: "Memorable brand that stands out.",
           bullets: [
@@ -132,11 +120,10 @@ const IndexSeccion4 = () => {
             "Brand manual + Visual system",
             "Advertising design"
           ],
-          metric: "Complete brand in 2-3 weeks",
-          link: "/en/services/branding"
+          metric: "Complete brand in 2-3 weeks"
         },
         {
-          icon: "💻",
+          icon: "",
           title: "Web Development & Mobile Apps",
           tagline: "Web portals, CRM, custom mobile apps.",
           bullets: [
@@ -144,13 +131,12 @@ const IndexSeccion4 = () => {
             "iOS/Android apps",
             "Business portals + Custom CRM"
           ],
-          metric: "Professional launch in 4-6 weeks",
-          link: "/en/services/web-development",
+          metric: "Launch in 4-6 weeks",
           highlighted: true,
-          badge: "⚡ FEATURED"
+          badge: " FEATURED"
         },
         {
-          icon: "📧",
+          icon: "",
           title: "Email Marketing & Automation",
           tagline: "Nurturing that sells on autopilot.",
           bullets: [
@@ -158,22 +144,20 @@ const IndexSeccion4 = () => {
             "Advanced automation",
             "A/B testing + Optimization"
           ],
-          metric: "400-600% ROI on email campaigns",
-          link: "/en/services/email-marketing"
+          metric: "400-600% email ROI"
         },
         {
-          icon: "🤖",
+          icon: "",
           title: "AI Marketing & Automation",
-          tagline: "Artificial intelligence at your business service.",
+          tagline: "Artificial intelligence at your service.",
           bullets: [
             "Intelligent chatbots",
             "Process automation",
-            "Predictive analysis + Personalization at scale"
+            "Predictive analysis + Personalization"
           ],
-          metric: "Up to 70% time saved with automation",
-          link: "/en/services/ai-marketing",
+          metric: "70% time saved",
           highlighted: true,
-          badge: "⚡ FEATURED"
+          badge: " FEATURED"
         }
       ]
     }
@@ -184,7 +168,6 @@ const IndexSeccion4 = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
-  // Intersection Observer para animar al scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -192,7 +175,7 @@ const IndexSeccion4 = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -207,69 +190,54 @@ const IndexSeccion4 = () => {
   }, []);
 
   return (
-    <CinematicSection variant="light" withAnimation={true}>
-      <div ref={sectionRef} className={styles.servicesContainer}>
-        {/* Título de sección */}
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>{t.title}</h2>
-          <p className={styles.sectionSubtitle}>{t.subtitle}</p>
+    <section ref={sectionRef} className={styles.section}>
+      <div className={styles.container}>
+        <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
+          <span className={styles.badge}>{t.badge}</span>
+          <h2 className={styles.title}>{t.title}</h2>
+          <p className={styles.subtitle}>{t.subtitle}</p>
         </div>
 
-        {/* Grid de 6 servicios */}
         <div className={styles.servicesGrid}>
           {t.items.map((service, index) => (
-            <a
+            <div
               key={index}
-              href={service.link}
-              className={`${styles.serviceCard} ${isVisible ? styles.visible : ''} ${service.highlighted ? styles.highlighted : ''}`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`${styles.serviceCard} ${service.highlighted ? styles.highlighted : ''}`}
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
-              {/* Badge destacado */}
               {service.badge && (
-                <div className={styles.badge}>{service.badge}</div>
+                <div className={styles.highlightBadge}>{service.badge}</div>
               )}
 
-              {/* Ícono */}
-              <div className={styles.iconWrapper}>
+              <div className={styles.iconContainer}>
                 <span className={styles.icon}>{service.icon}</span>
               </div>
 
-              {/* Contenido */}
-              <div className={styles.cardContent}>
-                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                <p className={styles.tagline}>{service.tagline}</p>
+              <h3 className={styles.serviceTitle}>{service.title}</h3>
+              <p className={styles.tagline}>{service.tagline}</p>
 
-                {/* Bullets */}
-                <ul className={styles.bulletList}>
-                  {service.bullets.map((bullet, idx) => (
-                    <li key={idx} className={styles.bullet}>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
+              <ul className={styles.bulletList}>
+                {service.bullets.map((bullet, idx) => (
+                  <li key={idx} className={styles.bullet}>
+                    <span className={styles.bulletIcon}></span>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
 
-                {/* Métrica */}
-                {service.metric && (
-                  <div className={styles.metricBadge}>
-                    {service.metric}
-                  </div>
-                )}
+              <div className={styles.metric}>
+                {service.metric}
               </div>
 
-              {/* CTA visual */}
-              <div className={styles.cardFooter}>
-                <span className={styles.ctaText}>
-                  {ingles ? "Explore service" : "Explorar servicio"} →
-                </span>
+              <div className={styles.link}>
+                {ingles ? "Explore service" : "Explorar servicio"}
+                <span className={styles.arrow}></span>
               </div>
-
-              {/* Efecto de brillo en hover */}
-              <div className={styles.cardShine}></div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
-    </CinematicSection>
+    </section>
   );
 };
 
