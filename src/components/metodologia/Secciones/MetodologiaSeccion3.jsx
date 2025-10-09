@@ -1,5 +1,5 @@
 // MetodologiaSeccion3.jsx
-// OYE Section - Metodología detallada (anchor /metodologia#oye)
+// Tech Stack Section - Metodología detallada (anchor /metodologia#tech-stack)
 
 import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
@@ -9,7 +9,7 @@ import styles from '../css/metodologiaSeccion3.module.css';
 
 const MetodologiaSeccion3 = () => {
   const ingles = useStore(isEnglish);
-  const t = ingles ? translationsMetodologia.en.oye : translationsMetodologia.es.oye;
+  const t = ingles ? translationsMetodologia.en.techStack : translationsMetodologia.es.techStack;
   
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -36,7 +36,7 @@ const MetodologiaSeccion3 = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="oye" className={styles.oyeSection}>
+    <section ref={sectionRef} id="tech-stack" className={styles.oyeSection}>
       <div className={styles.container}>
         {/* Header */}
         <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>

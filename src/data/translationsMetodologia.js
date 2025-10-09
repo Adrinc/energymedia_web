@@ -6,10 +6,10 @@ export const translationsMetodologia = {
     // Sección 1: Hero
     hero: {
       badge: "Nuestro Proceso",
-      h1: "Metodología probada",
-      subtitle: "De la TV a digital: un proceso refinado en 15+ años que combina creatividad cinematográfica con analítica en tiempo real.",
+      h1: "Proceso Transparente, Resultados Medibles",
+      subtitle: "Metodología probada en +200 proyectos que combina estrategia data-driven, tecnología de punta y ejecución ágil para crecimiento real.",
       ctaPrimary: "Ver casos de éxito",
-      ctaSecondary: "Agenda tu consultoría"
+      ctaSecondary: "Agenda tu consultoría gratuita"
     },
 
     // Sección 2: Process Timeline (6 pasos)
@@ -47,12 +47,12 @@ export const translationsMetodologia = {
           number: "03",
           title: "Producción & Setup",
           duration: "2-4 semanas",
-          description: "Creación de assets con calidad Emmy + setup técnico de tracking y plataformas.",
+          description: "Creación de assets de alta calidad + setup técnico de tracking y plataformas.",
           deliverables: [
-            "Video spots (TV quality para digital)",
-            "Social ads adaptados por formato",
-            "Setup de tracking (GA4, pixels, UTMs)",
-            "Configuración de martech stack"
+            "Contenido visual profesional (video, diseño, copy)",
+            "Adaptación multicanal y multi-formato",
+            "Setup de tracking completo (GA4, pixels, UTMs)",
+            "Configuración de martech stack y automatización"
           ],
           icon: "🎬"
         },
@@ -60,12 +60,12 @@ export const translationsMetodologia = {
           number: "04",
           title: "Lanzamiento Estratégico",
           duration: "1-2 semanas",
-          description: "Deploy multicanal con segmentación cultural precisa y monitoreo en vivo.",
+          description: "Deploy multicanal con segmentación precisa y monitoreo en tiempo real.",
           deliverables: [
-            "Campañas activas en Meta, Google, TikTok",
-            "Segmentación multicultural aplicada",
+            "Campañas activas en Meta, Google, TikTok, LinkedIn",
+            "Segmentación avanzada por audiencia y comportamiento",
             "Dashboard de monitoreo en tiempo real",
-            "Listening inicial con OYE (si aplica)"
+            "Alertas automáticas de performance y anomalías"
           ],
           icon: "🚀"
         },
@@ -73,12 +73,12 @@ export const translationsMetodologia = {
           number: "05",
           title: "Optimización Continua",
           duration: "Ongoing",
-          description: "Test A/B, iteración creativa y ajustes basados en data y listening cultural.",
+          description: "Test A/B, iteración creativa y ajustes basados en data y análisis de comportamiento.",
           deliverables: [
-            "A/B testing de creatividades",
-            "Ajustes de targeting y budget",
-            "Nuevas variantes de copy/creative",
-            "Insights semanales de OYE"
+            "A/B testing de creatividades y mensajes",
+            "Ajustes de targeting, budget y bidding",
+            "Nuevas variantes de copy y diseño",
+            "Insights semanales de performance y tendencias"
           ],
           icon: "⚙️"
         },
@@ -98,95 +98,110 @@ export const translationsMetodologia = {
       ]
     },
 
-    // Sección 3: OYE Methodology (anchor /metodologia#oye)
-    oye: {
-      badge: "Analítica Multicultural",
-      title: "OYE: Listening cultural en tiempo real",
-      subtitle: "No es una plataforma. Es nuestra metodología de análisis cultural usando las mejores herramientas del mercado.",
-      intro: "OYE (Open Your Eyes) es nuestro framework propietario de social listening y análisis multicultural que combina tecnología enterprise con expertise humano en matices culturales.",
+    // Sección 3: Tech Stack & Methodology
+    techStack: {
+      badge: "Tecnología de Punta",
+      title: "Nuestro Stack Tecnológico & Metodología",
+      subtitle: "Combinamos las mejores herramientas del mercado con expertise estratégico para decisiones basadas en datos.",
+      intro: "No reinventamos la rueda. Usamos tecnología enterprise probada + metodología propietaria para análisis profundo, optimización continua y resultados medibles.",
       
       howItWorks: {
-        title: "¿Cómo funciona OYE?",
+        title: "Cómo trabajamos con Data",
         steps: [
           {
             number: "1",
-            title: "Listening Multilingüe",
-            description: "Monitoreamos conversaciones en español, inglés y Spanglish a través de plataformas como Brandwatch y Sprinklr."
+            title: "Recolección Multicanal",
+            description: "Consolidamos datos de todas tus plataformas (web, social, ads, CRM) en dashboards unificados."
           },
           {
             number: "2",
-            title: "Análisis Cultural",
-            description: "Nuestro equipo bicultural identifica insights, tendencias y oportunidades que la IA sola no puede detectar."
+            title: "Análisis Estratégico",
+            description: "Nuestro equipo identifica patrones, tendencias y oportunidades que la IA sola no puede detectar."
           },
           {
             number: "3",
             title: "Insights Accionables",
-            description: "Traducimos data en recomendaciones creativas y estratégicas específicas para tu audiencia multicultural."
+            description: "Traducimos data en recomendaciones creativas y estratégicas concretas con impacto en ROI."
           },
           {
             number: "4",
             title: "Optimización Iterativa",
-            description: "Ajustamos campañas en tiempo real basados en respuesta de audiencia y trending topics culturales."
+            description: "Ajustamos campañas en tiempo real basados en performance y comportamiento de audiencia."
           }
         ]
       },
 
       benefits: [
         {
-          icon: "🌎",
-          title: "Language-Neutral",
-          description: "Detecta español, inglés, Spanglish y code-switching sin fricción"
+          icon: "🔗",
+          title: "Todo Integrado",
+          description: "Una sola fuente de verdad para todas tus métricas de marketing y ventas"
         },
         {
           icon: "⚡",
           title: "Tiempo Real",
-          description: "Insights frescos para decisiones ágiles (24-48h vs. semanas)"
+          description: "Dashboards actualizados cada hora. Decisiones ágiles, no reportes obsoletos."
         },
         {
           icon: "🎯",
-          title: "Culturalmente Relevante",
-          description: "Más allá de keywords: detectamos contexto, humor y matices"
+          title: "Enfoque en ROI",
+          description: "Más allá de vanity metrics: conectamos esfuerzo con revenue real"
         },
         {
           icon: "📊",
-          title: "ROI Medible",
-          description: "Conectamos insights con performance (CTR, conversiones, sentiment)"
+          title: "Predictivo",
+          description: "Modelos de forecasting para anticipar tendencias y ajustar presupuesto"
         }
       ],
 
       tools: {
-        title: "Herramientas que usamos en OYE",
-        description: "Transparencia total: estas son las plataformas enterprise que potencian nuestra metodología.",
+        title: "Herramientas que Usamos",
+        description: "Transparencia total: este es nuestro stack de martech y analytics.",
         list: [
-          {
-            name: "Brandwatch",
-            category: "Social Listening",
-            use: "Monitoreo de conversaciones y sentiment analysis multilingüe"
-          },
-          {
-            name: "Sprinklr",
-            category: "Unified CXM",
-            use: "Gestión de redes sociales y customer engagement"
-          },
-          {
-            name: "Talkwalker",
-            category: "Consumer Intelligence",
-            use: "Visual listening y trend forecasting"
-          },
           {
             name: "Google Analytics 4",
             category: "Web Analytics",
-            use: "Análisis de comportamiento en sitio y conversiones"
+            use: "Análisis de comportamiento en sitio, conversiones y customer journey"
+          },
+          {
+            name: "Meta Business Suite",
+            category: "Social Ads",
+            use: "Gestión de campañas en Facebook, Instagram y Audience Network"
+          },
+          {
+            name: "Google Ads",
+            category: "Search & Display",
+            use: "Campañas SEM, Display, YouTube y Shopping"
+          },
+          {
+            name: "HubSpot / Salesforce",
+            category: "CRM & Automation",
+            use: "Marketing automation, lead nurturing y sales pipeline"
           },
           {
             name: "Hotjar",
             category: "User Behavior",
-            use: "Heatmaps y session recordings"
+            use: "Heatmaps, session recordings y user feedback"
+          },
+          {
+            name: "Looker Studio",
+            category: "Data Visualization",
+            use: "Dashboards personalizados con datos en tiempo real"
+          },
+          {
+            name: "SEMrush / Ahrefs",
+            category: "SEO & Competitive",
+            use: "Research de keywords, backlinks y análisis competitivo"
+          },
+          {
+            name: "Mailchimp / Klaviyo",
+            category: "Email Marketing",
+            use: "Automatización de email y segmentación avanzada"
           }
         ]
       },
 
-      ctaText: "Solicitar demo de OYE →"
+      ctaText: "Ver cómo trabajamos →"
     },
 
     // Sección 4: Tools We Use (expandido desde OYE.tools)
@@ -232,14 +247,14 @@ export const translationsMetodologia = {
 
     // Sección 5: Mini Case Studies (2-3 con OYE aplicado)
     cases: {
-      title: "OYE en Acción",
-      subtitle: "Casos reales donde listening cultural hizo la diferencia",
+      title: "Metodología en Acción",
+      subtitle: "Casos reales donde data + estrategia hicieron la diferencia",
       items: [
         {
           industry: "E-commerce Moda",
-          challenge: "ROAS estancado en campaña de Black Friday dirigida a hispanas 25-40",
-          oyeInsight: "Detectamos trending topic inesperado: 'outfits para posada' (fiestas navideñas latinas) con +340% menciones vs. año anterior",
-          action: "Pivotamos creatividad de 'Black Friday generic' a 'Looks para tu posada' en 48 horas",
+          challenge: "ROAS estancado en campaña de Black Friday dirigida a millennials 25-40",
+          insight: "Análisis de búsquedas y trending topics reveló oportunidad en 'holiday party outfits' con +340% menciones vs. año anterior",
+          action: "Pivotamos creatividad de 'Black Friday genérico' a 'Looks para tus fiestas' con video testimoniales en 48 horas",
           result: {
             metric: "+67%",
             label: "ROAS",
@@ -247,10 +262,10 @@ export const translationsMetodologia = {
           }
         },
         {
-          industry: "Fintech (Remesas)",
-          challenge: "CTR bajo en ads de app de envíos de dinero a Latinoamérica",
-          oyeInsight: "Listening reveló que audiencia usaba 'mandar feria' y 'enviar lana' más que 'remesas' o 'transferencias'",
-          action: "Reescribimos copy con lenguaje auténtico + testimoniales con slang regional",
+          industry: "Fintech (Pagos Digitales)",
+          challenge: "CTR bajo en ads de app de transferencias bancarias",
+          insight: "User testing y análisis de conversaciones mostró que audiencia prefería lenguaje casual vs. corporativo formal",
+          action: "Reescribimos copy con tono conversacional + testimoniales reales (no actores) + UI simplificada",
           result: {
             metric: "+89%",
             label: "CTR",
@@ -258,14 +273,14 @@ export const translationsMetodologia = {
           }
         },
         {
-          industry: "Healthcare (Clínica Comunitaria)",
-          challenge: "Baja asistencia a eventos de prevención en comunidad mexicana",
-          oyeInsight: "Identificamos desconfianza cultural hacia 'screenings' pero alta confianza en 'chequeos familiares'",
-          action: "Reframing de mensaje + video testimonial de familia local (no actores)",
+          industry: "Healthcare (Clínica Wellness)",
+          challenge: "Baja conversión en landing page de servicios preventivos",
+          insight: "Heatmaps y session recordings revelaron abandono en sección de precios + falta de urgencia percibida",
+          action: "Rediseño de pricing con comparación visual + agregamos timer de 'cupos limitados' + social proof",
           result: {
             metric: "+124%",
-            label: "Asistencia",
-            detail: "Evento lleno + lista de espera de 40 personas"
+            label: "Conversión",
+            detail: "De 2.3% a 5.1% + lista de espera de 40 personas en primera semana"
           }
         }
       ]
@@ -282,19 +297,19 @@ export const translationsMetodologia = {
         },
         {
           question: "¿Trabajan solo con marcas grandes?",
-          answer: "No. Tenemos 3 niveles (Start, Grow, Scale) para adaptarnos a diferentes presupuestos. Start es ideal para marcas que inician en marketing multicultural con inversión desde $5K/mes. Lo importante es que estés comprometido con el crecimiento sostenible."
+          answer: "No. Tenemos 3 niveles (Start, Grow, Scale) para adaptarnos a diferentes presupuestos. Start es ideal para marcas que inician en marketing digital con inversión desde $8K MXN/mes. Lo importante es que estés comprometido con el crecimiento sostenible basado en datos."
         },
         {
-          question: "¿OYE es una plataforma que compramos aparte?",
-          answer: "No. OYE es nuestra metodología propietaria que combina herramientas enterprise (Brandwatch, Sprinklr, Talkwalker) con análisis humano experto. No vendemos software; vendemos insights accionables y estrategia cultural."
+          question: "¿Qué herramientas usan para analítica y tracking?",
+          answer: "Stack completo: Google Analytics 4, Meta Business Suite, Google Ads, HubSpot/Salesforce (CRM), Hotjar (user behavior), Looker Studio (dashboards), SEMrush/Ahrefs (SEO). Todo integrado en dashboards personalizados con acceso 24/7."
         },
         {
           question: "¿Producen todo el contenido internamente?",
-          answer: "Sí para video (tenemos equipo Emmy-winning in-house). Para volumen alto de contenido social (50+ piezas/mes) colaboramos con red de creators multiculturales verificados. Siempre mantenemos control creativo y brand safety."
+          answer: "Sí para video y diseño (tenemos equipo creativo in-house). Para volumen alto de contenido social (50+ piezas/mes) colaboramos con red de creators verificados. Siempre mantenemos control creativo y brand safety."
         },
         {
-          question: "¿Qué diferencia a Energy Media de otras agencias 'hispanas'?",
-          answer: "3 cosas: (1) Expertise real en TV/video de alta calidad aplicado a digital, (2) Metodología OYE de listening cultural (no solo traducción), (3) Enfoque en performance medible, no solo 'awareness' o 'reach'."
+          question: "¿Qué diferencia a Energy Media de otras agencias?",
+          answer: "3 cosas: (1) Stack tecnológico completo + equipo multidisciplinario bajo un solo techo, (2) Metodología data-driven transparente (dashboards 24/7), (3) Enfoque en performance medible y ROI real, no solo 'awareness'."
         },
         {
           question: "¿Trabajan con influencers?",
@@ -330,10 +345,10 @@ export const translationsMetodologia = {
     // Sección 1: Hero
     hero: {
       badge: "Our Process",
-      h1: "Proven methodology",
-      subtitle: "From TV to digital: a process refined over 15+ years combining cinematic creativity with real-time analytics.",
+      h1: "Transparent Process, Measurable Results",
+      subtitle: "Methodology proven across 200+ projects combining data-driven strategy, cutting-edge technology, and agile execution for real growth.",
       ctaPrimary: "View success stories",
-      ctaSecondary: "Schedule your consultation"
+      ctaSecondary: "Schedule your free consultation"
     },
 
     // Sección 2: Process Timeline
@@ -371,12 +386,12 @@ export const translationsMetodologia = {
           number: "03",
           title: "Production & Setup",
           duration: "2-4 weeks",
-          description: "Emmy-quality asset creation + technical tracking and platform setup.",
+          description: "High-quality asset creation + technical tracking and platform setup.",
           deliverables: [
-            "Video spots (TV quality for digital)",
-            "Social ads adapted by format",
-            "Tracking setup (GA4, pixels, UTMs)",
-            "Martech stack configuration"
+            "Professional visual content (video, design, copy)",
+            "Multi-channel and multi-format adaptation",
+            "Complete tracking setup (GA4, pixels, UTMs)",
+            "Martech stack configuration and automation"
           ],
           icon: "🎬"
         },
@@ -422,95 +437,110 @@ export const translationsMetodologia = {
       ]
     },
 
-    // Sección 3: OYE Methodology
-    oye: {
-      badge: "Multicultural Analytics",
-      title: "OYE: Cultural listening in real-time",
-      subtitle: "It's not a platform. It's our cultural analysis methodology using the best market tools.",
-      intro: "OYE (Open Your Eyes) is our proprietary social listening and multicultural analysis framework that combines enterprise technology with human expertise in cultural nuances.",
+    // Sección 3: Tech Stack & Methodology
+    techStack: {
+      badge: "Cutting-Edge Technology",
+      title: "Our Tech Stack & Methodology",
+      subtitle: "We combine market-leading tools with strategic expertise for data-driven decisions.",
+      intro: "We don't reinvent the wheel. We use proven enterprise technology + proprietary methodology for deep analysis, continuous optimization, and measurable results.",
       
       howItWorks: {
-        title: "How does OYE work?",
+        title: "How We Work with Data",
         steps: [
           {
             number: "1",
-            title: "Multilingual Listening",
-            description: "We monitor conversations in Spanish, English, and Spanglish through platforms like Brandwatch and Sprinklr."
+            title: "Multi-Channel Collection",
+            description: "We consolidate data from all your platforms (web, social, ads, CRM) into unified dashboards."
           },
           {
             number: "2",
-            title: "Cultural Analysis",
-            description: "Our bicultural team identifies insights, trends, and opportunities that AI alone cannot detect."
+            title: "Strategic Analysis",
+            description: "Our team identifies patterns, trends, and opportunities that AI alone cannot detect."
           },
           {
             number: "3",
             title: "Actionable Insights",
-            description: "We translate data into creative and strategic recommendations specific to your multicultural audience."
+            description: "We translate data into concrete creative and strategic recommendations with ROI impact."
           },
           {
             number: "4",
             title: "Iterative Optimization",
-            description: "We adjust campaigns in real-time based on audience response and cultural trending topics."
+            description: "We adjust campaigns in real-time based on performance and audience behavior."
           }
         ]
       },
 
       benefits: [
         {
-          icon: "🌎",
-          title: "Language-Neutral",
-          description: "Detects Spanish, English, Spanglish, and code-switching seamlessly"
+          icon: "🔗",
+          title: "Fully Integrated",
+          description: "A single source of truth for all your marketing and sales metrics"
         },
         {
           icon: "⚡",
           title: "Real-Time",
-          description: "Fresh insights for agile decisions (24-48h vs. weeks)"
+          description: "Dashboards updated hourly. Agile decisions, not outdated reports."
         },
         {
           icon: "🎯",
-          title: "Culturally Relevant",
-          description: "Beyond keywords: we detect context, humor, and nuances"
+          title: "ROI-Focused",
+          description: "Beyond vanity metrics: we connect effort with real revenue"
         },
         {
           icon: "📊",
-          title: "Measurable ROI",
-          description: "Connect insights with performance (CTR, conversions, sentiment)"
+          title: "Predictive",
+          description: "Forecasting models to anticipate trends and adjust budget"
         }
       ],
 
       tools: {
-        title: "Tools we use in OYE",
-        description: "Full transparency: these are the enterprise platforms powering our methodology.",
+        title: "Tools We Use",
+        description: "Full transparency: this is our martech and analytics stack.",
         list: [
-          {
-            name: "Brandwatch",
-            category: "Social Listening",
-            use: "Multilingual conversation monitoring and sentiment analysis"
-          },
-          {
-            name: "Sprinklr",
-            category: "Unified CXM",
-            use: "Social media management and customer engagement"
-          },
-          {
-            name: "Talkwalker",
-            category: "Consumer Intelligence",
-            use: "Visual listening and trend forecasting"
-          },
           {
             name: "Google Analytics 4",
             category: "Web Analytics",
-            use: "Site behavior analysis and conversions"
+            use: "Site behavior analysis, conversions, and customer journey"
+          },
+          {
+            name: "Meta Business Suite",
+            category: "Social Ads",
+            use: "Campaign management on Facebook, Instagram, and Audience Network"
+          },
+          {
+            name: "Google Ads",
+            category: "Search & Display",
+            use: "SEM, Display, YouTube, and Shopping campaigns"
+          },
+          {
+            name: "HubSpot / Salesforce",
+            category: "CRM & Automation",
+            use: "Marketing automation, lead nurturing, and sales pipeline"
           },
           {
             name: "Hotjar",
             category: "User Behavior",
-            use: "Heatmaps and session recordings"
+            use: "Heatmaps, session recordings, and user feedback"
+          },
+          {
+            name: "Looker Studio",
+            category: "Data Visualization",
+            use: "Custom dashboards with real-time data"
+          },
+          {
+            name: "SEMrush / Ahrefs",
+            category: "SEO & Competitive",
+            use: "Keyword research, backlinks, and competitive analysis"
+          },
+          {
+            name: "Mailchimp / Klaviyo",
+            category: "Email Marketing",
+            use: "Email automation and advanced segmentation"
           }
         ]
       },
 
-      ctaText: "Request OYE demo →"
+      ctaText: "See how we work →"
     },
 
     // Sección 4: Tools We Use
@@ -556,14 +586,14 @@ export const translationsMetodologia = {
 
     // Sección 5: Mini Case Studies
     cases: {
-      title: "OYE in Action",
-      subtitle: "Real cases where cultural listening made the difference",
+      title: "Methodology in Action",
+      subtitle: "Real cases where data + strategy made the difference",
       items: [
         {
           industry: "Fashion E-commerce",
-          challenge: "Stalled ROAS in Black Friday campaign targeting Hispanic women 25-40",
-          oyeInsight: "We detected unexpected trending topic: 'outfits para posada' (Latin holiday parties) with +340% mentions vs. previous year",
-          action: "Pivoted creative from 'generic Black Friday' to 'Looks for your posada' in 48 hours",
+          challenge: "Stalled ROAS in Black Friday campaign targeting millennials 25-40",
+          insight: "Search and trending topic analysis revealed opportunity in 'holiday party outfits' with +340% mentions vs. previous year",
+          action: "Pivoted creative from 'generic Black Friday' to 'Looks for your parties' with video testimonials in 48 hours",
           result: {
             metric: "+67%",
             label: "ROAS",
@@ -571,10 +601,10 @@ export const translationsMetodologia = {
           }
         },
         {
-          industry: "Fintech (Remittances)",
-          challenge: "Low CTR on money transfer app ads to Latin America",
-          oyeInsight: "Listening revealed audience used 'mandar feria' and 'enviar lana' more than 'remesas' or 'transferencias'",
-          action: "Rewrote copy with authentic language + testimonials with regional slang",
+          industry: "Fintech (Digital Payments)",
+          challenge: "Low CTR on bank transfer app ads",
+          insight: "User testing and conversation analysis showed audience preferred casual vs. formal corporate language",
+          action: "Rewrote copy with conversational tone + real testimonials (not actors) + simplified UI",
           result: {
             metric: "+89%",
             label: "CTR",
@@ -582,14 +612,14 @@ export const translationsMetodologia = {
           }
         },
         {
-          industry: "Healthcare (Community Clinic)",
-          challenge: "Low attendance at prevention events in Mexican community",
-          oyeInsight: "Identified cultural distrust towards 'screenings' but high trust in 'family checkups'",
-          action: "Message reframing + video testimonial from local family (not actors)",
+          industry: "Healthcare (Wellness Clinic)",
+          challenge: "Low conversion on preventive services landing page",
+          insight: "Heatmaps and session recordings revealed abandonment in pricing section + lack of perceived urgency",
+          action: "Redesigned pricing with visual comparison + added 'limited spots' timer + social proof",
           result: {
             metric: "+124%",
-            label: "Attendance",
-            detail: "Full event + 40-person waitlist"
+            label: "Conversion",
+            detail: "From 2.3% to 5.1% + waiting list of 40 people in first week"
           }
         }
       ]
@@ -606,15 +636,15 @@ export const translationsMetodologia = {
         },
         {
           question: "Do you only work with large brands?",
-          answer: "No. We have 3 tiers (Start, Grow, Scale) to adapt to different budgets. Start is ideal for brands beginning multicultural marketing with investment from $5K/month. What matters is your commitment to sustainable growth."
+          answer: "No. We have 3 tiers (Start, Grow, Scale) to adapt to different budgets. Start is ideal for brands beginning digital marketing with investment from $8K MXN/month. What matters is your commitment to data-driven sustainable growth."
         },
         {
-          question: "Is OYE a platform we purchase separately?",
-          answer: "No. OYE is our proprietary methodology that combines enterprise tools (Brandwatch, Sprinklr, Talkwalker) with expert human analysis. We don't sell software; we sell actionable insights and cultural strategy."
+          question: "What tools do you use for analytics and tracking?",
+          answer: "Complete stack: Google Analytics 4, Meta Business Suite, Google Ads, HubSpot/Salesforce (CRM), Hotjar (user behavior), Looker Studio (dashboards), SEMrush/Ahrefs (SEO). All integrated into custom dashboards with 24/7 access."
         },
         {
           question: "Do you produce all content internally?",
-          answer: "Yes for video (we have Emmy-winning in-house team). For high-volume social content (50+ pieces/month) we collaborate with a network of verified multicultural creators. We always maintain creative control and brand safety."
+          answer: "Yes for video and design (we have an in-house creative team). For high-volume social content (50+ pieces/month) we collaborate with a network of verified creators. We always maintain creative control and brand safety."
         },
         {
           question: "What sets Energy Media apart from other 'Hispanic' agencies?",

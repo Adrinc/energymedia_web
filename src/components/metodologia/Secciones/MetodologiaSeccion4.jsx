@@ -65,13 +65,13 @@ const MetodologiaSeccion4 = () => {
                 <p className={styles.sectionText}>{caseItem.challenge}</p>
               </div>
 
-              {/* OYE Insight */}
+              {/* Data Insight */}
               <div className={styles.section}>
                 <h4 className={styles.sectionLabel}>
-                  💡 {ingles ? "OYE Insight" : "Insight OYE"}
+                  💡 {ingles ? "Data Insight" : "Insight de Datos"}
                 </h4>
                 <p className={`${styles.sectionText} ${styles.highlight}`}>
-                  {caseItem.oyeInsight}
+                  {caseItem.insight}
                 </p>
               </div>
 
