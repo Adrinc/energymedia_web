@@ -1,5 +1,5 @@
-// NosotrosSeccion4.jsx
-// Filosofía - 3 Pilares (Video primero, Cultura siempre, Resultados medibles)
+﻿// NosotrosSeccion4.jsx - ACTUALIZADO 2025 PREMIUM
+// Values - 4 Valores core con diseño mejorado
 
 import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
@@ -9,71 +9,52 @@ import styles from '../css/nosotrosSeccion4.module.css';
 
 const NosotrosSeccion4 = () => {
   const ingles = useStore(isEnglish);
-  const t = ingles ? translationsNosotros.en.philosophy : translationsNosotros.es.philosophy;
+  const t = ingles ? translationsNosotros.en.values : translationsNosotros.es.values;
   
   const [isVisible, setIsVisible] = useState(false);
-  const [activePillar, setActivePillar] = useState(0);
   const sectionRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
       { threshold: 0.1 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => { if (sectionRef.current) observer.unobserve(sectionRef.current); };
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.philosophySection}>
+    <section ref={sectionRef} className={styles.section}>
       <div className={styles.container}>
-        {/* Header */}
         <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
           <h2 className={styles.title}>{t.title}</h2>
           <p className={styles.subtitle}>{t.subtitle}</p>
         </div>
 
-        {/* Pillars Grid */}
-        <div className={styles.pillarsGrid}>
-          {t.pillars.map((pillar, index) => (
+        <div className={styles.valuesGrid}>
+          {t.items.map((value, index) => (
             <div
               key={index}
-              className={`${styles.pillarCard} ${isVisible ? styles.fadeInUp : ''} ${activePillar === index ? styles.active : ''}`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-              onClick={() => setActivePillar(index)}
+              className={`${styles.valueCard} ${isVisible ? styles.fadeInUp : ''}`}
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
-              {/* Number */}
-              <div className={styles.pillarNumber}>{pillar.number}</div>
+              <div className={styles.numberBadge}>0{index + 1}</div>
+              
+              <div className={styles.iconContainer}>
+                <span className={styles.valueIcon}>{value.icon}</span>
+              </div>
 
-              {/* Icon */}
-              <div className={styles.pillarIcon}>{pillar.icon}</div>
+              <h3 className={styles.valueTitle}>{value.title}</h3>
+              <p className={styles.valueDescription}>{value.description}</p>
 
-              {/* Content */}
-              <h3 className={styles.pillarTitle}>{pillar.title}</h3>
-              <p className={styles.pillarDescription}>{pillar.description}</p>
-
-              {/* Details (expandible) */}
-              {activePillar === index && (
-                <ul className={styles.detailsList}>
-                  {pillar.details.map((detail, idx) => (
-                    <li key={idx} className={styles.detailItem}>
-                      <span className={styles.checkmark}>✓</span>
-                      {detail}
-                    </li>
+              {value.benefits && (
+                <div className={styles.benefitsList}>
+                  {value.benefits.map((benefit, idx) => (
+                    <span key={idx} className={styles.benefitTag}>
+                      {benefit}
+                    </span>
                   ))}
-                </ul>
+                </div>
               )}
             </div>
           ))}

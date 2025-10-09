@@ -1,185 +1,253 @@
-/* nosotrosSeccion2.module.css */
-/* Timeline Histórico */
+﻿/* nosotrosSeccion2.module.css - ACTUALIZADO 2025 */
+/* Who We Are - Alternating Layout con imagen del equipo */
 
-.timelineSection {
-  padding: 5rem 0;
-  background: #FFFFFF;
+.section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #F7F5FA 0%, #E1DDEC 100%);
+  padding: 8rem 2rem;
+  overflow: hidden;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
 }
 
-/* Header */
-.header {
-  text-align: center;
-  margin-bottom: 4rem;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.header.fadeInUp {
-  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.title {
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  font-weight: 800;
-  color: #1A1024;
-  margin-bottom: 1rem;
-  font-family: var(--font-headline, 'Poppins', sans-serif);
-}
-
-.subtitle {
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  color: #1A1024;
-  opacity: 0.8;
-}
-
-/* Timeline */
-.timeline {
+/* ========== Imagen Izquierda ========== */
+.imageWrapper {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-.phaseCard {
-  position: relative;
-  display: flex;
-  gap: 2rem;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateX(-50px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.phaseCard.fadeInUp {
-  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+.imageWrapper.fadeInLeft {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-/* Conector vertical entre fases */
-.connector {
+.imageGlow {
   position: absolute;
-  left: 50px;
-  top: 100px;
-  width: 3px;
-  height: calc(100% + 3rem);
-  background: linear-gradient(180deg, #672E92, #3EC8F7);
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: linear-gradient(135deg, #672E92, #3EC8F7);
+  border-radius: 24px;
+  filter: blur(40px);
+  opacity: 0.3;
   z-index: 0;
 }
 
-/* Ícono de época */
-.iconCircle {
-  flex-shrink: 0;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #672E92, #A47EB9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 20px rgba(103, 46, 146, 0.2);
+.teamImage {
   position: relative;
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 50px rgba(103, 46, 146, 0.15),
+    0 8px 16px rgba(103, 46, 146, 0.08);
   z-index: 1;
 }
 
-.icon {
-  font-size: 2.5rem;
+/* ========== Contenido Derecha ========== */
+.content {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
 }
 
-/* Contenido de la fase */
-.phaseContent {
-  flex: 1;
-  background: #F7F5FA;
-  padding: 2rem;
-  border-radius: 16px;
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+.content.fadeInRight {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.phaseCard:hover .phaseContent {
-  background: #FFFFFF;
-  box-shadow: 0 12px 30px rgba(103, 46, 146, 0.12);
-  transform: translateX(5px);
+.header {
+  margin-bottom: 3rem;
 }
 
-.years {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: rgba(103, 46, 146, 0.1);
-  color: #672E92;
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
-}
-
-.phaseTitle {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+.title {
+  font-size: clamp(2.25rem, 3.5vw, 2.5rem);
   font-weight: 700;
   color: #1A1024;
-  margin-bottom: 0.75rem;
-}
-
-.phaseDescription {
-  font-size: 1rem;
-  color: #1A1024;
-  line-height: 1.6;
   margin-bottom: 1rem;
-  opacity: 0.9;
+  line-height: 1.2;
 }
 
-.highlightBadge {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, rgba(62, 200, 247, 0.15), rgba(103, 46, 146, 0.15));
-  border: 1px solid rgba(62, 200, 247, 0.3);
-  color: #672E92;
-  border-radius: 8px;
-  font-size: 0.875rem;
+.subtitle {
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
   font-weight: 600;
+  color: #672E92;
+  margin-bottom: 1.5rem;
 }
 
-/* Animaciones */
+.description {
+  font-size: 1.125rem;
+  color: #4A4058;
+  line-height: 1.75;
+}
+
+/* ========== Features Grid ========== */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.featureCard {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(103, 46, 146, 0.1);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(103, 46, 146, 0.15);
+  border-color: rgba(103, 46, 146, 0.3);
+}
+
+.featureIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.featureContent {
+  flex: 1;
+}
+
+.featureTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A1024;
+  margin-bottom: 0.5rem;
+}
+
+.featureText {
+  font-size: 0.875rem;
+  color: #6B5B7A;
+  line-height: 1.6;
+}
+
+/* ========== Stats Grid ========== */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.statCard {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(103, 46, 146, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(103, 46, 146, 0.1);
+  opacity: 0;
+  animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  background: rgba(103, 46, 146, 0.1);
+  transform: scale(1.05);
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #672E92;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: #6B5B7A;
+  font-weight: 500;
+}
+
+/* ========== Animations ========== */
 @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Responsive */
+/* ========== Responsive ========== */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .imageWrapper {
+    order: -1;
+  }
+
+  .imageWrapper,
+  .content {
+    transform: translateY(30px);
+  }
+
+  .imageWrapper.fadeInLeft,
+  .content.fadeInRight {
+    transform: translateY(0);
+  }
+
+  .teamImage {
+    height: 400px;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
-  .timelineSection {
-    padding: 3rem 0;
+  .section {
+    padding: 4rem 1.5rem;
   }
 
-  .phaseCard {
-    flex-direction: column;
-    gap: 1.5rem;
+  .teamImage {
+    height: 300px;
   }
 
-  .connector {
-    left: 49px;
-    top: 100px;
+  .statsGrid {
+    grid-template-columns: 1fr;
   }
 
-  .iconCircle {
-    width: 80px;
-    height: 80px;
+  .statValue {
+    font-size: 1.75rem;
   }
+}
 
-  .icon {
-    font-size: 2rem;
-  }
-
-  .phaseContent {
-    padding: 1.5rem;
-  }
-
-  .phaseCard:hover .phaseContent {
-    transform: translateX(0);
+@media (prefers-reduced-motion: reduce) {
+  .imageWrapper,
+  .content,
+  .featureCard,
+  .statCard {
+    animation: none !important;
+    transition: none !important;
   }
 }

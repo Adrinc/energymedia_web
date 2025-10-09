@@ -1,5 +1,5 @@
-// NosotrosSeccion2.jsx
-// Timeline histórico de evolución (2008-2024)
+// NosotrosSeccion2.jsx - ACTUALIZADO 2025
+// Who We Are - Equipo multidisciplinario con imagen
 
 import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
@@ -9,7 +9,7 @@ import styles from '../css/nosotrosSeccion2.module.css';
 
 const NosotrosSeccion2 = () => {
   const ingles = useStore(isEnglish);
-  const t = ingles ? translationsNosotros.en.timeline : translationsNosotros.es.timeline;
+  const t = ingles ? translationsNosotros.en.whoWeAre : translationsNosotros.es.whoWeAre;
   
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -36,47 +36,57 @@ const NosotrosSeccion2 = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.timelineSection}>
+    <section ref={sectionRef} className={styles.section}>
       <div className={styles.container}>
-        {/* Header */}
-        <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
-          <h2 className={styles.title}>{t.title}</h2>
-          <p className={styles.subtitle}>{t.subtitle}</p>
+        {/* Imagen izquierda */}
+        <div className={`${styles.imageWrapper} ${isVisible ? styles.fadeInLeft : ''}`}>
+          <div className={styles.imageGlow}></div>
+          <img 
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80" 
+            alt={t.imageAlt}
+            className={styles.teamImage}
+            loading="lazy"
+          />
         </div>
 
-        {/* Timeline */}
-        <div className={styles.timeline}>
-          {t.phases.map((phase, index) => (
-            <div
-              key={index}
-              className={`${styles.phaseCard} ${isVisible ? styles.fadeInUp : ''}`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              {/* Conector vertical */}
-              {index < t.phases.length - 1 && (
-                <div className={styles.connector}></div>
-              )}
+        {/* Contenido derecha */}
+        <div className={`${styles.content} ${isVisible ? styles.fadeInRight : ''}`}>
+          <div className={styles.header}>
+            <h2 className={styles.title}>{t.title}</h2>
+            <p className={styles.subtitle}>{t.subtitle}</p>
+            <p className={styles.description}>{t.description}</p>
+          </div>
 
-              {/* Ícono de la época */}
-              <div className={styles.iconCircle}>
-                <span className={styles.icon}>{phase.icon}</span>
+          {/* Features Grid */}
+          <div className={styles.featuresGrid}>
+            {t.features.map((feature, index) => (
+              <div 
+                key={index} 
+                className={styles.featureCard}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <span className={styles.featureIcon}>{feature.icon}</span>
+                <div className={styles.featureContent}>
+                  <h3 className={styles.featureTitle}>{feature.title}</h3>
+                  <p className={styles.featureText}>{feature.text}</p>
+                </div>
               </div>
+            ))}
+          </div>
 
-              {/* Contenido */}
-              <div className={styles.phaseContent}>
-                <div className={styles.years}>{phase.years}</div>
-                <h3 className={styles.phaseTitle}>{phase.title}</h3>
-                <p className={styles.phaseDescription}>{phase.description}</p>
-                
-                {/* Highlight badge */}
-                {phase.highlight && (
-                  <div className={styles.highlightBadge}>
-                    ✨ {phase.highlight}
-                  </div>
-                )}
+          {/* Stats Grid */}
+          <div className={styles.statsGrid}>
+            {t.stats.map((stat, index) => (
+              <div 
+                key={index} 
+                className={styles.statCard}
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <div className={styles.statValue}>{stat.value}</div>
+                <div className={styles.statLabel}>{stat.label}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

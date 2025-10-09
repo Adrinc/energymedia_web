@@ -1,5 +1,5 @@
-// NosotrosSeccion5.jsx
-// Equipo Multicultural (versión genérica sin fotos)
+﻿// NosotrosSeccion5.jsx - ACTUALIZADO 2025
+// Team Expertise con imagen de oficina
 
 import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
@@ -16,62 +16,48 @@ const NosotrosSeccion5 = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
       { threshold: 0.1 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => { if (sectionRef.current) observer.unobserve(sectionRef.current); };
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.teamSection}>
+    <section ref={sectionRef} className={styles.section}>
       <div className={styles.container}>
-        {/* Header */}
-        <div className={`${styles.header} ${isVisible ? styles.fadeInUp : ''}`}>
+        <div className={`${styles.content} ${isVisible ? styles.fadeInLeft : ''}`}>
           <h2 className={styles.title}>{t.title}</h2>
           <p className={styles.subtitle}>{t.subtitle}</p>
           <p className={styles.description}>{t.description}</p>
-        </div>
 
-        {/* Expertise Grid */}
-        <div className={styles.expertiseGrid}>
-          {t.expertise.map((item, index) => (
-            <div
-              key={index}
-              className={`${styles.expertiseCard} ${isVisible ? styles.fadeInUp : ''}`}
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              {/* Icon placeholder */}
-              <div className={styles.iconCircle}>
-                {index === 0 && '🎬'}
-                {index === 1 && '📱'}
-                {index === 2 && '📊'}
-                {index === 3 && '🌎'}
+          <div className={styles.expertiseGrid}>
+            {t.expertise.map((area, index) => (
+              <div key={index} className={styles.expertiseCard}>
+                <span className={styles.areaIcon}>{area.icon}</span>
+                <div>
+                  <h3 className={styles.areaTitle}>{area.area}</h3>
+                  <p className={styles.skills}>{area.skills}</p>
+                  <div className={styles.teamSize}>{area.team}</div>
+                </div>
               </div>
+            ))}
+          </div>
 
-              <h3 className={styles.expertiseArea}>{item.area}</h3>
-              <p className={styles.expertiseSkills}>{item.skills}</p>
-            </div>
-          ))}
+          <div className={styles.certsBadge}>
+            <span className={styles.certIcon}>🎓</span>
+            <p>{t.certifications}</p>
+          </div>
         </div>
 
-        {/* CTA */}
-        <div className={`${styles.ctaBlock} ${isVisible ? styles.fadeInUp : ''}`} style={{ animationDelay: '0.6s' }}>
-          <a href="/contacto" className={styles.ctaButton}>
-            {t.cta}
-          </a>
+        <div className={`${styles.imageWrapper} ${isVisible ? styles.fadeInRight : ''}`}>
+          <div className={styles.imageGlow}></div>
+          <img 
+            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1200&q=80" 
+            alt={t.imageAlt}
+            className={styles.officeImage}
+            loading="lazy"
+          />
         </div>
       </div>
     </section>

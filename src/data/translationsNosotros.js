@@ -1,312 +1,339 @@
-// translationsNosotros.js
-// Traducciones para la página Nosotros (About Us)
+﻿// translationsNosotros.js - ACTUALIZADO 2025
+// Enfoque: Agencia Digital Full-Service (SIN TV/Emmy)
 
 export const translationsNosotros = {
   es: {
-    // Sección 1: Hero
     hero: {
-      badge: "Nuestra Historia",
-      h1: "De la TV al ROI digital: 15 años conectando cultura con resultados",
-      subtitle: "Desde 2008, hemos evolucionado de producción televisiva para audiencias hispanas a una agencia integral de marketing digital multicultural con data y creatividad Emmy.",
+      badge: "Desde 2008",
+      h1: "Agencia Digital con Resultados Medibles",
+      subtitle: "Marketing + Tecnología + Creatividad. Transformamos negocios con estrategias data-driven, desarrollo web/apps y servicios de IA.",
       ctaPrimary: "Conoce nuestra metodología",
-      ctaSecondary: "Ver casos de éxito"
+      ctaSecondary: "Ver resultados"
     },
 
-    // Sección 2: Timeline Histórico
-    timeline: {
-      title: "Nuestra Evolución",
-      subtitle: "De la pantalla grande a campañas que escalan",
-      phases: [
+    whoWeAre: {
+      title: "Somos Más que una Agencia Digital",
+      subtitle: "Equipo multidisciplinario obsesionado con resultados",
+      description: "No somos una agencia más. Somos tu partner estratégico para crecimiento digital. Combinamos expertise en marketing, desarrollo de software, diseño y servicios de IA para entregar soluciones completas que escalan.",
+      features: [
         {
-          years: "2008-2012",
-          title: "Los Orígenes: TV Hispana",
-          description: "Fundamos Energy Media produciendo contenido televisivo de calidad para networks hispanos en Estados Unidos. Spots, shows, documentales.",
-          icon: "📺",
-          highlight: "Emmy Award 2011"
+          icon: "👥",
+          title: "Equipo Multidisciplinario",
+          text: "Marketers + Diseñadores + Desarrolladores + Especialistas en IA trabajando juntos"
         },
         {
-          years: "2013-2016",
-          title: "Transición Digital",
-          description: "Las audiencias migraron a social y streaming. Adaptamos nuestra producción cinematográfica a formatos digitales: YouTube, Facebook, Instagram.",
-          icon: "📱",
-          highlight: "Primeras campañas de video ads"
+          icon: "🎯",
+          title: "+200 Clientes Satisfechos",
+          text: "Desde startups hasta empresas establecidas confiaron en nosotros"
         },
         {
-          years: "2017-2020",
-          title: "Marketing Performance",
-          description: "Incorporamos tracking, analytics y optimización. El video dejó de ser solo \"bonito\" para ser medible: CTR, CPA, ROAS.",
-          icon: "📊",
-          highlight: "Metodología Data + Creative"
+          icon: "⚡",
+          title: "+8 Años Transformando Negocios",
+          text: "Experiencia comprobada en crecimiento digital medible"
         },
         {
-          years: "2021-2024",
-          title: "Agencia Integral Digital",
-          description: "Hoy ofrecemos el stack completo: video, SEO, SEM, social ads, email, desarrollo web/apps, análisis de datos. Calidad profesional, objetivo claro: ROI.",
           icon: "🚀",
-          highlight: "Stack Tecnológico Completo"
-        }
-      ]
-    },
-
-    // Sección 3: Emmy Highlight
-    emmy: {
-      badge: "Reconocimiento",
-      title: "Calidad cinematográfica validada por la industria",
-      description: "Nuestro Emmy Award 2011 no es solo un trofeo en la oficina. Es la prueba de que entendemos producción de nivel mundial. Ahora aplicamos ese estándar a cada pieza digital.",
-      stats: [
-        {
-          value: "15+",
-          label: "Años de producción"
-        },
-        {
-          value: "1",
-          label: "Emmy Award"
-        },
-        {
-          value: "500+",
-          label: "Videos producidos"
-        },
-        {
-          value: "3",
-          label: "Países de operación"
+          title: "Stack Completo",
+          text: "Marketing, Desarrollo Web/Apps, Branding, IA, Analítica - todo bajo un mismo techo"
         }
       ],
-      ctaText: "Ver nuestro portfolio de video"
+      stats: [
+        { value: "200+", label: "Proyectos Completados" },
+        { value: "98%", label: "Tasa de Satisfacción" },
+        { value: "85%", label: "Clientes Recurrentes" },
+        { value: "4.9/5", label: "Calificación Promedio" }
+      ],
+      imageAlt: "Equipo Energy Media colaborando en proyectos digitales"
     },
 
-    // Sección 4: Filosofía (3 Pilares)
     philosophy: {
       title: "Nuestra Filosofía",
       subtitle: "Tres principios que guían cada proyecto",
       pillars: [
         {
           number: "01",
-          title: "Video primero",
-          description: "El video es el formato que más conecta emocionalmente. Desde un reel de 15 segundos hasta un spot de TV, dominamos la narrativa visual que vende.",
-          icon: "🎥",
+          title: "Data-Driven Siempre",
+          description: "Decisiones basadas en datos reales, no corazonadas. Cada estrategia está respaldada por analítica, testing y optimización continua.",
+          icon: "📊",
           details: [
-            "Producción in-house con estándares Emmy",
-            "Formatos para cada canal: TikTok, YouTube, Meta, TV",
-            "Optimización para performance (no solo awareness)"
+            "Analytics en tiempo real (GA4, Looker Studio)",
+            "A/B testing creativo y de audiencias",
+            "ROI medible en cada campaña",
+            "Dashboards personalizados 24/7"
           ]
         },
         {
           number: "02",
-          title: "Cultura siempre",
-          description: "No basta con traducir. Las audiencias hispanas y multiculturales exigen autenticidad cultural. Nuestro equipo vive esa realidad.",
-          icon: "🌎",
+          title: "Tecnología de Punta",
+          description: "Usamos las herramientas y frameworks más modernos del mercado. IA, automatización, stack de desarrollo actualizado.",
+          icon: "🤖",
           details: [
-            "Insight cultural nativo (no estereotipos)",
-            "Castellano neutro + variantes regionales",
-            "Casting y referencias culturales auténticas"
+            "Desarrollo web/apps (React, Next.js, Node.js)",
+            "Inteligencia Artificial y automatización",
+            "Cloud deployment (AWS, Azure, GCP)",
+            "Integración de APIs y sistemas CRM/ERP"
           ]
         },
         {
           number: "03",
-          title: "Resultados medibles",
-          description: "Cada campaña tiene KPIs claros. ROAS, CPA, CTR, conversiones. Reporting transparente quincenal o semanal según tu plan.",
-          icon: "📈",
+          title: "Resultados Garantizados",
+          description: "No prometemos magia. Entregamos crecimiento medible respaldado por garantía de 90 días.",
+          icon: "🎯",
           details: [
-            "Tracking completo: GA4, píxeles, UTMs",
-            "Análisis de datos en tiempo real",
-            "A/B testing continuo (creative + audience)"
+            "Primeros resultados visibles en 30 días",
+            "Garantía 90 días o reembolso completo",
+            "Soporte prioritario <2 horas",
+            "Reporting quincenal con métricas clave"
           ]
         }
       ]
     },
 
-    // Sección 5: Equipo (Genérico)
-    team: {
-      title: "Equipo Multicultural con ADN TV+Digital",
-      subtitle: "Productores Emmy + marketers data-driven + creativos culturales",
-      description: "No somos solo una agencia de video. No somos solo una agencia digital. Somos el puente entre la calidad cinematográfica de la TV y la agilidad medible del performance marketing.",
-      expertise: [
+    values: {
+      title: "Nuestros Valores",
+      subtitle: "Los principios que nos definen como equipo",
+      items: [
         {
-          area: "Producción & Creatividad",
-          skills: "Directores, editores, motion designers con background en TV y cine. Producción in-house para control de calidad."
+          icon: "✅",
+          title: "Transparencia Total",
+          description: "Acceso 24/7 a dashboards con métricas en tiempo real. Reports detallados sin letra chica. Sin costos ocultos.",
+          benefits: ["Dashboards 24/7", "Reports detallados", "Sin letra chica"]
         },
         {
-          area: "Marketing Digital",
-          skills: "Especialistas en SEM, SEO, Social Ads, Email Automation, CRO. Certificaciones Google, Meta, HubSpot."
+          icon: "⚡",
+          title: "Agilidad",
+          description: "Respuesta rápida (<2 horas en planes GROWTH+), iteración continua, adaptación veloz a cambios del mercado.",
+          benefits: ["Respuesta <2hrs", "Iteración rápida", "Adaptación continua"]
         },
         {
-          area: "Data & Analytics",
-          skills: "Analistas con expertise en GA4, Looker Studio, Hotjar, Brandwatch. Metodología data-driven para insights accionables."
+          icon: "🤝",
+          title: "Partnership Real",
+          description: "No somos un vendor más. Somos tu equipo extendido. Tu éxito es nuestro éxito. Relación de largo plazo.",
+          benefits: ["Equipo extendido", "Compromiso mutuo", "Visión largo plazo"]
         },
         {
-          area: "Cultural Strategists",
-          skills: "Equipo hispano/latino bilingüe. Entendemos matices de lenguaje, humor, referencias que resuenan con la audiencia."
-        }
-      ],
-      cta: "¿Quieres conocer más? Agenda una llamada"
-    },
-
-    // Sección 6: CTA Final
-    ctaFinal: {
-      badge: "Listo para empezar",
-      title: "¿Tu marca lista para crecer con estrategia cultural?",
-      subtitle: "Desde startups hasta Fortune 500, ayudamos a marcas a conectar con audiencias hispanas y multiculturales con video, data y resultados medibles.",
-      benefits: [
-        "Consultoría gratuita de 30 min para analizar tu situación",
-        "Plan de crecimiento a 90 días con KPIs claros",
-        "Equipo que habla tu idioma (literal y figurativamente)"
-      ],
-      ctaPrimary: "Agenda tu consultoría gratuita",
-      ctaSecondary: "Descarga nuestro case study"
-    }
-  },
-
-  en: {
-    // Section 1: Hero
-    hero: {
-      badge: "Our Story",
-      h1: "From TV to Digital ROI: 15 years connecting culture with results",
-      subtitle: "Since 2008, we've evolved from TV production for Hispanic audiences to a full-service multicultural digital marketing agency with Emmy-level creativity and data-driven strategy.",
-      ctaPrimary: "Explore our methodology",
-      ctaSecondary: "View success stories"
-    },
-
-    // Section 2: Timeline
-    timeline: {
-      title: "Our Evolution",
-      subtitle: "From the big screen to scalable campaigns",
-      phases: [
-        {
-          years: "2008-2012",
-          title: "The Origins: Hispanic TV",
-          description: "We founded Energy Media producing high-quality television content for Hispanic networks in the United States. Spots, shows, documentaries.",
-          icon: "📺",
-          highlight: "Emmy Award 2011"
-        },
-        {
-          years: "2013-2016",
-          title: "Digital Transition",
-          description: "Audiences migrated to social and streaming. We adapted our cinematic production to digital formats: YouTube, Facebook, Instagram.",
-          icon: "📱",
-          highlight: "First video ad campaigns"
-        },
-        {
-          years: "2017-2020",
-          title: "Performance Marketing",
-          description: "We incorporated tracking, analytics, and optimization. Video stopped being just \"pretty\" and became measurable: CTR, CPA, ROAS.",
-          icon: "📊",
-          highlight: "Data + Creative Methodology"
-        },
-        {
-          years: "2021-2024",
-          title: "Full-Service Digital Agency",
-          description: "Today we offer the complete stack: video, SEO, SEM, social ads, email, web/app development, data analysis. Professional quality, clear goal: ROI.",
           icon: "🚀",
-          highlight: "Complete Tech Stack"
+          title: "Obsesión por Resultados",
+          description: "KPIs claros desde día 1. Accountability total. Si no funcionó, lo iteramos hasta que funcione. Garantía de 90 días.",
+          benefits: ["KPIs claros", "Accountability 100%", "Garantía 90 días"]
         }
       ]
     },
 
-    // Section 3: Emmy Highlight
-    emmy: {
-      badge: "Recognition",
-      title: "Cinematic quality validated by the industry",
-      description: "Our 2011 Emmy Award isn't just a trophy in the office. It's proof that we understand world-class production. Now we apply that standard to every digital piece.",
-      stats: [
+    team: {
+      title: "El Equipo Detrás de los Resultados",
+      subtitle: "20+ profesionales certificados en las mejores herramientas del mercado",
+      description: "Equipo multidisciplinario con expertise real. Certificaciones Google, Meta, AWS, HubSpot, Shopify. Educación continua para estar siempre a la vanguardia.",
+      expertise: [
         {
-          value: "15+",
-          label: "Years of production"
+          icon: "🎨",
+          area: "Creatividad & Diseño",
+          skills: "Diseñadores UX/UI, copywriters, motion designers, ilustradores. Branding completo y piezas creativas que convierten.",
+          team: "5 diseñadores"
         },
         {
-          value: "1",
-          label: "Emmy Award"
+          icon: "💻",
+          area: "Desarrollo & Tech",
+          skills: "Frontend/Backend developers, ingenieros de IA, DevOps. Stack moderno: React, Node.js, Python, AWS.",
+          team: "6 developers"
         },
         {
-          value: "500+",
-          label: "Videos produced"
+          icon: "📈",
+          area: "Marketing Digital",
+          skills: "Especialistas SEO/SEM, social media managers, analistas de datos, especialistas en email marketing y CRO.",
+          team: "7 marketers"
         },
         {
-          value: "3",
-          label: "Countries of operation"
+          icon: "🎯",
+          area: "Estrategia & PMO",
+          skills: "Consultores estratégicos, project managers, account managers. Tu punto de contacto para todo.",
+          team: "4 estrategas"
         }
       ],
-      ctaText: "View our video portfolio"
+      certifications: "Certificados en: Google Ads, Google Analytics, Meta Blueprint, AWS, HubSpot, Shopify Partner",
+      imageAlt: "Equipo Energy Media trabajando en oficina moderna"
     },
 
-    // Section 4: Philosophy (3 Pillars)
+    ctaFinal: {
+      badge: "Listo para empezar",
+      title: "¿Listo para Transformar tu Negocio Digital?",
+      subtitle: "Agenda consultoría estratégica gratuita - $5,000 MXN de valor, hoy gratis",
+      benefits: [
+        "✓ Auditoría digital completa (30-45 min)",
+        "✓ Plan de crecimiento a 90 días con KPIs claros",
+        "✓ Recomendaciones de inversión personalizadas",
+        "✓ Sin compromiso, 100% gratis"
+      ],
+      guarantee: "🛡️ Garantía 90 días - Resultados o reembolso completo",
+      ctaPrimary: "Agenda Ahora (Sin Costo)",
+      ctaSecondary: "Ver casos de éxito"
+    }
+  },
+  en: {
+    hero: {
+      badge: "Since 2008",
+      h1: "Digital Agency with Measurable Results",
+      subtitle: "Marketing + Technology + Creativity. We transform businesses with data-driven strategies, web/app development, and AI services.",
+      ctaPrimary: "Explore our methodology",
+      ctaSecondary: "View results"
+    },
+
+    whoWeAre: {
+      title: "We're More Than a Digital Agency",
+      subtitle: "Multidisciplinary team obsessed with results",
+      description: "We're not just another agency. We're your strategic partner for digital growth. We combine expertise in marketing, software development, design, and AI services to deliver complete solutions that scale.",
+      features: [
+        {
+          icon: "👥",
+          title: "Multidisciplinary Team",
+          text: "Marketers + Designers + Developers + AI Specialists working together"
+        },
+        {
+          icon: "🎯",
+          title: "+200 Satisfied Clients",
+          text: "From startups to established enterprises trusted us"
+        },
+        {
+          icon: "⚡",
+          title: "+8 Years Transforming Businesses",
+          text: "Proven experience in measurable digital growth"
+        },
+        {
+          icon: "🚀",
+          title: "Complete Stack",
+          text: "Marketing, Web/App Development, Branding, AI, Analytics - all under one roof"
+        }
+      ],
+      stats: [
+        { value: "200+", label: "Completed Projects" },
+        { value: "98%", label: "Satisfaction Rate" },
+        { value: "85%", label: "Recurring Clients" },
+        { value: "4.9/5", label: "Average Rating" }
+      ],
+      imageAlt: "Energy Media team collaborating on digital projects"
+    },
+
     philosophy: {
       title: "Our Philosophy",
-      subtitle: "Three principles that guide every project",
+      subtitle: "Three principles guiding every project",
       pillars: [
         {
           number: "01",
-          title: "Video first",
-          description: "Video is the format that connects most emotionally. From a 15-second reel to a TV spot, we master the visual storytelling that sells.",
-          icon: "🎥",
+          title: "Data-Driven Always",
+          description: "Decisions based on real data, not hunches. Every strategy is backed by analytics, testing, and continuous optimization.",
+          icon: "📊",
           details: [
-            "In-house production with Emmy standards",
-            "Formats for every channel: TikTok, YouTube, Meta, TV",
-            "Performance optimization (not just awareness)"
+            "Real-time analytics (GA4, Looker Studio)",
+            "Creative and audience A/B testing",
+            "Measurable ROI in every campaign",
+            "Personalized 24/7 dashboards"
           ]
         },
         {
           number: "02",
-          title: "Culture always",
-          description: "Translation isn't enough. Hispanic and multicultural audiences demand cultural authenticity. Our team lives that reality.",
-          icon: "🌎",
+          title: "Cutting-Edge Technology",
+          description: "We use the most modern tools and frameworks on the market. AI, automation, updated development stack.",
+          icon: "🤖",
           details: [
-            "Native cultural insight (no stereotypes)",
-            "Neutral Spanish + regional variants",
-            "Authentic casting and cultural references"
+            "Web/app development (React, Next.js, Node.js)",
+            "Artificial Intelligence and automation",
+            "Cloud deployment (AWS, Azure, GCP)",
+            "API integration and CRM/ERP systems"
           ]
         },
         {
           number: "03",
-          title: "Measurable results",
-          description: "Every campaign has clear KPIs. ROAS, CPA, CTR, conversions. Transparent bi-weekly or weekly reporting based on your plan.",
-          icon: "📈",
+          title: "Guaranteed Results",
+          description: "We don't promise magic. We deliver measurable growth backed by a 90-day guarantee.",
+          icon: "🎯",
           details: [
-            "Complete tracking: GA4, pixels, UTMs",
-            "Real-time data analysis",
-            "Continuous A/B testing (creative + audience)"
+            "First visible results in 30 days",
+            "90-day guarantee or full refund",
+            "Priority support <2 hours",
+            "Biweekly reporting with key metrics"
           ]
         }
       ]
     },
 
-    // Section 5: Team (Generic)
-    team: {
-      title: "Multicultural Team with TV+Digital DNA",
-      subtitle: "Emmy producers + data-driven marketers + cultural creatives",
-      description: "We're not just a video agency. We're not just a digital agency. We're the bridge between the cinematic quality of TV and the measurable agility of performance marketing.",
-      expertise: [
+    values: {
+      title: "Our Values",
+      subtitle: "The principles that define us as a team",
+      items: [
         {
-          area: "Production & Creativity",
-          skills: "Directors, editors, motion designers with TV and film backgrounds. In-house production for quality control."
+          icon: "✅",
+          title: "Total Transparency",
+          description: "24/7 reporting, no fine print. Real-time dashboards with all metrics. Full access to your data always.",
+          benefits: ["24/7 Dashboards", "Detailed reports", "No hidden costs"]
         },
         {
-          area: "Digital Marketing",
-          skills: "Specialists in SEM, SEO, Social Ads, Email Automation, CRO. Google, Meta, HubSpot certified."
+          icon: "⚡",
+          title: "Agility",
+          description: "Fast response (<2 hours on GROWTH+ plans), continuous iteration, swift adaptation to market changes.",
+          benefits: ["Response <2hrs", "Fast iteration", "Continuous adapt"]
         },
         {
-          area: "Data & Analytics",
-          skills: "Analysts with expertise in GA4, Looker Studio, Hotjar, Brandwatch. Data-driven methodology for actionable insights."
+          icon: "🤝",
+          title: "Real Partnership",
+          description: "We're not just another vendor. We're your extended team. Your success is our success. Long-term relationship.",
+          benefits: ["Extended team", "Mutual commitment", "Long-term vision"]
         },
         {
-          area: "Cultural Strategists",
-          skills: "Bilingual Hispanic/Latino team. We understand language nuances, humor, references that resonate with the audience."
+          icon: "🚀",
+          title: "Results Obsession",
+          description: "Clear KPIs from day 1. Total accountability. If it didn't work, we iterate until it does. 90-day guarantee.",
+          benefits: ["Clear KPIs", "100% Accountability", "90-day guarantee"]
         }
-      ],
-      cta: "Want to know more? Schedule a call"
+      ]
     },
 
-    // Section 6: CTA Final
+    team: {
+      title: "The Team Behind the Results",
+      subtitle: "20+ professionals certified in the best market tools",
+      description: "Multidisciplinary team with real expertise. Google, Meta, AWS, HubSpot, Shopify certifications. Continuous education to stay at the forefront.",
+      expertise: [
+        {
+          icon: "🎨",
+          area: "Creativity & Design",
+          skills: "UX/UI designers, copywriters, motion designers, illustrators. Complete branding and creative pieces that convert.",
+          team: "5 designers"
+        },
+        {
+          icon: "💻",
+          area: "Development & Tech",
+          skills: "Frontend/Backend developers, AI engineers, DevOps. Modern stack: React, Node.js, Python, AWS.",
+          team: "6 developers"
+        },
+        {
+          icon: "📈",
+          area: "Digital Marketing",
+          skills: "SEO/SEM specialists, social media managers, data analysts, email marketing and CRO specialists.",
+          team: "7 marketers"
+        },
+        {
+          icon: "🎯",
+          area: "Strategy & PMO",
+          skills: "Strategic consultants, project managers, account managers. Your point of contact for everything.",
+          team: "4 strategists"
+        }
+      ],
+      certifications: "Certified in: Google Ads, Google Analytics, Meta Blueprint, AWS, HubSpot, Shopify Partner",
+      imageAlt: "Energy Media team working in modern office"
+    },
+
     ctaFinal: {
       badge: "Ready to start",
-      title: "Is your brand ready to grow with cultural strategy?",
-      subtitle: "From startups to Fortune 500, we help brands connect with Hispanic and multicultural audiences through video, data, and measurable results.",
+      title: "Ready to Transform Your Digital Business?",
+      subtitle: "Schedule free strategic consultation - $5,000 MXN value, today free",
       benefits: [
-        "Free 30-min consultation to analyze your situation",
-        "90-day growth plan with clear KPIs",
-        "Team that speaks your language (literally and figuratively)"
+        "✓ Complete digital audit (30-45 min)",
+        "✓ 90-day growth plan with clear KPIs",
+        "✓ Personalized investment recommendations",
+        "✓ No commitment, 100% free"
       ],
-      ctaPrimary: "Schedule your free consultation",
-      ctaSecondary: "Download our case study"
+      guarantee: "🛡️ 90-day guarantee - Results or full refund",
+      ctaPrimary: "Schedule Now (Free)",
+      ctaSecondary: "View success stories"
     }
   }
 };

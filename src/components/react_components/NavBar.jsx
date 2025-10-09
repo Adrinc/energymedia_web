@@ -222,14 +222,7 @@ const NavBar = () => {
 
       {/* Menú de navegación con indicadores activos */}
       <ul className={`${styles.navMenu} ${isOpen ? styles.active : ""}`} ref={menuRef}>
-     {/*    <li className={styles.navItem}>
-          <a 
-            href="/" 
-            className={`${styles.navLink} ${isActiveLink("/") ? styles.activeLink : ""}`}
-          >
-            {textosNavbar.inicio}
-          </a>
-        </li> */}
+   
         <li className={styles.navItem}>
           <a 
             href="/servicios" 
@@ -262,14 +255,7 @@ const NavBar = () => {
             {textosNavbar.nosotros}
           </a>
         </li>
-        <li className={styles.navItem}>
-          <a 
-            href="/recursos" 
-            className={`${styles.navLink} ${isActiveLink("/recursos") ? styles.activeLink : ""}`}
-          >
-            {textosNavbar.recursos}
-          </a>
-        </li>
+       
         
         {/* Botón de CTA separado para móvil */}
         <li className={`${styles.navItem} ${styles.mobileLoginItem} ${styles.mobileOnly}`}>
