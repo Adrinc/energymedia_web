@@ -1,11 +1,13 @@
-﻿/* indexSeccion3.module.css - RESULTADOS GARANTIZADOS - ULTRA PREMIUM */
+﻿/* indexSeccion3.module.css - RESULTADOS GARANTIZADOS - ULTRA PREMIUM CLARO */
 
 .section {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(180deg, #1A1024 0%, #2A1434 30%, #1A1024 70%, #0A0612 100%);
+  background: linear-gradient(180deg, #F7F5FA 0%, #E8E4F0 50%, #F7F5FA 100%);
   padding: 10rem 2rem;
   overflow: hidden;
+
+  
 }
 
 /* ========== Fondo Grid Futurista ========== */
@@ -17,11 +19,12 @@
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(rgba(103, 46, 146, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(103, 46, 146, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(103, 46, 146, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(103, 46, 146, 0.08) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: gridMove 20s linear infinite;
   pointer-events: none;
+  opacity: 0.4;
 }
 
 @keyframes gridMove {
@@ -29,23 +32,23 @@
   100% { transform: translate(50px, 50px); }
 }
 
-/* ========== Glow Spots ========== */
+/* ========== Glow Spots Sutiles ========== */
 .section::after {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 50% 20%, rgba(62, 200, 247, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 80% 60%, rgba(103, 46, 146, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at 20% 80%, rgba(245, 104, 49, 0.08) 0%, transparent 40%);
+    radial-gradient(circle at 50% 20%, rgba(62, 200, 247, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(103, 46, 146, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(245, 104, 49, 0.05) 0%, transparent 40%);
   animation: glowPulse 15s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.05); }
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
 }
 
 .container {
@@ -70,7 +73,7 @@
 .title {
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 800;
-  background: linear-gradient(135deg, #FFFFFF 0%, #3EC8F7 50%, #A47EB9 100%);
+  background: linear-gradient(135deg, #1A1024 0%, #672E92 50%, #3EC8F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -81,8 +84,8 @@
 
 .subtitle {
   font-size: clamp(1.25rem, 2vw, 1.5rem);
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 400;
+  color: #5A3D6B;
+  font-weight: 500;
   max-width: 800px;
   margin: 0 auto 3rem;
   line-height: 1.6;
@@ -99,14 +102,14 @@
 .metricCard {
   position: relative;
   padding: 3rem 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  background: #FFFFFF;
   backdrop-filter: blur(30px);
   border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(103, 46, 146, 0.1);
   box-shadow: 
-    0 25px 70px rgba(0, 0, 0, 0.4),
-    0 10px 20px rgba(103, 46, 146, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 25px 70px rgba(103, 46, 146, 0.12),
+    0 10px 30px rgba(103, 46, 146, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
   opacity: 0;
   animation: fadeInScale 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -145,19 +148,19 @@
 
 .metricCard:hover {
   transform: translateY(-20px) scale(1.05);
-  border-color: rgba(62, 200, 247, 0.4);
+  border-color: rgba(62, 200, 247, 0.5);
   box-shadow: 
-    0 40px 100px rgba(0, 0, 0, 0.5),
-    0 20px 40px rgba(62, 200, 247, 0.3),
-    0 0 60px rgba(62, 200, 247, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 40px 100px rgba(103, 46, 146, 0.2),
+    0 20px 50px rgba(62, 200, 247, 0.3),
+    0 0 60px rgba(62, 200, 247, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 /* ========== Metric Value Gigante ========== */
 .metricValue {
   font-size: clamp(3.5rem, 5vw, 5rem);
   font-weight: 900;
-  background: linear-gradient(135deg, #3EC8F7 0%, #FFFFFF 100%);
+  background: linear-gradient(135deg, #672E92 0%, #3EC8F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -201,7 +204,7 @@
 .metricLabel {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #1A1024;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -209,35 +212,39 @@
 }
 
 .metricCard:hover .metricLabel {
-  color: #3EC8F7;
+  color: #672E92;
 }
 
 .metricDescription {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #5A3D6B;
   line-height: 1.5;
   transition: color 0.3s ease;
 }
 
 .metricCard:hover .metricDescription {
-  color: rgba(255, 255, 255, 0.9);
+  color: #3EC8F7;
 }
 
 /* ========== Guarantee Box Épico ========== */
 .guaranteeContainer {
   position: relative;
+  display: flex;
+  flex-direction: column;
   max-width: 900px;
   margin: 0 auto;
   padding: 4rem 3rem;
-  background: linear-gradient(135deg, rgba(103, 46, 146, 0.15), rgba(62, 200, 247, 0.1));
+  background: linear-gradient(135deg, rgba(103, 46, 146, 0.08), rgba(62, 200, 247, 0.06));
   backdrop-filter: blur(40px);
   border-radius: 40px;
-  border: 2px solid rgba(62, 200, 247, 0.3);
+  border: 2px solid rgba(62, 200, 247, 0.4);
+  align-items: center;
+  justify-content: center;
   box-shadow: 
-    0 30px 90px rgba(0, 0, 0, 0.5),
-    0 15px 30px rgba(103, 46, 146, 0.3),
+    0 30px 90px rgba(103, 46, 146, 0.15),
+    0 15px 40px rgba(103, 46, 146, 0.1),
     0 0 80px rgba(62, 200, 247, 0.2),
-    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+    inset 0 2px 0 rgba(255, 255, 255, 0.8);
   opacity: 0;
   animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
   overflow: hidden;
@@ -270,10 +277,11 @@
 .guaranteeBadge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, rgba(62, 200, 247, 0.3), rgba(103, 46, 146, 0.3));
-  border: 2px solid rgba(62, 200, 247, 0.5);
+  background: linear-gradient(135deg, #672E92, #3EC8F7);
+  border: 2px solid rgba(62, 200, 247, 0.6);
   border-radius: 60px;
   font-size: 1.125rem;
   font-weight: 800;
@@ -281,23 +289,23 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: 2rem;
-  box-shadow: 0 0 40px rgba(62, 200, 247, 0.4);
+  box-shadow: 0 10px 40px rgba(62, 200, 247, 0.4);
   animation: badgePulse 3s ease-in-out infinite;
 }
 
 @keyframes badgePulse {
-  0%, 100% { box-shadow: 0 0 40px rgba(62, 200, 247, 0.4); }
-  50% { box-shadow: 0 0 60px rgba(62, 200, 247, 0.7); }
+  0%, 100% { box-shadow: 0 10px 40px rgba(62, 200, 247, 0.4); }
+  50% { box-shadow: 0 15px 60px rgba(62, 200, 247, 0.7); }
 }
 
 .shieldIcon {
   font-size: 1.75rem;
-  filter: drop-shadow(0 0 10px rgba(62, 200, 247, 0.8));
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
 }
 
 .guaranteeText {
   font-size: clamp(1.25rem, 2vw, 1.5rem);
-  color: #FFFFFF;
+  color: #1A1024;
   font-weight: 600;
   line-height: 1.6;
   margin-bottom: 2.5rem;
@@ -316,8 +324,8 @@
   align-items: center;
   gap: 0.75rem;
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
+  color: #5A3D6B;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
@@ -383,6 +391,37 @@
     flex-direction: column;
     gap: 1.5rem;
     align-items: flex-start;
+  }
+}
+
+/* ========== DEGRADADO DE TRANSICIÓN A SECCIÓN OSCURA (IA) ========== */
+.transitionGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(26, 16, 36, 0.15) 25%,
+    rgba(26, 16, 36, 0.4) 50%,
+    rgba(26, 16, 36, 0.7) 75%,
+    #1A1024 100%  /* Color exacto de IndexSeccionIA */
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .transitionGradient {
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .transitionGradient {
+    height: 120px;
   }
 }
 

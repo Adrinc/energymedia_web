@@ -37,6 +37,7 @@ const IndexSeccion1 = () => {
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroContainer}>
+        {/* Video de Fondo */}
         <div className={styles.videoBackground}>
           <video autoPlay muted loop playsInline className={styles.video}>
             <source src='/videos/v_bg_1.mp4' type='video/mp4' />
@@ -44,31 +45,82 @@ const IndexSeccion1 = () => {
           <div className={styles.videoOverlay}></div>
         </div>
 
+        {/* Partículas Flotantes de Fondo */}
+        <div className={styles.particlesContainer}>
+          {[...Array(30)].map((_, i) => (
+            <div 
+              key={i} 
+              className={styles.particle}
+              style={{
+                '--x': `${Math.random() * 100}%`,
+                '--y': `${Math.random() * 100}%`,
+                '--duration': `${15 + Math.random() * 15}s`,
+                '--delay': `${Math.random() * 5}s`,
+                '--size': `${2 + Math.random() * 4}px`
+              }}
+            ></div>
+          ))}
+        </div>
+
+        {/* Contenido Principal */}
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>{t.h1}</h1>
+          {/* Badge Superior Premium */}
+          <div className={styles.topBadge}>
+            <span className={styles.badgeIcon}>⚡</span>
+            <span className={styles.badgeTextTop}>
+              {ingles ? 'DIGITAL TRANSFORMATION EXPERTS' : 'EXPERTOS EN TRANSFORMACIÓN DIGITAL'}
+            </span>
+          </div>
+
+          <h1 className={styles.heroTitle}>
+            {t.h1.split(' ').map((word, idx) => (
+              <>
+                <span 
+                  key={idx} 
+                  className={styles.titleWord}
+                  style={{ animationDelay: `${idx * 0.1}s` }}
+                >
+                  {word}
+                </span>
+                {idx < t.h1.split(' ').length - 1 && ' '}
+              </>
+            ))}
+          </h1>
+          
           <p className={styles.heroSubtitle}>{t.subtitle}</p>
 
           <div className={styles.ctaGroup}>
             <button className={styles.btnPrimary}>
               <span className={styles.ctaText}>{t.ctaPrimary}</span>
               <span className={styles.ctaValue}>{t.ctaValue}</span>
+              <span className={styles.ctaArrow}>→</span>
             </button>
-            <button className={styles.btnSecondary}>{t.ctaSecondary}</button>
+            <button className={styles.btnSecondary}>
+              {t.ctaSecondary}
+              <span className={styles.playIcon}>▶</span>
+            </button>
           </div>
 
           <div className={styles.trustBadges}>
             <div className={styles.trustBadge}>
+              <span className={styles.badgeIcon}>✓</span>
               <span className={styles.badgeText}>{t.trustBadges.results}</span>
             </div>
             <div className={styles.trustBadge}>
+              <span className={styles.badgeIcon}>🛡️</span>
               <span className={styles.badgeText}>{t.trustBadges.guarantee}</span>
             </div>
             <div className={styles.trustBadge}>
+              <span className={styles.badgeIcon}>⚡</span>
               <span className={styles.badgeText}>{t.trustBadges.response}</span>
             </div>
           </div>
         </div>
 
+        {/* Degradado de Transición a Siguiente Sección (BLANCO) */}
+       {/*  <div className={styles.transitionGradient}></div> */}
+
+        {/* Scroll Indicator */}
         <div className={styles.scrollIndicator}>
           <span className={styles.scrollText}>{ingles ? 'Scroll down' : 'Desliza hacia abajo'}</span>
           <div className={styles.scrollIcon}></div>

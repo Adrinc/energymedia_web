@@ -143,6 +143,9 @@ const IndexSeccion3 = () => {
           </div>
         </div>
       </div>
+
+      {/* Degradado de transición a siguiente sección oscura (IA) */}
+{/*       <div className={styles.transitionGradient}></div> */}
     </section>
   );
 };
