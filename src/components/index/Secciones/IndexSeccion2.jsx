@@ -3,7 +3,8 @@ import { useStore } from '@nanostores/react';
 import { isEnglish, isDarkMode } from '../../../data/variables';
 import { translationsIndex } from '../../../data/translationsIndex';
 import styles from '../css/indexSeccion2.module.css';
-import Rainbow from '../../global/animations/ThreeFiber/scene3D/ModenScene/Main3D';
+import GradientBlinds from '../../global/animations/GradientBlinds/GradientBlinds';
+import '../../global/animations/GradientBlinds/GradientBlinds.css';
 
 
 const IndexSeccion2 = () => {
@@ -35,10 +36,24 @@ const IndexSeccion2 = () => {
             </div>
           </div>
           
-          {/* Right Column: Rainbow Image */}
+          {/* Right Column: Gradient Blinds Effect */}
           <div className={styles.rightColumn}>
             <div className={styles.imageWrapper}>
-              <Rainbow/>
+              <GradientBlinds
+                gradientColors={['#6F26A9', '#7E2B7F', '#3DBBFF', '#2BC7FF', '#FFB638', '#FF7A45']}
+                angle={45}
+                noise={0}
+                blindCount={20}
+                blindMinWidth={70}
+                mouseDampening={0.2}
+                mirrorGradient={false}
+                spotlightRadius={0.6}
+                spotlightSoftness={1.5}
+                spotlightOpacity={0.8}
+                distortAmount={0.15}
+                shineDirection="left"
+                mixBlendMode="normal"
+              />
             </div>
           </div>
         </div>

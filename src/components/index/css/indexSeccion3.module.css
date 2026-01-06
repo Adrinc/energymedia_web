@@ -133,25 +133,17 @@
   background: linear-gradient(270deg, #f7f7f9 0%, rgba(247, 247, 249, 0.8) 40%, transparent 100%);
 }
 
-/* Track del carrusel con animación infinita CSS */
+/* Track del carrusel - animado por GSAP */
 .carouselTrack {
   display: flex;
   gap: 24px;
   width: fit-content;
-  animation: scroll 40s linear infinite;
+  cursor: grab;
+  user-select: none;
 }
 
-.carouselTrack.paused {
-  animation-play-state: paused;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); /* Se mueve exactamente la mitad porque duplicamos items */
-  }
+.carouselTrack:active {
+  cursor: grabbing;
 }
 
 /* ========== Service Card ========== */

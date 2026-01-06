@@ -1,14 +1,23 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish, isDarkMode } from '../../../data/variables';
 import styles from '../css/indexSeccion3.module.css';
 import Button from '../../global/Button';
+import gsap from 'gsap';
 
 const IndexSeccion3 = () => {
   const ingles = useStore(isEnglish);
   const darkMode = useStore(isDarkMode);
   const [selectedService, setSelectedService] = useState(null);
-  const [isPaused, setIsPaused] = useState(false);
+  
+  // Refs para GSAP
+  const trackRef = useRef(null);
+  const containerRef = useRef(null);
+  const animationRef = useRef(null);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const currentXRef = useRef(0);
+  const dragDistanceRef = useRef(0);
 
   const content = ingles ? {
     header: {
@@ -168,11 +177,142 @@ const IndexSeccion3 = () => {
     document.body.style.overflow = 'auto';
   };
 
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
-
   // Duplicar items para carrusel infinito sin saltos
-  const duplicatedItems = [...t.items, ...t.items];
+  const duplicatedItems = [...t.items, ...t.items, ...t.items];
+
+  // Inicializar animación GSAP
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    // Calcular el ancho total de un set de items
+    const cards = track.querySelectorAll(`.${styles.serviceCard}`);
+    const cardWidth = cards[0]?.offsetWidth || 450;
+    const gap = 24;
+    const singleSetWidth = (cardWidth + gap) * t.items.length;
+
+    // Posición inicial
+    gsap.set(track, { x: 0 });
+    currentXRef.current = 0;
+
+    // Animación infinita
+    const startAnimation = () => {
+      if (animationRef.current) animationRef.current.kill();
+      
+      animationRef.current = gsap.to(track, {
+        x: `-=${singleSetWidth}`,
+        duration: 30,
+        ease: 'none',
+        repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize(x => {
+            const mod = parseFloat(x) % singleSetWidth;
+            currentXRef.current = mod;
+            return mod;
+          })
+        }
+      });
+    };
+
+    startAnimation();
+
+    // Drag handlers
+    const handleMouseDown = (e) => {
+      isDraggingRef.current = true;
+      startXRef.current = e.clientX;
+      dragDistanceRef.current = 0;
+      
+      // Pausar animación y capturar posición actual
+      if (animationRef.current) {
+        animationRef.current.pause();
+      }
+      currentXRef.current = gsap.getProperty(track, 'x');
+      
+      track.style.cursor = 'grabbing';
+    };
+
+    const handleMouseMove = (e) => {
+      if (!isDraggingRef.current) return;
+      e.preventDefault();
+      
+      const deltaX = e.clientX - startXRef.current;
+      dragDistanceRef.current = Math.abs(deltaX);
+      
+      // Mover el track
+      const newX = currentXRef.current + deltaX;
+      gsap.set(track, { x: newX });
+    };
+
+    const handleMouseUp = () => {
+      if (!isDraggingRef.current) return;
+      isDraggingRef.current = false;
+      track.style.cursor = 'grab';
+      
+      // Actualizar posición actual y reiniciar animación
+      currentXRef.current = gsap.getProperty(track, 'x');
+      
+      // Normalizar posición para loop infinito
+      let normalizedX = currentXRef.current % singleSetWidth;
+      if (normalizedX > 0) normalizedX -= singleSetWidth;
+      
+      gsap.set(track, { x: normalizedX });
+      currentXRef.current = normalizedX;
+      
+      // Reiniciar animación desde la posición actual
+      if (animationRef.current) animationRef.current.kill();
+      animationRef.current = gsap.to(track, {
+        x: `-=${singleSetWidth}`,
+        duration: 30,
+        ease: 'none',
+        repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize(x => {
+            const mod = parseFloat(x) % singleSetWidth;
+            currentXRef.current = mod;
+            return mod;
+          })
+        }
+      });
+    };
+
+    const handleMouseEnter = () => {
+      if (animationRef.current && !isDraggingRef.current) {
+        animationRef.current.pause();
+      }
+    };
+
+    const handleMouseLeave = () => {
+      isDraggingRef.current = false;
+      track.style.cursor = 'grab';
+      if (animationRef.current) {
+        animationRef.current.resume();
+      }
+    };
+
+    // Event listeners
+    track.addEventListener('mousedown', handleMouseDown);
+    track.addEventListener('mouseenter', handleMouseEnter);
+    track.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      if (animationRef.current) animationRef.current.kill();
+      track.removeEventListener('mousedown', handleMouseDown);
+      track.removeEventListener('mouseenter', handleMouseEnter);
+      track.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [t.items.length]);
+
+  const handleCardClick = useCallback((service) => {
+    // Solo abrir modal si no fue un drag significativo
+    if (dragDistanceRef.current < 10) {
+      openModal(service);
+    }
+    dragDistanceRef.current = 0;
+  }, []);
 
   return (
     <section className={`${styles.section} ${!darkMode ? styles.sectionLight : ''}`}>
@@ -191,32 +331,33 @@ const IndexSeccion3 = () => {
         />
       </div>
 
-      <div className={styles.container}>
-          <div 
-            className={`${styles.carouselTrack} ${isPaused ? styles.paused : ''}`}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {duplicatedItems.map((service, index) => (
-              <div
-                key={`service-${index}`}
-                className={styles.serviceCard}
-                onClick={() => openModal(service)}
+      <div className={styles.container} ref={containerRef}>
+        <div 
+          ref={trackRef}
+          className={styles.carouselTrack}
+          style={{ cursor: 'grab' }}
+        >
+          {duplicatedItems.map((service, index) => (
+            <div
+              key={`service-${index}`}
+              className={styles.serviceCard}
+              onClick={() => handleCardClick(service)}
+              onDragStart={(e) => e.preventDefault()}
+            >
+              <div 
+                className={styles.cardImage}
+                style={{ backgroundImage: `url(${service.image})` }}
               >
-                <div 
-                  className={styles.cardImage}
-                  style={{ backgroundImage: `url(${service.image})` }}
-                >
-                  <div className={styles.overlay}></div>
-                </div>
-                <div className={styles.cardContent}>
-                  <h3 className={styles.cardTitle}>{service.title}</h3>
-                  <p className={styles.cardTagline}>{service.tagline}</p>
-                </div>
+                <div className={styles.overlay}></div>
               </div>
-            ))}
-          </div>
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitle}>{service.title}</h3>
+                <p className={styles.cardTagline}>{service.tagline}</p>
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
 
       {/* Modal */}
       {selectedService && (
