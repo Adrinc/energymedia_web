@@ -1,0 +1,487 @@
+/* serviceModal.module.css - Service Detail Modal */
+
+/* ========== Overlay ========== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+.overlayLight {
+  background: rgba(247, 247, 249, 0.95);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========== Modal Container ========== */
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  background: #0A0A0A;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+  animation: slideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  margin: 2rem 0;
+}
+
+.modalLight {
+  background: #FFFFFF;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== Close Button ========== */
+.closeBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: rotate(90deg);
+}
+
+.modalLight .closeBtn {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0A0A0A;
+}
+
+.modalLight .closeBtn:hover {
+  background: #FFFFFF;
+}
+
+/* ========== Hero Image ========== */
+.heroImage {
+  width: 100%;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.95) 100%);
+}
+
+.modalLight .heroOverlay {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.95) 100%);
+}
+
+/* ========== Content ========== */
+.content {
+  padding: 3rem;
+}
+
+/* ========== Header ========== */
+.header {
+  margin-bottom: 3rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(111, 38, 169, 0.15);
+  color: #A47EB9;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.modalLight .badge {
+  background: rgba(111, 38, 169, 0.1);
+  color: #6F26A9;
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.modalLight .title {
+  color: #0A0A0A;
+}
+
+.metadata {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metaLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.modalLight .metaLabel {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.metaValue {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.modalLight .metaValue {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.metaLink {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #3DBBFF;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.metaLink:hover {
+  color: #2BC7FF;
+}
+
+/* ========== Two Columns Layout ========== */
+.twoColumns {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* ========== Left Column ========== */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.modalLight .description {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* ========== Section Title ========== */
+.sectionTitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 1.5rem 0;
+}
+
+.modalLight .sectionTitle {
+  color: #0A0A0A;
+}
+
+/* ========== Highlights ========== */
+.highlights {
+  margin-top: 1rem;
+}
+
+.highlightsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.highlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.bulletCheck {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2BC7FF, #F5C15C);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0A0A0A;
+  font-weight: 700;
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.highlightContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.highlightContent strong {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.modalLight .highlightContent strong {
+  color: #0A0A0A;
+}
+
+.highlightContent span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.modalLight .highlightContent span {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* ========== Technologies ========== */
+.technologies {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modalLight .technologies {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.techItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.techItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.modalLight .techItem {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.modalLight .techItem:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.techIcon {
+  font-size: 1.25rem;
+}
+
+.techName {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.modalLight .techName {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* ========== Right Column - Gallery ========== */
+.rightColumn {
+  position: relative;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 2rem;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.galleryImage:hover {
+  transform: scale(1.02);
+}
+
+/* ========== CTA ========== */
+.ctaWrapper {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modalLight .ctaWrapper {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 1024px) {
+  .twoColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .rightColumn {
+    order: -1;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .galleryImage {
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 1rem;
+  }
+
+  .modal {
+    border-radius: 20px;
+    margin: 1rem 0;
+  }
+
+  .heroImage {
+    height: 250px;
+  }
+
+  .content {
+    padding: 2rem 1.5rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .metadata {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .galleryImage {
+    height: 180px;
+  }
+
+  .techGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .closeBtn {
+    width: 40px;
+    height: 40px;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .heroImage {
+    height: 200px;
+  }
+
+  .galleryImage {
+    height: 150px;
+  }
+
+  .techGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
