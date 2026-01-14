@@ -1,4 +1,4 @@
-/* videoLightbox.module.css - Modal para reproducción de videos de Vimeo */
+/* videoLightbox.module.css - Modal para reproducción de videos de Supabase Storage */
 
 /* ========== Backdrop ========== */
 .lightboxBackdrop {
@@ -156,6 +156,100 @@
   border: none;
 }
 
+/* ========== HTML5 Video Player ========== */
+.videoPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000000;
+}
+
+/* ========== Loading Overlay ========== */
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+.loadingOverlay p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(43, 199, 255, 0.2);
+  border-top-color: #2BC7FF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========== Error Overlay ========== */
+.errorOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 5;
+}
+
+.errorIcon {
+  font-size: 3rem;
+}
+
+.errorOverlay p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.retryButton {
+  padding: 10px 24px;
+  border: 2px solid rgba(43, 199, 255, 0.5);
+  border-radius: 8px;
+  background: rgba(43, 199, 255, 0.1);
+  color: #2BC7FF;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retryButton:hover {
+  background: rgba(43, 199, 255, 0.2);
+  border-color: #2BC7FF;
+}
+
 /* ========== Video Description ========== */
 .videoDescription {
   display: flex;
@@ -167,12 +261,66 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.descriptionText {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
 .videoDescription p {
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
+}
+
+/* ========== Video Meta ========== */
+.videoMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ========== Tags Container ========== */
+.tagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tagBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 16px;
+  background: rgba(43, 199, 255, 0.12);
+  border: 1px solid rgba(43, 199, 255, 0.25);
+  color: #2BC7FF;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* ========== Stats Container ========== */
+.statsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.statItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .categoryBadge {

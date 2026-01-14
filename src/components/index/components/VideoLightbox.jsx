@@ -1,9 +1,10 @@
+import { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from '../css/videoLightbox.module.css';
 
 /**
- * VideoLightbox - Modal reutilizable para reproducir videos de Vimeo
- * Incluye: Player, título, descripción, navegación prev/next
+ * VideoLightbox - Modal reutilizable para reproducir videos de Supabase Storage
+ * Incluye: Player HTML5, título, descripción, navegación prev/next, tags
  */
 
 const VideoLightbox = ({
@@ -15,11 +16,52 @@ const VideoLightbox = ({
   onPrev,
   ingles = false
 }) => {
+  const videoRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  // Resetear estado cuando cambia el video
+  useEffect(() => {
+    setIsLoading(true);
+    setHasError(false);
+    
+    // Reproducir automáticamente cuando el video esté listo
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+  }, [selectedVideo?.id]);
+
   if (!selectedVideo) return null;
 
-  // Construir URL de Vimeo con autoplay
-  const getVimeoUrl = (videoId) => {
-    return `https://player.vimeo.com/video/${videoId}?autoplay=1&muted=0&loop=0&autopause=0&controls=1&title=0&byline=0&portrait=0`;
+  // Handlers del video
+  const handleVideoLoaded = () => {
+    setIsLoading(false);
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.warn('Autoplay blocked:', err);
+      });
+    }
+  };
+
+  const handleVideoError = () => {
+    setIsLoading(false);
+    setHasError(true);
+  };
+
+  // Formatear duración
+  const formatDuration = (seconds) => {
+    if (!seconds) return null;
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  // Formatear reproducciones
+  const formatReproductions = (count) => {
+    if (!count) return '0';
+    if (count >= 1000000) return `${(count / 1000000).toFixed(1)}M`;
+    if (count >= 1000) return `${(count / 1000).toFixed(1)}K`;
+    return count.toString();
   };
 
   return (
@@ -80,27 +122,84 @@ const VideoLightbox = ({
               </div>
             </div>
 
-            {/* Player de Vimeo */}
+            {/* Player de Video HTML5 */}
             <div className={styles.playerWrapper}>
-              <iframe
-                key={selectedVideo.id}
-                src={getVimeoUrl(selectedVideo.id)}
-                className={styles.videoIframe}
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-                title={selectedVideo.title}
-              />
-            </div>
-
-            {/* Descripción del video */}
-            <div className={styles.videoDescription}>
-              <p>{selectedVideo.description}</p>
-              {selectedVideo.category && (
-                <div className={styles.categoryBadge}>
-                  📁 {selectedVideo.category}
+              {isLoading && (
+                <div className={styles.loadingOverlay}>
+                  <div className={styles.spinner}></div>
+                  <p>{ingles ? "Loading video..." : "Cargando video..."}</p>
                 </div>
               )}
+              
+              {hasError ? (
+                <div className={styles.errorOverlay}>
+                  <div className={styles.errorIcon}>⚠️</div>
+                  <p>{ingles ? "Error loading video" : "Error al cargar el video"}</p>
+                  <button 
+                    className={styles.retryButton}
+                    onClick={() => {
+                      setHasError(false);
+                      setIsLoading(true);
+                      if (videoRef.current) {
+                        videoRef.current.load();
+                      }
+                    }}
+                  >
+                    {ingles ? "Retry" : "Reintentar"}
+                  </button>
+                </div>
+              ) : (
+                <video
+                  ref={videoRef}
+                  key={selectedVideo.id}
+                  className={styles.videoPlayer}
+                  controls
+                  playsInline
+                  preload="auto"
+                  poster={selectedVideo.posterUrl || undefined}
+                  onLoadedData={handleVideoLoaded}
+                  onError={handleVideoError}
+                >
+                  <source src={selectedVideo.fileUrl} type={selectedVideo.mimeType || 'video/mp4'} />
+                  {ingles 
+                    ? "Your browser does not support the video tag." 
+                    : "Tu navegador no soporta el elemento de video."}
+                </video>
+              )}
+            </div>
+
+            {/* Descripción y metadata del video */}
+            <div className={styles.videoDescription}>
+              {selectedVideo.description && (
+                <p className={styles.descriptionText}>{selectedVideo.description}</p>
+              )}
+              
+              <div className={styles.videoMeta}>
+                {/* Tags */}
+                {selectedVideo.tags && selectedVideo.tags.length > 0 && (
+                  <div className={styles.tagsContainer}>
+                    {selectedVideo.tags.map((tag, index) => (
+                      <span key={index} className={styles.tagBadge}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Stats */}
+                <div className={styles.statsContainer}>
+                  {selectedVideo.duration && (
+                    <span className={styles.statItem}>
+                      ⏱️ {formatDuration(selectedVideo.duration)}
+                    </span>
+                  )}
+                  {selectedVideo.reproductions !== undefined && (
+                    <span className={styles.statItem}>
+                      👁️ {formatReproductions(selectedVideo.reproductions)} {ingles ? "views" : "vistas"}
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>

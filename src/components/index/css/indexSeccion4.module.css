@@ -732,3 +732,82 @@
     transition: none;
   }
 }
+
+/* ========== Loading, Error, Empty States ========== */
+.loadingState,
+.errorState,
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 1.5rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.loadingState p,
+.errorState p,
+.emptyState p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.sectionLight .loadingState p,
+.sectionLight .errorState p,
+.sectionLight .emptyState p {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.loadingState .spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(43, 199, 255, 0.2);
+  border-top-color: #2BC7FF;
+  border-radius: 50%;
+  animation: spinLoader 1s linear infinite;
+}
+
+@keyframes spinLoader {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorState {
+  color: #ff6b6b;
+}
+
+/* ========== Thumbnail Placeholder ========== */
+.thumbnailPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(43, 199, 255, 0.1), rgba(103, 46, 146, 0.1));
+  border-radius: 20px;
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+/* ========== Video Tags Badge (additional tags count) ========== */
+.videoTags {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(245, 193, 92, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(245, 193, 92, 0.4);
+  color: #F5C15C;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+}

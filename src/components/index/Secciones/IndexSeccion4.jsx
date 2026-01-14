@@ -1,6 +1,7 @@
-﻿import { useState } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish, isDarkMode } from '../../../data/variables';
+import { useMediaVideos, splitVideosIntoRows, incrementVideoReproduction } from '../../../hooks/useMediaVideos';
 import VideoLightbox from '../components/VideoLightbox';
 import styles from '../css/indexSeccion4.module.css';
 
@@ -12,67 +13,48 @@ const IndexSeccion4 = () => {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [currentCarousel, setCurrentCarousel] = useState(null);
 
+  // Obtener videos desde Supabase
+  const { videos, loading, error } = useMediaVideos({ 
+    limit: 50, 
+    orderBy: 'created_at_timestamp',
+    ascending: false 
+  });
+
+  // Dividir videos en 3 filas para el carrusel
+  const [rowOneVideos, rowTwoVideos, rowThreeVideos] = splitVideosIntoRows(videos, 3);
+
   const content = ingles ? {
     header: {
       title: "Stories That Energize",
       subtitle: "Capturing moments with the energy that defines us.",
       seeMore: "See more"
-    }
+    },
+    loading: "Loading videos...",
+    error: "Error loading videos",
+    noVideos: "No videos available"
   } : {
     header: {
       title: "Historias Que Energizan",
       subtitle: "Capturando momentos con la energía que nos define.",
       seeMore: "Ver más"
-    }
+    },
+    loading: "Cargando videos...",
+    error: "Error al cargar videos",
+    noVideos: "No hay videos disponibles"
   };
 
   const t = content;
 
-  // Row 1: General / Mixed Projects
-  const rowOneVideos = [
-    { id: '1054239205', title: 'Brand Launch Campaign', description: 'Dynamic brand introduction with multicultural appeal and data-driven messaging.', category: 'Social Ads' },
-    { id: '1135534073', title: 'Product Showcase Reel', description: 'High-impact product visuals optimized for digital platforms and mobile viewing.', category: 'Commercial' },
-    { id: '1098651741', title: 'Digital Transformation Story', description: 'Corporate storytelling highlighting innovation and technology adoption journey.', category: 'Corporate' },
-    { id: '1134373054', title: 'Event Highlights Video', description: 'Professional event coverage with cinematic editing and social media optimization.', category: 'Event' },
-    { id: '1119883818', title: 'App Launch Teaser', description: 'Vertical-first mobile app promotion designed for TikTok and Instagram Reels.', category: 'App Marketing' },
-    { id: '649746601', title: 'Service Overview Video', description: 'Clear and engaging explanation of service offerings with call-to-action focus.', category: 'Explainer' },
-    { id: '649732140', title: 'Customer Success Story', description: 'Authentic testimonial showcasing measurable results and client satisfaction.', category: 'Testimonial' }
-  ];
-
-  // Row 2: Corporate Videos
-  const rowTwoVideos = [
-    { id: '649725439', title: 'Company Culture Video', description: 'Behind-the-scenes look at workplace culture and team dynamics for recruitment.', category: 'Corporate' },
-    { id: '738395334', title: 'Annual Report Highlights', description: 'Visual summary of yearly achievements with data visualization and storytelling.', category: 'Corporate' },
-    { id: '866963712', title: 'Leadership Message', description: 'Executive communication piece with professional production and clear messaging.', category: 'Corporate' },
-    { id: '1106533496', title: 'Corporate Values Video', description: 'Mission and values storytelling with emotional connection and brand alignment.', category: 'Corporate' },
-    { id: '515507947', title: 'Office Tour Video', description: 'Engaging workspace showcase highlighting facilities and work environment.', category: 'Corporate' },
-    { id: '1106542411', title: 'Team Introduction Reel', description: 'Meet-the-team video with personality and professional presentation balance.', category: 'Corporate' },
-    { id: '906190895', title: 'Corporate Event Recap', description: 'Professional event documentation with highlight editing and social shareability.', category: 'Corporate' }
-  ];
-
-  // Row 3: Promotional Videos
-  const rowThreeVideos = [
-    { id: '839149771', title: 'Seasonal Sale Promo', description: 'High-energy promotional video with urgency triggers and conversion optimization.', category: 'Promo' },
-    { id: '688620646', title: 'Product Feature Spotlight', description: 'Focused product demo highlighting key features with clear benefits messaging.', category: 'Promo' },
-    { id: '225594533', title: 'Limited Offer Campaign', description: 'Time-sensitive promotional content designed for maximum engagement and action.', category: 'Promo' },
-    { id: '329440716', title: 'New Collection Launch', description: 'Fashion and retail launch video with aesthetic appeal and shopping call-to-action.', category: 'Promo' },
-    { id: '906468836', title: 'Service Promotion Video', description: 'B2B service promotion with professional tone and clear value proposition.', category: 'Promo' },
-    { id: '853196062', title: 'Flash Sale Announcement', description: 'Urgent promotional video optimized for social media rapid consumption.', category: 'Promo' },
-    { id: '839203813', title: 'Grand Opening Promo', description: 'Location launch video with excitement building and community engagement focus.', category: 'Promo' }
-  ];
-
-  // Obtener thumbnail de Vimeo
-  const getVimeoThumbnail = (videoId) => {
-    return `https://vumbnail.com/${videoId}.jpg`;
-  };
-
   // Abrir lightbox
-  const openLightbox = (video, carouselType, videos) => {
-    const index = videos.findIndex(v => v.id === video.id);
+  const openLightbox = async (video, carouselType, videosArray) => {
+    const index = videosArray.findIndex(v => v.id === video.id);
     setCurrentVideoIndex(index);
     setSelectedVideo(video);
-    setCurrentCarousel({ type: carouselType, videos });
+    setCurrentCarousel({ type: carouselType, videos: videosArray });
     document.body.style.overflow = 'hidden';
+    
+    // Incrementar contador de reproducciones
+    await incrementVideoReproduction(video.id);
   };
 
   // Cerrar lightbox
@@ -88,6 +70,9 @@ const IndexSeccion4 = () => {
     const nextIndex = (currentVideoIndex + 1) % currentCarousel.videos.length;
     setCurrentVideoIndex(nextIndex);
     setSelectedVideo(currentCarousel.videos[nextIndex]);
+    
+    // Incrementar reproducción del nuevo video
+    incrementVideoReproduction(currentCarousel.videos[nextIndex].id);
   };
 
   const goToPrevVideo = () => {
@@ -95,12 +80,167 @@ const IndexSeccion4 = () => {
     const prevIndex = (currentVideoIndex - 1 + currentCarousel.videos.length) % currentCarousel.videos.length;
     setCurrentVideoIndex(prevIndex);
     setSelectedVideo(currentCarousel.videos[prevIndex]);
+    
+    // Incrementar reproducción del nuevo video
+    incrementVideoReproduction(currentCarousel.videos[prevIndex].id);
   };
 
   // Duplicar para loop infinito
-  const duplicatedRowOne = [...rowOneVideos, ...rowOneVideos];
-  const duplicatedRowTwo = [...rowTwoVideos, ...rowTwoVideos];
-  const duplicatedRowThree = [...rowThreeVideos, ...rowThreeVideos];
+  const duplicatedRowOne = rowOneVideos.length > 0 ? [...rowOneVideos, ...rowOneVideos] : [];
+  const duplicatedRowTwo = rowTwoVideos.length > 0 ? [...rowTwoVideos, ...rowTwoVideos] : [];
+  const duplicatedRowThree = rowThreeVideos.length > 0 ? [...rowThreeVideos, ...rowThreeVideos] : [];
+
+  // Componente para renderizar thumbnail (con fallback si no hay poster)
+  const VideoThumbnail = ({ video, alt }) => {
+    const [thumbnailSrc, setThumbnailSrc] = useState(video.posterUrl);
+    const [thumbnailGenerated, setThumbnailGenerated] = useState(false);
+    const [loadError, setLoadError] = useState(false);
+
+    useEffect(() => {
+      // Si tiene poster, usarlo directamente
+      if (video.posterUrl) {
+        setThumbnailSrc(video.posterUrl);
+        return;
+      }
+
+      // Si no tiene poster, generar thumbnail del video
+      if (!thumbnailGenerated && video.fileUrl && !loadError) {
+        const videoElement = document.createElement('video');
+        videoElement.crossOrigin = 'anonymous';
+        videoElement.muted = true;
+        videoElement.preload = 'metadata';
+        
+        videoElement.onloadeddata = () => {
+          // Ir a un frame random en el primer tercio del video
+          const seekTime = Math.random() * Math.min(videoElement.duration * 0.3, 5);
+          videoElement.currentTime = seekTime;
+        };
+
+        videoElement.onseeked = () => {
+          try {
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth || 640;
+            canvas.height = videoElement.videoHeight || 360;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+            setThumbnailSrc(dataUrl);
+            setThumbnailGenerated(true);
+          } catch (err) {
+            console.warn('Could not generate thumbnail:', err);
+            setLoadError(true);
+          }
+        };
+
+        videoElement.onerror = () => {
+          // Fallback: usar un placeholder
+          setLoadError(true);
+          setThumbnailSrc(null);
+        };
+
+        videoElement.src = video.fileUrl;
+      }
+    }, [video.posterUrl, video.fileUrl, thumbnailGenerated, loadError]);
+
+    // Placeholder mientras carga o si hay error
+    if (!thumbnailSrc || loadError) {
+      return (
+        <div className={styles.thumbnailPlaceholder}>
+          <div className={styles.placeholderIcon}>🎬</div>
+        </div>
+      );
+    }
+
+    return (
+      <img 
+        src={thumbnailSrc} 
+        alt={alt} 
+        className={styles.videoThumbnail}
+        loading="lazy"
+        onError={() => setLoadError(true)}
+      />
+    );
+  };
+
+  // Renderizar card de video
+  const renderVideoCard = (video, index, rowKey, videosArray, carouselType) => (
+    <div 
+      key={`${rowKey}-${index}`} 
+      className={styles.videoCard}
+      onClick={() => openLightbox(video, carouselType, videosArray)}
+    >
+      <VideoThumbnail video={video} alt={video.title} />
+      <div className={styles.playOverlay}>
+        <div className={styles.playIcon}>▶</div>
+      </div>
+      <div className={styles.videoInfo}>
+        <span className={styles.videoCategory}>{video.category}</span>
+        {video.tags && video.tags.length > 1 && (
+          <span className={styles.videoTags}>
+            +{video.tags.length - 1}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+
+  // Si está cargando
+  if (loading) {
+    return (
+      <section className={`${styles.section} ${!darkMode ? styles.sectionLight : ''}`}>
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            <div>
+              <h2 className={styles.title}>{t.header.title}</h2>
+              <p className={styles.subtitle}>{t.header.subtitle}</p>
+            </div>
+          </div>
+          <div className={styles.loadingState}>
+            <div className={styles.spinner}></div>
+            <p>{t.loading}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Si hay error
+  if (error) {
+    return (
+      <section className={`${styles.section} ${!darkMode ? styles.sectionLight : ''}`}>
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            <div>
+              <h2 className={styles.title}>{t.header.title}</h2>
+              <p className={styles.subtitle}>{t.header.subtitle}</p>
+            </div>
+          </div>
+          <div className={styles.errorState}>
+            <p>{t.error}: {error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Si no hay videos
+  if (videos.length === 0) {
+    return (
+      <section className={`${styles.section} ${!darkMode ? styles.sectionLight : ''}`}>
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            <div>
+              <h2 className={styles.title}>{t.header.title}</h2>
+              <p className={styles.subtitle}>{t.header.subtitle}</p>
+            </div>
+          </div>
+          <div className={styles.emptyState}>
+            <p>{t.noVideos}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <>
@@ -118,95 +258,50 @@ const IndexSeccion4 = () => {
           <div className={styles.carouselsOverlay}>
             {/* Contenedor 3D con perspectiva + skew */}
             <div className={styles.carouselsWrapper}>
-              {/* Carrusel 1: General / Mixed Projects */}
-              <div className={styles.carouselContainer}>
-                <div 
-                  className={`${styles.carouselTrack} ${styles.rowOne} ${pausedRow === 1 ? styles.paused : ''}`}
-                  onMouseEnter={() => setPausedRow(1)}
-                  onMouseLeave={() => setPausedRow(null)}
-                >
-                  {duplicatedRowOne.map((video, index) => (
-                    <div 
-                      key={`row1-${index}`} 
-                      className={styles.videoCard}
-                      onClick={() => openLightbox(video, 'row1', rowOneVideos)}
-                    >
-                      <img 
-                        src={getVimeoThumbnail(video.id)} 
-                        alt={video.title} 
-                        className={styles.videoThumbnail}
-                        loading="lazy"
-                      />
-                      <div className={styles.playOverlay}>
-                        <div className={styles.playIcon}>▶</div>
-                      </div>
-                      <div className={styles.videoInfo}>
-                        <span className={styles.videoCategory}>{video.category}</span>
-                      </div>
-                    </div>
-                  ))}
+              {/* Carrusel 1 */}
+              {duplicatedRowOne.length > 0 && (
+                <div className={styles.carouselContainer}>
+                  <div 
+                    className={`${styles.carouselTrack} ${styles.rowOne} ${pausedRow === 1 ? styles.paused : ''}`}
+                    onMouseEnter={() => setPausedRow(1)}
+                    onMouseLeave={() => setPausedRow(null)}
+                  >
+                    {duplicatedRowOne.map((video, index) => 
+                      renderVideoCard(video, index, 'row1', rowOneVideos, 'row1')
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              {/* Carrusel 2: Corporate Videos */}
-              <div className={styles.carouselContainer}>
-                <div 
-                  className={`${styles.carouselTrack} ${styles.rowTwo} ${pausedRow === 2 ? styles.paused : ''}`}
-                  onMouseEnter={() => setPausedRow(2)}
-                  onMouseLeave={() => setPausedRow(null)}
-                >
-                  {duplicatedRowTwo.map((video, index) => (
-                    <div 
-                      key={`row2-${index}`} 
-                      className={styles.videoCard}
-                      onClick={() => openLightbox(video, 'row2', rowTwoVideos)}
-                    >
-                      <img 
-                        src={getVimeoThumbnail(video.id)} 
-                        alt={video.title} 
-                        className={styles.videoThumbnail}
-                        loading="lazy"
-                      />
-                      <div className={styles.playOverlay}>
-                        <div className={styles.playIcon}>▶</div>
-                      </div>
-                      <div className={styles.videoInfo}>
-                        <span className={styles.videoCategory}>{video.category}</span>
-                      </div>
-                    </div>
-                  ))}
+              {/* Carrusel 2 */}
+              {duplicatedRowTwo.length > 0 && (
+                <div className={styles.carouselContainer}>
+                  <div 
+                    className={`${styles.carouselTrack} ${styles.rowTwo} ${pausedRow === 2 ? styles.paused : ''}`}
+                    onMouseEnter={() => setPausedRow(2)}
+                    onMouseLeave={() => setPausedRow(null)}
+                  >
+                    {duplicatedRowTwo.map((video, index) => 
+                      renderVideoCard(video, index, 'row2', rowTwoVideos, 'row2')
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              {/* Carrusel 3: Promotional Videos */}
-              <div className={styles.carouselContainer}>
-                <div 
-                  className={`${styles.carouselTrack} ${styles.rowThree} ${pausedRow === 3 ? styles.paused : ''}`}
-                  onMouseEnter={() => setPausedRow(3)}
-                  onMouseLeave={() => setPausedRow(null)}
-                >
-                  {duplicatedRowThree.map((video, index) => (
-                    <div 
-                      key={`row3-${index}`} 
-                      className={styles.videoCard}
-                      onClick={() => openLightbox(video, 'row3', rowThreeVideos)}
-                    >
-                      <img 
-                        src={getVimeoThumbnail(video.id)} 
-                        alt={video.title} 
-                        className={styles.videoThumbnail}
-                        loading="lazy"
-                      />
-                      <div className={styles.playOverlay}>
-                        <div className={styles.playIcon}>▶</div>
-                      </div>
-                      <div className={styles.videoInfo}>
-                        <span className={styles.videoCategory}>{video.category}</span>
-                      </div>
-                    </div>
-                  ))}
+              {/* Carrusel 3 */}
+              {duplicatedRowThree.length > 0 && (
+                <div className={styles.carouselContainer}>
+                  <div 
+                    className={`${styles.carouselTrack} ${styles.rowThree} ${pausedRow === 3 ? styles.paused : ''}`}
+                    onMouseEnter={() => setPausedRow(3)}
+                    onMouseLeave={() => setPausedRow(null)}
+                  >
+                    {duplicatedRowThree.map((video, index) => 
+                      renderVideoCard(video, index, 'row3', rowThreeVideos, 'row3')
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

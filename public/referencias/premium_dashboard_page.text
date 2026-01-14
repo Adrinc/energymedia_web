@@ -1,0 +1,946 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:energy_media/providers/videos_provider.dart';
+import 'package:energy_media/theme/theme.dart';
+import 'package:gap/gap.dart';
+
+class PremiumDashboardPage extends StatefulWidget {
+  const PremiumDashboardPage({Key? key}) : super(key: key);
+
+  @override
+  State<PremiumDashboardPage> createState() => _PremiumDashboardPageState();
+}
+
+class _PremiumDashboardPageState extends State<PremiumDashboardPage>
+    with TickerProviderStateMixin {
+  late AnimationController _fadeController;
+  late AnimationController _slideController;
+  late Animation<double> _fadeAnimation;
+  late Animation<Offset> _slideAnimation;
+  Map<String, dynamic> stats = {};
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fadeController = AnimationController(
+      duration: const Duration(milliseconds: 800),
+      vsync: this,
+    );
+    _slideController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _fadeController, curve: Curves.easeOut),
+    );
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, 0.1),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _slideController, curve: Curves.easeOut));
+
+    _fadeController.forward();
+    _slideController.forward();
+    _loadStats();
+  }
+
+  Future<void> _loadStats() async {
+    final provider = Provider.of<VideosProvider>(context, listen: false);
+    final result = await provider.getDashboardStats();
+    setState(() {
+      stats = result;
+      isLoading = false;
+    });
+  }
+
+  @override
+  void dispose() {
+    _fadeController.dispose();
+    _slideController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width <= 800;
+
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: SlideTransition(
+        position: _slideAnimation,
+        child: RefreshIndicator(
+          onRefresh: _loadStats,
+          color: AppTheme.of(context).primaryColor,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.all(isMobile ? 16 : 32),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /* _buildWelcomeHeader(),
+                const Gap(32), */
+                _buildStatsCards(isMobile),
+                const Gap(32),
+                if (!isMobile) ...[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(flex: 2, child: _buildViewsChart()),
+                      const Gap(24),
+                      Expanded(flex: 2, child: _buildTopVideos()),
+                    ],
+                  ),
+                  const Gap(24),
+                  _buildRecentActivity(),
+                ] else ...[
+                  _buildTopVideos(),
+                  const Gap(24),
+                  _buildViewsChart(),
+                  const Gap(24),
+                  _buildRecentActivity(),
+                ],
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWelcomeHeader() {
+    return Container(
+      padding: const EdgeInsets.all(32),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            const Color(0xFF4EC9F5),
+            const Color(0xFFFFB733),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(
+            color: AppTheme.of(context).primaryColor.withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: const Icon(
+              Icons.dashboard,
+              size: 40,
+              color: Color(0xFF0B0B0D),
+            ),
+          ),
+          const Gap(20),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '¡Bienvenido al Dashboard!',
+                  style: AppTheme.of(context).title1.override(
+                        fontFamily: 'Poppins',
+                        color: const Color(0xFF0B0B0D),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                      ),
+                ),
+                const Gap(8),
+                Text(
+                  'Visualiza el rendimiento de tu contenido en tiempo real',
+                  style: AppTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: const Color(0xFF0B0B0D).withOpacity(0.8),
+                        fontSize: 15,
+                      ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStatsCards(bool isMobile) {
+    if (isLoading) {
+      return _buildLoadingSkeleton(isMobile);
+    }
+
+    final totalVideos = stats['total_videos'] ?? 0;
+    final totalViews = stats['total_reproducciones'] ?? 0;
+    final avgViews = totalVideos > 0 ? (totalViews / totalVideos).round() : 0;
+
+    final cards = [
+      _StatCard(
+        title: 'Total Videos',
+        value: totalVideos.toString(),
+        icon: Icons.video_library,
+        gradient: const LinearGradient(
+          colors: [Color(0xFF4EC9F5), Color(0xFF2E8BC0)],
+        ),
+        trend: '+12%',
+        trendUp: true,
+      ),
+      _StatCard(
+        title: 'Reproducciones',
+        value: _formatNumber(totalViews),
+        icon: Icons.play_circle_filled,
+        gradient: const LinearGradient(
+          colors: [Color(0xFFFFB733), Color(0xFFFF8A00)],
+        ),
+        trend: '+23%',
+        trendUp: true,
+      ),
+      _StatCard(
+        title: 'Promedio Vistas',
+        value: _formatNumber(avgViews),
+        icon: Icons.trending_up,
+        gradient: const LinearGradient(
+          colors: [Color(0xFF00C9A7), Color(0xFF00B894)],
+        ),
+        trend: '+8%',
+        trendUp: true,
+      ),
+    ];
+
+    if (isMobile) {
+      return Column(
+        children: cards.map((card) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 16),
+            child: card,
+          );
+        }).toList(),
+      );
+    }
+
+    return GridView.count(
+      crossAxisCount: 3,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      crossAxisSpacing: 20,
+      mainAxisSpacing: 20,
+      childAspectRatio: 2.2,
+      children: cards,
+    );
+  }
+
+  Widget _buildLoadingSkeleton(bool isMobile) {
+    return Shimmer.fromColors(
+      baseColor: AppTheme.of(context).tertiaryBackground,
+      highlightColor: AppTheme.of(context).secondaryBackground,
+      child: GridView.count(
+        crossAxisCount: isMobile ? 1 : 3,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
+        childAspectRatio: isMobile ? 3 : 1.5,
+        children: List.generate(
+          3,
+          (index) => Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildViewsChart() {
+    return Container(
+      padding: const EdgeInsets.all(28),
+      decoration: BoxDecoration(
+        color: AppTheme.of(context).secondaryBackground,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: AppTheme.of(context).primaryColor.withOpacity(0.1),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 20,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFB733).withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Icon(
+                  Icons.bar_chart,
+                  color: Color(0xFFFFB733),
+                  size: 24,
+                ),
+              ),
+              const Gap(12),
+              Text(
+                'Reproducciones Semanales',
+                style: AppTheme.of(context).title3.override(
+                      fontFamily: 'Poppins',
+                      color: AppTheme.of(context).primaryText,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+              ),
+            ],
+          ),
+          const Gap(32),
+          SizedBox(
+            height: 200,
+            child: BarChart(
+              BarChartData(
+                alignment: BarChartAlignment.spaceAround,
+                maxY: 100,
+                barTouchData: BarTouchData(enabled: true),
+                titlesData: FlTitlesData(
+                  show: true,
+                  bottomTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      getTitlesWidget: (value, meta) {
+                        const days = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+                        return Text(
+                          days[value.toInt() % 7],
+                          style: TextStyle(
+                            color: AppTheme.of(context).tertiaryText,
+                            fontSize: 12,
+                            fontFamily: 'Poppins',
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  leftTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      reservedSize: 40,
+                      getTitlesWidget: (value, meta) {
+                        return Text(
+                          value.toInt().toString(),
+                          style: TextStyle(
+                            color: AppTheme.of(context).tertiaryText,
+                            fontSize: 12,
+                            fontFamily: 'Poppins',
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  topTitles: AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  rightTitles: AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                ),
+                borderData: FlBorderData(show: false),
+                gridData: FlGridData(
+                  show: true,
+                  drawVerticalLine: false,
+                  getDrawingHorizontalLine: (value) {
+                    return FlLine(
+                      color: AppTheme.of(context).tertiaryText.withOpacity(0.1),
+                      strokeWidth: 1,
+                    );
+                  },
+                ),
+                barGroups: [
+                  BarChartGroupData(x: 0, barRods: [
+                    BarChartRodData(
+                      toY: 65,
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF4EC9F5), Color(0xFFFFB733)],
+                      ),
+                      width: 20,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(6),
+                        topRight: Radius.circular(6),
+                      ),
+                    )
+                  ]),
+                  BarChartGroupData(x: 1, barRods: [
+                    BarChartRodData(
+                      toY: 80,
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF4EC9F5), Color(0xFFFFB733)],
+                      ),
+                      width: 20,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(6),
+                        topRight: Radius.circular(6),
+                      ),
+                    )
+                  ]),
+                  BarChartGroupData(x: 2, barRods: [
+                    BarChartRodData(
+                      toY: 45,
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF4EC9F5), Color(0xFFFFB733)],
+                      ),
+                      width: 20,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(6),
+                        topRight: Radius.circular(6),
+                      ),
+                    )
+                  ]),
+                  BarChartGroupData(x: 3, barRods: [
+                    BarChartRodData(
+                      toY: 90,
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF4EC9F5), Color(0xFFFFB733)],
+                      ),
+                      width: 20,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(6),
+                        topRight: Radius.circular(6),
+                      ),
+                    )
+                  ]),
+                  BarChartGroupData(x: 4, barRods: [
+                    BarChartRodData(
+                      toY: 75,
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF4EC9F5), Color(0xFFFFB733)],
+                      ),
+                      width: 20,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(6),
+                        topRight: Radius.circular(6),
+                      ),
+                    )
+                  ]),
+                  BarChartGroupData(x: 5, barRods: [
+                    BarChartRodData(
+                      toY: 55,
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF4EC9F5), Color(0xFFFFB733)],
+                      ),
+                      width: 20,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(6),
+                        topRight: Radius.circular(6),
+                      ),
+                    )
+                  ]),
+                  BarChartGroupData(x: 6, barRods: [
+                    BarChartRodData(
+                      toY: 40,
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF4EC9F5), Color(0xFFFFB733)],
+                      ),
+                      width: 20,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(6),
+                        topRight: Radius.circular(6),
+                      ),
+                    )
+                  ]),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTopVideos() {
+    final provider = Provider.of<VideosProvider>(context);
+    final topVideos = provider.mediaFiles.take(5).toList();
+
+    return Container(
+      padding: const EdgeInsets.all(28),
+      decoration: BoxDecoration(
+        color: AppTheme.of(context).secondaryBackground,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: AppTheme.of(context).primaryColor.withOpacity(0.1),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 20,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF6B2F8A).withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Icon(
+                  Icons.star,
+                  color: Color(0xFF6B2F8A),
+                  size: 24,
+                ),
+              ),
+              const Gap(12),
+              Text(
+                'Top 5 Videos',
+                style: AppTheme.of(context).title3.override(
+                      fontFamily: 'Poppins',
+                      color: AppTheme.of(context).primaryText,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+              ),
+            ],
+          ),
+          const Gap(24),
+          ...topVideos.asMap().entries.map((entry) {
+            final index = entry.key;
+            final video = entry.value;
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: Row(
+                children: [
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          const Color(0xFF4EC9F5),
+                          const Color(0xFFFFB733),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '${index + 1}',
+                        style: const TextStyle(
+                          color: Color(0xFF0B0B0D),
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Gap(12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          video.title ?? video.fileName,
+                          style: AppTheme.of(context).bodyText1.override(
+                                fontFamily: 'Poppins',
+                                color: AppTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w600,
+                              ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          '${video.reproducciones} vistas',
+                          style: AppTheme.of(context).bodyText2.override(
+                                fontFamily: 'Poppins',
+                                color: AppTheme.of(context).tertiaryText,
+                                fontSize: 12,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRecentActivity() {
+    final provider = Provider.of<VideosProvider>(context);
+    final recentVideos = provider.mediaFiles.take(6).toList();
+
+    return Container(
+      padding: const EdgeInsets.all(28),
+      decoration: BoxDecoration(
+        color: AppTheme.of(context).secondaryBackground,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: AppTheme.of(context).primaryColor.withOpacity(0.1),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 20,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF00C9A7).withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Icon(
+                  Icons.history,
+                  color: Color(0xFF00C9A7),
+                  size: 24,
+                ),
+              ),
+              const Gap(12),
+              Text(
+                'Actividad Reciente',
+                style: AppTheme.of(context).title3.override(
+                      fontFamily: 'Poppins',
+                      color: AppTheme.of(context).primaryText,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+              ),
+            ],
+          ),
+          const Gap(24),
+          ...recentVideos.map((video) {
+            return Container(
+              margin: const EdgeInsets.only(bottom: 12),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: AppTheme.of(context).tertiaryBackground,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 48,
+                    height: 48,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          const Color(0xFF4EC9F5),
+                          const Color(0xFFFFB733),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Icon(
+                      Icons.video_library,
+                      color: Color(0xFF0B0B0D),
+                    ),
+                  ),
+                  const Gap(16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          video.title ?? video.fileName,
+                          style: AppTheme.of(context).bodyText1.override(
+                                fontFamily: 'Poppins',
+                                color: AppTheme.of(context).primaryText,
+                                fontWeight: FontWeight.w600,
+                              ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const Gap(4),
+                        Text(
+                          'Subido hace ${_getTimeAgo(video.createdAt)}',
+                          style: AppTheme.of(context).bodyText2.override(
+                                fontFamily: 'Poppins',
+                                color: AppTheme.of(context).tertiaryText,
+                                fontSize: 12,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF00C9A7).withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      '${video.reproducciones}',
+                      style: const TextStyle(
+                        color: Color(0xFF00C9A7),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildChartSkeleton(String title) {
+    return Container(
+      padding: const EdgeInsets.all(28),
+      decoration: BoxDecoration(
+        color: AppTheme.of(context).secondaryBackground,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: AppTheme.of(context).primaryColor.withOpacity(0.1),
+          width: 1,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: AppTheme.of(context).title3.override(
+                  fontFamily: 'Poppins',
+                  color: AppTheme.of(context).primaryText,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const Gap(24),
+          Shimmer.fromColors(
+            baseColor: AppTheme.of(context).tertiaryBackground,
+            highlightColor: AppTheme.of(context).secondaryBackground,
+            child: Container(
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEmptyChart(String message) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.pie_chart_outline,
+            size: 64,
+            color: AppTheme.of(context).tertiaryText,
+          ),
+          const Gap(16),
+          Text(
+            message,
+            style: AppTheme.of(context).bodyText1.override(
+                  fontFamily: 'Poppins',
+                  color: AppTheme.of(context).tertiaryText,
+                ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _formatNumber(int number) {
+    if (number >= 1000000) {
+      return '${(number / 1000000).toStringAsFixed(1)}M';
+    } else if (number >= 1000) {
+      return '${(number / 1000).toStringAsFixed(1)}K';
+    }
+    return number.toString();
+  }
+
+  String _getTimeAgo(DateTime? timestamp) {
+    if (timestamp == null) return 'hace un momento';
+
+    final difference = DateTime.now().difference(timestamp);
+
+    if (difference.inDays > 30) {
+      return '${(difference.inDays / 30).floor()} meses';
+    } else if (difference.inDays > 0) {
+      return '${difference.inDays} días';
+    } else if (difference.inHours > 0) {
+      return '${difference.inHours} horas';
+    } else if (difference.inMinutes > 0) {
+      return '${difference.inMinutes} minutos';
+    } else {
+      return 'hace un momento';
+    }
+  }
+}
+
+class _StatCard extends StatefulWidget {
+  final String title;
+  final String value;
+  final IconData icon;
+  final Gradient gradient;
+  final String? trend;
+  final bool trendUp;
+
+  const _StatCard({
+    required this.title,
+    required this.value,
+    required this.icon,
+    required this.gradient,
+    this.trend,
+    this.trendUp = true,
+  });
+
+  @override
+  State<_StatCard> createState() => _StatCardState();
+}
+
+class _StatCardState extends State<_StatCard>
+    with SingleTickerProviderStateMixin {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        transform: Matrix4.identity()..scale(_isHovered ? 1.02 : 1.0),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            gradient: widget.gradient,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: widget.gradient.colors.first.withOpacity(0.25),
+                blurRadius: _isHovered ? 16 : 10,
+                offset: Offset(0, _isHovered ? 6 : 3),
+              ),
+            ],
+          ),
+          child: Row(
+            children: [
+              // Icono y valor en la izquierda
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Icono
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.25),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        widget.icon,
+                        color: const Color(0xFF0B0B0D),
+                        size: 22,
+                      ),
+                    ),
+                    const Gap(12),
+                    // Valor
+                    Text(
+                      widget.value,
+                      style: const TextStyle(
+                        color: Color(0xFF0B0B0D),
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                        height: 1.0,
+                      ),
+                    ),
+                    const Gap(4),
+                    // Título
+                    Text(
+                      widget.title,
+                      style: TextStyle(
+                        color: const Color(0xFF0B0B0D).withOpacity(0.75),
+                        fontSize: 12,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // Trend badge a la derecha
+              if (widget.trend != null)
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: widget.trendUp
+                        ? Colors.white.withOpacity(0.3)
+                        : Colors.black.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        widget.trendUp
+                            ? Icons.trending_up
+                            : Icons.trending_down,
+                        size: 18,
+                        color: const Color(0xFF0B0B0D),
+                      ),
+                      const Gap(2),
+                      Text(
+                        widget.trend!,
+                        style: const TextStyle(
+                          color: Color(0xFF0B0B0D),
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
