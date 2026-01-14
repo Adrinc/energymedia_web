@@ -1,9 +1,130 @@
-﻿import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef, memo, useMemo } from 'react';
 import { useStore } from '@nanostores/react';
 import { isEnglish, isDarkMode } from '../../../data/variables';
 import { useMediaVideos, splitVideosIntoRows, incrementVideoReproduction } from '../../../hooks/useMediaVideos';
 import VideoLightbox from '../components/VideoLightbox';
 import styles from '../css/indexSeccion4.module.css';
+
+// Cache global para thumbnails generados (persiste entre re-renders)
+const thumbnailCache = new Map();
+
+// Componente VideoThumbnail memoizado (extraído fuera del componente principal)
+const VideoThumbnail = memo(({ video, alt }) => {
+  const videoId = video.id;
+  const [thumbnailSrc, setThumbnailSrc] = useState(
+    video.posterUrl || thumbnailCache.get(videoId) || null
+  );
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [loadError, setLoadError] = useState(false);
+  const hasGeneratedRef = useRef(false);
+
+  useEffect(() => {
+    // Si ya tiene poster o ya se generó/intentó generar, no hacer nada
+    if (video.posterUrl || hasGeneratedRef.current || !video.fileUrl) {
+      return;
+    }
+
+    // Si ya existe en caché, usar ese
+    if (thumbnailCache.has(videoId)) {
+      setThumbnailSrc(thumbnailCache.get(videoId));
+      hasGeneratedRef.current = true;
+      return;
+    }
+
+    // Si ya está generando o hay error, no reintentar
+    if (isGenerating || loadError) {
+      return;
+    }
+
+    // Marcar como generando
+    setIsGenerating(true);
+    hasGeneratedRef.current = true;
+
+    const videoElement = document.createElement('video');
+    videoElement.crossOrigin = 'anonymous';
+    videoElement.muted = true;
+    videoElement.preload = 'metadata';
+    
+    const handleLoadedData = () => {
+      // Ir a un frame random en el primer tercio del video
+      const seekTime = Math.random() * Math.min(videoElement.duration * 0.3, 5);
+      videoElement.currentTime = seekTime;
+    };
+
+    const handleSeeked = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = videoElement.videoWidth || 640;
+        canvas.height = videoElement.videoHeight || 360;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+        
+        // Guardar en caché
+        thumbnailCache.set(videoId, dataUrl);
+        setThumbnailSrc(dataUrl);
+        setIsGenerating(false);
+        
+        // Limpiar
+        videoElement.removeEventListener('loadeddata', handleLoadedData);
+        videoElement.removeEventListener('seeked', handleSeeked);
+        videoElement.removeEventListener('error', handleError);
+      } catch (err) {
+        console.warn('Could not generate thumbnail:', err);
+        setLoadError(true);
+        setIsGenerating(false);
+      }
+    };
+
+    const handleError = () => {
+      setLoadError(true);
+      setIsGenerating(false);
+      videoElement.removeEventListener('loadeddata', handleLoadedData);
+      videoElement.removeEventListener('seeked', handleSeeked);
+      videoElement.removeEventListener('error', handleError);
+    };
+
+    videoElement.addEventListener('loadeddata', handleLoadedData);
+    videoElement.addEventListener('seeked', handleSeeked);
+    videoElement.addEventListener('error', handleError);
+    videoElement.src = video.fileUrl;
+
+    // Cleanup
+    return () => {
+      videoElement.removeEventListener('loadeddata', handleLoadedData);
+      videoElement.removeEventListener('seeked', handleSeeked);
+      videoElement.removeEventListener('error', handleError);
+      videoElement.src = '';
+    };
+  }, [videoId, video.posterUrl, video.fileUrl]); // Solo depende de estas props estables
+
+  // Placeholder mientras carga o si hay error
+  if (!thumbnailSrc || loadError) {
+    return (
+      <div className={styles.thumbnailPlaceholder}>
+        <div className={styles.placeholderIcon}>
+          {isGenerating ? '⏳' : '🎬'}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <img 
+      src={thumbnailSrc} 
+      alt={alt} 
+      className={styles.videoThumbnail}
+      loading="lazy"
+      onError={() => {
+        if (!loadError) {
+          setLoadError(true);
+        }
+      }}
+    />
+  );
+});
+
+VideoThumbnail.displayName = 'VideoThumbnail';
 
 const IndexSeccion4 = () => {
   const ingles = useStore(isEnglish);
@@ -85,85 +206,22 @@ const IndexSeccion4 = () => {
     incrementVideoReproduction(currentCarousel.videos[prevIndex].id);
   };
 
-  // Duplicar para loop infinito
-  const duplicatedRowOne = rowOneVideos.length > 0 ? [...rowOneVideos, ...rowOneVideos] : [];
-  const duplicatedRowTwo = rowTwoVideos.length > 0 ? [...rowTwoVideos, ...rowTwoVideos] : [];
-  const duplicatedRowThree = rowThreeVideos.length > 0 ? [...rowThreeVideos, ...rowThreeVideos] : [];
+  // Duplicar para loop infinito (memoizado para evitar re-renders)
+  const duplicatedRowOne = useMemo(
+    () => rowOneVideos.length > 0 ? [...rowOneVideos, ...rowOneVideos] : [],
+    [rowOneVideos]
+  );
+  const duplicatedRowTwo = useMemo(
+    () => rowTwoVideos.length > 0 ? [...rowTwoVideos, ...rowTwoVideos] : [],
+    [rowTwoVideos]
+  );
+  const duplicatedRowThree = useMemo(
+    () => rowThreeVideos.length > 0 ? [...rowThreeVideos, ...rowThreeVideos] : [],
+    [rowThreeVideos]
+  );
 
-  // Componente para renderizar thumbnail (con fallback si no hay poster)
-  const VideoThumbnail = ({ video, alt }) => {
-    const [thumbnailSrc, setThumbnailSrc] = useState(video.posterUrl);
-    const [thumbnailGenerated, setThumbnailGenerated] = useState(false);
-    const [loadError, setLoadError] = useState(false);
-
-    useEffect(() => {
-      // Si tiene poster, usarlo directamente
-      if (video.posterUrl) {
-        setThumbnailSrc(video.posterUrl);
-        return;
-      }
-
-      // Si no tiene poster, generar thumbnail del video
-      if (!thumbnailGenerated && video.fileUrl && !loadError) {
-        const videoElement = document.createElement('video');
-        videoElement.crossOrigin = 'anonymous';
-        videoElement.muted = true;
-        videoElement.preload = 'metadata';
-        
-        videoElement.onloadeddata = () => {
-          // Ir a un frame random en el primer tercio del video
-          const seekTime = Math.random() * Math.min(videoElement.duration * 0.3, 5);
-          videoElement.currentTime = seekTime;
-        };
-
-        videoElement.onseeked = () => {
-          try {
-            const canvas = document.createElement('canvas');
-            canvas.width = videoElement.videoWidth || 640;
-            canvas.height = videoElement.videoHeight || 360;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-            const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
-            setThumbnailSrc(dataUrl);
-            setThumbnailGenerated(true);
-          } catch (err) {
-            console.warn('Could not generate thumbnail:', err);
-            setLoadError(true);
-          }
-        };
-
-        videoElement.onerror = () => {
-          // Fallback: usar un placeholder
-          setLoadError(true);
-          setThumbnailSrc(null);
-        };
-
-        videoElement.src = video.fileUrl;
-      }
-    }, [video.posterUrl, video.fileUrl, thumbnailGenerated, loadError]);
-
-    // Placeholder mientras carga o si hay error
-    if (!thumbnailSrc || loadError) {
-      return (
-        <div className={styles.thumbnailPlaceholder}>
-          <div className={styles.placeholderIcon}>🎬</div>
-        </div>
-      );
-    }
-
-    return (
-      <img 
-        src={thumbnailSrc} 
-        alt={alt} 
-        className={styles.videoThumbnail}
-        loading="lazy"
-        onError={() => setLoadError(true)}
-      />
-    );
-  };
-
-  // Renderizar card de video
-  const renderVideoCard = (video, index, rowKey, videosArray, carouselType) => (
+  // Renderizar card de video (memoizado)
+  const renderVideoCard = useMemo(() => (video, index, rowKey, videosArray, carouselType) => (
     <div 
       key={`${rowKey}-${index}`} 
       className={styles.videoCard}
@@ -182,6 +240,7 @@ const IndexSeccion4 = () => {
         )}
       </div>
     </div>
+    )
   );
 
   // Si está cargando
@@ -245,7 +304,7 @@ const IndexSeccion4 = () => {
   return (
     <>
       <section className={`${styles.section} ${!darkMode ? styles.sectionLight : ''}`}>
-        <div className={styles.wrapper}>
+       <div className={styles.wrapper}>
           {/* Header */}
           <div className={styles.header}>
             <div>
